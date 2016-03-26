@@ -54,7 +54,7 @@
     "WithBorder": true,
     "WithSound": false,
     "Alternative": true,
-    "FilePath": "config/thisBest.filter"
+    "FilePath": "C:\\Users\\vmv\\Documents\\My Games\\Path of Exile\\thisBest.filter"
   },
   "Item tooltips settings": {
     "Enable": true,
@@ -191,7 +191,7 @@
       "Max": 28
     },
     "PerandusChestIcon": {
-      "Value": 14,
+      "Value": 16,
       "Min": 1,
       "Max": 28
     },
@@ -200,6 +200,7 @@
   "Preload alerts": {
     "Enable": true,
     "CadiroTrader": "ff8000ff",
+    "PerandusBoxes": true,
     "PerandusChestStandard": "99ff33ff",
     "PerandusChestRarity": "99ff33ff",
     "PerandusChestQuantity": "99ff33ff",

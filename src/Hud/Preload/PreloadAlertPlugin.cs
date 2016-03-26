@@ -111,7 +111,11 @@ namespace PoeHUD.Hud.Preload
                 if (alertStrings.ContainsKey(text)) { alerts.Add(alertStrings[text]); }
                 if (text.Contains("human_heart") || text.Contains("Demonic_NoRain.ogg"))
                 {
-                    if (Settings.CorruptedTitle) { hasCorruptedArea = Settings.HasCorruptedArea; }
+                    if (Settings.CorruptedTitle)
+                    {
+                        hasCorruptedArea = Settings.HasCorruptedArea;
+                        alerts.Add(new PreloadConfigLine { Text = "Corrupted Area", FastColor = () => Settings.HasCorruptedArea });
+                    }
                     else
                     {
                         alerts.Add(new PreloadConfigLine { Text = "Corrupted Area", FastColor = () => Settings.HasCorruptedArea });
@@ -144,7 +148,7 @@ namespace PoeHUD.Hud.Preload
 
                 PreloadConfigLine perandus_alert = PerandusLeague.Where(kv => text
                     .StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-                if (perandus_alert != null) { alerts.Add(perandus_alert); }
+                if (perandus_alert != null && Settings.PerandusBoxes) { alerts.Add(perandus_alert); }
 
 
                 Dictionary<string, PreloadConfigLine> Strongboxes = new Dictionary<string, PreloadConfigLine>
@@ -167,7 +171,7 @@ namespace PoeHUD.Hud.Preload
 
                 PreloadConfigLine strongboxes = Strongboxes.Where(kv => text
                     .StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-                if (strongboxes != null) { alerts.Add(strongboxes); }
+                if (strongboxes != null && Settings.Strongboxes) { alerts.Add(strongboxes); }
 
                 Dictionary<string, PreloadConfigLine> Preload = new Dictionary<string, PreloadConfigLine>
                 {
@@ -219,7 +223,7 @@ namespace PoeHUD.Hud.Preload
                 };
                 PreloadConfigLine alert = Preload.Where(kv => text
                     .EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-                if (alert != null) { alerts.Add(alert); }
+                if (alert != null && Settings.Exiles) { alerts.Add(alert); }
             }
         }
     }

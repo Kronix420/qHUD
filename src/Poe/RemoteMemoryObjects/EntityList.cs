@@ -24,8 +24,10 @@ namespace PoeHUD.Poe.RemoteMemoryObjects
             var hashSet = new HashSet<int>();
             var queue = new Queue<int>();
             queue.Enqueue(addr);
-            while (queue.Count > 0)
+            int loopcount = 0;
+            while (queue.Count > 0 && loopcount < 10000)
             {
+				loopcount++;
                 int nextAddr = queue.Dequeue();
                 if (hashSet.Contains(nextAddr))
                     continue;

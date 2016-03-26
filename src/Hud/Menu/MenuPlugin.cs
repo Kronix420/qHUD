@@ -41,10 +41,11 @@ namespace PoeHUD.Hud.Menu
             {
                 holdKey = true;
                 Settings.Enable.Value = !Settings.Enable.Value;
-                if (!Settings.Enable.Value)
-                {
-                    SettingsHub.Save(settingsHub);
-                }
+                SettingsHub.Save(settingsHub);
+                //if (!Settings.Enable.Value)
+                //{
+                //    SettingsHub.Save(settingsHub);
+                //}
             }
             else if (holdKey && !WinApi.IsKeyDown(Keys.F12))
             {
@@ -197,7 +198,7 @@ namespace PoeHUD.Hud.Menu
             AddChild(exiles, "Vanth Agiel", settingsHub.PreloadAlertSettings.VanthAgiel);
             AddChild(exiles, "Lael Furia", settingsHub.PreloadAlertSettings.LaelFuria);
 
-            var perandus = AddChild(preloadMenu, "Perandus Chests", settingsHub.PreloadAlertSettings.Strongboxes);
+            var perandus = AddChild(preloadMenu, "Perandus Chests", settingsHub.PreloadAlertSettings.PerandusBoxes);
             AddChild(perandus, "Cadiro Trader", settingsHub.PreloadAlertSettings.CadiroTrader);
             AddChild(perandus, "Perandus Chest", settingsHub.PreloadAlertSettings.PerandusChestStandard);
             AddChild(perandus, "Perandus Cache", settingsHub.PreloadAlertSettings.PerandusChestRarity);

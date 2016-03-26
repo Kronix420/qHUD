@@ -11,6 +11,7 @@ namespace PoeHUD.Hud.Preload
             Masters = true;
             Exiles = true;
             Strongboxes = true;
+            PerandusBoxes = true;
             CorruptedTitle = true;
             TextSize = new RangeNode<int>(16, 10, 50);
             BackgroundColor = new ColorBGRA(0, 0, 0, 255);
@@ -92,6 +93,7 @@ namespace PoeHUD.Hud.Preload
         }
 
         public ColorNode CadiroTrader { get; set; }
+        public ToggleNode PerandusBoxes { get; set; }
         public ColorNode PerandusChestStandard { get; set; }
         public ColorNode PerandusChestRarity { get; set; }
         public ColorNode PerandusChestQuantity { get; set; }

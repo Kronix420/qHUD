@@ -118,7 +118,7 @@ Show
 	#PlayAlertSound 7 100
 
 Show
-    Class "Maps" "Map Fragments"
+    Class "Map" "Map Fragments"
     SetTextColor 222 184 135
     SetBorderColor 222 184 135
 	#PlayAlertSound 7 100
@@ -154,14 +154,14 @@ Show
 	
 Show
     Rarity = Normal
-    BaseType "Golden Kris" "Two-Stone Ring" "Leather Belt"
+    BaseType "Two-Stone Ring" "Leather Belt"
     SetTextColor 255 255 255
     SetBorderColor 0 150 255
 	#PlayAlertSound 7 100
 
 Show
     Rarity = Rare
-    BaseType "Golden Kris" "Two-Stone Ring" "Leather Belt"
+    BaseType "Two-Stone Ring" "Leather Belt"
     SetBorderColor 0 150 255
 	#PlayAlertSound 7 100
 
@@ -176,4 +176,3 @@ Show
 	#PlayAlertSound 7 100
 
 Hide
-
