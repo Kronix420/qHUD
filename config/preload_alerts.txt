@@ -1,5 +1,39 @@
 #Metadata; Text; Color (ARGB)
-#Example Metadata/Chests/StrongBoxes/Strongbox; ; ff00FF00
+#Example: Metadata/Chests/StrongBoxes/Strongbox; ; ff00FF00
+
+Metadata/Monsters/Perandus/PerandusGuardMapBoss1; Platinia, Servant of Prospero; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss2; Auriot, Prospero's Furnace Guardian; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss3; Rhodion, Servant of Prospero; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss4; Osmea, Servant of Prospero; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss4Clone; Osmea, Servant of Prospero; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss5; Pallias, Servant of Prospero; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss6; Argient, Servant of Prospero; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss7; Rheniot, Servant of Prospero; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant1; Junith Perandus, Keeper of Vaults; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant2; Tantalo Perandus, Seller of Secrets; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant3; Actaeo Perandus, Master of Beasts; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant4; Vitorica Perandus, Maker of Marvels; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant4Clone; Vitorica Perandus, Maker of Marvels; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant5; Stasius Perandus, Merchant of Corpses; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant6; Darsia Perandus, Collector of Debts; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant7; Milo Perandus, Handler of Swords; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardBasic1; Celona, Vault Sentry; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardBasic2; Hortus, Knee Breaker; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardBasic3; Kuto, Hired Muscle; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardBasic4; Luthis, Bounty Hunter; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardBasic5; Belatra, Hired Assassin; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSupport1; Liana, Indebted Peasant; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSupport2; Marius, Indebted Smuggler; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSupport3; Vera, Indebted Aristocrat; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSupport4; Percia, Indebted Poacher; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss1; Sutrus, Vault Binder; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss2; Otairo, Vault Binder; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss3; Eiphirio, Vault Binder; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss4; Artensia, Vault Binder; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss5_; Anaveli, Vault Binder; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss6; Rothus, Vault Binder; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss7; Arinea, Vault Binder; ffffd700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8; Meritania, Vault Binder; ffffd700
 
 #Metadata/Chests/StrongBoxes/Strongbox; ; ffD2D2D2
 #Metadata/Chests/StrongBoxes/Strongbox.ao; ; ffD2D2D2

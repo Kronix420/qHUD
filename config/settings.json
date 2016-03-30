@@ -42,7 +42,7 @@
       "Max": 14
     },
     "SoundVolume": {
-      "Value": 20,
+      "Value": 10,
       "Min": 0,
       "Max": 100
     },
@@ -83,7 +83,7 @@
       "BackgroundColor": "000000dc",
       "PrefixColor": "8888ffff",
       "SuffixColor": "00ced1ff",
-      "T1Color": "ff00ffff",
+      "T1Color": "ff0080ff",
       "T2Color": "ffff00ff",
       "T3Color": "00ff00ff"
     },
@@ -100,13 +100,13 @@
         "Min": 10,
         "Max": 50
       },
-      "BackgroundColor": "ffff00ff",
-      "DmgFireColor": "b90000ff",
-      "DmgColdColor": "4682beff",
+      "BackgroundColor": "000000e6",
+      "DmgFireColor": "960000ff",
+      "DmgColdColor": "366492ff",
       "DmgLightningColor": "ffd700ff",
       "DmgChaosColor": "d01f90ff",
       "pDamageColor": "ffffffff",
-      "eDamageColor": "00cacaff"
+      "eDamageColor": "00ffffff"
     }
   },
   "Monsters tracker": {
@@ -191,7 +191,7 @@
       "Max": 28
     },
     "PerandusChestIcon": {
-      "Value": 16,
+      "Value": 14,
       "Min": 1,
       "Max": 28
     },
@@ -207,18 +207,18 @@
     "PerandusChestCoins": "99ff33ff",
     "PerandusChestJewellery": "99ff33ff",
     "PerandusChestGems": "99ff33ff",
-    "PerandusChestCurrency": "ff00ffff",
+    "PerandusChestCurrency": "99ff33ff",
     "PerandusChestInventory": "99ff33ff",
-    "PerandusChestDivinationCards": "ff0000ff",
+    "PerandusChestDivinationCards": "99ff33ff",
     "PerandusChestKeepersOfTheTrove": "99ff33ff",
-    "PerandusChestUniqueItem": "af6025ff",
+    "PerandusChestUniqueItem": "99ff33ff",
     "PerandusChestMaps": "99ff33ff",
     "PerandusChestFishing": "99ff33ff",
-    "PerandusManorUniqueChest": "af6025ff",
-    "PerandusManorCurrencyChest": "ff00ffff",
+    "PerandusManorUniqueChest": "99ff33ff",
+    "PerandusManorCurrencyChest": "99ff33ff",
     "PerandusManorMapsChest": "99ff33ff",
     "PerandusManorJewelryChest": "99ff33ff",
-    "PerandusManorDivinationCardsChest": "ff0000ff",
+    "PerandusManorDivinationCardsChest": "99ff33ff",
     "PerandusManorLostTreasureChest": "99ff33ff",
     "TextPositionX": {
       "Value": 50,
@@ -251,6 +251,7 @@
     "MasterElreon": "64ffffff",
     "MasterVagan": "64ffffff",
     "MasterKrillson": "ff00ffff",
+    "DivinersStrongbox": "ff00ffff",
     "ArcanistStrongbox": "ff00ffff",
     "ArtisanStrongbox": "d2d2d2ff",
     "CartographerStrongbox": "ffff00ff",
@@ -316,7 +317,7 @@
         "Max": 200.0
       },
       "Height": {
-        "Value": 20.0,
+        "Value": 18.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -331,12 +332,12 @@
     "Minions": {
       "Enable": true,
       "Width": {
-        "Value": 100.0,
+        "Value": 80.0,
         "Min": 50.0,
         "Max": 200.0
       },
       "Height": {
-        "Value": 12.0,
+        "Value": 20.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -356,7 +357,7 @@
         "Max": 200.0
       },
       "Height": {
-        "Value": 12.0,
+        "Value": 10.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -376,7 +377,7 @@
         "Max": 200.0
       },
       "Height": {
-        "Value": 12.0,
+        "Value": 15.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -391,12 +392,12 @@
     "RareEnemy": {
       "Enable": true,
       "Width": {
-        "Value": 140.0,
+        "Value": 160.0,
         "Min": 50.0,
         "Max": 200.0
       },
       "Height": {
-        "Value": 15.0,
+        "Value": 18.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -411,7 +412,7 @@
     "UniqueEnemy": {
       "Enable": true,
       "Width": {
-        "Value": 180.0,
+        "Value": 200.0,
         "Min": 50.0,
         "Max": 200.0
       },

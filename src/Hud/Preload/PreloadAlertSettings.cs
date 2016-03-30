@@ -39,6 +39,7 @@ namespace PoeHUD.Hud.Preload
             PerandusManorJewelryChest = new ColorBGRA(153, 255, 51, 255);
             PerandusManorDivinationCardsChest = new ColorBGRA(153, 255, 51, 255);
             PerandusManorLostTreasureChest = new ColorBGRA(153, 255, 51, 255);
+            //PerandusGuardians = new ColorBGRA(100, 255, 255, 255);
 
             MasterZana = new ColorBGRA(255, 2550, 0, 255);
             MasterCatarina = new ColorBGRA(100, 255, 255, 255);
@@ -49,6 +50,7 @@ namespace PoeHUD.Hud.Preload
             MasterVagan = new ColorBGRA(100, 255, 255, 255);
             MasterKrillson = new ColorBGRA(255, 0, 255, 255);
 
+            DivinersStrongbox = new ColorBGRA(255, 0, 255, 255);
             ArcanistStrongbox = new ColorBGRA(255, 0, 255, 255);
             ArtisanStrongbox = new ColorBGRA(210, 210, 210, 255);
             CartographerStrongbox = new ColorBGRA(255, 255, 0, 255);
@@ -133,6 +135,8 @@ namespace PoeHUD.Hud.Preload
         public ColorNode MasterElreon { get; set; }
         public ColorNode MasterVagan { get; set; }
         public ColorNode MasterKrillson { get; set; }
+
+        public ColorNode DivinersStrongbox { get; set; }
         public ColorNode ArcanistStrongbox { get; set; }
         public ColorNode ArtisanStrongbox { get; set; }
         public ColorNode CartographerStrongbox { get; set; }

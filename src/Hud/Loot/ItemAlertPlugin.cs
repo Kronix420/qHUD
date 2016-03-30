@@ -118,14 +118,21 @@ namespace PoeHUD.Hud.Loot
                 && !currentAlerts.ContainsKey(entity) && entity.HasComponent<WorldItem>())
             {
                 IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
-                if (Settings.Alternative && !string.IsNullOrEmpty(Settings.FilePath))
+                try
                 {
-                    var result = visitor.Visit(item);
-                    if (result != null)
+                    if (Settings.Alternative && !string.IsNullOrEmpty(Settings.FilePath))
                     {
-                        AlertDrawStyle drawStyle = result;
-                        PrepareForDrawingAndPlaySound(entity, drawStyle);
+                        var result = visitor.Visit(item);
+                        if (result != null)
+                        {
+                            AlertDrawStyle drawStyle = result;
+                            PrepareForDrawingAndPlaySound(entity, drawStyle);
+                        }
                     }
+                }
+                catch
+                {
+                    //initItem threw an exception because the item.Path was an empty string. This catch just prevents a crash, it doesn't fix the root of the problem.
                 }
             }
         }

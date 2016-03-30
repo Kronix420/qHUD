@@ -5,6 +5,7 @@
 #Example Metadata/Monsters/Exiles/ExileRanger1; Orra Greengate; danger.wav; ffFF0000; dot_orange.png
 #Example Metadata/Monsters/Exiles/ExileRanger1; Orra Greengate; ; ; dot_orange.png
 
+
 Metadata/Monsters/Exiles/ExileRanger1; Exile Orra Greengate nearby;attention.wav; ffFEC076; ms-orange.png
 Metadata/Monsters/Exiles/ExileRanger2; Exile Thena Moga nearby;attention.wav; ffFEC076; ms-orange.png
 Metadata/Monsters/Exiles/ExileRanger3; Exile Antalie Napora nearby;attention.wav; ffFEC076; ms-orange.png
