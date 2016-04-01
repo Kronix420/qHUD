@@ -142,7 +142,27 @@ namespace PoeHUD.Hud.Preload
                     {"Metadata/Chests/PerandusChests/PerandusManorMapsChest", new PreloadConfigLine { Text = "Cadiro's Archive", FastColor = () => Settings.PerandusManorMapsChest }},
                     {"Metadata/Chests/PerandusChests/PerandusManorJewelryChest", new PreloadConfigLine { Text = "Cadiro's Jewellery Box", FastColor = () => Settings.PerandusManorJewelryChest }},
                     {"Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest", new PreloadConfigLine { Text = "Cadiro's Catalogue", FastColor = () => Settings.PerandusManorDivinationCardsChest }},
-                    {"Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest", new PreloadConfigLine { Text = "Grand Perandus Vault", FastColor = () => Settings.PerandusManorLostTreasureChest }}
+                    {"Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest", new PreloadConfigLine { Text = "Grand Perandus Vault", FastColor = () => Settings.PerandusManorLostTreasureChest }},
+
+                    {"Metadata/Chests/Labyrinth/LabyrinthTrinketChest", new PreloadConfigLine { Text = "Decorative Chest", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthGenericChestNoFlag", new PreloadConfigLine { Text = "Hidden Coffer", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier0", new PreloadConfigLine { Text = "Hidden Coffer", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier1", new PreloadConfigLine { Text = "Supply Cache", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier2", new PreloadConfigLine { Text = "Labyrinth Trove", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier3", new PreloadConfigLine { Text = "Ascendant's Treasures", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier4", new PreloadConfigLine { Text = "Emperor's Gifts", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency1", new PreloadConfigLine { Text = "Battle Supplies", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency2", new PreloadConfigLine { Text = "War Spoils", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency3", new PreloadConfigLine { Text = "Warmonger's Cache", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency1", new PreloadConfigLine { Text = "Guard Supplies", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency2", new PreloadConfigLine { Text = "Guard Vault", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency3", new PreloadConfigLine { Text = "Guard Treasury", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency1", new PreloadConfigLine { Text = "Emperor's Trove", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency2", new PreloadConfigLine { Text = "Emperor's Vault", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency3", new PreloadConfigLine { Text = "Emperor's Treasury", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthMaps1", new PreloadConfigLine { Text = "Emperor's Charts", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthTreasureKey", new PreloadConfigLine { Text = "Curious Lockbox", FastColor = () => Settings.LabyrinthChests }},
+                    {"Metadata/Chests/Labyrinth/LabyrinthSpecificUnique", new PreloadConfigLine { Text = "Intricate Locker", FastColor = () => Settings.LabyrinthChests }}
                 };
 
                 PreloadConfigLine perandus_alert = PerandusLeague.Where(kv => text
@@ -152,7 +172,7 @@ namespace PoeHUD.Hud.Preload
 
                 Dictionary<string, PreloadConfigLine> Strongboxes = new Dictionary<string, PreloadConfigLine>
                 {
-                    {"Metadata/Chests/StrongBoxes/Diviners", new PreloadConfigLine { Text = "Diviner's Strongbox", FastColor = () => Settings.DivinersStrongbox }},
+                    {"Metadata/Chests/StrongBoxes/StrongboxDivination", new PreloadConfigLine { Text = "Diviner's Strongbox", FastColor = () => Settings.DivinersStrongbox }},
                     {"Metadata/Chests/StrongBoxes/Arcanist", new PreloadConfigLine { Text = "Arcanist's Strongbox", FastColor = () => Settings.ArcanistStrongbox }},
                     {"Metadata/Chests/StrongBoxes/Artisan", new PreloadConfigLine { Text = "Artisan's Strongbox", FastColor = () => Settings.ArtisanStrongbox }},
                     {"Metadata/Chests/StrongBoxes/Cartographer", new PreloadConfigLine { Text = "Cartographer's Strongbox", FastColor = () => Settings.CartographerStrongbox }},
@@ -163,7 +183,7 @@ namespace PoeHUD.Hud.Preload
                     {"Metadata/Chests/StrongBoxes/Ornate", new PreloadConfigLine { Text = "Ornate Strongbox", FastColor = () => Settings.OrnateStrongbox }},
                     {"Metadata/Chests/StrongBoxes/Large", new PreloadConfigLine { Text = "Large Strongbox", FastColor = () => Settings.LargeStrongbox }},
                     {"Metadata/Chests/StrongBoxes/Strongbox", new PreloadConfigLine { Text = "Simple Strongbox", FastColor = () => Settings.SimpleStrongbox }},
-                    {"Metadata/Chests/CopperChests/CopperChestEpic3", new PreloadConfigLine { Text = "Epic Chest", FastColor = () => Settings.EpicStrongbox }},
+                    {"Metadata/Chests/CopperChestEpic3", new PreloadConfigLine { Text = "Epic Chest", FastColor = () => Settings.EpicStrongbox }},
                     {"Metadata/Chests/StrongBoxes/PerandusBox", new PreloadConfigLine { Text = "Perandus Strongbox", FastColor = () => Settings.PerandusStrongbox }},
                     {"Metadata/Chests/StrongBoxes/KaomBox", new PreloadConfigLine { Text = "Kaom Strongbox", FastColor = () => Settings.KaomStrongbox }},
                     {"Metadata/Chests/StrongBoxes/MalachaisBox", new PreloadConfigLine { Text = "Malachai Strongbox", FastColor = () => Settings.MalachaiStrongbox }}
