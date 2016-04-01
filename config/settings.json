@@ -54,7 +54,7 @@
     "WithBorder": true,
     "WithSound": false,
     "Alternative": true,
-    "FilePath": "C:\\Users\\vmv\\Documents\\My Games\\Path of Exile\\thisBest.filter"
+    "FilePath": "config/thisBest.filter"
   },
   "Item tooltips settings": {
     "Enable": true,
