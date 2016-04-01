@@ -64,7 +64,6 @@ namespace PoeHUD.Hud.Preload
             KaomStrongbox = new ColorBGRA(175, 96, 37, 255);
             MalachaiStrongbox = new ColorBGRA(175, 96, 37, 255);
             EpicStrongbox = new ColorBGRA(175, 96, 37, 255);
-            BarrelOfSpiders = new ColorBGRA(175, 96, 37, 255);
             SimpleStrongbox = new ColorBGRA(210, 210, 210, 255);
 
             OrraGreengate = new ColorBGRA(254, 192, 118, 255);
@@ -150,7 +149,6 @@ namespace PoeHUD.Hud.Preload
         public ColorNode KaomStrongbox { get; set; }
         public ColorNode MalachaiStrongbox { get; set; }
         public ColorNode EpicStrongbox { get; set; }
-        public ColorNode BarrelOfSpiders { get; set; }
         public ColorNode SimpleStrongbox { get; set; }
         public ColorNode OrraGreengate { get; set; }
         public ColorNode ThenaMoga { get; set; }

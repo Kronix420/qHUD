@@ -1,6 +1,26 @@
 #Metadata; Text; Color (ARGB)
 #Example: Metadata/Chests/StrongBoxes/Strongbox; The All-seeing Eye; ff00FF00
 
+#Metadata/Chests/PerandusChests/PerandusChestStandard; Perandus Chest; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestRarity; Perandus Cache; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestQuantity; Perandus Hoard; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestCoins; Perandus Coffer; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestJewellery; Perandus Jewellery Box; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestGems; Perandus Safe; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestCurrency; Perandus Treasury; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestInventory; Perandus Wardrobe; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestDivinationCards; Perandus Catalogue; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestKeepersOfTheTrove; Perandus Trove; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestUniqueItem; Perandus Locker; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestMaps; Perandus Archive; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusChestFishing; Perandus Tackle Box; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusManorUniqueChest; Cadiro's Locker; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusManorCurrencyChest; Cadiro's Treasury; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusManorMapsChest; Cadiro's Archive; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusManorJewelryChest; Cadiro's Jewellery Box; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest; Cadiro's Catalogue; ff99fb33
+#Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest; Grand Perandus Vault; ff99fb33
+
 Metadata/Chests/Barrel1; Barrel 1; ffDC143C
 Metadata/Chests/Barrel2; Barrel 2; ffDC143C
 Metadata/Chests/Barrel3; Barrel 3; ffDC143C

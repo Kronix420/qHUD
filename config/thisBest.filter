@@ -155,23 +155,16 @@ Show
 Show 
 	Rarity Normal
 	Class Rings Amulet Belts
-	BaseType "Onyx" "Ruby" "Sapphire" "Topaz" "Two-Stone" "Diamond" "Prismatic" "Unset" "Gold" "Citrine" "Turquoise" "Agate" "Coral Ring" "Moonstone" "Leather" "Heavy Belt" "Amber" "Jade" "Lapis" "Rustic Sash"
+	BaseType "Two-Stone" "Gold" "Citrine" "Coral Ring" "Leather" "Paua Amulet"
 	ItemLevel >= 75
 	SetTextColor 255 255 255
 	SetBorderColor 0 150 255
-	#PlayAlertSound 7 100
-	
-#Show
-    #Rarity = Normal
-    #BaseType "Two-Stone Ring" "Leather Belt"
-    #SetTextColor 255 255 255
-    #SetBorderColor 0 150 255
 	#PlayAlertSound 7 100
 
 Show
     Rarity = Rare
     Class Rings Amulet Belts
-	BaseType "Onyx" "Ruby" "Sapphire" "Topaz" "Two-Stone" "Diamond" "Prismatic" "Unset" "Gold" "Citrine" "Turquoise" "Agate" "Coral Ring" "Moonstone" "Leather" "Heavy Belt" "Amber" "Jade" "Lapis" "Rustic Sash"
+	BaseType "Two-Stone" "Gold" "Citrine" "Coral Ring" "Leather" "Paua Amulet"
 	SetBorderColor 0 150 255
 	#PlayAlertSound 7 100
 
