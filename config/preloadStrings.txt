@@ -140,3 +140,13 @@ Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency3; Emperor's Treasury; ff00
 Metadata/Chests/Labyrinth/LabyrinthMaps1; Emperor's Charts; ff00BFFF
 Metadata/Chests/Labyrinth/LabyrinthTreasureKey; Curious Lockbox; ff00BFFF
 Metadata/Chests/Labyrinth/LabyrinthSpecificUnique; Intricate Locker; ff00BFFF
+
+# Test area
+Metadata/Chests/Barrel1; Barrel 1; ffDC143C
+Metadata/Chests/Barrel2; Barrel 2; ffDC143C
+Metadata/Chests/Barrel3; Barrel 3; ffDC143C
+Metadata/Chests/Barrel4; Barrel 4; ffDC143C
+Metadata/Chests/Barrel5; Barrel 5; ffDC143C
+Metadata/Chests/CopperChest1; Copper Chest 1; ffDC143C
+Metadata/Chests/CopperChest2; Copper Chest 2; ffDC143C
+Metadata/Chests/CopperChest3; Copper Chest 3; ffDC143C
