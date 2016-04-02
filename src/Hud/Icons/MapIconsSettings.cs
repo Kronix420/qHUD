@@ -2,14 +2,16 @@
 
 namespace PoeHUD.Hud.Icons
 {
-    public sealed class MinimapSettings : SettingsBase
+    public sealed class MapIconsSettings : SettingsBase
     {
-        public MinimapSettings()
+        public MapIconsSettings()
         {
             Enable = true;
             IconsOnMinimap = true;
+            IconsOnLargeMap = true;
         }
 
         public ToggleNode IconsOnMinimap { get; set; }
+        public ToggleNode IconsOnLargeMap { get; set; }
     }
 }

@@ -127,6 +127,7 @@
     <Compile Include="Framework\InputHooks\Structures\MouseLLHookStruct.cs" />
     <Compile Include="Framework\MemoryControl.cs" />
     <Compile Include="Framework\WinApi.cs" />
+    <Compile Include="Hud\Icons\LargeMapPlugin.cs" />
     <Compile Include="Hud\ItemTooltips\ItemTooltipPlugin.cs" />
     <Compile Include="Hud\ItemTooltips\ItemTooltipSettings.cs" />
     <Compile Include="Hud\CustomColorDialog.cs" />
@@ -136,7 +137,7 @@
     </Compile>
     <Compile Include="Hud\Health\HealthBarSettings.cs" />
     <Compile Include="Hud\Health\UnitSettings.cs" />
-    <Compile Include="Hud\Icons\MinimapSettings.cs" />
+    <Compile Include="Hud\Icons\MapIconsSettings.cs" />
     <Compile Include="Hud\Interfaces\IPanelChild.cs" />
     <Compile Include="Hud\Interfaces\IPlugin.cs" />
     <Compile Include="Hud\Loot\ItemAlertSettings.cs" />

@@ -10,12 +10,12 @@ using System.Linq;
 
 namespace PoeHUD.Hud.Icons
 {
-    public class MinimapPlugin : Plugin<MinimapSettings>
+    public class MinimapPlugin : Plugin<MapIconsSettings>
     {
         private readonly Func<IEnumerable<MapIcon>> getIcons;
 
         public MinimapPlugin(GameController gameController, Graphics graphics, Func<IEnumerable<MapIcon>> gatherMapIcons,
-            MinimapSettings settings)
+            MapIconsSettings settings)
             : base(gameController, graphics, settings)
         {
             getIcons = gatherMapIcons;

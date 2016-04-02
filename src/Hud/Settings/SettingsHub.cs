@@ -36,7 +36,7 @@ namespace PoeHUD.Hud.Settings
         public SettingsHub()
         {
             MenuSettings = new MenuSettings();
-            MapIconsSettings = new MinimapSettings();
+            MapIconsSettings = new MapIconsSettings();
             ItemAlertSettings = new ItemAlertSettings();
             ItemTooltipSettings = new ItemTooltipSettings();
             MonsterTrackerSettings = new MonsterTrackerSettings();
@@ -50,7 +50,7 @@ namespace PoeHUD.Hud.Settings
         public MenuSettings MenuSettings { get; private set; }
 
         [JsonProperty("Minimap icons")]
-        public MinimapSettings MapIconsSettings { get; private set; }
+        public MapIconsSettings MapIconsSettings { get; private set; }
 
         [JsonProperty("Item alert")]
         public ItemAlertSettings ItemAlertSettings { get; private set; }

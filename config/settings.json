@@ -29,7 +29,8 @@
   },
   "Minimap icons": {
     "Enable": true,
-    "IconsOnMinimap": true
+    "IconsOnMinimap": true,
+    "IconsOnLargeMap": true
   },
   "Item alert": {
     "Enable": true,
@@ -293,7 +294,7 @@
   },
   "Area settings": {
     "Enable": true,
-    "ShowInTown": true,
+    "ShowInTown": false,
     "ShowLatency": true,
     "TextSize": {
       "Value": 16,

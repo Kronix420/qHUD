@@ -136,6 +136,18 @@ namespace PoeHUD.Hud.Loot
                 }
             }
         }
+        //protected override void OnEntityAdded(EntityWrapper entity)
+        //{
+        //    if (!Settings.Enable || entity == null || currentAlerts.ContainsKey(entity) || !entity.HasComponent<WorldItem>()) return;
+        //    IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
+        //    BaseItemType bit = GameController.Files.BaseItemTypes.Translate(item.Path);
+        //    if (bit == null) return;
+        //    if (string.IsNullOrEmpty(Settings.FilePath)) return;
+        //    var result = visitor.Visit(item);
+        //    if (result == null) return;
+        //    AlertDrawStyle drawStyle = result;
+        //    PrepareForDrawingAndPlaySound(entity, drawStyle);
+        //}
 
         private void PrepareForDrawingAndPlaySound(EntityWrapper entity, AlertDrawStyle drawStyle)
         {

@@ -33,7 +33,7 @@ namespace PoeHUD.Hud
     {
         private readonly Func<bool> show;
 
-        public MapIcon(EntityWrapper entityWrapper, HudTexture hudTexture, Func<bool> show, int iconSize = 10)
+        public MapIcon(EntityWrapper entityWrapper, HudTexture hudTexture, Func<bool> show, int iconSize = 8)
         {
             EntityWrapper = entityWrapper;
             TextureIcon = hudTexture;
