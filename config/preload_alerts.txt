@@ -1,6 +1,29 @@
 #Metadata; Text; Color (ARGB)
 #Example: Metadata/Chests/StrongBoxes/Strongbox; The All-seeing Eye; ff00FF00
 
+# Perandus chests
+Metadata/Chests/PerandusChests/PerandusChest.ao;
+Metadata/Chests/PerandusChests/PerandusChestStandard; Perandus Chest; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestRarity; Perandus Cache; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestQuantity; Perandus Hoard; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestCoins; Perandus Coffer; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestJewellery; Perandus Jewellery Box; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestGems; Perandus Safe; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestCurrency; Perandus Treasury; ffFF00FF
+Metadata/Chests/PerandusChests/PerandusChestInventory; Perandus Wardrobe; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestDivinationCards; Perandus Catalogue; ffFF3300
+Metadata/Chests/PerandusChests/PerandusChestKeepersOfTheTrove; Perandus Trove; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestUniqueItem; Perandus Locker; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestMaps; Perandus Archive; ffFFFF00
+Metadata/Chests/PerandusChests/PerandusChestFishing; Perandus Tackle Box; ff99FF33
+Metadata/Chests/PerandusChests/PerandusManorUniqueChest; Cadiro's Locker; ffAF6025
+Metadata/Chests/PerandusChests/PerandusManorCurrencyChest; Cadiro's Treasury; ffFF00FF
+Metadata/Chests/PerandusChests/PerandusManorMapsChest; Cadiro's Archive; ffFFFF00
+Metadata/Chests/PerandusChests/PerandusManorJewelryChest; Cadiro's Jewellery Box; ff99FF33
+Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest; Cadiro's Catalogue; ffFF3300
+Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest; Grand Perandus Vault; ffAF6025
+
+
 Metadata/Monsters/Squid/SquidBossSideArea; The All-seeing Eye; ffDC143C
 Metadata/Monsters/Goatman/GoatmanLeapBossSideArea; Konu, Maker of Wind; ffDC143C
 Metadata/Monsters/GhostPirates/GhostPirateBossSideArea; Coniraya, Shadow of Malice; ffDC143C
