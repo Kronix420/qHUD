@@ -198,8 +198,9 @@ namespace PoeHUD.Hud.Menu
             AddChild(exiles, "Vanth Agiel", settingsHub.PreloadAlertSettings.VanthAgiel);
             AddChild(exiles, "Lael Furia", settingsHub.PreloadAlertSettings.LaelFuria);
 
-            var perandus = AddChild(preloadMenu, "Perandus Chests", settingsHub.PreloadAlertSettings.PerandusBoxes);
+            var perandus = AddChild(preloadMenu, "Perandus Chests", settingsHub.PreloadAlertSettings.PerandusLeague);
             AddChild(perandus, "Cadiro Trader", settingsHub.PreloadAlertSettings.CadiroTrader);
+            AddChild(perandus, "Perandus Guards", settingsHub.PreloadAlertSettings.PerandusGuards);
             AddChild(perandus, "Perandus Chest", settingsHub.PreloadAlertSettings.PerandusChestStandard);
             AddChild(perandus, "Perandus Cache", settingsHub.PreloadAlertSettings.PerandusChestRarity);
             AddChild(perandus, "Perandus Hoard", settingsHub.PreloadAlertSettings.PerandusChestQuantity);

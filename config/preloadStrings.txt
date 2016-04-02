@@ -12,53 +12,51 @@ Metadata/NPC/Missions/Wild/Fish; Krillson, Master Fisherman; ffFFFF00
 Metadata/Monsters/Exiles/ExileRanger1; Orra Greengate; ffFEC076
 Metadata/Monsters/Exiles/ExileRanger2; Thena Moga; ffFEC076
 Metadata/Monsters/Exiles/ExileRanger3; Antalie Napora; ffFEC076
-Metadata/Monsters/ExilesDescent2/ExileRanger4; Silva Fearsting; ffFEC076
 Metadata/Monsters/Exiles/ExileDuelist1; Torr Olgosso; ffFEC076
 Metadata/Monsters/Exiles/ExileDuelist2; Armios Bell; ffFEC076
-Metadata/Monsters/ExilesDescent2/ExileDuelist3; Antonio Bravadi; ffFEC076
 Metadata/Monsters/Exiles/ExileDuelist4; Zacharie Desmarais; ffFEC076
 Metadata/Monsters/Exiles/ExileWitch1; Minara Anemina; ffFEC076
 Metadata/Monsters/Exiles/ExileWitch2; Igna Phoenix; ffFEC076
-Metadata/Monsters/ExilesDescent2/ExileWitch3; Aria Vindicia; ffFEC076
 Metadata/Monsters/Exiles/ExileWitch4; Dena Lorenni; ffFEC076
 Metadata/Monsters/Exiles/ExileMarauder1; Jonah Unchained; ffFEC076
 Metadata/Monsters/Exiles/ExileMarauder2; Damoi Tui; ffFEC076
 Metadata/Monsters/Exiles/ExileMarauder3; Xandro Blooddrinker; ffFEC076
-Metadata/Monsters/ExilesDescent2/ExileMarauder4; Haki Karukaru; ffFEC076
 Metadata/Monsters/Exiles/ExileMarauder5; Vickas Giantbone; ffFEC076
 Metadata/Monsters/Exiles/ExileTemplar1; Eoin Greyfur; ffFEC076
 Metadata/Monsters/Exiles/ExileTemplar2; Tinevin Highdove; ffFEC076
-Metadata/Monsters/ExilesDescent2/ExileTemplar3; Doven Falsetongue; ffFEC076
 Metadata/Monsters/Exiles/ExileTemplar4; Magnus Stonethorn; ffFEC076
 Metadata/Monsters/Exiles/ExileShadow1_; Ion Darkshroud; ffFEC076
 Metadata/Monsters/Exiles/ExileShadow2; Ash Lessard; ffFEC076
-Metadata/Monsters/ExilesDescent2/ExileShadow3; Jarek Irontrap; ffFEC076
 Metadata/Monsters/Exiles/ExileShadow4; Wilorin Demontamer; ffFEC076
-Metadata/Monsters/ExilesDescent2/ExileScion1; Jade; ffFEC076
 Metadata/Monsters/Exiles/ExileScion2; Augustina Solaria; ffFEC076
 Metadata/Monsters/Exiles/ExileScion3; Lael Furia; ffFEC076
 Metadata/Monsters/Exiles/ExileScion4; Vanth Agiel; ffFEC076
-Metadata/Monsters/DarkExiles/DarkExileScion1; Shade of a Scion; ffFEC076
-Metadata/Monsters/DarkExiles/DarkExileTemplar1; Shade of a Templar; ffFEC076
-Metadata/Monsters/DarkExiles/DarkExileDuelist1; Shade of a Duelist; ffFEC076
-Metadata/Monsters/DarkExiles/DarkExileMarauder1; Shade of a Marauder; ffFEC076
-Metadata/Monsters/DarkExiles/DarkExileShadow1; Shade of a Shadow; ffFEC076
-Metadata/Monsters/DarkExiles/DarkExileWitch1; Shade of a Witch; ffFEC076
-Metadata/Monsters/DarkExiles/DarkExileRanger1; Shade of a Ranger; ffFEC076
 
 # Strongboxes
 Metadata/Chests/StrongBoxes/StrongboxDivination; Diviner's Strongbox; ffFF00FF
+Metadata/Chests/StrongBoxes/DivinersStrongBox.ao; Diviner's Strongbox; ffFF00FF
 Metadata/Chests/StrongBoxes/Arcanist; Arcanist's Strongbox; ffFF00FF
+Metadata/Chests/StrongBoxes/ArcanistStrongBox.ao; Arcanist's Strongbox; ffFF00FF
 Metadata/Chests/StrongBoxes/Artisan; Artisan's Strongbox; ffD2D2D2
+Metadata/Chests/StrongBoxes/ArtisanStrongBox.ao; Artisan's Strongbox; ffD2D2D2
 Metadata/Chests/StrongBoxes/Cartographer; Cartographer's Strongbox; ffFFFF00
+Metadata/Chests/StrongBoxes/CartographerStrongBox.ao; Cartographer's Strongbox; ffFFFF00
 Metadata/Chests/StrongBoxes/Gemcutter; Gemcutter's Strongbox; ff1BA29B
+Metadata/Chests/StrongBoxes/GemcutterStrongBox.ao; Gemcutter's Strongbox; ff1BA29B
 Metadata/Chests/StrongBoxes/Jeweller; Jeweller's Strongbox; ffD2D2D2
+Metadata/Chests/StrongBoxes/JewellerStrongBox.ao; Jeweller's Strongbox; ffD2D2D2
 Metadata/Chests/StrongBoxes/Arsenal; Blacksmith's Strongbox; ffD2D2D2
+Metadata/Chests/StrongBoxes/ArsenalStrongBox.ao; Blacksmith's Strongbox; ffD2D2D2
 Metadata/Chests/StrongBoxes/Armory; Armourer's Strongbox; ffD2D2D2
+Metadata/Chests/StrongBoxes/ArmoryStrongBox.ao; Armourer's Strongbox; ffD2D2D2
 Metadata/Chests/StrongBoxes/Ornate; Ornate Strongbox; ffD2D2D2
+Metadata/Chests/StrongBoxes/OrnateStrongbox.ao; Ornate Strongbox; ffD2D2D2
 Metadata/Chests/StrongBoxes/Large; Large Strongbox; ffD2D2D2
+Metadata/Chests/StrongBoxes/LargeStrongbox.ao; Large Strongbox; ffD2D2D2
 Metadata/Chests/StrongBoxes/Strongbox; Simple Strongbox; ffD2D2D2
+Metadata/Chests/StrongBoxes/Strongbox.ao; Simple Strongbox; ffD2D2D2
 Metadata/Chests/CopperChests/CopperChestEpic3; Epic Chest; ffAF6025
+Metadata/Chests/CopperChests/CopperChestEpic3.ao; Epic Chest; ffAF6025
 Metadata/Chests/StrongBoxes/PerandusBox; Perandus Strongbox; ffAF6025
 Metadata/Chests/StrongBoxes/KaomBox; Kaom Strongbox; ffAF6025
 Metadata/Chests/StrongBoxes/MalachaisBox; Malachai Strongbox; ffAF6025
@@ -143,10 +141,22 @@ Metadata/Chests/Labyrinth/LabyrinthSpecificUnique; Intricate Locker; ff00BFFF
 
 # Test area
 Metadata/Chests/Barrel1; Barrel 1; ffDC143C
+Metadata/Chests/Barrels/Barrel1.ao; Barrel 1; ffDC143C
 Metadata/Chests/Barrel2; Barrel 2; ffDC143C
+Metadata/Chests/Barrels/Barrel2.ao; Barrel 2; ffDC143C
 Metadata/Chests/Barrel3; Barrel 3; ffDC143C
+Metadata/Chests/Barrels/Barrel3.ao; Barrel 3; ffDC143C
 Metadata/Chests/Barrel4; Barrel 4; ffDC143C
+Metadata/Chests/Barrels/Barrel4.ao; Barrel 4; ffDC143C
 Metadata/Chests/Barrel5; Barrel 5; ffDC143C
+Metadata/Chests/Barrels/Barrel5.ao; Barrel 5; ffDC143C
+
 Metadata/Chests/CopperChest1; Copper Chest 1; ffDC143C
 Metadata/Chests/CopperChest2; Copper Chest 2; ffDC143C
 Metadata/Chests/CopperChest3; Copper Chest 3; ffDC143C
+
+
+Metadata/Monsters/Spiders/SpiderBarrelOfSpidersBoss; box 1; ffAF6025
+Metadata/Monsters/Daemon/BarrelOfSpidersDaemonNormal2; box 2; ffAF6025
+Metadata/Monsters/Daemon/ChestDaemonPoison; box 3; ffAF6025
+Metadata/Monsters/Daemon/BossDaemonBarrelSpidersBoss; box 4; ffAF6025

@@ -11,7 +11,7 @@ namespace PoeHUD.Hud.Preload
             Masters = true;
             Exiles = true;
             Strongboxes = true;
-            PerandusBoxes = true;
+            PerandusLeague = true;
             CorruptedTitle = true;
             TextSize = new RangeNode<int>(16, 10, 50);
             BackgroundColor = new ColorBGRA(0, 0, 0, 255);
@@ -20,6 +20,7 @@ namespace PoeHUD.Hud.Preload
             HasCorruptedArea = new ColorBGRA(208, 31, 144, 255);
 
             CadiroTrader = new ColorBGRA(255, 128, 0, 255);
+            PerandusGuards = new ColorBGRA(255, 215, 0, 255);
             PerandusChestStandard = new ColorBGRA(153, 255, 51, 255);
             PerandusChestRarity = new ColorBGRA(153, 255, 51, 255);
             PerandusChestQuantity = new ColorBGRA(153, 255, 51, 255);
@@ -93,8 +94,9 @@ namespace PoeHUD.Hud.Preload
             TextPositionY = new RangeNode<int>(85, 0, 100);
         }
 
+        public ToggleNode PerandusLeague { get; set; }
         public ColorNode CadiroTrader { get; set; }
-        public ToggleNode PerandusBoxes { get; set; }
+        public ColorNode PerandusGuards { get; set; }
         public ColorNode PerandusChestStandard { get; set; }
         public ColorNode PerandusChestRarity { get; set; }
         public ColorNode PerandusChestQuantity { get; set; }

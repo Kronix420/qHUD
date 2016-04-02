@@ -199,8 +199,9 @@
   },
   "Preload alerts": {
     "Enable": true,
+    "PerandusLeague": true,
     "CadiroTrader": "ff8000ff",
-    "PerandusBoxes": true,
+    "PerandusGuards": "ffd700ff",
     "PerandusChestStandard": "99ff33ff",
     "PerandusChestRarity": "99ff33ff",
     "PerandusChestQuantity": "99ff33ff",
@@ -292,7 +293,7 @@
   },
   "Area settings": {
     "Enable": true,
-    "ShowInTown": false,
+    "ShowInTown": true,
     "ShowLatency": true,
     "TextSize": {
       "Value": 16,
