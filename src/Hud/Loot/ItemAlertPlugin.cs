@@ -112,42 +112,42 @@ namespace PoeHUD.Hud.Loot
             return position;
         }
 
-        protected override void OnEntityAdded(EntityWrapper entity)
-        {
-            if (Settings.Enable && entity != null && !GameController.Area.CurrentArea.IsTown
-                && !currentAlerts.ContainsKey(entity) && entity.HasComponent<WorldItem>())
-            {
-                IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
-                try
-                {
-                    if (Settings.Alternative && !string.IsNullOrEmpty(Settings.FilePath))
-                    {
-                        var result = visitor.Visit(item);
-                        if (result != null)
-                        {
-                            AlertDrawStyle drawStyle = result;
-                            PrepareForDrawingAndPlaySound(entity, drawStyle);
-                        }
-                    }
-                }
-                catch
-                {
-                    //initItem threw an exception because the item.Path was an empty string. This catch just prevents a crash, it doesn't fix the root of the problem.
-                }
-            }
-        }
         //protected override void OnEntityAdded(EntityWrapper entity)
         //{
-        //    if (!Settings.Enable || entity == null || currentAlerts.ContainsKey(entity) || !entity.HasComponent<WorldItem>()) return;
-        //    IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
-        //    BaseItemType bit = GameController.Files.BaseItemTypes.Translate(item.Path);
-        //    if (bit == null) return;
-        //    if (string.IsNullOrEmpty(Settings.FilePath)) return;
-        //    var result = visitor.Visit(item);
-        //    if (result == null) return;
-        //    AlertDrawStyle drawStyle = result;
-        //    PrepareForDrawingAndPlaySound(entity, drawStyle);
+        //    if (Settings.Enable && entity != null && !GameController.Area.CurrentArea.IsTown
+        //        && !currentAlerts.ContainsKey(entity) && entity.HasComponent<WorldItem>())
+        //    {
+        //        IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
+        //        try
+        //        {
+        //            if (Settings.Alternative && !string.IsNullOrEmpty(Settings.FilePath))
+        //            {
+        //                var result = visitor.Visit(item);
+        //                if (result != null)
+        //                {
+        //                    AlertDrawStyle drawStyle = result;
+        //                    PrepareForDrawingAndPlaySound(entity, drawStyle);
+        //                }
+        //            }
+        //        }
+        //        catch
+        //        {
+        //            //initItem threw an exception because the item.Path was an empty string. This catch just prevents a crash, it doesn't fix the root of the problem.
+        //        }
+        //    }
         //}
+        protected override void OnEntityAdded(EntityWrapper entity)
+        {
+            if (!Settings.Enable || entity == null || currentAlerts.ContainsKey(entity) || !entity.HasComponent<WorldItem>()) return;
+            IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
+            BaseItemType bit = GameController.Files.BaseItemTypes.Translate(item.Path);
+            if (bit == null) return;
+            if (string.IsNullOrEmpty(Settings.FilePath)) return;
+            var result = visitor.Visit(item);
+            if (result == null) return;
+            AlertDrawStyle drawStyle = result;
+            PrepareForDrawingAndPlaySound(entity, drawStyle);
+        }
 
         private void PrepareForDrawingAndPlaySound(EntityWrapper entity, AlertDrawStyle drawStyle)
         {

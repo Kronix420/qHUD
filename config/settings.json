@@ -294,7 +294,7 @@
   },
   "Area settings": {
     "Enable": true,
-    "ShowInTown": false,
+    "ShowInTown": true,
     "ShowLatency": true,
     "TextSize": {
       "Value": 16,
