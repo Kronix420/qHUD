@@ -1,0 +1,56 @@
+Metadata/NPC/League/Cadiro; Cadiro Trader; ffFF8000
+
+Metadata/Chests/PerandusChests/PerandusChest.ao; Unknown Perandus Chest; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestStandard; Perandus Chest; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestRarity; Perandus Cache; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestQuantity; Perandus Hoard; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestCoins; Perandus Coffer; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestJewellery; Perandus Jewellery Box; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestGems; Perandus Safe; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestCurrency; Perandus Treasury; ffFF00FF
+Metadata/Chests/PerandusChests/PerandusChestInventory; Perandus Wardrobe; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestDivinationCards; Perandus Catalogue; ffFF3300
+Metadata/Chests/PerandusChests/PerandusChestKeepersOfTheTrove; Perandus Trove; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestUniqueItem; Perandus Locker; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChestMaps; Perandus Archive; ffFFFF00
+Metadata/Chests/PerandusChests/PerandusChestFishing; Perandus Tackle Box; ff99FF33
+Metadata/Chests/PerandusChests/PerandusManorUniqueChest; Cadiro's Locker; ffAF6025
+Metadata/Chests/PerandusChests/PerandusManorCurrencyChest; Cadiro's Treasury; ffFF00FF
+Metadata/Chests/PerandusChests/PerandusManorMapsChest; Cadiro's Archive; ffFFFF00
+Metadata/Chests/PerandusChests/PerandusManorJewelryChest; Cadiro's Jewellery Box; ff99FF33
+Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest; Cadiro's Catalogue; ffFF3300
+Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest; Grand Perandus Vault; ffAF6025
+
+Metadata/Monsters/Perandus/PerandusGuardMapBoss1; Platinia, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss2; Auriot, Prospero's Furnace Guardian; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss3; Rhodion, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss4; Osmea, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss4Clone; Osmea, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss5; Pallias, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss6; Argient, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss7; Rheniot, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant1; Junith Perandus, Keeper of Vaults; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant2; Tantalo Perandus, Seller of Secrets; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant3; Actaeo Perandus, Master of Beasts; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant4; Vitorica Perandus, Maker of Marvels; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant4Clone; Vitorica Perandus, Maker of Marvels; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant5; Stasius Perandus, Merchant of Corpses; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant6; Darsia Perandus, Collector of Debts; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant7; Milo Perandus, Handler of Swords; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic1; Celona, Vault Sentry; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic2; Hortus, Knee Breaker; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic3; Kuto, Hired Muscle; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic4; Luthis, Bounty Hunter; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic5; Belatra, Hired Assassin; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport1; Liana, Indebted Peasant; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport2; Marius, Indebted Smuggler; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport3; Vera, Indebted Aristocrat; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport4; Percia, Indebted Poacher; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss1; Sutrus, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss2; Otairo, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss3; Eiphirio, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss4; Artensia, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss5_; Anaveli, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss6; Rothus, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss7; Arinea, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8; Meritania, Vault Binder; ffFFD700
