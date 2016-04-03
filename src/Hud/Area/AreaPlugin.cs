@@ -24,11 +24,8 @@ namespace PoeHUD.Hud.Area
         public override void Render()
         {
             base.Render();
-            if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10))
-            { return; }
-
-            bool showInTown =
-                !Settings.ShowInTown && GameController.Area.CurrentArea.IsTown ||
+            if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
+            bool showInTown = !Settings.ShowInTown && GameController.Area.CurrentArea.IsTown ||
                     !Settings.ShowInTown && GameController.Area.CurrentArea.IsHideout;
             partyXpPenalty = PartyXpPenalty();
             Vector2 position = StartDrawPointFunc();

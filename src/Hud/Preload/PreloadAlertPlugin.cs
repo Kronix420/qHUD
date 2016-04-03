@@ -16,7 +16,7 @@ namespace PoeHUD.Hud.Preload
     {
         private readonly HashSet<PreloadConfigLine> alerts;
         private readonly Dictionary<string, PreloadConfigLine> alertStrings;
-        private bool areaChanged = true;
+        private bool areaChanged;
         private DateTime maxParseTime = DateTime.Now;
         private int lastCount;
         public static Color hasCorruptedArea { get; set; }
@@ -109,7 +109,7 @@ namespace PoeHUD.Hud.Preload
                 string text = memory.ReadStringU(memory.ReadInt(listIterator + 8));
                 if (text.Contains('@')) { text = text.Split('@')[0]; }
                 if (alertStrings.ContainsKey(text)) { alerts.Add(alertStrings[text]); }
-                if (text.Contains("human_heart") || text.Contains("Demonic_NoRain.ogg")) { hasCorruptedArea = Settings.HasCorruptedArea; }
+                if (text.Contains("human_heart") && areaChanged == false) { hasCorruptedArea = Settings.HasCorruptedArea; }
 
                 Dictionary<string, PreloadConfigLine> PerandusLeague = new Dictionary<string, PreloadConfigLine>
                 {
@@ -150,7 +150,7 @@ namespace PoeHUD.Hud.Preload
                 };
 
                 PreloadConfigLine perandus = PerandusLeague.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-                if (perandus != null) { alerts.Add(perandus); }
+                if (perandus != null && Settings.PerandusLeague) { alerts.Add(perandus); }
 
                 Dictionary<string, PreloadConfigLine> Strongboxes = new Dictionary<string, PreloadConfigLine>
                 {
@@ -176,7 +176,7 @@ namespace PoeHUD.Hud.Preload
                     {"Metadata/Monsters/Daemon/ChestDaemonPoison", new PreloadConfigLine { Text = "Unique Strongbox IV", FastColor = () => Settings.MalachaiStrongbox }}
                 };
                 PreloadConfigLine strongboxes = Strongboxes.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-                if (strongboxes != null) { alerts.Add(strongboxes); }
+                if (strongboxes != null && Settings.Strongboxes) { alerts.Add(strongboxes); }
 
                 Dictionary<string, PreloadConfigLine> Masters = new Dictionary<string, PreloadConfigLine>
                 {
@@ -205,7 +205,7 @@ namespace PoeHUD.Hud.Preload
 
                 };
                 PreloadConfigLine masters = Masters.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-                if (masters != null) { alerts.Add(masters); }
+                if (masters != null && Settings.Masters) { alerts.Add(masters); }
 
                 Dictionary<string, PreloadConfigLine> Exiles = new Dictionary<string, PreloadConfigLine>
                 {
@@ -233,7 +233,7 @@ namespace PoeHUD.Hud.Preload
                     {"ExileScion4", new PreloadConfigLine { Text = "Exile Vanth Agiel", FastColor = () => Settings.VanthAgiel }}
                 };
                 PreloadConfigLine exiles = Exiles.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-                if (exiles != null) { alerts.Add(exiles); }
+                if (exiles != null && Settings.Exiles) { alerts.Add(exiles); }
             }
         }
     }

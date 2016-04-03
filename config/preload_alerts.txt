@@ -23,7 +23,6 @@ Metadata/Chests/PerandusChests/PerandusManorJewelryChest; Cadiro's Jewellery Box
 Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest; Cadiro's Catalogue; ffFF3300
 Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest; Grand Perandus Vault; ffAF6025
 
-
 Metadata/Monsters/Squid/SquidBossSideArea; The All-seeing Eye; ffDC143C
 Metadata/Monsters/Goatman/GoatmanLeapBossSideArea; Konu, Maker of Wind; ffDC143C
 Metadata/Monsters/GhostPirates/GhostPirateBossSideArea; Coniraya, Shadow of Malice; ffDC143C
