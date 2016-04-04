@@ -17,7 +17,6 @@ namespace PoeHUD.Hud.Preload
         private readonly HashSet<PreloadConfigLine> alerts;
         private readonly Dictionary<string, PreloadConfigLine> perandusStrings, alertStrings;
         private int lastCount, lastAddress;
-        private bool unknownChest;
         public static Color hasCorruptedArea { get; set; }
 
         public PreloadAlertPlugin(GameController gameController, Graphics graphics, PreloadAlertSettings settings)
@@ -35,8 +34,7 @@ namespace PoeHUD.Hud.Preload
             {
                 var preloadAlerConfigLine = new PreloadConfigLine
                 {
-                    Text = line[1],
-                    Color = line.ConfigColorValueExtractor(2)
+                    Text = line[1], Color = line.ConfigColorValueExtractor(2)
                 };
                 return preloadAlerConfigLine;
             });
@@ -44,58 +42,47 @@ namespace PoeHUD.Hud.Preload
 
         public override void Render()
         {
-            //try
-            //{
-                base.Render();
-                if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
-                Parse();
+            base.Render();
+            if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
+            Parse();
 
-                if (alerts.Count <= 0) return;
-                Vector2 startPosition = StartDrawPointFunc();
-                Vector2 position = startPosition;
-                int maxWidth = 0;
-                foreach (Size2 size in alerts
-                    .Select(preloadConfigLine => Graphics
-                        .DrawText(preloadConfigLine.Text, Settings.TextSize, position, preloadConfigLine.FastColor?
-                            .Invoke() ?? preloadConfigLine.Color ?? Settings.DefaultTextColor, FontDrawFlags.Right)))
-                {
-                    maxWidth = Math.Max(size.Width, maxWidth);
-                    position.Y += size.Height;
-                }
-                if (maxWidth <= 0) return;
-                var bounds = new RectangleF(startPosition.X - maxWidth - 45, startPosition.Y - 5,
-                    maxWidth + 50, position.Y - startPosition.Y + 10);
-                Graphics.DrawImage("preload-start.png", bounds, Settings.BackgroundColor);
-                Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
-                Size = bounds.Size;
-                Margin = new Vector2(0, 5);
-            //}
-            //catch { // do nothing
-            //}
+            if (alerts.Count <= 0) return;
+            Vector2 startPosition = StartDrawPointFunc();
+            Vector2 position = startPosition;
+            int maxWidth = 0;
+            foreach (Size2 size in alerts
+                .Select(preloadConfigLine => Graphics
+                    .DrawText(preloadConfigLine.Text, Settings.TextSize, position, preloadConfigLine.FastColor?
+                        .Invoke() ?? preloadConfigLine.Color ?? Settings.DefaultTextColor, FontDrawFlags.Right)))
+            {
+                maxWidth = Math.Max(size.Width, maxWidth);
+                position.Y += size.Height;
+            }
+            if (maxWidth <= 0) return;
+            var bounds = new RectangleF(startPosition.X - maxWidth - 45, startPosition.Y - 5,
+                maxWidth + 50, position.Y - startPosition.Y + 10);
+            Graphics.DrawImage("preload-start.png", bounds, Settings.BackgroundColor);
+            Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
+            Size = bounds.Size;
+            Margin = new Vector2(0, 5);
         }
 
         private void OnAreaChange(AreaController area)
         {
-            alerts.Clear();
-            lastCount = 0;
-            lastAddress = 0;
-            unknownChest = false;
+            alerts.Clear(); lastCount = 0; lastAddress = 0;
         }
 
         private void Parse()
         {
-            if (WinApi.IsKeyDown(Keys.F5)) // do a full refresh if F5 is hit
+            if (WinApi.IsKeyDown(Keys.F5))
             {
-                alerts.Clear();
-                lastAddress = 0;
-                lastCount = 0;
-                unknownChest = false;
+                alerts.Clear(); lastCount = 0; lastAddress = 0;
             }
             Memory memory = GameController.Memory;
             hasCorruptedArea = Settings.AreaTextColor;
             int pFileRoot = memory.ReadInt(memory.AddressOfProcess + memory.offsets.FileRoot);
-            int count = memory.ReadInt(pFileRoot + 0xC); // check how many files are loaded
-            if (count > lastCount) // if the file count has changed, check the newly loaded files
+            int count = memory.ReadInt(pFileRoot + 0xC);
+            if (count > lastCount)
             {
                 int areaChangeCount = GameController.Game.AreaChangeCount;
                 var listIterator = lastAddress == 0 ? memory.ReadInt(pFileRoot + 0x10) : lastAddress;
@@ -104,11 +91,7 @@ namespace PoeHUD.Hud.Preload
                     listIterator = memory.ReadInt(listIterator);
                     if (listIterator == 0)
                     {
-                        // address is null, something has gone wrong, start over
-                        alerts.Clear();
-                        lastCount = 0;
-                        lastAddress = 0;
-                        return;
+                        alerts.Clear(); lastCount = 0; lastAddress = 0; return;
                     }
                     lastAddress = listIterator;
                     if (memory.ReadInt(listIterator + 0x8) == 0 || memory.ReadInt(listIterator + 0xC, 0x24) != areaChangeCount) continue;
@@ -138,6 +121,7 @@ namespace PoeHUD.Hud.Preload
 
             Dictionary<string, PreloadConfigLine> Strongboxes = new Dictionary<string, PreloadConfigLine>
             {
+                {"Metadata/Chests/StrongBoxes/StrongboxDivination", new PreloadConfigLine { Text = "Diviner's Strongbox", FastColor = () => Settings.DivinersStrongbox }},
                 {"Metadata/Chests/StrongBoxes/Arcanist", new PreloadConfigLine { Text = "Arcanist's Strongbox", FastColor = () => Settings.ArcanistStrongbox }},
                 {"Metadata/Chests/StrongBoxes/Artisan", new PreloadConfigLine { Text = "Artisan's Strongbox", FastColor = () => Settings.ArtisanStrongbox }},
                 {"Metadata/Chests/StrongBoxes/Cartographer", new PreloadConfigLine { Text = "Cartographer's Strongbox", FastColor = () => Settings.CartographerStrongbox }},
@@ -156,8 +140,7 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Monsters/Daemon/BarrelOfSpidersDaemonNormal2", new PreloadConfigLine { Text = "Unique Strongbox II", FastColor = () => Settings.MalachaiStrongbox }},
                 {"Metadata/Monsters/Daemon/BossDaemonBarrelSpidersBoss", new PreloadConfigLine { Text = "Unique Strongbox III", FastColor = () => Settings.MalachaiStrongbox }}
             };
-            PreloadConfigLine strongboxes_alert = Strongboxes.Where(kv => text
-                .StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
+            PreloadConfigLine strongboxes_alert = Strongboxes.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
             if (strongboxes_alert != null && Settings.Strongboxes) { alerts.Add(strongboxes_alert); return; }
 
             Dictionary<string, PreloadConfigLine> Masters = new Dictionary<string, PreloadConfigLine>
@@ -185,8 +168,7 @@ namespace PoeHUD.Hud.Preload
                 {"MasterStrDex14", new PreloadConfigLine { Text = "Vagan, Weaponmaster (RighteousFire)", FastColor = () => Settings.MasterVagan }},
                 {"MasterStrDex15", new PreloadConfigLine { Text = "Vagan, Weaponmaster (CastOnHit)", FastColor = () => Settings.MasterVagan }}
             };
-            PreloadConfigLine masters_alert = Masters.Where(kv => text
-                .EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
+            PreloadConfigLine masters_alert = Masters.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
             if (masters_alert != null && Settings.Masters) { alerts.Add(masters_alert); return; }
 
             Dictionary<string, PreloadConfigLine> Exiles = new Dictionary<string, PreloadConfigLine>
@@ -214,9 +196,8 @@ namespace PoeHUD.Hud.Preload
                 {"ExileScion4", new PreloadConfigLine { Text = "Exile Vanth Agiel", FastColor = () => Settings.VanthAgiel }},
                 {"ExileScion3", new PreloadConfigLine { Text = "Exile Lael Furia", FastColor = () => Settings.LaelFuria }}
             };
-            PreloadConfigLine exiles_alert = Exiles.Where(kv => text
-                .EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (exiles_alert != null && Settings.Exiles) { alerts.Add(exiles_alert); }
+            PreloadConfigLine exiles_alert = Exiles.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
+            if (exiles_alert != null && Settings.Exiles) { alerts.Add(exiles_alert); return; }
         }
     }
 }
