@@ -11,6 +11,5 @@ C:\Users\vmv\Documents\GitHub\qhud\src\PoeFilterParser\bin\Debug\PoeFilterParser
 C:\Users\vmv\Documents\GitHub\qhud\src\PoeFilterParser\bin\Debug\PoeFilterParser.pdb
 C:\Users\vmv\Documents\GitHub\qhud\src\PoeFilterParser\bin\Debug\Antlr4.Runtime.dll
 C:\Users\vmv\Documents\GitHub\qhud\src\PoeFilterParser\bin\Debug\Antlr4.Runtime.xml
-C:\Users\vmv\Documents\GitHub\qhud\src\PoeFilterParser\obj\Debug\PoeFilterParser.csprojResolveAssemblyReference.cache
 C:\Users\vmv\Documents\GitHub\qhud\src\PoeFilterParser\obj\Debug\PoeFilterParser.dll
 C:\Users\vmv\Documents\GitHub\qhud\src\PoeFilterParser\obj\Debug\PoeFilterParser.pdb

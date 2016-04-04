@@ -152,6 +152,13 @@ Show
     SetBorderColor 220 0 0
 	PlayAlertSound 1 100
 
+Show
+	Rarity Normal
+	BaseType "Sorcerer Boots"
+	SetBorderColor 102 255 255
+	SetTextColor 102 255 255
+	#PlayAlertSound 7 300
+	
 Show 
 	Rarity Normal
 	Class Rings Amulet Belts

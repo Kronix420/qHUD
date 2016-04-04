@@ -13,7 +13,7 @@ namespace PoeHUD.Hud.Menu
 
         public RootButton(Vector2 position)
         {
-            Bounds = new RectangleF(position.X - 5, position.Y - 20, DesiredWidth, DesiredHeight);
+            Bounds = new RectangleF(position.X - 5, position.Y - 3, DesiredWidth, DesiredHeight);
         }
 
         public override int DesiredWidth => 80;
@@ -60,7 +60,7 @@ namespace PoeHUD.Hud.Menu
 
         public override void Render(Graphics graphics, MenuSettings settings)
         {
-            graphics.DrawText(settings.TitleName, settings.TitleFontSize, Bounds.TopLeft.Translate(25, 12), settings.TitleFontColor, FontDrawFlags.VerticalCenter | FontDrawFlags.Center);
+            graphics.DrawText(settings.TitleName, settings.TitleFontSize, Bounds.TopLeft.Translate(15, 12), settings.TitleFontColor, FontDrawFlags.VerticalCenter | FontDrawFlags.Center);
             graphics.DrawImage("menu-background.png", Bounds, settings.BackgroundColor);
             Children.ForEach(x => x.Render(graphics, settings));
         }
