@@ -1,11 +1,11 @@
 {
   "Menu": {
     "Enable": true,
-    "TitleName": "X",
+    "TitleName": "≡",
     "X": 10.0,
-    "Y": 102.0,
+    "Y": 85.0,
     "ShowMenu": true,
-    "TitleFontColor": "ff0000ff",
+    "TitleFontColor": "3399ffff",
     "EnabledBoxColor": "808080ff",
     "DisabledBoxColor": "800000e6",
     "BackgroundColor": "800000e6",
@@ -43,7 +43,7 @@
       "Max": 14
     },
     "SoundVolume": {
-      "Value": 10,
+      "Value": 20,
       "Min": 0,
       "Max": 100
     },
@@ -116,7 +116,7 @@
     "Minions": true,
     "PlaySound": true,
     "SoundVolume": {
-      "Value": 50,
+      "Value": 35,
       "Min": 0,
       "Max": 100
     },
@@ -187,12 +187,12 @@
       "Max": 6
     },
     "StrongboxesIcon": {
-      "Value": 14,
+      "Value": 16,
       "Min": 1,
       "Max": 28
     },
     "PerandusChestIcon": {
-      "Value": 14,
+      "Value": 16,
       "Min": 1,
       "Max": 28
     },
@@ -319,7 +319,7 @@
         "Max": 200.0
       },
       "Height": {
-        "Value": 18.0,
+        "Value": 20.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -334,12 +334,12 @@
     "Minions": {
       "Enable": true,
       "Width": {
-        "Value": 80.0,
+        "Value": 100.0,
         "Min": 50.0,
         "Max": 200.0
       },
       "Height": {
-        "Value": 20.0,
+        "Value": 12.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -352,7 +352,7 @@
       }
     },
     "NormalEnemy": {
-      "Enable": false,
+      "Enable": true,
       "Width": {
         "Value": 80.0,
         "Min": 50.0,
@@ -372,14 +372,14 @@
       }
     },
     "MagicEnemy": {
-      "Enable": false,
+      "Enable": true,
       "Width": {
         "Value": 100.0,
         "Min": 50.0,
         "Max": 200.0
       },
       "Height": {
-        "Value": 15.0,
+        "Value": 12.0,
         "Min": 10.0,
         "Max": 50.0
       },
@@ -394,12 +394,12 @@
     "RareEnemy": {
       "Enable": true,
       "Width": {
-        "Value": 160.0,
+        "Value": 140.0,
         "Min": 50.0,
         "Max": 200.0
       },
       "Height": {
-        "Value": 18.0,
+        "Value": 15.0,
         "Min": 10.0,
         "Max": 50.0
       },
