@@ -1,6 +1,6 @@
 Metadata/NPC/League/Cadiro; Cadiro Trader; ffFF8000
 
-Metadata/Chests/PerandusChests/PerandusChest.ao; Unknown Perandus Chest; ff99FF33
+Metadata/Chests/PerandusChests/PerandusChest.ao;; ff99FF33
 Metadata/Chests/PerandusChests/PerandusChestStandard; Perandus Chest; ff99FF33
 Metadata/Chests/PerandusChests/PerandusChestRarity; Perandus Cache; ff99FF33
 Metadata/Chests/PerandusChests/PerandusChestQuantity; Perandus Hoard; ff99FF33
