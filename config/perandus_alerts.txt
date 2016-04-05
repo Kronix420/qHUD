@@ -1,6 +1,7 @@
 Metadata/NPC/League/Cadiro; Cadiro Trader; ffFF8000
 
-Metadata/Chests/PerandusChests/PerandusChest.ao;; ff99FF33
+# Perandus chests
+Metadata/Chests/PerandusChests/PerandusChest.ao;
 Metadata/Chests/PerandusChests/PerandusChestStandard; Perandus Chest; ff99FF33
 Metadata/Chests/PerandusChests/PerandusChestRarity; Perandus Cache; ff99FF33
 Metadata/Chests/PerandusChests/PerandusChestQuantity; Perandus Hoard; ff99FF33
@@ -21,6 +22,7 @@ Metadata/Chests/PerandusChests/PerandusManorJewelryChest; Cadiro's Jewellery Box
 Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest; Cadiro's Catalogue; ffFF3300
 Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest; Grand Perandus Vault; ffAF6025
 
+# Perandus guards
 Metadata/Monsters/Perandus/PerandusGuardMapBoss1; Platinia, Servant of Prospero; ffFFD700
 Metadata/Monsters/Perandus/PerandusGuardMapBoss2; Auriot, Prospero's Furnace Guardian; ffFFD700
 Metadata/Monsters/Perandus/PerandusGuardMapBoss3; Rhodion, Servant of Prospero; ffFFD700
@@ -54,3 +56,24 @@ Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss5_; Anaveli, Vault Binder; 
 Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss6; Rothus, Vault Binder; ffFFD700
 Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss7; Arinea, Vault Binder; ffFFD700
 Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8; Meritania, Vault Binder; ffFFD700
+
+# Labyrinth
+Metadata/Chests/Labyrinth/LabyrinthTrinketChest; Decorative Chest; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthGenericChestNoFlag; Hidden Coffer; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthGenericChestTier0; Hidden Coffer; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthGenericChestTier1; Supply Cache; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthGenericChestTier2; Labyrinth Trove; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthGenericChestTier3; Ascendant's Treasures; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthGenericChestTier4; Emperor's Gifts; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency1; Battle Supplies; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency2; War Spoils; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency3; Warmonger's Cache; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency1; Guard Supplies; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency2; Guard Vault; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency3; Guard Treasury; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency1; Emperor's Trove; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency2; Emperor's Vault; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency3; Emperor's Treasury; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthMaps1; Emperor's Charts; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthTreasureKey; Curious Lockbox; ff00BFFF
+Metadata/Chests/Labyrinth/LabyrinthSpecificUnique; Intricate Locker; ff00BFFF
