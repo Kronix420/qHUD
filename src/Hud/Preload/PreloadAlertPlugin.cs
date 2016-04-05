@@ -106,15 +106,17 @@ namespace PoeHUD.Hud.Preload
 
         private void CheckForPreload(string text)
         {
-            if (text.Contains("Metadata/Chests/PerandusChests/PerandusChest.ao") || perandusStrings.ContainsKey(text))
+            if (perandusStrings.ContainsKey(text) || text.Contains("Metadata/Chests/PerandusChests/PerandusChest.ao"))
             {
-                alerts.Add(new PreloadConfigLine { Text = "Identifing chests...", FastColor = () => Settings.PerandusChestStandard });
-                if (alerts.Contains(new PreloadConfigLine { Text = "Identifing chests...", FastColor = () => Settings.PerandusChestStandard }))
+                alerts.Add(perandusStrings[text]);
+                var identifing = alerts.Add(new PreloadConfigLine { Text = "Identifing chests...", FastColor = () => Settings.PerandusChestStandard });
+                if (identifing && perandusStrings.ContainsKey(text))
                 {
                     alerts.Remove(new PreloadConfigLine { Text = "Identifing chests...", FastColor = () => Settings.PerandusChestStandard });
                     alerts.Add(perandusStrings[text]);
                     return;
                 }
+                return;
             }
             
             if (alertStrings.ContainsKey(text)) { alerts.Add(alertStrings[text]); return; }
@@ -159,7 +161,21 @@ namespace PoeHUD.Hud.Preload
                 {"Wild/Str", new PreloadConfigLine { Text = "Haku, Armourmaster", FastColor = () => Settings.MasterHaku }},
                 {"Wild/StrInt", new PreloadConfigLine { Text = "Elreon, Loremaster", FastColor = () => Settings.MasterElreon }},
                 {"Wild/Fish", new PreloadConfigLine { Text = "Krillson, Master Fisherman", FastColor = () => Settings.MasterKrillson }},
-                {"Wild/StrDex", new PreloadConfigLine { Text = "Vagan, Weaponmaster", FastColor = () => Settings.MasterVagan }}
+                {"MasterStrDex1", new PreloadConfigLine { Text = "Vagan, Weaponmaster (2HSword)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex2", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Staff)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex3", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Bow)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex4", new PreloadConfigLine { Text = "Vagan, Weaponmaster (DaggerRapier)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex5", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Blunt)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex6", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Blades)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex7", new PreloadConfigLine { Text = "Vagan, Weaponmaster (SwordAxe)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex8", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Punching)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex9", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Flickerstrike)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex10", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Elementalist)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex11", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Cyclone)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex12", new PreloadConfigLine { Text = "Vagan, Weaponmaster (PhysSpells)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex13", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Traps)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex14", new PreloadConfigLine { Text = "Vagan, Weaponmaster (RighteousFire)", FastColor = () => Settings.MasterVagan }},
+                {"MasterStrDex15", new PreloadConfigLine { Text = "Vagan, Weaponmaster (CastOnHit)", FastColor = () => Settings.MasterVagan }}
             };
             PreloadConfigLine masters_alert = Masters.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
             if (masters_alert != null && Settings.Masters) { alerts.Add(masters_alert); return; }
