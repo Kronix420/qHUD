@@ -33,7 +33,7 @@
     "IconsOnLargeMap": true
   },
   "Item alert": {
-    "Enable": false,
+    "Enable": true,
     "ShowItemOnMap": true,
     "ShowText": true,
     "PlaySound": true,
@@ -111,7 +111,7 @@
     }
   },
   "Monsters tracker": {
-    "Enable": false,
+    "Enable": true,
     "Monsters": true,
     "Minions": true,
     "PlaySound": true,
@@ -293,7 +293,7 @@
     "LaelFuria": "fec076ff"
   },
   "Area settings": {
-    "Enable": false,
+    "Enable": true,
     "ShowInTown": true,
     "ShowLatency": true,
     "TextSize": {
