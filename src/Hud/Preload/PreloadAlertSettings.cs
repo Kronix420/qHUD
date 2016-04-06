@@ -10,6 +10,7 @@ namespace PoeHUD.Hud.Preload
             Enable = true;
             Masters = true;
             Exiles = true;
+            Labyrinth = true;
             Strongboxes = true;
             PerandusLeague = true;
             CorruptedTitle = true;
@@ -26,20 +27,20 @@ namespace PoeHUD.Hud.Preload
             PerandusChestQuantity = new ColorBGRA(153, 255, 51, 255);
             PerandusChestCoins = new ColorBGRA(153, 255, 51, 255);
             PerandusChestJewellery = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestGems = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestCurrency = new ColorBGRA(153, 255, 51, 255);
+            PerandusChestGems = new ColorBGRA(27, 162, 155, 255);
+            PerandusChestCurrency = new ColorBGRA(255, 0, 255, 255);
             PerandusChestInventory = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestDivinationCards = new ColorBGRA(153, 255, 51, 255);
+            PerandusChestDivinationCards = new ColorBGRA(255, 0, 0, 255);
             PerandusChestKeepersOfTheTrove = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestUniqueItem = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestMaps = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestFishing = new ColorBGRA(153, 255, 51, 255);
-            PerandusManorUniqueChest = new ColorBGRA(153, 255, 51, 255);
-            PerandusManorCurrencyChest = new ColorBGRA(153, 255, 51, 255);
+            PerandusChestUniqueItem = new ColorBGRA(175, 96, 37, 255);
+            PerandusChestMaps = new ColorBGRA(255, 255, 0, 255);
+            PerandusChestFishing = new ColorBGRA(255, 255, 0, 255);
+            PerandusManorUniqueChest = new ColorBGRA(175, 96, 37, 255);
+            PerandusManorCurrencyChest = new ColorBGRA(255, 0, 255, 255);
             PerandusManorMapsChest = new ColorBGRA(153, 255, 51, 255);
             PerandusManorJewelryChest = new ColorBGRA(153, 255, 51, 255);
-            PerandusManorDivinationCardsChest = new ColorBGRA(153, 255, 51, 255);
-            PerandusManorLostTreasureChest = new ColorBGRA(153, 255, 51, 255);
+            PerandusManorDivinationCardsChest = new ColorBGRA(255, 0, 0, 255);
+            PerandusManorLostTreasureChest = new ColorBGRA(175, 96, 37, 255);
             LabyrinthChests = new ColorBGRA(100, 255, 255, 255);
 
             MasterZana = new ColorBGRA(255, 2550, 0, 255);
@@ -122,6 +123,7 @@ namespace PoeHUD.Hud.Preload
         public ToggleNode CorruptedTitle { get; set; }
         public ToggleNode Masters { get; set; }
         public ToggleNode Exiles { get; set; }
+        public ToggleNode Labyrinth { get; set; }
         public ToggleNode Strongboxes { get; set; }
         public RangeNode<int> TextSize { get; set; }
         public ColorNode BackgroundColor { get; set; }

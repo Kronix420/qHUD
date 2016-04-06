@@ -35,12 +35,12 @@ namespace PoeHUD.Hud.UI
             presentParameters = new PresentParameters
             {
                 Windowed = true,
-                SwapEffect = SwapEffect.Discard,
+                SwapEffect = SwapEffect.Copy,
                 BackBufferFormat = Format.A8R8G8B8,
                 BackBufferCount = 1,
                 BackBufferWidth = width,
                 BackBufferHeight = height,
-                PresentationInterval = PresentInterval.One,
+                PresentationInterval = PresentInterval.Default,
                 MultiSampleType = MultisampleType.None,
                 MultiSampleQuality = 0,
                 PresentFlags = PresentFlags.LockableBackBuffer

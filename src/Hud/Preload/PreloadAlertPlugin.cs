@@ -15,7 +15,7 @@ namespace PoeHUD.Hud.Preload
     public class PreloadAlertPlugin : SizedPlugin<PreloadAlertSettings>
     {
         private readonly HashSet<PreloadConfigLine> alerts;
-        private readonly Dictionary<string, PreloadConfigLine> perandusStrings, alertStrings;
+        private readonly Dictionary<string, PreloadConfigLine> alertStrings;
         private int lastCount, lastAddress;
         public static Color hasCorruptedArea { get; set; }
 
@@ -23,7 +23,6 @@ namespace PoeHUD.Hud.Preload
             : base(gameController, graphics, settings)
         {
             alerts = new HashSet<PreloadConfigLine>();
-            perandusStrings = LoadConfig("config/perandus_alerts.txt");
             alertStrings = LoadConfig("config/preload_alerts.txt");
             GameController.Area.OnAreaChange += OnAreaChange;
         }
@@ -43,29 +42,37 @@ namespace PoeHUD.Hud.Preload
 
         public override void Render()
         {
-            base.Render();
-            if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
-            Parse();
-
-            if (alerts.Count <= 0) return;
-            Vector2 startPosition = StartDrawPointFunc();
-            Vector2 position = startPosition;
-            int maxWidth = 0;
-            foreach (Size2 size in alerts
-                .Select(preloadConfigLine => Graphics
-                    .DrawText(preloadConfigLine.Text, Settings.TextSize, position, preloadConfigLine.FastColor?
-                        .Invoke() ?? preloadConfigLine.Color ?? Settings.DefaultTextColor, FontDrawFlags.Right)))
+            try
             {
-                maxWidth = Math.Max(size.Width, maxWidth);
-                position.Y += size.Height;
+                base.Render();
+                if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
+                if (!GameController.Area.CurrentArea.IsTown || !GameController.Area.CurrentArea.IsHideout) { Parse(); }
+
+                if (alerts.Count <= 0) return;
+                Vector2 startPosition = StartDrawPointFunc();
+                Vector2 position = startPosition;
+                int maxWidth = 0;
+                foreach (Size2 size in alerts
+                    .Select(preloadConfigLine => Graphics
+                        .DrawText(preloadConfigLine.Text, Settings.TextSize, position + 240, preloadConfigLine.FastColor?
+                            .Invoke() ?? preloadConfigLine.Color ?? Settings.DefaultTextColor, FontDrawFlags.Right)))
+                {
+                    maxWidth = Math.Max(size.Width, maxWidth);
+                    position.Y += size.Height;
+                }
+                if (maxWidth <= 0) return;
+                var bounds = new RectangleF(startPosition.X - maxWidth - 45, startPosition.Y - 5,
+                    maxWidth + 50, position.Y - startPosition.Y + 10);
+                Graphics.DrawImage("preload-start.png", bounds, Settings.BackgroundColor);
+                Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
+                Size = bounds.Size;
+                Margin = new Vector2(0, 5);
             }
-            if (maxWidth <= 0) return;
-            var bounds = new RectangleF(startPosition.X - maxWidth - 45, startPosition.Y - 5,
-                maxWidth + 50, position.Y - startPosition.Y + 10);
-            Graphics.DrawImage("preload-start.png", bounds, Settings.BackgroundColor);
-            Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
-            Size = bounds.Size;
-            Margin = new Vector2(0, 5);
+            catch
+            {
+                // do nothing
+            }
+            
         }
 
         private void OnAreaChange(AreaController area)
@@ -75,10 +82,7 @@ namespace PoeHUD.Hud.Preload
 
         private void Parse()
         {
-            if (WinApi.IsKeyDown(Keys.F5))
-            {
-                alerts.Clear(); lastCount = 0; lastAddress = 0;
-            }
+            if (WinApi.IsKeyDown(Keys.F5)) { alerts.Clear(); lastCount = 0; lastAddress = 0; }
             Memory memory = GameController.Memory;
             hasCorruptedArea = Settings.AreaTextColor;
             int pFileRoot = memory.ReadInt(memory.AddressOfProcess + memory.offsets.FileRoot);
@@ -106,25 +110,107 @@ namespace PoeHUD.Hud.Preload
 
         private void CheckForPreload(string text)
         {
-            if (perandusStrings.ContainsKey(text) || text.Contains("Metadata/Chests/PerandusChests/PerandusChest.ao"))
-            {
-                alerts.Add(perandusStrings[text]);
-                var identifing = alerts.Add(new PreloadConfigLine { Text = "Identifing chests...", FastColor = () => Settings.PerandusChestStandard });
-                if (identifing && perandusStrings.ContainsKey(text))
-                {
-                    alerts.Remove(new PreloadConfigLine { Text = "Identifing chests...", FastColor = () => Settings.PerandusChestStandard });
-                    alerts.Add(perandusStrings[text]);
-                    return;
-                }
-                return;
-            }
-            
             if (alertStrings.ContainsKey(text)) { alerts.Add(alertStrings[text]); return; }
 
             if (text.Contains("human_heart") || text.Contains("Demonic_NoRain.ogg"))
             {
                 if (Settings.CorruptedTitle) { hasCorruptedArea = Settings.HasCorruptedArea; }
                 else { alerts.Add(new PreloadConfigLine { Text = "Corrupted Area", FastColor = () => Settings.HasCorruptedArea }); }
+                return;
+            }
+
+            Dictionary<string, PreloadConfigLine> Labyrinth = new Dictionary<string, PreloadConfigLine>
+            {
+
+                {"Metadata/Chests/Labyrinth/LabyrinthTrinketChest", new PreloadConfigLine { Text = "Decorative Chest", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthGenericChestNoFlag", new PreloadConfigLine { Text = "Hidden Coffer", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier0", new PreloadConfigLine { Text = "Hidden Coffer", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier1", new PreloadConfigLine { Text = "Supply Cache", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier2", new PreloadConfigLine { Text = "Labyrinth Trove", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier3", new PreloadConfigLine { Text = "Ascendant's Treasures", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier4", new PreloadConfigLine { Text = "Emperor's Gifts", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency1", new PreloadConfigLine { Text = "Battle Supplies", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency2", new PreloadConfigLine { Text = "War Spoils", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthWeaponsAndCurrency3", new PreloadConfigLine { Text = "Warmonger's Cache", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency1", new PreloadConfigLine { Text = "Guard Supplies", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency2", new PreloadConfigLine { Text = "Guard Vault", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthArmourAndCurrency3", new PreloadConfigLine { Text = "Guard Treasury", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency1", new PreloadConfigLine { Text = "Emperor's Trove", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency2", new PreloadConfigLine { Text = "Emperor's Vault", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthJewelryAndCurrency3", new PreloadConfigLine { Text = "Emperor's Treasury", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthMaps1", new PreloadConfigLine { Text = "Emperor's Charts", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthTreasureKey", new PreloadConfigLine { Text = "Curious Lockbox", FastColor = () => Settings.LabyrinthChests }},
+                {"Metadata/Chests/Labyrinth/LabyrinthSpecificUnique", new PreloadConfigLine { Text = "Intricate Locker", FastColor = () => Settings.LabyrinthChests }}
+            };
+            PreloadConfigLine labyrinth_alert = Labyrinth.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
+            if (labyrinth_alert != null && alerts.Add(labyrinth_alert) && Settings.Labyrinth)
+            {
+                alerts.Add(labyrinth_alert);
+                return;
+            }
+
+            Dictionary<string, PreloadConfigLine> PerandusLeague = new Dictionary<string, PreloadConfigLine>
+            {
+                {"Metadata/NPC/League/Cadiro", new PreloadConfigLine { Text = "Cadiro Trader", FastColor = () => Settings.CadiroTrader }},
+
+                {"Metadata/Chests/PerandusChests/PerandusChestStandard", new PreloadConfigLine { Text = "Perandus Chest", FastColor = () => Settings.PerandusChestStandard }},
+                {"Metadata/Chests/PerandusChests/PerandusChestRarity", new PreloadConfigLine { Text = "Perandus Cache", FastColor = () => Settings.PerandusChestRarity }},
+                {"Metadata/Chests/PerandusChests/PerandusChestQuantity", new PreloadConfigLine { Text = "Perandus Hoard", FastColor = () => Settings.PerandusChestQuantity }},
+                {"Metadata/Chests/PerandusChests/PerandusChestCoins", new PreloadConfigLine { Text = "Perandus Coffer", FastColor = () => Settings.PerandusChestCoins }},
+                {"Metadata/Chests/PerandusChests/PerandusChestJewellery", new PreloadConfigLine { Text = "Perandus Jewellery Box", FastColor = () => Settings.PerandusChestJewellery }},
+                {"Metadata/Chests/PerandusChests/PerandusChestGems", new PreloadConfigLine { Text = "Perandus Safe", FastColor = () => Settings.PerandusChestGems }},
+                {"Metadata/Chests/PerandusChests/PerandusChestCurrency", new PreloadConfigLine { Text = "Perandus Treasury", FastColor = () => Settings.PerandusChestCurrency }},
+                {"Metadata/Chests/PerandusChests/PerandusChestInventory", new PreloadConfigLine { Text = "Perandus Wardrobe", FastColor = () => Settings.PerandusChestInventory }},
+                {"Metadata/Chests/PerandusChests/PerandusChestDivinationCards", new PreloadConfigLine { Text = "Perandus Catalogue", FastColor = () => Settings.PerandusChestDivinationCards }},
+                {"Metadata/Chests/PerandusChests/PerandusChestKeepersOfTheTrove", new PreloadConfigLine { Text = "Perandus Trove", FastColor = () => Settings.PerandusChestKeepersOfTheTrove }},
+                {"Metadata/Chests/PerandusChests/PerandusChestUniqueItem", new PreloadConfigLine { Text = "Perandus Locker", FastColor = () => Settings.PerandusChestUniqueItem }},
+                {"Metadata/Chests/PerandusChests/PerandusChestMaps", new PreloadConfigLine { Text = "Perandus Archive", FastColor = () => Settings.PerandusChestMaps }},
+                {"Metadata/Chests/PerandusChests/PerandusChestFishing", new PreloadConfigLine { Text = "Perandus Tackle Box", FastColor = () => Settings.PerandusChestFishing }},
+                {"Metadata/Chests/PerandusChests/PerandusManorUniqueChest", new PreloadConfigLine { Text = "Cadiro's Locker", FastColor = () => Settings.PerandusManorUniqueChest }},
+                {"Metadata/Chests/PerandusChests/PerandusManorCurrencyChest", new PreloadConfigLine { Text = "Cadiro's Treasury", FastColor = () => Settings.PerandusManorCurrencyChest }},
+                {"Metadata/Chests/PerandusChests/PerandusManorMapsChest", new PreloadConfigLine { Text = "Cadiro's Archive", FastColor = () => Settings.PerandusManorMapsChest }},
+                {"Metadata/Chests/PerandusChests/PerandusManorJewelryChest", new PreloadConfigLine { Text = "Cadiro's Jewellery Box", FastColor = () => Settings.PerandusManorJewelryChest }},
+                {"Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest", new PreloadConfigLine { Text = "Cadiro's Catalogue", FastColor = () => Settings.PerandusManorDivinationCardsChest }},
+                {"Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest", new PreloadConfigLine { Text = "Grand Perandus Vault", FastColor = () => Settings.PerandusManorLostTreasureChest }},
+
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss1", new PreloadConfigLine { Text = "Platinia, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss2", new PreloadConfigLine { Text = "Auriot, Prospero's Furnace Guardian", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss3", new PreloadConfigLine { Text = "Rhodion, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss4", new PreloadConfigLine { Text = "Osmea, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss4Clone", new PreloadConfigLine { Text = "Osmea, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss5", new PreloadConfigLine { Text = "Pallias, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss6", new PreloadConfigLine { Text = "Argient, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss7", new PreloadConfigLine { Text = "Rheniot, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant1", new PreloadConfigLine { Text = "Junith Perandus, Keeper of Vaults", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant2", new PreloadConfigLine { Text = "Tantalo Perandus, Seller of Secrets", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant3", new PreloadConfigLine { Text = "Actaeo Perandus, Master of Beasts", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant4", new PreloadConfigLine { Text = "Vitorica Perandus, Maker of Marvels", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant4Clone", new PreloadConfigLine { Text = "Vitorica Perandus, Maker of Marvels", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant5", new PreloadConfigLine { Text = "Stasius Perandus, Merchant of Corpses", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant6", new PreloadConfigLine { Text = "Darsia Perandus, Collector of Debts", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant7", new PreloadConfigLine { Text = "Milo Perandus, Handler of Swords", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardBasic1", new PreloadConfigLine { Text = "Celona, Vault Sentry", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardBasic2", new PreloadConfigLine { Text = "Hortus, Knee Breaker", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardBasic3", new PreloadConfigLine { Text = "Kuto, Hired Muscle", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardBasic4", new PreloadConfigLine { Text = "Luthis, Bounty Hunter", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardBasic5", new PreloadConfigLine { Text = "Belatra, Hired Assassin", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSupport1", new PreloadConfigLine { Text = "Liana, Indebted Peasant", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSupport2", new PreloadConfigLine { Text = "Marius, Indebted Smuggler", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSupport3", new PreloadConfigLine { Text = "Vera, Indebted Aristocrat", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSupport4", new PreloadConfigLine { Text = "Percia, Indebted Poacher", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss1", new PreloadConfigLine { Text = "Sutrus, Vault Binder", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss2", new PreloadConfigLine { Text = "Otairo, Vault Binder", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss3", new PreloadConfigLine { Text = "Eiphirio, Vault Binder", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss4", new PreloadConfigLine { Text = "Artensia, Vault Binder", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss5_", new PreloadConfigLine { Text = "Anaveli, Vault Binder", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss6", new PreloadConfigLine { Text = "Rothus, Vault Binder", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss7", new PreloadConfigLine { Text = "Arinea, Vault Binder", FastColor = () => Settings.PerandusGuards }},
+                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8", new PreloadConfigLine { Text = "Meritania, Vault Binder", FastColor = () => Settings.PerandusGuards }}
+            };
+            PreloadConfigLine perandus_alert = PerandusLeague.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
+            if (perandus_alert != null && alerts.Add(perandus_alert) && text.Contains("Metadata/Chests/PerandusChests/PerandusChest.ao") && Settings.PerandusLeague)
+            {
+                alerts.Add(perandus_alert);
                 return;
             }
 
@@ -150,8 +236,12 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Monsters/Daemon/BossDaemonBarrelSpidersBoss", new PreloadConfigLine { Text = "Unique Strongbox III", FastColor = () => Settings.MalachaiStrongbox }}
             };
             PreloadConfigLine strongboxes_alert = Strongboxes.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (strongboxes_alert != null && Settings.Strongboxes) { alerts.Add(strongboxes_alert); return; }
-            
+            if (strongboxes_alert != null && alerts.Add(strongboxes_alert) && Settings.Strongboxes)
+            {
+                alerts.Add(strongboxes_alert);
+                return;
+            }
+
             Dictionary<string, PreloadConfigLine> Masters = new Dictionary<string, PreloadConfigLine>
             {
                 {"Wild/StrDexInt", new PreloadConfigLine { Text = "Zana, Master Cartographer", FastColor = () => Settings.MasterZana }},
@@ -178,7 +268,11 @@ namespace PoeHUD.Hud.Preload
                 {"MasterStrDex15", new PreloadConfigLine { Text = "Vagan, Weaponmaster (CastOnHit)", FastColor = () => Settings.MasterVagan }}
             };
             PreloadConfigLine masters_alert = Masters.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (masters_alert != null && Settings.Masters) { alerts.Add(masters_alert); return; }
+            if (masters_alert != null && alerts.Add(masters_alert) && Settings.Masters)
+            {
+                alerts.Add(masters_alert);
+                return;
+            }
 
             Dictionary<string, PreloadConfigLine> Exiles = new Dictionary<string, PreloadConfigLine>
             {
@@ -206,7 +300,11 @@ namespace PoeHUD.Hud.Preload
                 {"ExileScion3", new PreloadConfigLine { Text = "Exile Lael Furia", FastColor = () => Settings.LaelFuria }}
             };
             PreloadConfigLine exiles_alert = Exiles.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (exiles_alert != null && Settings.Exiles) { alerts.Add(exiles_alert); return; }
+            if (exiles_alert != null && alerts.Add(exiles_alert) && Settings.Exiles)
+            {
+                alerts.Add(exiles_alert);
+                return;
+            }
         }
     }
 }

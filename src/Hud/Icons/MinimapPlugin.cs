@@ -23,7 +23,7 @@ namespace PoeHUD.Hud.Icons
 
         public override void Render()
         {
-            if (!Settings.Enable || !GameController.InGame || !Settings.IconsOnMinimap)
+            if (!Settings.Enable || !GameController.InGame || !Settings.IconsOnMinimap || GameController.Area.CurrentArea.IsTown || GameController.Area.CurrentArea.IsHideout)
             {
                 return;
             }

@@ -61,7 +61,7 @@ namespace PoeHUD.Hud.Trackers
 
         public override void Render()
         {
-            if (!Settings.Enable || !Settings.ShowText) { return; }
+            if (!Settings.Enable || !Settings.ShowText || GameController.Area.CurrentArea.IsTown || GameController.Area.CurrentArea.IsHideout) { return; }
 
             RectangleF rect = GameController.Window.GetWindowRectangle();
             float xPos = rect.Width * Settings.TextPositionX * 0.01f + rect.X;

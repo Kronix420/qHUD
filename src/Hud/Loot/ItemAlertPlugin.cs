@@ -61,7 +61,7 @@ namespace PoeHUD.Hud.Loot
         public override void Render()
         {
             base.Render();
-            if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
+            if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10) || GameController.Area.CurrentArea.IsTown || GameController.Area.CurrentArea.IsHideout) { return; }
 
             if (Settings.Enable)
             {
@@ -112,30 +112,6 @@ namespace PoeHUD.Hud.Loot
             return position;
         }
 
-        //protected override void OnEntityAdded(EntityWrapper entity)
-        //{
-        //    if (Settings.Enable && entity != null && !GameController.Area.CurrentArea.IsTown
-        //        && !currentAlerts.ContainsKey(entity) && entity.HasComponent<WorldItem>())
-        //    {
-        //        IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
-        //        try
-        //        {
-        //            if (Settings.Alternative && !string.IsNullOrEmpty(Settings.FilePath))
-        //            {
-        //                var result = visitor.Visit(item);
-        //                if (result != null)
-        //                {
-        //                    AlertDrawStyle drawStyle = result;
-        //                    PrepareForDrawingAndPlaySound(entity, drawStyle);
-        //                }
-        //            }
-        //        }
-        //        catch
-        //        {
-        //            //initItem threw an exception because the item.Path was an empty string. This catch just prevents a crash, it doesn't fix the root of the problem.
-        //        }
-        //    }
-        //}
         protected override void OnEntityAdded(EntityWrapper entity)
         {
             if (!Settings.Enable || entity == null || currentAlerts.ContainsKey(entity) || !entity.HasComponent<WorldItem>()) return;

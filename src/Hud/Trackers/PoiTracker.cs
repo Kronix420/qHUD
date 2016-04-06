@@ -53,12 +53,12 @@ namespace PoeHUD.Hud.Trackers
 
         public override void Render()
         {
-            if (!Settings.Enable) { }
+            if (!Settings.Enable || GameController.Area.CurrentArea.IsTown || GameController.Area.CurrentArea.IsHideout) { }
         }
 
         protected override void OnEntityAdded(EntityWrapper entity)
         {
-            if (!Settings.Enable) { return; }
+            if (!Settings.Enable || GameController.Area.CurrentArea.IsTown || GameController.Area.CurrentArea.IsHideout) { return; }
 
             MapIcon icon = GetMapIcon(entity);
             if (null != icon)

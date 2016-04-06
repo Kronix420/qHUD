@@ -6,6 +6,7 @@ using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PoeHUD.Hud.UI;
 
 namespace PoeHUD.Hud.ItemTooltips
 {
@@ -18,7 +19,7 @@ namespace PoeHUD.Hud.ItemTooltips
             string name = mod.RawName;
             Record = fs.Mods.records[name];
             AffixType = Record.AffixType;
-            AffixText = String.IsNullOrEmpty(Record.UserFriendlyName) ? Record.Key : Record.UserFriendlyName;
+            AffixText = string.IsNullOrEmpty(Record.UserFriendlyName) ? Record.Key : Record.UserFriendlyName;
             IsCrafted = Record.Domain == 10;
             StatValue = new[] { mod.Value1, mod.Value2, mod.Value3, mod.Value4 };
             Tier = -1;
@@ -50,14 +51,13 @@ namespace PoeHUD.Hud.ItemTooltips
                     }
                 }
             }
-
             double hue = totalTiers == 1 ? 180 : 120 - Math.Min(subOptimalTierDistance, 3) * 40;
             Color = ColorUtils.ColorFromHsv(hue, totalTiers == 1 ? 0 : 1, 1);
         }
 
         public ModsDat.ModType AffixType { get; private set; }
         public bool IsCrafted { get; private set; }
-        public String AffixText { get; private set; }
+        public string AffixText { get; private set; }
         public Color Color { get; private set; }
         public ModsDat.ModRecord Record { get; }
         public int[] StatValue { get; private set; }
