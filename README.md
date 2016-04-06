@@ -1,7 +1,7 @@
-PoeHud light version - Currently DETECTED, use it on your own risk!
+PoEHUD slim version - Currently DETECTED, use it on your own risk!
 ======
 
-This is an light version of PoeHud...some features have been removed.
+Slim version of PoEHUD...some features have been removed.
 
 ### Keyboard Info
 
