@@ -54,7 +54,7 @@ namespace PoeHUD.Hud.Preload
                 int maxWidth = 0;
                 foreach (Size2 size in alerts
                     .Select(preloadConfigLine => Graphics
-                        .DrawText(preloadConfigLine.Text, Settings.TextSize, position + 240, preloadConfigLine.FastColor?
+                        .DrawText(preloadConfigLine.Text, Settings.TextSize, position, preloadConfigLine.FastColor?
                             .Invoke() ?? preloadConfigLine.Color ?? Settings.DefaultTextColor, FontDrawFlags.Right)))
                 {
                     maxWidth = Math.Max(size.Width, maxWidth);
