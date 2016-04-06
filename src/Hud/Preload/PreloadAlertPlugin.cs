@@ -17,6 +17,7 @@ namespace PoeHUD.Hud.Preload
         private readonly HashSet<PreloadConfigLine> alerts;
         private readonly Dictionary<string, PreloadConfigLine> alertStrings;
         private int lastCount, lastAddress;
+        private bool unknownChest;
         public static Color hasCorruptedArea { get; set; }
 
         public PreloadAlertPlugin(GameController gameController, Graphics graphics, PreloadAlertSettings settings)
@@ -33,8 +34,7 @@ namespace PoeHUD.Hud.Preload
             {
                 var preloadAlerConfigLine = new PreloadConfigLine
                 {
-                    Text = line[1],
-                    Color = line.ConfigColorValueExtractor(2)
+                    Text = line[1], Color = line.ConfigColorValueExtractor(2)
                 };
                 return preloadAlerConfigLine;
             });
@@ -77,12 +77,12 @@ namespace PoeHUD.Hud.Preload
 
         private void OnAreaChange(AreaController area)
         {
-            alerts.Clear(); lastCount = 0; lastAddress = 0;
+            alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false;
         }
 
         private void Parse()
         {
-            if (WinApi.IsKeyDown(Keys.F5)) { alerts.Clear(); lastCount = 0; lastAddress = 0; }
+            if (WinApi.IsKeyDown(Keys.F5)) { alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false; }
             Memory memory = GameController.Memory;
             hasCorruptedArea = Settings.AreaTextColor;
             int pFileRoot = memory.ReadInt(memory.AddressOfProcess + memory.offsets.FileRoot);
@@ -208,10 +208,19 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8", new PreloadConfigLine { Text = "Meritania, Vault Binder", FastColor = () => Settings.PerandusGuards }}
             };
             PreloadConfigLine perandus_alert = PerandusLeague.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (perandus_alert != null && alerts.Add(perandus_alert) && text.Contains("Metadata/Chests/PerandusChests/PerandusChest.ao") && Settings.PerandusLeague)
+            if (perandus_alert != null && Settings.PerandusLeague)
             {
+                unknownChest = true;
+                if (alerts.Contains(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard }))
+                {
+                    alerts.Remove(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard });
+                }
                 alerts.Add(perandus_alert);
                 return;
+            }
+            if (Settings.PerandusLeague && !unknownChest && text.StartsWith("Metadata/Chests/PerandusChests/PerandusChest.ao"))
+            {
+                alerts.Add(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard });
             }
 
             Dictionary<string, PreloadConfigLine> Strongboxes = new Dictionary<string, PreloadConfigLine>
