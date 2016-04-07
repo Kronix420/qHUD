@@ -208,7 +208,7 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8", new PreloadConfigLine { Text = "Meritania, Vault Binder", FastColor = () => Settings.PerandusGuards }}
             };
             PreloadConfigLine perandus_alert = PerandusLeague.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (perandus_alert != null && Settings.PerandusLeague)
+            if (perandus_alert != null && alerts.Add(perandus_alert) && Settings.PerandusLeague)
             {
                 unknownChest = true;
                 if (alerts.Contains(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard }))
