@@ -34,14 +34,14 @@ namespace PoeHUD.Hud.Area
             var xpReceiving = levelXpPenalty * partyXpPenalty;
             var titleArea = $"{areaName}  *{xpReceiving:p0}";
             var areaNameSize = Graphics.MeasureText(titleArea, Settings.TextSize);
-            Color hasCorruptedArea = PreloadAlertPlugin.hasCorruptedArea;
             if (!showInTown)
             {
                 float boxHeight = areaNameSize.Height;
                 float boxWidth = MathHepler.Max(areaNameSize.Width);
                 var bounds = new RectangleF(position.X - 134 - boxWidth, position.Y - 5, boxWidth + 140, boxHeight + 12);
 
-                Graphics.DrawText(titleArea, Settings.TextSize, new Vector2(bounds.X + 134, position.Y), hasCorruptedArea);
+                Graphics.DrawText(titleArea, Settings.TextSize, new Vector2(bounds.X + 134, position.Y),
+                    PreloadAlertPlugin.corruptedArea ? Settings.CorruptedTitle : Settings.AreaTextColor);
                 Graphics.DrawImage("preload-start.png", bounds, Settings.BackgroundColor);
                 Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
                 if (Settings.ShowLatency)

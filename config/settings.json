@@ -233,7 +233,6 @@
       "Min": 0,
       "Max": 100
     },
-    "CorruptedTitle": true,
     "Masters": true,
     "Exiles": true,
     "Labyrinth": true,
@@ -304,7 +303,8 @@
     },
     "BackgroundColor": "000000ff",
     "AreaTextColor": "8cc8ffff",
-    "LatencyTextColor": "dcbe82ff"
+    "LatencyTextColor": "dcbe82ff",
+    "CorruptedTitle": "d01f90ff"
   },
   "Health bar": {
     "Enable": false,

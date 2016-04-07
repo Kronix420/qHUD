@@ -18,7 +18,7 @@ namespace PoeHUD.Hud.Preload
         private readonly Dictionary<string, PreloadConfigLine> alertStrings;
         private int lastCount, lastAddress;
         private bool unknownChest;
-        public static Color hasCorruptedArea { get; set; }
+        public static bool corruptedArea;
 
         public PreloadAlertPlugin(GameController gameController, Graphics graphics, PreloadAlertSettings settings)
             : base(gameController, graphics, settings)
@@ -77,14 +77,13 @@ namespace PoeHUD.Hud.Preload
 
         private void OnAreaChange(AreaController area)
         {
-            alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false;
+            alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false; corruptedArea = false;
         }
 
         private void Parse()
         {
-            if (WinApi.IsKeyDown(Keys.F5)) { alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false; }
+            if (WinApi.IsKeyDown(Keys.F5)) { alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false; corruptedArea = false; }
             Memory memory = GameController.Memory;
-            hasCorruptedArea = Settings.AreaTextColor;
             int pFileRoot = memory.ReadInt(memory.AddressOfProcess + memory.offsets.FileRoot);
             int count = memory.ReadInt(pFileRoot + 0xC);
             if (count > lastCount)
@@ -108,20 +107,14 @@ namespace PoeHUD.Hud.Preload
             lastCount = count;
         }
 
-        private void CheckForPreload(string text)
+        public void CheckForPreload(string text)
         {
             if (alertStrings.ContainsKey(text)) { alerts.Add(alertStrings[text]); return; }
 
-            if (text.Contains("human_heart") || text.Contains("Demonic_NoRain.ogg"))
-            {
-                if (Settings.CorruptedTitle) { hasCorruptedArea = Settings.HasCorruptedArea; }
-                else { alerts.Add(new PreloadConfigLine { Text = "Corrupted Area", FastColor = () => Settings.HasCorruptedArea }); }
-                return;
-            }
+            if (text.Contains("human_heart") || text.Contains("Demonic_NoRain.ogg")) { corruptedArea = true; }
 
             Dictionary<string, PreloadConfigLine> Labyrinth = new Dictionary<string, PreloadConfigLine>
             {
-
                 {"Metadata/Chests/Labyrinth/LabyrinthTrinketChest", new PreloadConfigLine { Text = "Decorative Chest", FastColor = () => Settings.LabyrinthChests }},
                 {"Metadata/Chests/Labyrinth/LabyrinthGenericChestNoFlag", new PreloadConfigLine { Text = "Hidden Coffer", FastColor = () => Settings.LabyrinthChests }},
                 {"Metadata/Chests/Labyrinth/LabyrinthGenericChestTier0", new PreloadConfigLine { Text = "Hidden Coffer", FastColor = () => Settings.LabyrinthChests }},

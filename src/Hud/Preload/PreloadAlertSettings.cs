@@ -13,12 +13,10 @@ namespace PoeHUD.Hud.Preload
             Labyrinth = true;
             Strongboxes = true;
             PerandusLeague = true;
-            CorruptedTitle = true;
             TextSize = new RangeNode<int>(16, 10, 50);
             BackgroundColor = new ColorBGRA(0, 0, 0, 255);
             DefaultTextColor = new ColorBGRA(210, 210, 210, 255);
             AreaTextColor = new ColorBGRA(150, 200, 250, 255);
-            HasCorruptedArea = new ColorBGRA(208, 31, 144, 255);
 
             CadiroTrader = new ColorBGRA(255, 128, 0, 255);
             PerandusGuards = new ColorBGRA(255, 215, 0, 255);
@@ -120,7 +118,6 @@ namespace PoeHUD.Hud.Preload
         public ColorNode LabyrinthChests { get; set; }
         public RangeNode<int> TextPositionX { get; set; }
         public RangeNode<int> TextPositionY { get; set; }
-        public ToggleNode CorruptedTitle { get; set; }
         public ToggleNode Masters { get; set; }
         public ToggleNode Exiles { get; set; }
         public ToggleNode Labyrinth { get; set; }
