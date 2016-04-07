@@ -82,7 +82,10 @@ namespace PoeHUD.Hud.Preload
 
         private void Parse()
         {
-            if (WinApi.IsKeyDown(Keys.F5)) { alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false; corruptedArea = false; }
+            if (WinApi.IsKeyDown(Keys.F5))
+            {
+                alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false;
+            }
             Memory memory = GameController.Memory;
             int pFileRoot = memory.ReadInt(memory.AddressOfProcess + memory.offsets.FileRoot);
             int count = memory.ReadInt(pFileRoot + 0xC);
@@ -95,7 +98,7 @@ namespace PoeHUD.Hud.Preload
                     listIterator = memory.ReadInt(listIterator);
                     if (listIterator == 0)
                     {
-                        alerts.Clear(); lastCount = 0; lastAddress = 0; return;
+                        alerts.Clear(); lastCount = 0; lastAddress = 0;
                     }
                     lastAddress = listIterator;
                     if (memory.ReadInt(listIterator + 0x8) == 0 || memory.ReadInt(listIterator + 0xC, 0x24) != areaChangeCount) continue;
@@ -107,11 +110,10 @@ namespace PoeHUD.Hud.Preload
             lastCount = count;
         }
 
-        public void CheckForPreload(string text)
+        private void CheckForPreload(string text)
         {
+            if (text.Contains("human_heart")) { corruptedArea = true; }
             if (alertStrings.ContainsKey(text)) { alerts.Add(alertStrings[text]); return; }
-
-            if (text.Contains("human_heart") || text.Contains("Demonic_NoRain.ogg")) { corruptedArea = true; }
 
             Dictionary<string, PreloadConfigLine> Labyrinth = new Dictionary<string, PreloadConfigLine>
             {
@@ -136,11 +138,7 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Chests/Labyrinth/LabyrinthSpecificUnique", new PreloadConfigLine { Text = "Intricate Locker", FastColor = () => Settings.LabyrinthChests }}
             };
             PreloadConfigLine labyrinth_alert = Labyrinth.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (labyrinth_alert != null && alerts.Add(labyrinth_alert) && Settings.Labyrinth)
-            {
-                alerts.Add(labyrinth_alert);
-                return;
-            }
+            if (labyrinth_alert != null && alerts.Add(labyrinth_alert) && Settings.Labyrinth) { alerts.Add(labyrinth_alert); return; }
 
             Dictionary<string, PreloadConfigLine> PerandusLeague = new Dictionary<string, PreloadConfigLine>
             {
@@ -208,8 +206,7 @@ namespace PoeHUD.Hud.Preload
                 {
                     alerts.Remove(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard });
                 }
-                alerts.Add(perandus_alert);
-                return;
+                alerts.Add(perandus_alert); return;
             }
             if (Settings.PerandusLeague && !unknownChest && text.StartsWith("Metadata/Chests/PerandusChests/PerandusChest.ao"))
             {
@@ -238,11 +235,7 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Monsters/Daemon/BossDaemonBarrelSpidersBoss", new PreloadConfigLine { Text = "Unique Strongbox III", FastColor = () => Settings.MalachaiStrongbox }}
             };
             PreloadConfigLine strongboxes_alert = Strongboxes.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (strongboxes_alert != null && alerts.Add(strongboxes_alert) && Settings.Strongboxes)
-            {
-                alerts.Add(strongboxes_alert);
-                return;
-            }
+            if (strongboxes_alert != null && alerts.Add(strongboxes_alert) && Settings.Strongboxes) { alerts.Add(strongboxes_alert); return; }
 
             Dictionary<string, PreloadConfigLine> Masters = new Dictionary<string, PreloadConfigLine>
             {
@@ -270,11 +263,7 @@ namespace PoeHUD.Hud.Preload
                 {"MasterStrDex15", new PreloadConfigLine { Text = "Vagan, Weaponmaster (CastOnHit)", FastColor = () => Settings.MasterVagan }}
             };
             PreloadConfigLine masters_alert = Masters.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (masters_alert != null && alerts.Add(masters_alert) && Settings.Masters)
-            {
-                alerts.Add(masters_alert);
-                return;
-            }
+            if (masters_alert != null && alerts.Add(masters_alert) && Settings.Masters) { alerts.Add(masters_alert); return; }
 
             Dictionary<string, PreloadConfigLine> Exiles = new Dictionary<string, PreloadConfigLine>
             {
@@ -302,11 +291,7 @@ namespace PoeHUD.Hud.Preload
                 {"ExileScion3", new PreloadConfigLine { Text = "Exile Lael Furia", FastColor = () => Settings.LaelFuria }}
             };
             PreloadConfigLine exiles_alert = Exiles.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (exiles_alert != null && alerts.Add(exiles_alert) && Settings.Exiles)
-            {
-                alerts.Add(exiles_alert);
-                return;
-            }
+            if (exiles_alert != null && alerts.Add(exiles_alert) && Settings.Exiles) { alerts.Add(exiles_alert); return; }
         }
     }
 }
