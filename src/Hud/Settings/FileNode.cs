@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PoeHUD.Hud.Settings
+namespace qHUD.Hud.Settings
 {
     public sealed class FileNode
     {

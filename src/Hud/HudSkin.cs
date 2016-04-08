@@ -1,6 +1,6 @@
 using SharpDX;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public static class HudSkin
     {

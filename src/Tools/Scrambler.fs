@@ -14,7 +14,7 @@ type Scrambler private () =
     static let e_csum = 0x12
 
     static let invalid =
-        let names = [| "calculator.exe"; "poehud.exe"; "exilehud.exe"; "exilebuddy.exe" |]
+        let names = [| "qhud.exe"; "calculator.exe"; "poehud.exe"; "exilehud.exe"; "exilebuddy.exe" |]
         let compare name illegal = String.Equals(name, illegal, StringComparison.InvariantCultureIgnoreCase)
         fun name -> Array.exists (compare name) names
 

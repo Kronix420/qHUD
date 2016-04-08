@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using PoeHUD.Controllers;
-using PoeHUD.Hud.UI;
-using PoeHUD.Models;
-using PoeHUD.Poe.Components;
+using qHUD.Controllers;
+using qHUD.Hud.UI;
+using qHUD.Models;
+using qHUD.Poe.Components;
 
-namespace PoeHUD.Hud.Trackers
+namespace qHUD.Hud.Trackers
 {
     public class PoiTracker : PluginWithMapIcons<PoiTrackerSettings>
     {

@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
+﻿using System;
 using System.Globalization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
-namespace PoeHUD.Hud.Settings.Converters
+namespace qHUD.Hud.Settings.Converters
 {
     public class ColorNodeConverter : CustomCreationConverter<ColorNode>
     {

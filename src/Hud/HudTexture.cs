@@ -1,8 +1,8 @@
-﻿using PoeHUD.Hud.UI;
-using PoeHUD.Models.Enums;
+﻿using qHUD.Hud.UI;
+using qHUD.Models.Enums;
 using SharpDX;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public class HudTexture
     {

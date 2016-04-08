@@ -1,16 +1,16 @@
-using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Hud;
-using PoeHUD.Poe;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Hud;
+using qHUD.Poe;
 using Tools;
 
-namespace PoeHUD
+namespace qHUD
 {
     public class Program
     {

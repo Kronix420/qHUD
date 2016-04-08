@@ -1,30 +1,30 @@
-﻿using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.Area;
-using PoeHUD.Hud.Health;
-using PoeHUD.Hud.Icons;
-using PoeHUD.Hud.Interfaces;
-using PoeHUD.Hud.ItemTooltips;
-using PoeHUD.Hud.Loot;
-using PoeHUD.Hud.Menu;
-using PoeHUD.Hud.Preload;
-using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.Trackers;
-using PoeHUD.Models.Enums;
-using PoeHUD.Poe;
-using SharpDX;
-using SharpDX.Windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.Area;
+using qHUD.Hud.Health;
+using qHUD.Hud.Icons;
+using qHUD.Hud.Interfaces;
+using qHUD.Hud.ItemTooltips;
+using qHUD.Hud.Loot;
+using qHUD.Hud.Menu;
+using qHUD.Hud.Preload;
+using qHUD.Hud.Settings;
+using qHUD.Hud.Trackers;
+using qHUD.Models.Enums;
+using qHUD.Poe;
+using SharpDX;
+using SharpDX.Windows;
 using Color = System.Drawing.Color;
-using Graphics2D = PoeHUD.Hud.UI.Graphics;
+using Graphics2D = qHUD.Hud.UI.Graphics;
 using Rectangle = System.Drawing.Rectangle;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     internal sealed class ExternalOverlay : RenderForm
     {

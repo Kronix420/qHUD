@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Media;
 
-namespace PoeHUD.Framework.Helpers
+namespace qHUD.Framework.Helpers
 {
     public static class SoundHelper
     {

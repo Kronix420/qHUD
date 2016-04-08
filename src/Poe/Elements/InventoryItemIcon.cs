@@ -1,7 +1,7 @@
-using PoeHUD.Poe.Components;
 using System;
+using qHUD.Poe.Components;
 
-namespace PoeHUD.Poe.Elements
+namespace qHUD.Poe.Elements
 {
     public class InventoryItemIcon : Element
     {

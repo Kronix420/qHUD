@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PoeHUD.Poe.RemoteMemoryObjects
+namespace qHUD.Poe.RemoteMemoryObjects
 {
     public class Inventory : RemoteMemoryObject
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace PoeHUD.Models.Enums
+namespace qHUD.Models.Enums
 {
     [Obsolete]
     public enum ItemType

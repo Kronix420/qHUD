@@ -1,7 +1,7 @@
-using PoeHUD.Poe.Elements;
 using System.Collections.Generic;
+using qHUD.Poe.Elements;
 
-namespace PoeHUD.Poe.RemoteMemoryObjects
+namespace qHUD.Poe.RemoteMemoryObjects
 {
     public class IngameUIElements : RemoteMemoryObject
     {

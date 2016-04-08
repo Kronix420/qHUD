@@ -1,24 +1,23 @@
-using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.UI;
-using PoeHUD.Models;
-using SharpDX;
-using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.UI;
+using qHUD.Models;
+using SharpDX;
+using SharpDX.Direct3D9;
 
-namespace PoeHUD.Hud.Preload
+namespace qHUD.Hud.Preload
 {
     public class PreloadAlertPlugin : SizedPlugin<PreloadAlertSettings>
     {
         private readonly HashSet<PreloadConfigLine> alerts;
         private readonly Dictionary<string, PreloadConfigLine> alertStrings;
         private int lastCount, lastAddress;
-        private bool unknownChest;
-        public static bool corruptedArea;
+        public static bool corruptedArea, unknown;
 
         public PreloadAlertPlugin(GameController gameController, Graphics graphics, PreloadAlertSettings settings)
             : base(gameController, graphics, settings)
@@ -35,17 +34,16 @@ namespace PoeHUD.Hud.Preload
                 var preloadAlerConfigLine = new PreloadConfigLine
                 {
                     Text = line[1], Color = line.ConfigColorValueExtractor(2)
-                };
-                return preloadAlerConfigLine;
+                }; return preloadAlerConfigLine;
             });
         }
 
         public override void Render()
         {
-            try
-            {
+            try {
                 base.Render();
-                if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
+                if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)
+                    || GameController.Area.CurrentArea.IsTown || GameController.Area.CurrentArea.IsHideout) { return; }
                 if (!GameController.Area.CurrentArea.IsTown || !GameController.Area.CurrentArea.IsHideout) { Parse(); }
 
                 if (alerts.Count <= 0) return;
@@ -67,25 +65,16 @@ namespace PoeHUD.Hud.Preload
                 Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
                 Size = bounds.Size;
                 Margin = new Vector2(0, 5);
+            } catch {
+                // ignored
             }
-            catch
-            {
-                // do nothing
-            }
-            
         }
 
-        private void OnAreaChange(AreaController area)
-        {
-            alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false; corruptedArea = false;
-        }
-
+        private void ResetArea() { alerts.Clear(); lastCount = 0; lastAddress = 0; unknown = false; corruptedArea = false; }
+        private void OnAreaChange(AreaController area) { ResetArea(); }
         private void Parse()
         {
-            if (WinApi.IsKeyDown(Keys.F5))
-            {
-                alerts.Clear(); lastCount = 0; lastAddress = 0; unknownChest = false;
-            }
+            if (WinApi.IsKeyDown(Keys.F5)) { ResetArea(); }
             Memory memory = GameController.Memory;
             int pFileRoot = memory.ReadInt(memory.AddressOfProcess + memory.offsets.FileRoot);
             int count = memory.ReadInt(pFileRoot + 0xC);
@@ -96,23 +85,21 @@ namespace PoeHUD.Hud.Preload
                 for (int i = 0; i < count; i++)
                 {
                     listIterator = memory.ReadInt(listIterator);
-                    if (listIterator == 0)
-                    {
-                        alerts.Clear(); lastCount = 0; lastAddress = 0;
-                    }
+                    if (listIterator == 0) { ResetArea(); return; }
                     lastAddress = listIterator;
                     if (memory.ReadInt(listIterator + 0x8) == 0 || memory.ReadInt(listIterator + 0xC, 0x24) != areaChangeCount) continue;
                     string text = memory.ReadStringU(memory.ReadInt(listIterator + 8));
                     if (text.Contains('@')) { text = text.Split('@')[0]; }
-                    CheckForPreload(text);
-                }
-            }
-            lastCount = count;
+                    CheckForPreload(text); }
+            } lastCount = count;
         }
 
-        private void CheckForPreload(string text)
+        public void CheckForPreload(string text)
         {
-            if (text.Contains("human_heart")) { corruptedArea = true; }
+            if (text.StartsWith("Metadata/Terrain/Doodads/vaal_sidearea_effects/soulcoaster.ao"))
+            {
+                corruptedArea = true; return;
+            }
             if (alertStrings.ContainsKey(text)) { alerts.Add(alertStrings[text]); return; }
 
             Dictionary<string, PreloadConfigLine> Labyrinth = new Dictionary<string, PreloadConfigLine>
@@ -162,53 +149,20 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Chests/PerandusChests/PerandusManorMapsChest", new PreloadConfigLine { Text = "Cadiro's Archive", FastColor = () => Settings.PerandusManorMapsChest }},
                 {"Metadata/Chests/PerandusChests/PerandusManorJewelryChest", new PreloadConfigLine { Text = "Cadiro's Jewellery Box", FastColor = () => Settings.PerandusManorJewelryChest }},
                 {"Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest", new PreloadConfigLine { Text = "Cadiro's Catalogue", FastColor = () => Settings.PerandusManorDivinationCardsChest }},
-                {"Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest", new PreloadConfigLine { Text = "Grand Perandus Vault", FastColor = () => Settings.PerandusManorLostTreasureChest }},
+                {"Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest", new PreloadConfigLine { Text = "Grand Perandus Vault", FastColor = () => Settings.PerandusManorLostTreasureChest }}
 
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss1", new PreloadConfigLine { Text = "Platinia, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss2", new PreloadConfigLine { Text = "Auriot, Prospero's Furnace Guardian", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss3", new PreloadConfigLine { Text = "Rhodion, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss4", new PreloadConfigLine { Text = "Osmea, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss4Clone", new PreloadConfigLine { Text = "Osmea, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss5", new PreloadConfigLine { Text = "Pallias, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss6", new PreloadConfigLine { Text = "Argient, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardMapBoss7", new PreloadConfigLine { Text = "Rheniot, Servant of Prospero", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant1", new PreloadConfigLine { Text = "Junith Perandus, Keeper of Vaults", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant2", new PreloadConfigLine { Text = "Tantalo Perandus, Seller of Secrets", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant3", new PreloadConfigLine { Text = "Actaeo Perandus, Master of Beasts", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant4", new PreloadConfigLine { Text = "Vitorica Perandus, Maker of Marvels", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant4Clone", new PreloadConfigLine { Text = "Vitorica Perandus, Maker of Marvels", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant5", new PreloadConfigLine { Text = "Stasius Perandus, Merchant of Corpses", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant6", new PreloadConfigLine { Text = "Darsia Perandus, Collector of Debts", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardLieutenant7", new PreloadConfigLine { Text = "Milo Perandus, Handler of Swords", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardBasic1", new PreloadConfigLine { Text = "Celona, Vault Sentry", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardBasic2", new PreloadConfigLine { Text = "Hortus, Knee Breaker", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardBasic3", new PreloadConfigLine { Text = "Kuto, Hired Muscle", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardBasic4", new PreloadConfigLine { Text = "Luthis, Bounty Hunter", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardBasic5", new PreloadConfigLine { Text = "Belatra, Hired Assassin", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSupport1", new PreloadConfigLine { Text = "Liana, Indebted Peasant", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSupport2", new PreloadConfigLine { Text = "Marius, Indebted Smuggler", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSupport3", new PreloadConfigLine { Text = "Vera, Indebted Aristocrat", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSupport4", new PreloadConfigLine { Text = "Percia, Indebted Poacher", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss1", new PreloadConfigLine { Text = "Sutrus, Vault Binder", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss2", new PreloadConfigLine { Text = "Otairo, Vault Binder", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss3", new PreloadConfigLine { Text = "Eiphirio, Vault Binder", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss4", new PreloadConfigLine { Text = "Artensia, Vault Binder", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss5_", new PreloadConfigLine { Text = "Anaveli, Vault Binder", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss6", new PreloadConfigLine { Text = "Rothus, Vault Binder", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss7", new PreloadConfigLine { Text = "Arinea, Vault Binder", FastColor = () => Settings.PerandusGuards }},
-                {"Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8", new PreloadConfigLine { Text = "Meritania, Vault Binder", FastColor = () => Settings.PerandusGuards }}
             };
             PreloadConfigLine perandus_alert = PerandusLeague.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (perandus_alert != null && alerts.Add(perandus_alert) && Settings.PerandusLeague)
+            if (perandus_alert != null)
             {
-                unknownChest = true;
+                unknown = true;
                 if (alerts.Contains(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard }))
                 {
                     alerts.Remove(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard });
                 }
                 alerts.Add(perandus_alert); return;
             }
-            if (Settings.PerandusLeague && !unknownChest && text.StartsWith("Metadata/Chests/PerandusChests/PerandusChest.ao"))
+            if (text.Contains("PerandusChests") && !unknown)
             {
                 alerts.Add(new PreloadConfigLine { Text = "Identifying chests...", FastColor = () => Settings.PerandusChestStandard });
             }
@@ -235,7 +189,19 @@ namespace PoeHUD.Hud.Preload
                 {"Metadata/Monsters/Daemon/BossDaemonBarrelSpidersBoss", new PreloadConfigLine { Text = "Unique Strongbox III", FastColor = () => Settings.MalachaiStrongbox }}
             };
             PreloadConfigLine strongboxes_alert = Strongboxes.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (strongboxes_alert != null && alerts.Add(strongboxes_alert) && Settings.Strongboxes) { alerts.Add(strongboxes_alert); return; }
+            if (strongboxes_alert != null)
+            {
+                unknown = true;
+                if (alerts.Contains(new PreloadConfigLine { Text = "Identifying strongboxes...", FastColor = () => Settings.SimpleStrongbox }))
+                {
+                    alerts.Remove(new PreloadConfigLine { Text = "Identifying strongboxes...", FastColor = () => Settings.SimpleStrongbox });
+                }
+                alerts.Add(strongboxes_alert); return;
+            }
+            if (text.Contains("StrongBoxes") && !unknown)
+            {
+                alerts.Add(new PreloadConfigLine { Text = "Identifying strongboxes...", FastColor = () => Settings.SimpleStrongbox });
+            }
 
             Dictionary<string, PreloadConfigLine> Masters = new Dictionary<string, PreloadConfigLine>
             {
@@ -260,38 +226,38 @@ namespace PoeHUD.Hud.Preload
                 {"MasterStrDex12", new PreloadConfigLine { Text = "Vagan, Weaponmaster (PhysSpells)", FastColor = () => Settings.MasterVagan }},
                 {"MasterStrDex13", new PreloadConfigLine { Text = "Vagan, Weaponmaster (Traps)", FastColor = () => Settings.MasterVagan }},
                 {"MasterStrDex14", new PreloadConfigLine { Text = "Vagan, Weaponmaster (RighteousFire)", FastColor = () => Settings.MasterVagan }},
-                {"MasterStrDex15", new PreloadConfigLine { Text = "Vagan, Weaponmaster (CastOnHit)", FastColor = () => Settings.MasterVagan }}
+                {"MasterStrDex15", new PreloadConfigLine { Text = "Vagan, Weaponmaster (CastOnHit)", FastColor = () => Settings.MasterVagan }},
             };
             PreloadConfigLine masters_alert = Masters.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (masters_alert != null && alerts.Add(masters_alert) && Settings.Masters) { alerts.Add(masters_alert); return; }
+            if (masters_alert != null) { alerts.Add(masters_alert); return; }
 
             Dictionary<string, PreloadConfigLine> Exiles = new Dictionary<string, PreloadConfigLine>
             {
-                {"ExileRanger1", new PreloadConfigLine { Text = "Exile Orra Greengate", FastColor = () => Settings.OrraGreengate }},
-                {"ExileRanger2", new PreloadConfigLine { Text = "Exile Thena Moga", FastColor = () => Settings.ThenaMoga }},
-                {"ExileRanger3", new PreloadConfigLine { Text = "Exile Antalie Napora", FastColor = () => Settings.AntalieNapora }},
-                {"ExileDuelist1", new PreloadConfigLine { Text = "Exile Torr Olgosso", FastColor = () => Settings.TorrOlgosso }},
-                {"ExileDuelist2", new PreloadConfigLine { Text = "Exile Armios Bell", FastColor = () => Settings.ArmiosBell }},
-                {"ExileDuelist4", new PreloadConfigLine { Text = "Exile Zacharie Desmarais", FastColor = () => Settings.ZacharieDesmarais }},
-                {"ExileWitch1", new PreloadConfigLine { Text = "Exile Minara Anenima", FastColor = () => Settings.MinaraAnenima }},
-                {"ExileWitch2", new PreloadConfigLine { Text = "Exile Igna Phoenix", FastColor = () => Settings.IgnaPhoenix }},
-                {"ExileMarauder1", new PreloadConfigLine { Text = "Exile Jonah Unchained", FastColor = () => Settings.JonahUnchained }},
-                {"ExileMarauder2", new PreloadConfigLine { Text = "Exile Damoi Tui", FastColor = () => Settings.DamoiTui }},
-                {"ExileMarauder3", new PreloadConfigLine { Text = "Exile Xandro Blooddrinker", FastColor = () => Settings.XandroBlooddrinker }},
-                {"ExileMarauder5", new PreloadConfigLine { Text = "Exile Vickas Giantbone", FastColor = () => Settings.VickasGiantbone }},
-                {"ExileTemplar1", new PreloadConfigLine { Text = "Exile Eoin Greyfur", FastColor = () => Settings.EoinGreyfur }},
-                {"ExileTemplar2", new PreloadConfigLine { Text = "Exile Tinevin Highdove", FastColor = () => Settings.TinevinHighdove }},
-                {"ExileTemplar4", new PreloadConfigLine { Text = "Exile Magnus Stonethorn", FastColor = () => Settings.MagnusStonethorn}},
-                {"ExileShadow1_", new PreloadConfigLine { Text = "Exile Ion Darkshroud", FastColor = () => Settings.IonDarkshroud}},
-                {"ExileShadow2", new PreloadConfigLine { Text = "Exile Ash Lessard", FastColor = () => Settings.AshLessard}},
-                {"ExileShadow4", new PreloadConfigLine { Text = "Exile Wilorin Demontamer", FastColor = () => Settings.WilorinDemontamer}},
-                {"ExileScion2", new PreloadConfigLine { Text = "Exile Augustina Solaria", FastColor = () => Settings.AugustinaSolaria}},
-                {"ExileWitch4", new PreloadConfigLine { Text = "Exile Dena Lorenni", FastColor = () => Settings.DenaLorenni }},
-                {"ExileScion4", new PreloadConfigLine { Text = "Exile Vanth Agiel", FastColor = () => Settings.VanthAgiel }},
-                {"ExileScion3", new PreloadConfigLine { Text = "Exile Lael Furia", FastColor = () => Settings.LaelFuria }}
+                {"Metadata/Monsters/Exiles/ExileRanger1", new PreloadConfigLine { Text = "Exile Orra Greengate", FastColor = () => Settings.OrraGreengate }},
+                {"Metadata/Monsters/Exiles/ExileRanger2", new PreloadConfigLine { Text = "Exile Thena Moga", FastColor = () => Settings.ThenaMoga }},
+                {"Metadata/Monsters/Exiles/ExileRanger3", new PreloadConfigLine { Text = "Exile Antalie Napora", FastColor = () => Settings.AntalieNapora }},
+                {"Metadata/Monsters/Exiles/ExileDuelist1", new PreloadConfigLine { Text = "Exile Torr Olgosso", FastColor = () => Settings.TorrOlgosso }},
+                {"Metadata/Monsters/Exiles/ExileDuelist2", new PreloadConfigLine { Text = "Exile Armios Bell", FastColor = () => Settings.ArmiosBell }},
+                {"Metadata/Monsters/Exiles/ExileDuelist4", new PreloadConfigLine { Text = "Exile Zacharie Desmarais", FastColor = () => Settings.ZacharieDesmarais }},
+                {"Metadata/Monsters/Exiles/ExileWitch1", new PreloadConfigLine { Text = "Exile Minara Anenima", FastColor = () => Settings.MinaraAnenima }},
+                {"Metadata/Monsters/Exiles/ExileWitch2", new PreloadConfigLine { Text = "Exile Igna Phoenix", FastColor = () => Settings.IgnaPhoenix }},
+                {"Metadata/Monsters/Exiles/ExileMarauder1", new PreloadConfigLine { Text = "Exile Jonah Unchained", FastColor = () => Settings.JonahUnchained }},
+                {"Metadata/Monsters/Exiles/ExileMarauder2", new PreloadConfigLine { Text = "Exile Damoi Tui", FastColor = () => Settings.DamoiTui }},
+                {"Metadata/Monsters/Exiles/ExileMarauder3", new PreloadConfigLine { Text = "Exile Xandro Blooddrinker", FastColor = () => Settings.XandroBlooddrinker }},
+                {"Metadata/Monsters/Exiles/ExileMarauder5", new PreloadConfigLine { Text = "Exile Vickas Giantbone", FastColor = () => Settings.VickasGiantbone }},
+                {"Metadata/Monsters/Exiles/ExileTemplar1", new PreloadConfigLine { Text = "Exile Eoin Greyfur", FastColor = () => Settings.EoinGreyfur }},
+                {"Metadata/Monsters/Exiles/ExileTemplar2", new PreloadConfigLine { Text = "Exile Tinevin Highdove", FastColor = () => Settings.TinevinHighdove }},
+                {"Metadata/Monsters/Exiles/ExileTemplar4", new PreloadConfigLine { Text = "Exile Magnus Stonethorn", FastColor = () => Settings.MagnusStonethorn}},
+                {"Metadata/Monsters/Exiles/ExileShadow1_", new PreloadConfigLine { Text = "Exile Ion Darkshroud", FastColor = () => Settings.IonDarkshroud}},
+                {"Metadata/Monsters/Exiles/ExileShadow2", new PreloadConfigLine { Text = "Exile Ash Lessard", FastColor = () => Settings.AshLessard}},
+                {"Metadata/Monsters/Exiles/ExileShadow4", new PreloadConfigLine { Text = "Exile Wilorin Demontamer", FastColor = () => Settings.WilorinDemontamer}},
+                {"Metadata/Monsters/Exiles/ExileScion2", new PreloadConfigLine { Text = "Exile Augustina Solaria", FastColor = () => Settings.AugustinaSolaria}},
+                {"Metadata/Monsters/Exiles/ExileWitch4", new PreloadConfigLine { Text = "Exile Dena Lorenni", FastColor = () => Settings.DenaLorenni }},
+                {"Metadata/Monsters/Exiles/ExileScion4", new PreloadConfigLine { Text = "Exile Vanth Agiel", FastColor = () => Settings.VanthAgiel }},
+                {"Metadata/Monsters/Exiles/ExileScion3", new PreloadConfigLine { Text = "Exile Lael Furia", FastColor = () => Settings.LaelFuria }}
             };
-            PreloadConfigLine exiles_alert = Exiles.Where(kv => text.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
-            if (exiles_alert != null && alerts.Add(exiles_alert) && Settings.Exiles) { alerts.Add(exiles_alert); return; }
+            PreloadConfigLine exiles_alert = Exiles.Where(kv => text.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase)).Select(kv => kv.Value).FirstOrDefault();
+            if (exiles_alert != null) { alerts.Add(exiles_alert); return; }
         }
     }
 }

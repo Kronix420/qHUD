@@ -1,7 +1,7 @@
-﻿using PoeHUD.Hud.Settings;
+﻿using qHUD.Hud.Settings;
 using SharpDX;
 
-namespace PoeHUD.Hud.Area
+namespace qHUD.Hud.Area
 {
     public sealed class AreaSettings : SettingsBase
     {

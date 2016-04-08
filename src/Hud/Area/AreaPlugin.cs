@@ -1,15 +1,15 @@
-﻿using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.Preload;
-using PoeHUD.Hud.UI;
-using PoeHUD.Poe.Components;
-using SharpDX;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.Preload;
+using qHUD.Hud.UI;
+using qHUD.Poe.Components;
+using SharpDX;
 
-namespace PoeHUD.Hud.Area
+namespace qHUD.Hud.Area
 {
     public class AreaPlugin : SizedPlugin<AreaSettings>
     {

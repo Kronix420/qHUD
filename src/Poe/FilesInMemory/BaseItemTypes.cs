@@ -1,9 +1,9 @@
-using PoeHUD.Framework;
-using PoeHUD.Models;
 using System;
 using System.Collections.Generic;
+using qHUD.Framework;
+using qHUD.Models;
 
-namespace PoeHUD.Poe.FilesInMemory
+namespace qHUD.Poe.FilesInMemory
 {
     public class BaseItemTypes : FileInMemory
     {

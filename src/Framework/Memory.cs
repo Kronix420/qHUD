@@ -1,14 +1,14 @@
-using PoeHUD.Framework.Enums;
-using PoeHUD.Models;
-using PoeHUD.Poe;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using qHUD.Framework.Enums;
+using qHUD.Models;
+using qHUD.Poe;
 
-namespace PoeHUD.Framework
+namespace qHUD.Framework
 {
     public class Memory : IDisposable
     {

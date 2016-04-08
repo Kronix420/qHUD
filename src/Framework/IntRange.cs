@@ -1,6 +1,6 @@
 using System;
 
-namespace PoeHUD.Framework
+namespace qHUD.Framework
 {
     public class IntRange
     {

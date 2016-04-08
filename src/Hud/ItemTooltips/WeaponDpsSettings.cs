@@ -1,7 +1,7 @@
-﻿using PoeHUD.Hud.Settings;
+﻿using qHUD.Hud.Settings;
 using SharpDX;
 
-namespace PoeHUD.Hud.ItemTooltips
+namespace qHUD.Hud.ItemTooltips
 {
     public class WeaponDpsSettings : SettingsBase
     {

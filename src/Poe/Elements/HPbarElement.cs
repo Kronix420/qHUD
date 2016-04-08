@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PoeHUD.Poe.Elements
+namespace qHUD.Poe.Elements
 {
     public class HPbarElement : Element
     {

@@ -1,14 +1,14 @@
-using PoeHUD.Controllers;
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.UI;
-using PoeHUD.Poe;
-using PoeHUD.Poe.Components;
-using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using qHUD.Controllers;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.UI;
+using qHUD.Poe;
+using qHUD.Poe.Components;
+using SharpDX;
 
-namespace PoeHUD.Hud.Icons
+namespace qHUD.Hud.Icons
 {
     public class MinimapPlugin : Plugin<MapIconsSettings>
     {

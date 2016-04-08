@@ -1,7 +1,7 @@
-using PoeHUD.Poe.RemoteMemoryObjects;
 using System.Collections.Generic;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Poe.Components
+namespace qHUD.Poe.Components
 {
     public class Life : Component
     {

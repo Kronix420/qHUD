@@ -1,4 +1,4 @@
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public class BaseItemType
     {

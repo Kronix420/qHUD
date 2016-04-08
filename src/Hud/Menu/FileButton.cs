@@ -1,13 +1,12 @@
-﻿using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.UI;
-using SharpDX;
-using SharpDX.Direct3D9;
-using System.IO;
+﻿using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using ColorGdi = System.Drawing.Color;
+using qHUD.Hud.Settings;
+using qHUD.Hud.UI;
+using SharpDX;
+using SharpDX.Direct3D9;
 
-namespace PoeHUD.Hud.Menu
+namespace qHUD.Hud.Menu
 {
     public sealed class FileButton : MenuItem
     {

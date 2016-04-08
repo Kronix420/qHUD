@@ -1,11 +1,11 @@
-using PoeHUD.Framework;
-using PoeHUD.Models;
-using PoeHUD.Poe.Components;
-using PoeHUD.Poe.RemoteMemoryObjects;
 using System.Collections.Generic;
 using System.Linq;
+using qHUD.Framework;
+using qHUD.Models;
+using qHUD.Poe.Components;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Controllers
+namespace qHUD.Controllers
 {
     public class GameController
     {

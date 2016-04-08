@@ -1,4 +1,4 @@
-namespace PoeHUD.Poe.RemoteMemoryObjects
+namespace qHUD.Poe.RemoteMemoryObjects
 {
     public class IngameData : RemoteMemoryObject
     {

@@ -1,10 +1,10 @@
-﻿using PoeHUD.Framework;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using qHUD.Framework;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public class CustomColorDialog
     {

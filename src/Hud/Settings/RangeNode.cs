@@ -1,4 +1,4 @@
-﻿namespace PoeHUD.Hud.Settings
+﻿namespace qHUD.Hud.Settings
 {
     public sealed class RangeNode<T> where T : struct
     {

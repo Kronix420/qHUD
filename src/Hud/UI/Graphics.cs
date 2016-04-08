@@ -1,13 +1,13 @@
-﻿using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.UI.Renderers;
+﻿using System;
+using System.Threading;
+using System.Windows.Forms;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.UI.Renderers;
 using SharpDX;
 using SharpDX.Direct3D9;
 using SharpDX.Windows;
-using System;
-using System.Threading;
-using System.Windows.Forms;
 
-namespace PoeHUD.Hud.UI
+namespace qHUD.Hud.UI
 {
     public sealed class Graphics : IDisposable
     {

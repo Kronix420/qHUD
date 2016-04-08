@@ -1,19 +1,19 @@
-using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Models;
-using PoeHUD.Poe.RemoteMemoryObjects;
-using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Framework.Helpers;
+using qHUD.Models;
+using qHUD.Poe.RemoteMemoryObjects;
+using SharpDX;
 using Color = SharpDX.Color;
-using Graphics = PoeHUD.Hud.UI.Graphics;
+using Graphics = qHUD.Hud.UI.Graphics;
 using RectangleF = SharpDX.RectangleF;
 
-namespace PoeHUD.Hud.Health
+namespace qHUD.Hud.Health
 {
     public class HealthBarPlugin : Plugin<HealthBarSettings>
     {

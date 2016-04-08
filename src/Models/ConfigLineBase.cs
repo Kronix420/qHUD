@@ -1,6 +1,6 @@
 using SharpDX;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public abstract class ConfigLineBase
     {

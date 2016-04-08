@@ -1,7 +1,7 @@
-using PoeHUD.Framework;
-using PoeHUD.Poe.RemoteMemoryObjects;
+using qHUD.Framework;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Poe
+namespace qHUD.Poe
 {
     public abstract class RemoteMemoryObject
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace PoeHUD.Framework
+namespace qHUD.Framework
 {
     public class MemoryControl
     {

@@ -1,9 +1,8 @@
 ﻿using System.Windows.Forms;
-
 using PointDX = SharpDX.Point;
 using PointGdi = System.Drawing.Point;
 
-namespace PoeHUD.Framework.InputHooks
+namespace qHUD.Framework.InputHooks
 {
     public sealed class MouseInfo
     {

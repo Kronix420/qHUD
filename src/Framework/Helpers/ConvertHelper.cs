@@ -1,8 +1,8 @@
-﻿using SharpDX;
-using System;
+﻿using System;
 using System.Globalization;
+using SharpDX;
 
-namespace PoeHUD.Framework.Helpers
+namespace qHUD.Framework.Helpers
 {
     public static class ConvertHelper
     {

@@ -1,8 +1,8 @@
-﻿using SharpDX;
-using System;
+﻿using System;
 using System.Linq;
+using SharpDX;
 
-namespace PoeHUD.Framework.Helpers
+namespace qHUD.Framework.Helpers
 {
     public static class MathHepler
     {

@@ -1,7 +1,7 @@
-using PoeHUD.Poe.RemoteMemoryObjects;
 using System;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public sealed class AreaInstance
     {

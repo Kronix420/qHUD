@@ -1,6 +1,6 @@
 using System;
 
-namespace PoeHUD.Poe.RemoteMemoryObjects.Legacy
+namespace qHUD.Poe.RemoteMemoryObjects.Legacy
 {
     [Obsolete]
     public class LegacyStats : RemoteMemoryObject

@@ -1,11 +1,11 @@
-﻿using PoeHUD.Controllers;
-using PoeHUD.Hud.Interfaces;
-using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.UI;
-using PoeHUD.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using qHUD.Controllers;
+using qHUD.Hud.Interfaces;
+using qHUD.Hud.Settings;
+using qHUD.Hud.UI;
+using qHUD.Models;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public abstract class PluginWithMapIcons<TSettings> : Plugin<TSettings>, IPluginWithMapIcons where TSettings : SettingsBase
     {

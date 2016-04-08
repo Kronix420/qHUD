@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PoeHUD.Poe.Components
+namespace qHUD.Poe.Components
 {
     public class Sockets : Component
     {

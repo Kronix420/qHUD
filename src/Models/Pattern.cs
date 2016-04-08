@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public struct Pattern
     {

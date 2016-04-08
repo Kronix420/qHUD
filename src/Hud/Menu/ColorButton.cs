@@ -1,11 +1,11 @@
-﻿using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.UI;
+﻿using System.Threading.Tasks;
+using qHUD.Hud.Settings;
+using qHUD.Hud.UI;
 using SharpDX;
 using SharpDX.Direct3D9;
-using System.Threading.Tasks;
 using ColorGdi = System.Drawing.Color;
 
-namespace PoeHUD.Hud.Menu
+namespace qHUD.Hud.Menu
 {
     public sealed class ColorButton : MenuItem
     {

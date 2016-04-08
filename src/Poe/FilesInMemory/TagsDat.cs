@@ -1,8 +1,8 @@
-using PoeHUD.Framework;
 using System;
 using System.Collections.Generic;
+using qHUD.Framework;
 
-namespace PoeHUD.Poe.FilesInMemory
+namespace qHUD.Poe.FilesInMemory
 {
     public class TagsDat : FileInMemory
     {

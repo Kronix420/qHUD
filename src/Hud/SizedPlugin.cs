@@ -1,11 +1,11 @@
-﻿using PoeHUD.Controllers;
-using PoeHUD.Hud.Interfaces;
-using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.UI;
+﻿using System;
+using qHUD.Controllers;
+using qHUD.Hud.Interfaces;
+using qHUD.Hud.Settings;
+using qHUD.Hud.UI;
 using SharpDX;
-using System;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public abstract class SizedPlugin<TSettings> : Plugin<TSettings>, IPanelChild where TSettings : SettingsBase
     {

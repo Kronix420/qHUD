@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PoeHUD.Poe.FilesInMemory
+namespace qHUD.Poe.FilesInMemory
 {
     public class ItemClassesDisplay
     {

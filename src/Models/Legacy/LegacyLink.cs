@@ -1,7 +1,7 @@
-using PoeHUD.Models.Enums;
 using System;
+using qHUD.Models.Enums;
 
-namespace PoeHUD.Models.Legacy
+namespace qHUD.Models.Legacy
 {
     [Obsolete]
     public class LegacyLink

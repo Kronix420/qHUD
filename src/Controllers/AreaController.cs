@@ -1,8 +1,8 @@
-using PoeHUD.Models;
-using PoeHUD.Poe.RemoteMemoryObjects;
 using System;
+using qHUD.Models;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Controllers
+namespace qHUD.Controllers
 {
     public class AreaController
     {

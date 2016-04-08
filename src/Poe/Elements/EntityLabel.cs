@@ -1,4 +1,4 @@
-namespace PoeHUD.Poe.Elements
+namespace qHUD.Poe.Elements
 {
     public class EntityLabel : Element
     {

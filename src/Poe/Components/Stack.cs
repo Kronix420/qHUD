@@ -1,4 +1,4 @@
-namespace PoeHUD.Poe.Components
+namespace qHUD.Poe.Components
 {
     public class Stack : Component
     {

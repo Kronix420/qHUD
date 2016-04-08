@@ -1,10 +1,10 @@
-using PoeHUD.Controllers;
-using PoeHUD.Poe;
-using PoeHUD.Poe.Elements;
 using System;
 using System.Collections.Generic;
+using qHUD.Controllers;
+using qHUD.Poe;
+using qHUD.Poe.Elements;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public sealed class EntityListWrapper
     {

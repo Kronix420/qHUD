@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
 
-namespace PoeHUD.Hud.Settings.Converters
+namespace qHUD.Hud.Settings.Converters
 {
     public class ToggleNodeConverter : CustomCreationConverter<ToggleNode>
     {

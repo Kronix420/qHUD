@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PoeHUD.Framework
+namespace qHUD.Framework
 {
     public delegate IntPtr CCHookProc(IntPtr hWnd, UInt16 msg, Int32 wParam, Int32 lParam);
 

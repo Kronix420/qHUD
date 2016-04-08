@@ -1,10 +1,10 @@
-﻿using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.Interfaces;
-using SharpDX;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.Interfaces;
+using SharpDX;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public class PluginPanel : IPanelChild
     {

@@ -1,15 +1,15 @@
-using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Framework.InputHooks;
-using PoeHUD.Hud.Health;
-using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.UI;
-using SharpDX;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Framework.InputHooks;
+using qHUD.Hud.Health;
+using qHUD.Hud.Settings;
+using qHUD.Hud.UI;
+using SharpDX;
 
-namespace PoeHUD.Hud.Menu
+namespace qHUD.Hud.Menu
 {
     public class MenuPlugin : Plugin<MenuSettings>
     {

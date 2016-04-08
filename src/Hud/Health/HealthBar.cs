@@ -1,8 +1,8 @@
-using PoeHUD.Models;
-using PoeHUD.Models.Enums;
-using PoeHUD.Poe.Components;
+using qHUD.Models;
+using qHUD.Models.Enums;
+using qHUD.Poe.Components;
 
-namespace PoeHUD.Hud.Health
+namespace qHUD.Hud.Health
 {
     public class HealthBar
     {

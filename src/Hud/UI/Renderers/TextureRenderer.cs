@@ -1,11 +1,11 @@
-﻿using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.UI.Vertexes;
+﻿using System;
+using System.Collections.Generic;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.UI.Vertexes;
 using SharpDX;
 using SharpDX.Direct3D9;
-using System;
-using System.Collections.Generic;
 
-namespace PoeHUD.Hud.UI.Renderers
+namespace qHUD.Hud.UI.Renderers
 {
     public sealed class TextureRenderer : IDisposable
     {

@@ -1,6 +1,6 @@
 using SharpDX;
 
-namespace PoeHUD.Poe.Components
+namespace qHUD.Poe.Components
 {
     public class Positioned : Component
     {

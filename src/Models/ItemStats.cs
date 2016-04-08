@@ -1,10 +1,10 @@
-using PoeHUD.Models.Enums;
-using PoeHUD.Poe;
-using PoeHUD.Poe.Components;
-using PoeHUD.Poe.RemoteMemoryObjects;
 using System;
+using qHUD.Models.Enums;
+using qHUD.Poe;
+using qHUD.Poe.Components;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public sealed class ItemStats
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PoeHUD.Poe.Components
+namespace qHUD.Poe.Components
 {
     public class Actor : Component
     {

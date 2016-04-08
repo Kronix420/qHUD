@@ -1,10 +1,10 @@
-using PoeHUD.Models;
-using PoeHUD.Models.Enums;
-using PoeHUD.Poe.RemoteMemoryObjects;
 using System.Collections.Generic;
 using System.Linq;
+using qHUD.Models;
+using qHUD.Models.Enums;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Poe.Components
+namespace qHUD.Poe.Components
 {
     public class Mods : Component
     {

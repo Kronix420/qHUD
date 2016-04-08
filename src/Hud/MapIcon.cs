@@ -1,9 +1,9 @@
-using PoeHUD.Models;
-using PoeHUD.Poe.Components;
-using SharpDX;
 using System;
+using qHUD.Models;
+using qHUD.Poe.Components;
+using SharpDX;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public class CreatureMapIcon : MapIcon
     {

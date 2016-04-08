@@ -1,7 +1,7 @@
-using PoeHUD.Models.Interfaces;
 using System.Collections.Generic;
+using qHUD.Models.Interfaces;
 
-namespace PoeHUD.Poe
+namespace qHUD.Poe
 {
     public sealed class Entity : RemoteMemoryObject, IEntity
     {

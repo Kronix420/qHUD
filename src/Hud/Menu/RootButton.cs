@@ -1,10 +1,10 @@
-﻿using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.UI;
+﻿using System.Linq;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.UI;
 using SharpDX;
 using SharpDX.Direct3D9;
-using System.Linq;
 
-namespace PoeHUD.Hud.Menu
+namespace qHUD.Hud.Menu
 {
     public sealed class RootButton : MenuItem
     {

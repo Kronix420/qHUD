@@ -1,7 +1,7 @@
-﻿using SharpDX;
-using System;
+﻿using System;
+using SharpDX;
 
-namespace PoeHUD.Framework
+namespace qHUD.Framework
 {
     public static class ColorUtils
     {

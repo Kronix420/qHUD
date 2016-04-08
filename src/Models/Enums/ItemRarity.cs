@@ -1,4 +1,4 @@
-namespace PoeHUD.Models.Enums
+namespace qHUD.Models.Enums
 {
     public enum ItemRarity
     {

@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
-using PoeHUD.Hud.Settings;
-using SharpDX;
+using qHUD.Hud.Settings;
 
-namespace PoeHUD.Hud.ItemTooltips
+namespace qHUD.Hud.ItemTooltips
 {
     public class ItemTooltipSettings : SettingsBase
     {

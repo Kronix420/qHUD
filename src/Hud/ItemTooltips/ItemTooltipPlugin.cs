@@ -1,24 +1,24 @@
-﻿using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.Settings;
-using PoeHUD.Models.Enums;
-using PoeHUD.Poe;
-using PoeHUD.Poe.Components;
-using PoeHUD.Poe.Elements;
-using PoeHUD.Poe.FilesInMemory;
-using PoeHUD.Poe.RemoteMemoryObjects;
-using SharpDX;
-using SharpDX.Direct3D9;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.Settings;
+using qHUD.Models.Enums;
+using qHUD.Poe;
+using qHUD.Poe.Components;
+using qHUD.Poe.Elements;
+using qHUD.Poe.FilesInMemory;
+using qHUD.Poe.RemoteMemoryObjects;
+using SharpDX;
+using SharpDX.Direct3D9;
 using Color = SharpDX.Color;
-using Graphics = PoeHUD.Hud.UI.Graphics;
+using Graphics = qHUD.Hud.UI.Graphics;
 using RectangleF = SharpDX.RectangleF;
 
-namespace PoeHUD.Hud.ItemTooltips
+namespace qHUD.Hud.ItemTooltips
 {
     public class ItemTooltipPlugin : Plugin<ItemTooltipSettings>
     {

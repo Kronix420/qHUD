@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Media;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public static class Sounds
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PoeHUD.Framework.Helpers
+namespace qHUD.Framework.Helpers
 {
     public static class ActionHelper
     {

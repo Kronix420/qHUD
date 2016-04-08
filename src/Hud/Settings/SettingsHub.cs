@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
-using PoeHUD.Hud.Area;
-using PoeHUD.Hud.Health;
-using PoeHUD.Hud.Icons;
-using PoeHUD.Hud.ItemTooltips;
-using PoeHUD.Hud.Loot;
-using PoeHUD.Hud.Menu;
-using PoeHUD.Hud.Preload;
-using PoeHUD.Hud.Settings.Converters;
-using PoeHUD.Hud.Trackers;
-using System;
+﻿using System;
 using System.IO;
+using Newtonsoft.Json;
+using qHUD.Hud.Area;
+using qHUD.Hud.Health;
+using qHUD.Hud.Icons;
+using qHUD.Hud.ItemTooltips;
+using qHUD.Hud.Loot;
+using qHUD.Hud.Menu;
+using qHUD.Hud.Preload;
+using qHUD.Hud.Settings.Converters;
+using qHUD.Hud.Trackers;
 
-namespace PoeHUD.Hud.Settings
+namespace qHUD.Hud.Settings
 {
     public sealed class SettingsHub
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PoeHUD.Hud.Interfaces
+namespace qHUD.Hud.Interfaces
 {
     public interface IPlugin : IDisposable
     {

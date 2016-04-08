@@ -1,7 +1,7 @@
-﻿using SharpDX;
-using System;
+﻿using System;
+using SharpDX;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public class PreloadConfigLine : ConfigLineBase
     {

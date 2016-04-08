@@ -1,14 +1,13 @@
-﻿using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Poe.FilesInMemory;
-using PoeHUD.Poe.RemoteMemoryObjects;
-using SharpDX;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PoeHUD.Hud.UI;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Poe.FilesInMemory;
+using qHUD.Poe.RemoteMemoryObjects;
+using SharpDX;
 
-namespace PoeHUD.Hud.ItemTooltips
+namespace qHUD.Hud.ItemTooltips
 {
     public class ModValue
     {

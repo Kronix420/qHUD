@@ -1,6 +1,6 @@
-using PoeHUD.Framework;
+using qHUD.Framework;
 
-namespace PoeHUD.Poe.RemoteMemoryObjects
+namespace qHUD.Poe.RemoteMemoryObjects
 {
     public class TheGame : RemoteMemoryObject
     {

@@ -1,11 +1,11 @@
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Framework.InputHooks.Structures;
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using qHUD.Framework.Helpers;
+using qHUD.Framework.InputHooks.Structures;
 
-namespace PoeHUD.Framework.InputHooks
+namespace qHUD.Framework.InputHooks
 {
     public static class KeyboardHook
     {

@@ -1,10 +1,10 @@
-using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.UI;
+using System;
+using qHUD.Hud.Settings;
+using qHUD.Hud.UI;
 using SharpDX;
 using SharpDX.Direct3D9;
-using System;
 
-namespace PoeHUD.Hud.Menu
+namespace qHUD.Hud.Menu
 {
     public class Picker<T> : MenuItem where T : struct
     {

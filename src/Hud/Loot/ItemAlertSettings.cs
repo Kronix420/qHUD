@@ -1,6 +1,6 @@
-﻿using PoeHUD.Hud.Settings;
+﻿using qHUD.Hud.Settings;
 
-namespace PoeHUD.Hud.Loot
+namespace qHUD.Hud.Loot
 {
     public sealed class ItemAlertSettings : SettingsBase
     {

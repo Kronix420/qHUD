@@ -1,7 +1,7 @@
-using PoeHUD.Models.Enums;
 using System.Collections.Generic;
+using qHUD.Models.Enums;
 
-namespace PoeHUD.Poe.RemoteMemoryObjects
+namespace qHUD.Poe.RemoteMemoryObjects
 {
     public class InventoryList : RemoteMemoryObject
     {

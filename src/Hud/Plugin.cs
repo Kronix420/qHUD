@@ -1,15 +1,15 @@
-﻿using PoeHUD.Controllers;
-using PoeHUD.Hud.Interfaces;
-using PoeHUD.Hud.Settings;
-using PoeHUD.Hud.UI;
-using PoeHUD.Models;
-using SharpDX;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using qHUD.Controllers;
+using qHUD.Hud.Interfaces;
+using qHUD.Hud.Settings;
+using qHUD.Hud.UI;
+using qHUD.Models;
+using SharpDX;
 
-namespace PoeHUD.Hud
+namespace qHUD.Hud
 {
     public abstract class Plugin<TSettings> : IPlugin where TSettings : SettingsBase
     {

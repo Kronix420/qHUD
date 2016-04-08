@@ -1,10 +1,10 @@
-using PoeHUD.Framework;
-using PoeHUD.Poe.FilesInMemory;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using qHUD.Framework;
+using qHUD.Poe.FilesInMemory;
 
-namespace PoeHUD.Controllers
+namespace qHUD.Controllers
 {
     public class FsController
     {

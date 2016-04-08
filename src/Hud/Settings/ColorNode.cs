@@ -1,6 +1,6 @@
 ﻿using SharpDX;
 
-namespace PoeHUD.Hud.Settings
+namespace qHUD.Hud.Settings
 {
     public sealed class ColorNode
     {

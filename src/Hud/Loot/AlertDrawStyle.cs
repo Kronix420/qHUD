@@ -1,8 +1,8 @@
-using PoeHUD.Models.Enums;
-using SharpDX;
 using System.Collections.Generic;
+using qHUD.Models.Enums;
+using SharpDX;
 
-namespace PoeHUD.Hud.Loot
+namespace qHUD.Hud.Loot
 {
     public sealed class AlertDrawStyle
     {

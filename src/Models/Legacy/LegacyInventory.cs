@@ -1,9 +1,9 @@
-using PoeHUD.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using qHUD.Controllers;
 
-namespace PoeHUD.Models.Legacy
+namespace qHUD.Models.Legacy
 {
     [Obsolete]
     public class LegacyInventory

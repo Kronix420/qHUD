@@ -1,7 +1,7 @@
-﻿using SharpDX;
-using PoeHUD.Hud.Settings;
+﻿using qHUD.Hud.Settings;
+using SharpDX;
 
-namespace PoeHUD.Hud.Trackers
+namespace qHUD.Hud.Trackers
 {
     public sealed class MonsterTrackerSettings : SettingsBase
     {

@@ -4,13 +4,13 @@ using System.Linq;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using PoeFilterParser.Model;
+using qHUD.Controllers;
+using qHUD.Models.Enums;
+using qHUD.Models.Interfaces;
+using qHUD.Poe.Components;
 using SharpDX;
-using PoeHUD.Controllers;
-using PoeHUD.Models.Enums;
-using PoeHUD.Models.Interfaces;
-using PoeHUD.Poe.Components;
 
-namespace PoeHUD.Hud.Loot
+namespace qHUD.Hud.Loot
 {
     public class PoeFilterVisitor : PoeFilterBaseVisitor<AlertDrawStyle>
     {

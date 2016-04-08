@@ -1,23 +1,23 @@
-using Antlr4.Runtime;
-using PoeFilterParser;
-using PoeFilterParser.Model;
-using PoeHUD.Controllers;
-using PoeHUD.Framework;
-using PoeHUD.Framework.Helpers;
-using PoeHUD.Hud.UI;
-using PoeHUD.Models;
-using PoeHUD.Models.Interfaces;
-using PoeHUD.Poe;
-using PoeHUD.Poe.Components;
-using PoeHUD.Poe.Elements;
-using SharpDX;
-using SharpDX.Direct3D9;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Antlr4.Runtime;
+using PoeFilterParser;
+using PoeFilterParser.Model;
+using qHUD.Controllers;
+using qHUD.Framework;
+using qHUD.Framework.Helpers;
+using qHUD.Hud.UI;
+using qHUD.Models;
+using qHUD.Models.Interfaces;
+using qHUD.Poe;
+using qHUD.Poe.Components;
+using qHUD.Poe.Elements;
+using SharpDX;
+using SharpDX.Direct3D9;
 
-namespace PoeHUD.Hud.Loot
+namespace qHUD.Hud.Loot
 {
     public class ItemAlertPlugin : SizedPluginWithMapIcons<ItemAlertSettings>
     {

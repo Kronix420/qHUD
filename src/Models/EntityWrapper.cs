@@ -1,13 +1,13 @@
-using PoeHUD.Controllers;
-using PoeHUD.Models.Interfaces;
-using PoeHUD.Poe;
-using PoeHUD.Poe.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using qHUD.Controllers;
+using qHUD.Models.Interfaces;
+using qHUD.Poe;
+using qHUD.Poe.Components;
 using Vector3 = SharpDX.Vector3;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public class EntityWrapper : IEntity
     {

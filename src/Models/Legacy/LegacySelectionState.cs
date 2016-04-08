@@ -1,6 +1,6 @@
 using System;
 
-namespace PoeHUD.Models.Legacy
+namespace qHUD.Models.Legacy
 {
     [Obsolete]
     public enum LegacySelectionState

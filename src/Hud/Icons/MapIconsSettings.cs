@@ -1,6 +1,6 @@
-﻿using PoeHUD.Hud.Settings;
+﻿using qHUD.Hud.Settings;
 
-namespace PoeHUD.Hud.Icons
+namespace qHUD.Hud.Icons
 {
     public sealed class MapIconsSettings : SettingsBase
     {

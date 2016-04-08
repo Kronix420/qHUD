@@ -1,7 +1,7 @@
-﻿using PoeHUD.Hud.Settings;
+﻿using qHUD.Hud.Settings;
 using SharpDX;
 
-namespace PoeHUD.Hud.Menu
+namespace qHUD.Hud.Menu
 {
     public sealed class MenuSettings : SettingsBase
     {

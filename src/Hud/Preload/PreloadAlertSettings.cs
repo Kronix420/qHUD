@@ -1,7 +1,7 @@
-﻿using PoeHUD.Hud.Settings;
+﻿using qHUD.Hud.Settings;
 using SharpDX;
 
-namespace PoeHUD.Hud.Preload
+namespace qHUD.Hud.Preload
 {
     public sealed class PreloadAlertSettings : SettingsBase
     {

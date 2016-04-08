@@ -1,12 +1,12 @@
-﻿using PoeHUD.Framework.Enums;
-using PoeHUD.Framework.InputHooks;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using qHUD.Framework.Enums;
+using qHUD.Framework.InputHooks;
 
-namespace PoeHUD.Framework
+namespace qHUD.Framework
 {
     public static class WinApi
     {

@@ -1,9 +1,9 @@
-using PoeHUD.Hud.UI;
-using SharpDX;
 using System.Collections.Generic;
 using System.Linq;
+using qHUD.Hud.UI;
+using SharpDX;
 
-namespace PoeHUD.Hud.Menu
+namespace qHUD.Hud.Menu
 {
     public abstract class MenuItem
     {

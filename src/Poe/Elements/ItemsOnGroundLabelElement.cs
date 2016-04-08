@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PoeHUD.Poe.Elements
+namespace qHUD.Poe.Elements
 {
     public class ItemsOnGroundLabelElement : Element
     {

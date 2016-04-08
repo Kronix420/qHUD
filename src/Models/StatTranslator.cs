@@ -1,8 +1,8 @@
-using PoeHUD.Models.Enums;
-using PoeHUD.Poe.RemoteMemoryObjects;
 using System.Collections.Generic;
+using qHUD.Models.Enums;
+using qHUD.Poe.RemoteMemoryObjects;
 
-namespace PoeHUD.Models
+namespace qHUD.Models
 {
     public class StatTranslator
     {
