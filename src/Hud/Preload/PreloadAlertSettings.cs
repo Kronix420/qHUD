@@ -10,6 +10,7 @@ namespace qHUD.Hud.Preload
             Enable = true;
             Masters = true;
             Exiles = true;
+            Tormented = true;
             Labyrinth = true;
             Strongboxes = true;
             PerandusLeague = true;
@@ -50,7 +51,7 @@ namespace qHUD.Hud.Preload
             MasterVagan = new ColorBGRA(100, 255, 255, 255);
             MasterKrillson = new ColorBGRA(255, 0, 255, 255);
 
-            DivinersStrongbox = new ColorBGRA(255, 0, 255, 255);
+            DivinersStrongbox = new ColorBGRA(255, 0, 0, 255);
             ArcanistStrongbox = new ColorBGRA(255, 0, 255, 255);
             ArtisanStrongbox = new ColorBGRA(210, 210, 210, 255);
             CartographerStrongbox = new ColorBGRA(255, 255, 0, 255);
@@ -89,6 +90,29 @@ namespace qHUD.Hud.Preload
             VanthAgiel = new ColorBGRA(254, 192, 118, 255);
             LaelFuria = new ColorBGRA(254, 192, 118, 255);
 
+            TormentedArsonist = new ColorBGRA(198, 255, 198, 255);
+            TormentedFreezer = new ColorBGRA(198, 255, 198, 255);
+            TormentedBlasphemer = new ColorBGRA(198, 255, 198, 255);
+            TormentedCannibal = new ColorBGRA(198, 255, 198, 255);
+            TormentedCharlatan = new ColorBGRA(198, 255, 198, 255);
+            TormentedCutthroat = new ColorBGRA(198, 255, 198, 255);
+            TormentedEmbezzler = new ColorBGRA(255, 0, 255, 255);
+            TormentedCounterfeiter = new ColorBGRA(198, 255, 198, 255);
+            TormentedMartyr = new ColorBGRA(198, 255, 198, 255);
+            TormentedMutilator = new ColorBGRA(198, 255, 198, 255);
+            TormentedNecromancer = new ColorBGRA(198, 255, 198, 255);
+            TormentedPoisoner = new ColorBGRA(198, 255, 198, 255);
+            TormentedRogue = new ColorBGRA(198, 255, 198, 255);
+            TormentedLibrarian = new ColorBGRA(255, 255, 0, 255);
+            TormentedSmuggler = new ColorBGRA(175, 96, 37, 255);
+            TormentedSpy = new ColorBGRA(198, 255, 198, 255);
+            TormentedExperimenter = new ColorBGRA(198, 255, 198, 255);
+            TormentedThief = new ColorBGRA(198, 255, 198, 255);
+            TormentedThug = new ColorBGRA(198, 255, 198, 255);
+            TormentedCorrupter = new ColorBGRA(198, 255, 198, 255);
+            TormentedWarlord = new ColorBGRA(198, 255, 198, 255);
+            TormentedFisherman = new ColorBGRA(198, 255, 198, 255);
+
             TextPositionX = new RangeNode<int>(50, 0, 100);
             TextPositionY = new RangeNode<int>(85, 0, 100);
         }
@@ -120,6 +144,7 @@ namespace qHUD.Hud.Preload
         public RangeNode<int> TextPositionY { get; set; }
         public ToggleNode Masters { get; set; }
         public ToggleNode Exiles { get; set; }
+        public ToggleNode Tormented { get; set; }
         public ToggleNode Labyrinth { get; set; }
         public ToggleNode Strongboxes { get; set; }
         public RangeNode<int> TextSize { get; set; }
@@ -173,5 +198,30 @@ namespace qHUD.Hud.Preload
         public ColorNode DenaLorenni { get; set; }
         public ColorNode VanthAgiel { get; set; }
         public ColorNode LaelFuria { get; set; }
+
+
+        public ColorNode TormentedArsonist { get; set; }
+        public ColorNode TormentedFreezer { get; set; }
+        public ColorNode TormentedBlasphemer { get; set; }
+        public ColorNode TormentedCannibal { get; set; }
+        public ColorNode TormentedCharlatan { get; set; }
+        public ColorNode TormentedCutthroat { get; set; }
+        public ColorNode TormentedEmbezzler { get; set; }
+        public ColorNode TormentedCounterfeiter { get; set; }
+        public ColorNode TormentedMartyr { get; set; }
+        public ColorNode TormentedMutilator { get; set; }
+        public ColorNode TormentedNecromancer { get; set; }
+        public ColorNode TormentedPoisoner { get; set; }
+        public ColorNode TormentedRogue { get; set; }
+        public ColorNode TormentedLibrarian { get; set; }
+        public ColorNode TormentedSmuggler { get; set; }
+        public ColorNode TormentedSpy { get; set; }
+        public ColorNode TormentedExperimenter { get; set; }
+        public ColorNode TormentedThief { get; set; }
+        public ColorNode TormentedThug { get; set; }
+        public ColorNode TormentedCorrupter { get; set; }
+        public ColorNode TormentedWarlord { get; set; }
+        public ColorNode TormentedFisherman { get; set; }
+
     }
 }

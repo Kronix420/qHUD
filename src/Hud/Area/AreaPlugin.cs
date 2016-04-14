@@ -5,6 +5,7 @@ using qHUD.Controllers;
 using qHUD.Framework;
 using qHUD.Framework.Helpers;
 using qHUD.Hud.Preload;
+using qHUD.Hud.Settings;
 using qHUD.Hud.UI;
 using qHUD.Poe.Components;
 using SharpDX;
@@ -13,18 +14,30 @@ namespace qHUD.Hud.Area
 {
     public class AreaPlugin : SizedPlugin<AreaSettings>
     {
+        private bool holdKey;
+        private readonly SettingsHub settingsHub;
         private double levelXpPenalty, partyXpPenalty;
 
-        public AreaPlugin(GameController gameController, Graphics graphics, AreaSettings settings)
+        public AreaPlugin(GameController gameController, Graphics graphics, AreaSettings settings, SettingsHub settingsHub)
             : base(gameController, graphics, settings)
         {
+            this.settingsHub = settingsHub;
             GameController.Area.OnAreaChange += area => AreaChange();
         }
 
         public override void Render()
         {
-            base.Render();
-            if (!Settings.Enable || WinApi.IsKeyDown(Keys.F10)) { return; }
+            if (!holdKey && WinApi.IsKeyDown(Keys.F10))
+            {
+                holdKey = true;
+                Settings.Enable.Value = !Settings.Enable.Value;
+                SettingsHub.Save(settingsHub);
+            }
+            else if (holdKey && !WinApi.IsKeyDown(Keys.F10))
+            {
+                holdKey = false;
+            }
+            if (!Settings.Enable) { return; }
             bool showInTown = !Settings.ShowInTown && GameController.Area.CurrentArea.IsTown ||
                     !Settings.ShowInTown && GameController.Area.CurrentArea.IsHideout;
             partyXpPenalty = PartyXpPenalty();

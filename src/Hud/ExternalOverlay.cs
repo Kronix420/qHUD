@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using qHUD.Controllers;
+﻿using qHUD.Controllers;
 using qHUD.Framework;
 using qHUD.Framework.Helpers;
 using qHUD.Hud.Area;
@@ -20,6 +15,11 @@ using qHUD.Models.Enums;
 using qHUD.Poe;
 using SharpDX;
 using SharpDX.Windows;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using Color = System.Drawing.Color;
 using Graphics2D = qHUD.Hud.UI.Graphics;
 using Rectangle = System.Drawing.Rectangle;
@@ -105,22 +105,16 @@ namespace qHUD.Hud
             RectangleF questPanelRect = questPanel.GetClientRect();
             Element gemPanel = gameController.Game.IngameState.IngameUi.GemLvlUpPanel;
             RectangleF gemPanelRect = gemPanel.GetClientRect();
-            //RectangleF mapRect = gameController.Game.IngameState.IngameUi.Map.SmallMinimap.GetClientRect();
-            //RectangleF clientRect = gemPanel.IsVisible && Math.Abs(gemPanelRect.Right - mapRect.Right) < EPSILON ? gemPanel.GetClientRect() : mapRect;
-            //return new Vector2(mapRect.X + mapRect.Width, clientRect.Y + clientRect.Height + 10);
             RectangleF clientRect = gameController.Game.IngameState.IngameUi.Map.SmallMinimap.GetClientRect();
-                        if (gemPanel.IsVisible && Math.Abs(gemPanelRect.Right - clientRect.Right) < EPSILON)
-                            {
-                                // gem panel is visible, add its height
+            if (gemPanel.IsVisible && Math.Abs(gemPanelRect.Right - clientRect.Right) < EPSILON)
+            {
                 clientRect.Height += gemPanelRect.Height;
-                            }
-                        if (questPanel.IsVisible && Math.Abs(gemPanelRect.Right - clientRect.Right) < EPSILON)
-                            {
-                                // quest panel is visible, add its height
+            }
+            if (questPanel.IsVisible && Math.Abs(gemPanelRect.Right - clientRect.Right) < EPSILON)
+            {
                 clientRect.Height += questPanelRect.Height;
-                            }
-            
-                        return new Vector2(clientRect.X + clientRect.Width, clientRect.Y + clientRect.Height + 10);
+            }
+            return new Vector2(clientRect.X + clientRect.Width, clientRect.Y + clientRect.Height + 10);
         }
 
         private void OnClosing(object sender, FormClosingEventArgs e)
@@ -148,15 +142,15 @@ namespace qHUD.Hud
             plugins.Add(new PoiTracker(gameController, graphics, settings.PoiTrackerSettings));
 
             var leftPanel = new PluginPanel(GetLeftCornerMap);
-            leftPanel.AddChildren(new AreaPlugin(gameController, graphics, settings.AreaSettings));
-            leftPanel.AddChildren(new PreloadAlertPlugin(gameController, graphics, settings.PreloadAlertSettings));
+            leftPanel.AddChildren(new AreaPlugin(gameController, graphics, settings.AreaSettings, settings));
+            leftPanel.AddChildren(new PreloadAlertPlugin(gameController, graphics, settings.PreloadAlertSettings, settings));
 
             var horizontalPanel = new PluginPanel(Direction.Left);
             leftPanel.AddChildren(horizontalPanel);
             plugins.AddRange(leftPanel.GetPlugins());
 
             var underPanel = new PluginPanel(GetUnderCornerMap);
-            underPanel.AddChildren(new ItemAlertPlugin(gameController, graphics, settings.ItemAlertSettings));
+            underPanel.AddChildren(new ItemAlertPlugin(gameController, graphics, settings.ItemAlertSettings, settings));
             plugins.AddRange(underPanel.GetPlugins());
 
             plugins.Add(new ItemTooltipPlugin(gameController, graphics, settings.ItemTooltipSettings, settings));

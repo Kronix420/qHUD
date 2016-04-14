@@ -1,3 +1,10 @@
+C:\Users\vmv\Documents\GitHub\dev-qHUD\src\Tools\bin\Release\Tools.XML
+C:\Users\vmv\Documents\GitHub\dev-qHUD\src\Tools\bin\Release\Tools.dll
+C:\Users\vmv\Documents\GitHub\dev-qHUD\src\Tools\bin\Release\Tools.pdb
+C:\Users\vmv\Documents\GitHub\dev-qHUD\src\Tools\bin\Release\FSharp.Core.dll
+C:\Users\vmv\Documents\GitHub\dev-qHUD\src\Tools\bin\Release\FSharp.Core.xml
+C:\Users\vmv\Documents\GitHub\dev-qHUD\src\Tools\obj\Release\Tools.dll
+C:\Users\vmv\Documents\GitHub\dev-qHUD\src\Tools\obj\Release\Tools.pdb
 C:\Users\vmv\Documents\GitHub\qHUD\src\Tools\bin\Release\Tools.XML
 C:\Users\vmv\Documents\GitHub\qHUD\src\Tools\bin\Release\Tools.dll
 C:\Users\vmv\Documents\GitHub\qHUD\src\Tools\bin\Release\Tools.pdb

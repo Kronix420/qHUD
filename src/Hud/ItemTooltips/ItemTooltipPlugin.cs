@@ -61,18 +61,18 @@ namespace qHUD.Hud.ItemTooltips
                 if (itemEntity == null || itemEntity.Id != poeEntity.Id)
                 {
                     List<ItemMod> itemMods = modsComponent.ItemMods;
-                    mods = itemMods.Select(item => new ModValue(item, GameController.Files, modsComponent.ItemLevel)).ToList(); // fix when FileRoot is known
+                    mods = itemMods.Select(item => new ModValue(item, GameController.Files, modsComponent.ItemLevel)).ToList();
                     itemEntity = poeEntity;
                 }
-                foreach (string tier in from item in mods where item.CouldHaveTiers() && item.Tier == 1 select $" T{item.Tier} ")
+                foreach (string tier in from item in mods where item.CouldHaveTiers() && item.Tier == 1 select " 👽 ")
                 {
-                    Graphics.DrawText(tier, Settings.ItemMods.TierTextSize, tooltipRect.TopLeft.Translate(-2, 53), Settings.ItemMods.T1Color);
+                    Graphics.DrawText(tier, 18, tooltipRect.TopLeft.Translate(0, 56), Settings.ItemMods.T1Color);
                 }
                 if (Settings.ItemLevel.Enable)
                 {
                     string itemLevel = Convert.ToString(modsComponent.ItemLevel);
                     var imageSize = Settings.ItemLevel.TextSize + 10;
-                    Graphics.DrawText(itemLevel, Settings.ItemLevel.TextSize, tooltipRect.TopLeft.Translate(2, 2), Settings.ItemLevel.TextColor);
+                    Graphics.DrawText(itemLevel, Settings.ItemLevel.TextSize, tooltipRect.TopLeft.Translate(4, 2), Settings.ItemLevel.TextColor);
                     Graphics.DrawImage("menu-colors.png", new RectangleF(tooltipRect.TopLeft.X - 2, tooltipRect.TopLeft.Y - 2, imageSize, imageSize), Settings.ItemLevel.BackgroundColor);
                 }
 

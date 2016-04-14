@@ -123,8 +123,8 @@ namespace qHUD.Hud.Menu
 
             // Item alert
             MenuItem itemAlertMenu = AddChild(root, "Item alert", settingsHub.ItemAlertSettings.Enable);
-            var itemAlertStaticMenuList = new[] { "Filter settings", "Item tooltips", "Play sound", "Show text" };
-            MenuItem alternative = AddChild(itemAlertMenu, itemAlertStaticMenuList[0],settingsHub.ItemAlertSettings.Alternative, null, y => itemAlertStaticMenuList.All(x => x != (y as ToggleButton)?.Name));
+            var itemAlertStaticMenuList = new[] { "Choose filter", "Item tooltips", "Play sound", "Show text" };
+            MenuItem alternative = AddChild(itemAlertMenu, itemAlertStaticMenuList[0], settingsHub.ItemAlertSettings.Alternative, null, y => itemAlertStaticMenuList.All(x => x != (y as ToggleButton)?.Name));
             AddChild(alternative, settingsHub.ItemAlertSettings.FilePath);
             AddChild(alternative, "With border", settingsHub.ItemAlertSettings.WithBorder);
             AddChild(alternative, "With sound", settingsHub.ItemAlertSettings.WithSound);
@@ -141,7 +141,7 @@ namespace qHUD.Hud.Menu
             AddChild(itemModsMenu, "Tier 3 color", settingsHub.ItemTooltipSettings.ItemMods.T3Color);
             AddChild(itemModsMenu, "Suffix color", settingsHub.ItemTooltipSettings.ItemMods.SuffixColor);
             AddChild(itemModsMenu, "Prefix color", settingsHub.ItemTooltipSettings.ItemMods.PrefixColor);
-            MenuItem weaponDpsMenu = AddChild(tooltipMenu, "Weapon Dps", settingsHub.ItemTooltipSettings.WeaponDps.Enable);
+            MenuItem weaponDpsMenu = AddChild(tooltipMenu, "Weapon dps", settingsHub.ItemTooltipSettings.WeaponDps.Enable);
             var damageColors = AddChild(weaponDpsMenu, "Damage colors", settingsHub.ItemTooltipSettings.WeaponDps.Enable);
             AddChild(damageColors, "Cold damage", settingsHub.ItemTooltipSettings.WeaponDps.DmgColdColor);
             AddChild(damageColors, "Fire damage", settingsHub.ItemTooltipSettings.WeaponDps.DmgFireColor);
@@ -162,37 +162,37 @@ namespace qHUD.Hud.Menu
 
             var perandus = AddChild(preloadMenu, "Perandus League", settingsHub.PreloadAlertSettings.PerandusLeague);
             AddChild(perandus, "Cadiro Trader", settingsHub.PreloadAlertSettings.CadiroTrader);
-            AddChild(perandus, "Perandus Guards", settingsHub.PreloadAlertSettings.PerandusGuards);
-            AddChild(perandus, "Perandus Chest", settingsHub.PreloadAlertSettings.PerandusChestStandard);
-            AddChild(perandus, "Perandus Cache", settingsHub.PreloadAlertSettings.PerandusChestRarity);
-            AddChild(perandus, "Perandus Hoard", settingsHub.PreloadAlertSettings.PerandusChestQuantity);
-            AddChild(perandus, "Perandus Coffer", settingsHub.PreloadAlertSettings.PerandusChestCoins);
-            AddChild(perandus, "Perandus Jewellery", settingsHub.PreloadAlertSettings.PerandusChestJewellery);
-            AddChild(perandus, "Perandus Safe", settingsHub.PreloadAlertSettings.PerandusChestGems);
-            AddChild(perandus, "Perandus Treasury", settingsHub.PreloadAlertSettings.PerandusChestCurrency);
-            AddChild(perandus, "Perandus Wardrobe", settingsHub.PreloadAlertSettings.PerandusChestInventory);
-            AddChild(perandus, "Perandus Catalogue", settingsHub.PreloadAlertSettings.PerandusChestDivinationCards);
-            AddChild(perandus, "Perandus Trove", settingsHub.PreloadAlertSettings.PerandusChestKeepersOfTheTrove);
             AddChild(perandus, "Perandus Locker", settingsHub.PreloadAlertSettings.PerandusChestUniqueItem);
+            AddChild(perandus, "Perandus Treasury", settingsHub.PreloadAlertSettings.PerandusChestCurrency);
+            AddChild(perandus, "Perandus Catalogue", settingsHub.PreloadAlertSettings.PerandusChestDivinationCards);
             AddChild(perandus, "Perandus Archive", settingsHub.PreloadAlertSettings.PerandusChestMaps);
             AddChild(perandus, "Perandus Tackle Box", settingsHub.PreloadAlertSettings.PerandusChestFishing);
+            AddChild(perandus, "Perandus Coffer", settingsHub.PreloadAlertSettings.PerandusChestCoins);
+            AddChild(perandus, "Perandus Chest", settingsHub.PreloadAlertSettings.PerandusChestStandard);
+            AddChild(perandus, "Perandus Trove", settingsHub.PreloadAlertSettings.PerandusChestKeepersOfTheTrove);
+            AddChild(perandus, "Perandus Cache", settingsHub.PreloadAlertSettings.PerandusChestRarity);
+            AddChild(perandus, "Perandus Hoard", settingsHub.PreloadAlertSettings.PerandusChestQuantity);
+            AddChild(perandus, "Perandus Jewellery", settingsHub.PreloadAlertSettings.PerandusChestJewellery);
+            AddChild(perandus, "Perandus Safe", settingsHub.PreloadAlertSettings.PerandusChestGems);
+            AddChild(perandus, "Perandus Wardrobe", settingsHub.PreloadAlertSettings.PerandusChestInventory);
             AddChild(perandus, "Cadiro's Locker", settingsHub.PreloadAlertSettings.PerandusManorUniqueChest);
             AddChild(perandus, "Cadiro's Treasury", settingsHub.PreloadAlertSettings.PerandusManorCurrencyChest);
+            AddChild(perandus, "Cadiro's Catalogue", settingsHub.PreloadAlertSettings.PerandusManorDivinationCardsChest);
             AddChild(perandus, "Cadiro's Archive", settingsHub.PreloadAlertSettings.PerandusManorMapsChest);
             AddChild(perandus, "Cadiro's Jewellery", settingsHub.PreloadAlertSettings.PerandusManorJewelryChest);
-            AddChild(perandus, "Cadiro's Catalogue", settingsHub.PreloadAlertSettings.PerandusManorDivinationCardsChest);
             AddChild(perandus, "Grand Perandus Vault", settingsHub.PreloadAlertSettings.PerandusManorLostTreasureChest);
+            AddChild(perandus, "Perandus Guards", settingsHub.PreloadAlertSettings.PerandusGuards);
             AddChild(perandus, "Labyrinth Chests", settingsHub.PreloadAlertSettings.LabyrinthChests);
 
             var masters = AddChild(preloadMenu, "Masters", settingsHub.PreloadAlertSettings.Masters);
             AddChild(masters, "Zana", settingsHub.PreloadAlertSettings.MasterZana);
+            AddChild(masters, "Krillson", settingsHub.PreloadAlertSettings.MasterKrillson);
             AddChild(masters, "Tora", settingsHub.PreloadAlertSettings.MasterTora);
             AddChild(masters, "Haku", settingsHub.PreloadAlertSettings.MasterHaku);
             AddChild(masters, "Vorici", settingsHub.PreloadAlertSettings.MasterVorici);
             AddChild(masters, "Elreon", settingsHub.PreloadAlertSettings.MasterElreon);
             AddChild(masters, "Vagan", settingsHub.PreloadAlertSettings.MasterVagan);
             AddChild(masters, "Catarina", settingsHub.PreloadAlertSettings.MasterCatarina);
-            AddChild(masters, "Krillson", settingsHub.PreloadAlertSettings.MasterKrillson);
 
             var exiles = AddChild(preloadMenu, "Exiles", settingsHub.PreloadAlertSettings.Exiles);
             AddChild(exiles, "Orra Greengate", settingsHub.PreloadAlertSettings.OrraGreengate);
@@ -218,12 +218,36 @@ namespace qHUD.Hud.Menu
             AddChild(exiles, "Vanth Agiel", settingsHub.PreloadAlertSettings.VanthAgiel);
             AddChild(exiles, "Lael Furia", settingsHub.PreloadAlertSettings.LaelFuria);
 
+            var tormented = AddChild(preloadMenu, "Tormented ghosts", settingsHub.PreloadAlertSettings.Tormented);
+            AddChild(tormented, "Embezzler", settingsHub.PreloadAlertSettings.TormentedEmbezzler);
+            AddChild(tormented, "Seditionist", settingsHub.PreloadAlertSettings.TormentedLibrarian);
+            AddChild(tormented, "Smuggler", settingsHub.PreloadAlertSettings.TormentedSmuggler);
+            AddChild(tormented, "Arsonist", settingsHub.PreloadAlertSettings.TormentedArsonist);
+            AddChild(tormented, "Aurora Cultist", settingsHub.PreloadAlertSettings.TormentedFreezer);
+            AddChild(tormented, "Blasphemer", settingsHub.PreloadAlertSettings.TormentedBlasphemer);
+            AddChild(tormented, "Cannibal", settingsHub.PreloadAlertSettings.TormentedCannibal);
+            AddChild(tormented, "Charlatan", settingsHub.PreloadAlertSettings.TormentedCharlatan);
+            AddChild(tormented, "Cutthroat", settingsHub.PreloadAlertSettings.TormentedCutthroat);
+            AddChild(tormented, "Forger", settingsHub.PreloadAlertSettings.TormentedCounterfeiter);
+            AddChild(tormented, "Martyr", settingsHub.PreloadAlertSettings.TormentedMartyr);
+            AddChild(tormented, "Mutilator", settingsHub.PreloadAlertSettings.TormentedMutilator);
+            AddChild(tormented, "Necromancer", settingsHub.PreloadAlertSettings.TormentedNecromancer);
+            AddChild(tormented, "Poisoner", settingsHub.PreloadAlertSettings.TormentedPoisoner);
+            AddChild(tormented, "Rogue", settingsHub.PreloadAlertSettings.TormentedRogue);
+            AddChild(tormented, "Spy", settingsHub.PreloadAlertSettings.TormentedSpy);
+            AddChild(tormented, "Storm Cultist", settingsHub.PreloadAlertSettings.TormentedExperimenter);
+            AddChild(tormented, "Thief", settingsHub.PreloadAlertSettings.TormentedThief);
+            AddChild(tormented, "Thug", settingsHub.PreloadAlertSettings.TormentedThug);
+            AddChild(tormented, "Vaal Cultist", settingsHub.PreloadAlertSettings.TormentedCorrupter);
+            AddChild(tormented, "Warlord", settingsHub.PreloadAlertSettings.TormentedWarlord);
+            AddChild(tormented, "Fisherman", settingsHub.PreloadAlertSettings.TormentedFisherman);
+
             var strongboxes = AddChild(preloadMenu, "Strongboxes", settingsHub.PreloadAlertSettings.Strongboxes);
             AddChild(strongboxes, "Arcanist", settingsHub.PreloadAlertSettings.ArcanistStrongbox);
             AddChild(strongboxes, "Diviners", settingsHub.PreloadAlertSettings.DivinersStrongbox);
-            AddChild(strongboxes, "Artisan", settingsHub.PreloadAlertSettings.ArtisanStrongbox);
             AddChild(strongboxes, "Cartographer", settingsHub.PreloadAlertSettings.CartographerStrongbox);
             AddChild(strongboxes, "Gemcutter", settingsHub.PreloadAlertSettings.GemcutterStrongbox);
+            AddChild(strongboxes, "Artisan", settingsHub.PreloadAlertSettings.ArtisanStrongbox);
             AddChild(strongboxes, "Jeweller", settingsHub.PreloadAlertSettings.JewellerStrongbox);
             AddChild(strongboxes, "Blacksmith", settingsHub.PreloadAlertSettings.BlacksmithStrongbox);
             AddChild(strongboxes, "Armourer", settingsHub.PreloadAlertSettings.ArmourerStrongbox);

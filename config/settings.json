@@ -33,7 +33,7 @@
     "IconsOnLargeMap": true
   },
   "Item alert": {
-    "Enable": true,
+    "Enable": false,
     "ShowItemOnMap": true,
     "ShowText": true,
     "PlaySound": true,
@@ -199,7 +199,7 @@
     "PerandusChestColor": "99ff33ff"
   },
   "Preload alerts": {
-    "Enable": true,
+    "Enable": false,
     "PerandusLeague": true,
     "CadiroTrader": "ff8000ff",
     "PerandusGuards": "ffd700ff",
@@ -235,6 +235,7 @@
     },
     "Masters": true,
     "Exiles": true,
+    "Tormented": true,
     "Labyrinth": true,
     "Strongboxes": true,
     "TextSize": {
@@ -290,10 +291,32 @@
     "AugustinaSolaria": "fec076ff",
     "DenaLorenni": "fec076ff",
     "VanthAgiel": "fec076ff",
-    "LaelFuria": "fec076ff"
+    "LaelFuria": "fec076ff",
+    "TormentedArsonist": "c6ffc6ff",
+    "TormentedFreezer": "c6ffc6ff",
+    "TormentedBlasphemer": "c6ffc6ff",
+    "TormentedCannibal": "c6ffc6ff",
+    "TormentedCharlatan": "c6ffc6ff",
+    "TormentedCutthroat": "c6ffc6ff",
+    "TormentedEmbezzler": "ff00ffff",
+    "TormentedCounterfeiter": "c6ffc6ff",
+    "TormentedMartyr": "c6ffc6ff",
+    "TormentedMutilator": "c6ffc6ff",
+    "TormentedNecromancer": "c6ffc6ff",
+    "TormentedPoisoner": "c6ffc6ff",
+    "TormentedRogue": "c6ffc6ff",
+    "TormentedLibrarian": "ffff00ff",
+    "TormentedSmuggler": "af6025ff",
+    "TormentedSpy": "c6ffc6ff",
+    "TormentedExperimenter": "c6ffc6ff",
+    "TormentedThief": "c6ffc6ff",
+    "TormentedThug": "c6ffc6ff",
+    "TormentedCorrupter": "c6ffc6ff",
+    "TormentedWarlord": "c6ffc6ff",
+    "TormentedFisherman": "c6ffc6ff"
   },
   "Area settings": {
-    "Enable": true,
+    "Enable": false,
     "ShowInTown": true,
     "ShowLatency": true,
     "TextSize": {
