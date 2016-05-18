@@ -70,7 +70,7 @@
       "BackgroundColor": "000000e6"
     },
     "Item mods": {
-      "Enable": false,
+      "Enable": true,
       "TierTextSize": {
         "Value": 16,
         "Min": 10,

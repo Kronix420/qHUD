@@ -5,24 +5,25 @@ Slim version of PoEHUD...some features have been removed.
 
 ### Keyboard Info
 
-* Press F12 to show / hide the Menu
-* Press F9 to show / hide Item Mods
-* Hold F10 to hide all huds
-* Press F5 to refresh the current area/corrupted title
+* Press F5 to refresh the current area.
+* Press F9 to show / hide item mods.
+* Press F10 to hide all opened huds.
+* Press F12 to show / hide the menu.
+
 
 
 ### Available features
 
-* Item Filter Parser
-* Item drop alerts & sounds
-* Health bars
-* Icons on minimap
-* Latency info
-* Item level/mods, weapon dps
-* Monster alerts
-* XP penalty
-* Preload alerts
-* Sound volume controls
+* Item filter parser.
+* Item drop alerts & sounds.
+* Health bars.
+* Icons on minimap/largemap.
+* Latency info.
+* Item level/mods, weapon dps.
+* Monster alerts.
+* Xp penalty.
+* Preload alerts.
+* Sound volume controls.
 
 
 ### Requirements
