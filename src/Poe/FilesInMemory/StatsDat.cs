@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using qHUD.Framework;
-
 namespace qHUD.Poe.FilesInMemory
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Framework;
     public class StatsDat : FileInMemory
     {
         public enum StatType
@@ -25,11 +25,9 @@ namespace qHUD.Poe.FilesInMemory
 
         private void loadItems()
         {
-            foreach (int addr in RecordAddresses())
+            foreach (var r in RecordAddresses().Select(addr => new StatRecord(M, addr)))
             {
-                var r = new StatRecord(M, addr);
-                if (!records.ContainsKey(r.Key))
-                    records.Add(r.Key, r);
+                records.Add(r.Key, r);
             }
         }
 
@@ -42,7 +40,6 @@ namespace qHUD.Poe.FilesInMemory
             public bool Unknown6;
             public bool UnknownB;
             public string UserFriendlyName;
-            // more fields can be added (see in visualGGPK)
 
             public StatRecord(Memory m, int addr)
             {
@@ -57,7 +54,7 @@ namespace qHUD.Poe.FilesInMemory
 
             public override string ToString()
             {
-                return String.IsNullOrWhiteSpace(UserFriendlyName) ? Key : UserFriendlyName;
+                return string.IsNullOrWhiteSpace(UserFriendlyName) ? Key : UserFriendlyName;
             }
 
             internal string ValueToString(int val)
@@ -66,15 +63,15 @@ namespace qHUD.Poe.FilesInMemory
                 {
                     case StatType.Boolean:
                         return val != 0 ? "True" : "False";
-
                     case StatType.IntValue:
                     case StatType.Value2:
                         return val.ToString("+#;-#");
                     case StatType.Percents:
                     case StatType.Precents5:
                         return val.ToString("+#;-#") + "%";
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-                return "";
             }
         }
     }

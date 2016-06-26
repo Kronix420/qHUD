@@ -1,12 +1,11 @@
-﻿using System.Threading.Tasks;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using SharpDX;
-using SharpDX.Direct3D9;
-using ColorGdi = System.Drawing.Color;
-
-namespace qHUD.Hud.Menu
+﻿namespace qHUD.Hud.Menu
 {
+    using System.Threading.Tasks;
+    using Settings;
+    using UI;
+    using SharpDX;
+    using SharpDX.Direct3D9;
+    using ColorGdi = System.Drawing.Color;
     public sealed class ColorButton : MenuItem
     {
         private readonly string name;

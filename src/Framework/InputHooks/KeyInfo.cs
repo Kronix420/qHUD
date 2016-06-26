@@ -1,7 +1,6 @@
-﻿using System.Windows.Forms;
-
-namespace qHUD.Framework.InputHooks
+﻿namespace qHUD.Framework.InputHooks
 {
+    using System.Windows.Forms;
     public class KeyInfo
     {
         public KeyInfo(Keys keys, bool control, bool alt, bool shift)

@@ -1,6 +1,4 @@
 namespace qHUD.Poe.Components
 {
-    public class Monster : Component
-    {
-    }
+    public class Monster : Component { }
 }

@@ -1,7 +1,7 @@
-using System.Runtime.InteropServices;
-
 namespace qHUD.Framework.InputHooks.Structures
 {
+    using System.Runtime.InteropServices;
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct KeyboardHookStruct
     {

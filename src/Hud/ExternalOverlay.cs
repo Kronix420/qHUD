@@ -1,31 +1,31 @@
-﻿using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.Area;
-using qHUD.Hud.Health;
-using qHUD.Hud.Icons;
-using qHUD.Hud.Interfaces;
-using qHUD.Hud.ItemTooltips;
-using qHUD.Hud.Loot;
-using qHUD.Hud.Menu;
-using qHUD.Hud.Preload;
-using qHUD.Hud.Settings;
-using qHUD.Hud.Trackers;
-using qHUD.Models.Enums;
-using qHUD.Poe;
-using SharpDX;
-using SharpDX.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Color = System.Drawing.Color;
-using Graphics2D = qHUD.Hud.UI.Graphics;
-using Rectangle = System.Drawing.Rectangle;
-
-namespace qHUD.Hud
+﻿namespace qHUD.Hud
 {
+    using Controllers;
+    using Framework;
+    using Framework.Helpers;
+    using Area;
+    using Health;
+    using Icons;
+    using Interfaces;
+    using ItemTooltips;
+    using Loot;
+    using Menu;
+    using Preload;
+    using Settings;
+    using Trackers;
+    using Models.Enums;
+    using Poe;
+    using SharpDX;
+    using SharpDX.Windows;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+    using Color = System.Drawing.Color;
+    using Graphics2D = UI.Graphics;
+    using Rectangle = System.Drawing.Rectangle;
+
     internal sealed class ExternalOverlay : RenderForm
     {
         private readonly SettingsHub settings;
@@ -81,7 +81,7 @@ namespace qHUD.Hud
         private Vector2 GetLeftCornerMap()
         {
             var ingameState = gameController.Game.IngameState;
-            RectangleF clientRect = ingameState.IngameUi.Map.SmallMinimap.GetClientRect();
+            RectangleF clientRect = ingameState.IngameUi.Map.Minimap.GetClientRect();
             var diagnosticElement = ingameState.LatencyRectangle;
             switch (ingameState.DiagnosticInfoType)
             {
@@ -105,7 +105,7 @@ namespace qHUD.Hud
             RectangleF questPanelRect = questPanel.GetClientRect();
             Element gemPanel = gameController.Game.IngameState.IngameUi.GemLvlUpPanel;
             RectangleF gemPanelRect = gemPanel.GetClientRect();
-            RectangleF clientRect = gameController.Game.IngameState.IngameUi.Map.SmallMinimap.GetClientRect();
+            RectangleF clientRect = gameController.Game.IngameState.IngameUi.Map.Minimap.GetClientRect();
             if (gemPanel.IsVisible && Math.Abs(gemPanelRect.Right - clientRect.Right) < EPSILON)
             {
                 clientRect.Height += gemPanelRect.Height;

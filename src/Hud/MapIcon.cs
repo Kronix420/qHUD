@@ -1,10 +1,9 @@
-using System;
-using qHUD.Models;
-using qHUD.Poe.Components;
-using SharpDX;
-
 namespace qHUD.Hud
 {
+    using System;
+    using Models;
+    using Poe.Components;
+    using SharpDX;
     public class CreatureMapIcon : MapIcon
     {
         public CreatureMapIcon(EntityWrapper entityWrapper, string hudTexture, Func<bool> show, int iconSize)

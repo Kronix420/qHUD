@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace qHUD.Framework.Helpers
+﻿namespace qHUD.Framework.Helpers
 {
+    using System;
+    using System.Collections.Generic;
     public static class LinqHelper
     {
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)

@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using qHUD.Controllers;
-using qHUD.Poe;
-using qHUD.Poe.Elements;
-
 namespace qHUD.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using Controllers;
+    using Poe;
+    using Poe.Elements;
     public sealed class EntityListWrapper
     {
         private readonly GameController gameController;
@@ -111,7 +110,6 @@ namespace qHUD.Models
             return entityCache.TryGetValue(id, out result) ? result : null;
         }
 
-        //public EntityLabel GetLabelForEntity(EntityWrapper entity)
         public EntityLabel GetLabelForEntity(Entity entity)
         {
             var hashSet = new HashSet<int>();

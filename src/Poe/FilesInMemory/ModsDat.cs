@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using qHUD.Framework;
-
 namespace qHUD.Poe.FilesInMemory
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Framework;
     public class ModsDat : FileInMemory
     {
         public enum ModType
@@ -15,24 +15,18 @@ namespace qHUD.Poe.FilesInMemory
             Other = 5
         }
 
-        public Dictionary<string, ModRecord> records =
-            new Dictionary<string, ModRecord>(StringComparer.OrdinalIgnoreCase);
-
-        public Dictionary<Tuple<string, ModType>, List<ModRecord>> recordsByTier =
-            new Dictionary<Tuple<string, ModType>, List<ModRecord>>();
+        public Dictionary<string, ModRecord> records = new Dictionary<string, ModRecord>(StringComparer.OrdinalIgnoreCase);
+        public Dictionary<Tuple<string, ModType>, List<ModRecord>> recordsByTier = new Dictionary<Tuple<string, ModType>, List<ModRecord>>();
 
         public ModsDat(Memory m, int address, StatsDat sDat, TagsDat tagsDat) : base(m, address)
         {
             loadItems(sDat, tagsDat);
         }
 
-        private void loadItems(StatsDat sDat, TagsDat tagsDat)
+        private void loadItems(StatsDat sDat, TagsDat tDat)
         {
-            foreach (int addr in RecordAddresses())
+            foreach (var r in RecordAddresses().Select(addr => new ModRecord(M, sDat, tDat, addr)))
             {
-                var r = new ModRecord(M, sDat, tagsDat, addr);
-                if (records.ContainsKey(r.Key))
-                    continue;
                 records.Add(r.Key, r);
                 bool addToItemIiers = r.Domain != 3;
                 if (!addToItemIiers) continue;
@@ -60,34 +54,25 @@ namespace qHUD.Poe.FilesInMemory
             public int Domain;
             public string Group;
             public int MinLevel;
-            public StatsDat.StatRecord[] StatNames; // Game refers to Stats.dat line
+            public StatsDat.StatRecord[] StatNames;
             public IntRange[] StatRange;
             public int[] TagChances;
-            public TagsDat.TagRecord[] Tags; // Game refers to Tags.dat line
+            public TagsDat.TagRecord[] Tags;
             public int Unknown4;
             public string UserFriendlyName;
-            // more fields can be added (see in visualGGPK)
 
             public ModRecord(Memory m, StatsDat sDat, TagsDat tagsDat, int addr)
             {
-                Key = m.ReadStringU(m.ReadInt(addr + 0));
+                Key = m.ReadStringU(m.ReadInt(addr));
                 Unknown4 = m.ReadInt(addr + 4);
                 MinLevel = m.ReadInt(addr + 0x10);
 
                 StatNames = new[]
                 {
-                    m.ReadInt(addr + 0x18) == 0
-                        ? null
-                        : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x18)))],
-                    m.ReadInt(addr + 0x20) == 0
-                        ? null
-                        : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x20)))],
-                    m.ReadInt(addr + 0x28) == 0
-                        ? null
-                        : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x28)))],
-                    m.ReadInt(addr + 0x30) == 0
-                        ? null
-                        : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x30)))]
+                    m.ReadInt(addr + 0x18) == 0 ? null : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x18)))],
+                    m.ReadInt(addr + 0x20) == 0 ? null : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x20)))],
+                    m.ReadInt(addr + 0x28) == 0 ? null : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x28)))],
+                    m.ReadInt(addr + 0x30) == 0 ? null : sDat.records[m.ReadStringU(m.ReadInt(m.ReadInt(addr + 0x30)))]
                 };
 
                 Domain = m.ReadInt(addr + 0x34);

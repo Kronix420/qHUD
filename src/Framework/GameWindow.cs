@@ -1,11 +1,10 @@
-using System;
-using System.Diagnostics;
-using SharpDX;
-using Point = System.Drawing.Point;
-using Rectangle = System.Drawing.Rectangle;
-
 namespace qHUD.Framework
 {
+    using System;
+    using System.Diagnostics;
+    using SharpDX;
+    using Point = System.Drawing.Point;
+    using Rectangle = System.Drawing.Rectangle;
     public class GameWindow
     {
         private readonly IntPtr handle;

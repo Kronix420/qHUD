@@ -1,16 +1,15 @@
-using System;
-using System.Linq;
-using System.Windows.Forms;
-using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Framework.InputHooks;
-using qHUD.Hud.Health;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using SharpDX;
-
 namespace qHUD.Hud.Menu
 {
+    using System;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Controllers;
+    using Framework;
+    using Framework.InputHooks;
+    using Health;
+    using Settings;
+    using UI;
+    using SharpDX;
     public class MenuPlugin : Plugin<MenuSettings>
     {
         private readonly SettingsHub settingsHub;
@@ -159,31 +158,6 @@ namespace qHUD.Hud.Menu
 
             // Preload alert
             var preloadMenu = AddChild(root, "Preload alert", settingsHub.PreloadAlertSettings.Enable, "F5");
-
-            var perandus = AddChild(preloadMenu, "Perandus League", settingsHub.PreloadAlertSettings.PerandusLeague);
-            AddChild(perandus, "Cadiro Trader", settingsHub.PreloadAlertSettings.CadiroTrader);
-            AddChild(perandus, "Perandus Locker", settingsHub.PreloadAlertSettings.PerandusChestUniqueItem);
-            AddChild(perandus, "Perandus Treasury", settingsHub.PreloadAlertSettings.PerandusChestCurrency);
-            AddChild(perandus, "Perandus Catalogue", settingsHub.PreloadAlertSettings.PerandusChestDivinationCards);
-            AddChild(perandus, "Perandus Archive", settingsHub.PreloadAlertSettings.PerandusChestMaps);
-            AddChild(perandus, "Perandus Tackle Box", settingsHub.PreloadAlertSettings.PerandusChestFishing);
-            AddChild(perandus, "Perandus Coffer", settingsHub.PreloadAlertSettings.PerandusChestCoins);
-            AddChild(perandus, "Perandus Chest", settingsHub.PreloadAlertSettings.PerandusChestStandard);
-            AddChild(perandus, "Perandus Trove", settingsHub.PreloadAlertSettings.PerandusChestKeepersOfTheTrove);
-            AddChild(perandus, "Perandus Cache", settingsHub.PreloadAlertSettings.PerandusChestRarity);
-            AddChild(perandus, "Perandus Hoard", settingsHub.PreloadAlertSettings.PerandusChestQuantity);
-            AddChild(perandus, "Perandus Jewellery", settingsHub.PreloadAlertSettings.PerandusChestJewellery);
-            AddChild(perandus, "Perandus Safe", settingsHub.PreloadAlertSettings.PerandusChestGems);
-            AddChild(perandus, "Perandus Wardrobe", settingsHub.PreloadAlertSettings.PerandusChestInventory);
-            AddChild(perandus, "Cadiro's Locker", settingsHub.PreloadAlertSettings.PerandusManorUniqueChest);
-            AddChild(perandus, "Cadiro's Treasury", settingsHub.PreloadAlertSettings.PerandusManorCurrencyChest);
-            AddChild(perandus, "Cadiro's Catalogue", settingsHub.PreloadAlertSettings.PerandusManorDivinationCardsChest);
-            AddChild(perandus, "Cadiro's Archive", settingsHub.PreloadAlertSettings.PerandusManorMapsChest);
-            AddChild(perandus, "Cadiro's Jewellery", settingsHub.PreloadAlertSettings.PerandusManorJewelryChest);
-            AddChild(perandus, "Grand Perandus Vault", settingsHub.PreloadAlertSettings.PerandusManorLostTreasureChest);
-            AddChild(perandus, "Perandus Guards", settingsHub.PreloadAlertSettings.PerandusGuards);
-            AddChild(perandus, "Labyrinth Chests", settingsHub.PreloadAlertSettings.LabyrinthChests);
-
             var masters = AddChild(preloadMenu, "Masters", settingsHub.PreloadAlertSettings.Masters);
             AddChild(masters, "Zana", settingsHub.PreloadAlertSettings.MasterZana);
             AddChild(masters, "Krillson", settingsHub.PreloadAlertSettings.MasterKrillson);
@@ -288,7 +262,6 @@ namespace qHUD.Hud.Menu
             AddChild(minimapIcons, "Masters Icon", settingsHub.PoiTrackerSettings.MastersIcon);
             AddChild(minimapIcons, "Chests Icon", settingsHub.PoiTrackerSettings.ChestsIcon);
             AddChild(minimapIcons, "Strongboxes Icon", settingsHub.PoiTrackerSettings.StrongboxesIcon);
-            AddChild(minimapIcons, "PerandusChest Icon", settingsHub.PoiTrackerSettings.PerandusChestIcon);
             AddChild(minimapIcons, "Item loot Icon", settingsHub.ItemAlertSettings.LootIcon);
 
             //Menu settings

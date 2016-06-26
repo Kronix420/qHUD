@@ -1,11 +1,10 @@
-﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using qHUD.Framework;
-
-namespace qHUD.Hud
+﻿namespace qHUD.Hud
 {
+    using System;
+    using System.Drawing;
+    using System.Runtime.InteropServices;
+    using System.Windows.Forms;
+    using Framework;
     public class CustomColorDialog
     {
         private readonly TrackBar alphaSlider;
@@ -80,15 +79,13 @@ namespace qHUD.Hud
         public bool Show()
         {
             bool result = WinApi.ChooseColor(ref chooseColor);
-            if (result)
+            if (!result) return false;
+            int value;
+            if (int.TryParse(alphaText.Text, out value))
             {
-                int value;
-                if (int.TryParse(alphaText.Text, out value))
-                {
-                    SelectedColor = Color.FromArgb((value << 24) | chooseColor.rgbResult);
-                }
+                SelectedColor = Color.FromArgb((value << 24) | chooseColor.rgbResult);
             }
-            return result;
+            return true;
         }
 
         private IntPtr HookProc(IntPtr hWnd, UInt16 msg, Int32 wParam, Int32 lParam)
@@ -111,16 +108,14 @@ namespace qHUD.Hud
                     Rectangle screenSize = Screen.PrimaryScreen.Bounds;
                     int width = windowRect.Width + panelRect.Width + 25;
                     int height = windowRect.Height + 38;
-                    WinApi.MoveWindow(hWnd, screenSize.Width / 2 - width / 2, screenSize.Height / 2 - height / 2,
+                    WinApi.MoveWindow(hWnd, screenSize.Width/2 - width/2, screenSize.Height/2 - height/2,
                         width, height, true);
                     break;
-
                 case RESIZE_DIALOG:
                     WinApi.MoveWindow(alphaPanel.Handle, windowRect.Right - windowRect.Left - panelRect.Width - 10,
                         0, panelRect.Width, panelRect.Height, true);
                     break;
             }
-
             return IntPtr.Zero;
         }
     }

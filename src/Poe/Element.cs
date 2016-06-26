@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
-using SharpDX;
-
 namespace qHUD.Poe
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using SharpDX;
     public class Element : RemoteMemoryObject
     {
         public const int OffsetBuffers = 0x76C;
@@ -17,8 +16,8 @@ namespace qHUD.Poe
         public Element Parent => ReadObject<Element>(Address + 0x70 + OffsetBuffers);
         public float X => M.ReadFloat(Address + 0x74 + OffsetBuffers);
         public float Y => M.ReadFloat(Address + 0x78 + OffsetBuffers);
-        public float Width => M.ReadFloat(Address + 0x114 + OffsetBuffers);
-        public float Height => M.ReadFloat(Address + 0x118 + OffsetBuffers);
+        public float Width => M.ReadFloat(Address + 0x110 + OffsetBuffers);
+        public float Height => M.ReadFloat(Address + 0x114 + OffsetBuffers);
         public int ChildCount => (M.ReadInt(Address + 0x20 + OffsetBuffers) - M.ReadInt(Address + 0x1C + OffsetBuffers)) / 4;
         public bool IsVisibleLocal => (M.ReadInt(Address + 0x68 + OffsetBuffers) & 1) == 1;
 

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using SharpDX;
-
-namespace qHUD.Framework.Helpers
+﻿namespace qHUD.Framework.Helpers
 {
+    using System;
+    using System.Linq;
+    using SharpDX;
     public static class MathHepler
     {
         private const string CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

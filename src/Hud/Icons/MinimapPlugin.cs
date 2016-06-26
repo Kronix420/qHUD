@@ -1,15 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using qHUD.Controllers;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.UI;
-using qHUD.Poe;
-using qHUD.Poe.Components;
-using SharpDX;
-
 namespace qHUD.Hud.Icons
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Controllers;
+    using Framework.Helpers;
+    using UI;
+    using Poe;
+    using Poe.Components;
+    using SharpDX;
     public class MinimapPlugin : Plugin<MapIconsSettings>
     {
         private readonly Func<IEnumerable<MapIcon>> getIcons;
@@ -28,7 +27,7 @@ namespace qHUD.Hud.Icons
                 return;
             }
 
-            Element smallMinimap = GameController.Game.IngameState.IngameUi.Map.SmallMinimap;
+            Element smallMinimap = GameController.Game.IngameState.IngameUi.Map.Minimap;
             if (!smallMinimap.IsVisible)
             {
                 return;
@@ -39,7 +38,7 @@ namespace qHUD.Hud.Icons
 
             const float SCALE = 240f;
             RectangleF mapRect = smallMinimap.GetClientRect();
-            var mapCenter = new Vector2(mapRect.X + mapRect.Width / 2, mapRect.Y + mapRect.Height / 2).Translate(0, -20);
+            var mapCenter = new Vector2(mapRect.X + mapRect.Width / 2, mapRect.Y + mapRect.Height / 2).Translate(0, 0);
             double diag = Math.Sqrt(mapRect.Width * mapRect.Width + mapRect.Height * mapRect.Height) / 2.0;
             foreach (MapIcon icon in getIcons().Where(x => x.IsVisible()))
             {

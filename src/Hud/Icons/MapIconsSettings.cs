@@ -1,7 +1,6 @@
-﻿using qHUD.Hud.Settings;
-
-namespace qHUD.Hud.Icons
+﻿namespace qHUD.Hud.Icons
 {
+    using Settings;
     public sealed class MapIconsSettings : SettingsBase
     {
         public MapIconsSettings()

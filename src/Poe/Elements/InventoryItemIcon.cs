@@ -1,8 +1,7 @@
-using System;
-using qHUD.Poe.Components;
-
 namespace qHUD.Poe.Elements
 {
+    using System;
+    using Components;
     public class InventoryItemIcon : Element
     {
         private readonly Func<Element> inventoryItemTooltip;
@@ -13,7 +12,7 @@ namespace qHUD.Poe.Elements
         public InventoryItemIcon()
         {
             toolTipOnground = () => Game.IngameState.IngameUi.ItemOnGroundTooltip;
-            inventoryItemTooltip = () => ReadObject<Element>(Address + 0xA70);
+            inventoryItemTooltip = () => ReadObject<Element>(Address + 0xA6C);
             itemInChatTooltip = () => ReadObject<Element>(Address + 0x800);
         }
 
@@ -27,7 +26,6 @@ namespace qHUD.Poe.Elements
                 {
                     case ToolTipType.ItemOnGround:
                         return toolTipOnground().Tooltip;
-
                     case ToolTipType.InventoryItem:
                         return inventoryItemTooltip();
                     case ToolTipType.ItemInChat:
@@ -44,13 +42,11 @@ namespace qHUD.Poe.Elements
                 switch (ToolTipType)
                 {
                     case ToolTipType.ItemOnGround:
-                        return Game.IngameState.IngameUi
-                            .ReadObjectAt<ItemsOnGroundLabelElement>(0x130)
-                            .ReadObjectAt<Entity>(OffsetBuffers + 0x1D0)
-                            .GetComponent<WorldItem>().ItemEntity;
-
+                        ItemsOnGroundLabelElement le = Game.IngameState.IngameUi.ReadObjectAt<ItemsOnGroundLabelElement>(0xA54);
+                        Entity e = le?.ReadObjectAt<Entity>(0x1CC);
+                        return e?.GetComponent<WorldItem>().ItemEntity;
                     case ToolTipType.InventoryItem:
-                        return ReadObject<Entity>(Address + 0xA90);
+                        return ReadObject<Entity>(Address + 0xA8C);
                 }
                 return null;
             }
@@ -62,7 +58,7 @@ namespace qHUD.Poe.Elements
             {
                 return ToolTipType.InventoryItem;
             }
-            if (toolTipOnground().Tooltip != null && toolTipOnground().TooltipUI != null && toolTipOnground().TooltipUI.IsVisible)
+            if (toolTipOnground?.Invoke().Tooltip != null && toolTipOnground().TooltipUI != null && toolTipOnground().TooltipUI.IsVisible)
             {
                 return ToolTipType.ItemOnGround;
             }

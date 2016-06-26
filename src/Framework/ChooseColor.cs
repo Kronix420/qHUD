@@ -1,17 +1,15 @@
-﻿using System;
-
-namespace qHUD.Framework
+﻿namespace qHUD.Framework
 {
-    public delegate IntPtr CCHookProc(IntPtr hWnd, UInt16 msg, Int32 wParam, Int32 lParam);
-
+    using System;
+    public delegate IntPtr CCHookProc(IntPtr hWnd, ushort msg, int wParam, int lParam);
     public struct ChooseColor
     {
-        public Int32 lStructSize;
+        public int lStructSize;
         public IntPtr hwndOwner;
         public IntPtr hInstance;
-        public Int32 rgbResult;
+        public int rgbResult;
         public IntPtr lpCustColors;
-        public Int32 Flags;
+        public int Flags;
         public IntPtr lCustData;
         public CCHookProc lpfnHook;
         public IntPtr lpTemplateName;

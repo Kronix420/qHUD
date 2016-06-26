@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using qHUD.Hud.Settings;
-
-namespace qHUD.Hud.ItemTooltips
+﻿namespace qHUD.Hud.ItemTooltips
 {
+    using Newtonsoft.Json;
+    using Settings;
     public class ItemTooltipSettings : SettingsBase
     {
         public ItemTooltipSettings()

@@ -1,8 +1,7 @@
-﻿using System;
-using SharpDX;
-
-namespace qHUD.Hud.Interfaces
+﻿namespace qHUD.Hud.Interfaces
 {
+    using System;
+    using SharpDX;
     public interface IPanelChild
     {
         Size2F Size { get; }

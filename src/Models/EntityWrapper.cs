@@ -1,17 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using qHUD.Controllers;
-using qHUD.Models.Interfaces;
-using qHUD.Poe;
-using qHUD.Poe.Components;
-using Vector3 = SharpDX.Vector3;
-
 namespace qHUD.Models
 {
+    using System.Collections.Generic;
+    using Controllers;
+    using Interfaces;
+    using Poe;
+    using Poe.Components;
+    using Vector3 = SharpDX.Vector3;
     public class EntityWrapper : IEntity
     {
-        private readonly int cachedId;
         private readonly Dictionary<string, int> components;
         private readonly GameController gameController;
         private readonly Entity internalEntity;
@@ -23,18 +19,15 @@ namespace qHUD.Models
             internalEntity = entity;
             components = internalEntity.GetComponents();
             Path = internalEntity.Path;
-            cachedId = internalEntity.Id;
+            Id = internalEntity.Id;
             LongId = internalEntity.LongId;
         }
 
-        public EntityWrapper(GameController Poe, int address) : this(Poe, Poe.Game.GetObject<Entity>(address))
-        {
-        }
-
+        public EntityWrapper(GameController Poe, int address) : this(Poe, Poe.Game.GetObject<Entity>(address)) { }
         public string Path { get; }
-        public bool IsValid => internalEntity.IsValid && IsInList && cachedId == internalEntity.Id;
+        public bool IsValid => internalEntity.IsValid && IsInList && Id == internalEntity.Id;
         public int Address => internalEntity.Address;
-        public int Id => cachedId;
+        public int Id { get; }
         public bool IsHostile => internalEntity.IsHostile;
         public long LongId { get; }
         public bool IsAlive => GetComponent<Life>().CurHP > 0;
@@ -48,14 +41,6 @@ namespace qHUD.Models
             }
         }
 
-        public List<EntityWrapper> Minions
-        {
-            get
-            {
-                return GetComponent<Actor>().Minions.Select(current => gameController.EntityListWrapper.GetEntityById(current)).Where(byId => byId != null).ToList();
-            }
-        }
-
         public T GetComponent<T>() where T : Component, new()
         {
             string name = typeof(T).Name;
@@ -65,15 +50,6 @@ namespace qHUD.Models
         public bool HasComponent<T>() where T : Component, new()
         {
             return components.ContainsKey(typeof(T).Name);
-        }
-
-        public void PrintComponents()
-        {
-            Console.WriteLine(internalEntity.Path + " " + internalEntity.Address.ToString("X"));
-            foreach (var current in components)
-            {
-                Console.WriteLine(current.Key + " " + current.Value.ToString("X"));
-            }
         }
 
         public override bool Equals(object obj)

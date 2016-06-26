@@ -1,11 +1,10 @@
-using System;
-using qHUD.Models.Enums;
-using qHUD.Poe;
-using qHUD.Poe.Components;
-using qHUD.Poe.RemoteMemoryObjects;
-
 namespace qHUD.Models
 {
+    using System;
+    using Enums;
+    using Poe;
+    using Poe.Components;
+    using Poe.RemoteMemoryObjects;
     public sealed class ItemStats
     {
         private static StatTranslator translate;
@@ -15,17 +14,10 @@ namespace qHUD.Models
         public ItemStats(Entity item)
         {
             this.item = item;
-            if (translate == null)
-            {
-                translate = new StatTranslator();
-            }
-            stats = new float[Enum.GetValues(typeof(ItemStatEnum)).Length];
-            ParseSockets();
             ParseExplicitMods();
-            if (item.HasComponent<Weapon>())
-            {
-                ParseWeaponStats();
-            }
+            if (translate == null) { translate = new StatTranslator(); }
+            stats = new float[Enum.GetValues(typeof(ItemStatEnum)).Length];
+            if (item.HasComponent<Weapon>()) { ParseWeaponStats(); }
         }
 
         private void ParseWeaponStats()
@@ -59,11 +51,6 @@ namespace qHUD.Models
             AddToMod(ItemStatEnum.TotalResistance, GetStat(ItemStatEnum.ElementalResistance) + GetStat(ItemStatEnum.TotalResistance));
         }
 
-        private void ParseSockets()
-        {
-            //todo ParseSockets do nothing
-        }
-
         public void AddToMod(ItemStatEnum stat, float value)
         {
             stats[(int)stat] += value;
@@ -72,12 +59,6 @@ namespace qHUD.Models
         public float GetStat(ItemStatEnum stat)
         {
             return stats[(int)stat];
-        }
-
-        [Obsolete]
-        public ItemType GetSlot()
-        {
-            return ItemType.All;
         }
     }
 }

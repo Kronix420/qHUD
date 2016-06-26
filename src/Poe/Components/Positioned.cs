@@ -1,7 +1,6 @@
-using SharpDX;
-
 namespace qHUD.Poe.Components
 {
+    using SharpDX;
     public class Positioned : Component
     {
         public float X => Address != 0 ? M.ReadFloat(Address + 0x1C) : 0f;

@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace qHUD.Hud.Interfaces
+﻿namespace qHUD.Hud.Interfaces
 {
+    using System;
     public interface IPlugin : IDisposable
     {
         void Render();

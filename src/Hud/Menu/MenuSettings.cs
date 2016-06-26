@@ -1,8 +1,7 @@
-﻿using qHUD.Hud.Settings;
-using SharpDX;
-
-namespace qHUD.Hud.Menu
+﻿namespace qHUD.Hud.Menu
 {
+    using Settings;
+    using SharpDX;
     public sealed class MenuSettings : SettingsBase
     {
         public MenuSettings()

@@ -1,13 +1,13 @@
-PoEHUD slim version - Currently DETECTED, use it on your own risk!
+PoEHUD slim version
 ======
 
 Slim version of PoEHUD...some features have been removed.
 
 ### Keyboard Info
 
-* Press F5 to refresh the current area.
+* Press F5 to refresh the current area/corrupted title.
 * Press F9 to show / hide item mods.
-* Press F10 to hide all opened huds.
+* Press F10 to hide all huds.
 * Press F12 to show / hide the menu.
 
 

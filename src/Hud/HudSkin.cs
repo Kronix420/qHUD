@@ -1,7 +1,6 @@
-using SharpDX;
-
 namespace qHUD.Hud
 {
+    using SharpDX;
     public static class HudSkin
     {
         public static readonly Color CurrencyColor = new ColorBGRA(170, 158, 130, 0xFF);

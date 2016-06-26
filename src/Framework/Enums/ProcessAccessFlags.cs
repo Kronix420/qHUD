@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace qHUD.Framework.Enums
+﻿namespace qHUD.Framework.Enums
 {
+    using System;
+
     [Flags]
     public enum ProcessAccessFlags : uint
     {

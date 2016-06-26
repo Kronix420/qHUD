@@ -1,6 +1,4 @@
 ﻿namespace qHUD.Poe.Components
 {
-    public class NPC : Component
-    {
-    }
+    public class NPC : Component { }
 }

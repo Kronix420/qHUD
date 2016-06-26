@@ -1,16 +1,12 @@
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
-
 #pragma warning disable 0162
-// The variable '...' is assigned but its value is never used
 #pragma warning disable 0219
-// Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
 namespace PoeFilterParser.Model
 {
-    [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5-SNAPSHOT")]
-    [System.CLSCompliant(false)]
+    [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5-SNAPSHOT")][System.CLSCompliant(false)]
     public class PoeFilterBaseVisitor<Result> : AbstractParseTreeVisitor<Result>, IPoeFilterVisitor<Result>
     {
         public virtual Result VisitStrValue([NotNull] PoeFilterParser.StrValueContext context)

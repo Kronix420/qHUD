@@ -1,13 +1,12 @@
-using System;
-using System.Linq;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using SharpDX;
-using SharpDX.Direct3D9;
-
 namespace qHUD.Hud.Menu
 {
+    using System;
+    using System.Linq;
+    using Framework.Helpers;
+    using Settings;
+    using UI;
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public class ToggleButton : MenuItem
     {
         public readonly string Name;

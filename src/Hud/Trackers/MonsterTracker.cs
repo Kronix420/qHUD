@@ -1,18 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using qHUD.Controllers;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.UI;
-using qHUD.Models;
-using qHUD.Models.Enums;
-using qHUD.Models.Interfaces;
-using qHUD.Poe.Components;
-using SharpDX;
-using SharpDX.Direct3D9;
-
 namespace qHUD.Hud.Trackers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Controllers;
+    using Framework.Helpers;
+    using UI;
+    using Models;
+    using Models.Enums;
+    using Models.Interfaces;
+    using Poe.Components;
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public class MonsterTracker : PluginWithMapIcons<MonsterTrackerSettings>
     {
         private readonly HashSet<int> alreadyAlertedOf;
@@ -95,7 +94,7 @@ namespace qHUD.Hud.Trackers
 
                 var rectDirection = new RectangleF(rectBackground.X + 3, rectBackground.Y, rectBackground.Height, rectBackground.Height);
 
-                if (first) // vertical padding above
+                if (first)
                 {
                     rectBackground.Y -= 2;
                     rectBackground.Height += 5;

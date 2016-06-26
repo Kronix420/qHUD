@@ -1,8 +1,7 @@
-﻿using qHUD.Hud.Settings;
-using SharpDX;
-
-namespace qHUD.Hud.Trackers
+﻿namespace qHUD.Hud.Trackers
 {
+    using Settings;
+    using SharpDX;
     public sealed class MonsterTrackerSettings : SettingsBase
     {
         public MonsterTrackerSettings()

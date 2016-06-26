@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace qHUD.Hud.Settings
+﻿namespace qHUD.Hud.Settings
 {
+    using System;
     public sealed class FileNode
     {
         public FileNode()

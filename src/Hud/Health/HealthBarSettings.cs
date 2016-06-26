@@ -1,7 +1,6 @@
-﻿using qHUD.Hud.Settings;
-
-namespace qHUD.Hud.Health
+﻿namespace qHUD.Hud.Health
 {
+    using Settings;
     public sealed class HealthBarSettings : SettingsBase
     {
         public HealthBarSettings()
@@ -13,10 +12,10 @@ namespace qHUD.Hud.Health
             ShowEnemies = true;
             Players = new UnitSettings(0x008000ff, 0);
             Minions = new UnitSettings(0x90ee90ff, 0);
-            NormalEnemy = new UnitSettings(0xff0000ff, 0, 0x66ff66ff, false);
-            MagicEnemy = new UnitSettings(0xff0000ff, 0x8888ffff, 0x66ff99ff, false);
-            RareEnemy = new UnitSettings(0xff0000ff, 0xffff77ff, 0x66ff99ff, false);
-            UniqueEnemy = new UnitSettings(0xff0000ff, 0xffa500ff, 0x66ff99ff, false);
+            NormalEnemy = new UnitSettings(0xff0000ff, 0);
+            MagicEnemy = new UnitSettings(0xff0000ff, 0x8888ffff);
+            RareEnemy = new UnitSettings(0xff0000ff, 0xffff77ff);
+            UniqueEnemy = new UnitSettings(0xff0000ff, 0xffa500ff);
             xPlayers = new RangeNode<int>(100, 0, 200);
             yPlayers = new RangeNode<int>(100, 0, 200);
             xEnemies = new RangeNode<int>(50, 0, 200);

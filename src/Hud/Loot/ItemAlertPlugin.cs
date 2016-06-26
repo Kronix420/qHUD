@@ -1,30 +1,31 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
-using Antlr4.Runtime;
 using PoeFilterParser;
 using PoeFilterParser.Model;
-using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using qHUD.Models;
-using qHUD.Models.Interfaces;
-using qHUD.Poe;
-using qHUD.Poe.Components;
-using qHUD.Poe.Elements;
-using SharpDX;
-using SharpDX.Direct3D9;
+
 
 namespace qHUD.Hud.Loot
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Antlr4.Runtime;
+    using Controllers;
+    using Framework;
+    using Framework.Helpers;
+    using Settings;
+    using UI;
+    using Models;
+    using Models.Interfaces;
+    using Poe;
+    using Poe.Components;
+    using Poe.Elements;
+    using Poe.RemoteMemoryObjects;
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public class ItemAlertPlugin : SizedPluginWithMapIcons<ItemAlertSettings>
     {
         private readonly HashSet<long> playedSoundsCache;
         private readonly Dictionary<EntityWrapper, AlertDrawStyle> currentAlerts;
-        private readonly HashSet<string> currencyNames;
         private Dictionary<int, ItemsOnGroundLabelElement> currentLabels;
         private PoeFilterVisitor visitor;
         public static bool holdKey;
@@ -64,6 +65,8 @@ namespace qHUD.Hud.Loot
 
         public override void Render()
         {
+            //IngameUIElements ui = GameController.Game.IngameState.IngameUi;
+            //int startAddy = GameController.Game.IngameState.IngameUi.Address;
             if (!holdKey && WinApi.IsKeyDown(Keys.F10))
             {
                 holdKey = true;
@@ -75,39 +78,36 @@ namespace qHUD.Hud.Loot
                 holdKey = false;
             }
             if (!Settings.Enable) { return; }
-            if (Settings.Enable)
+            Vector2 playerPos = GameController.Player.GetComponent<Positioned>().GridPos;
+            Vector2 position = StartDrawPointFunc();
+            const int BOTTOM_MARGIN = 2;
+            bool shouldUpdate = false;
+
+            foreach (KeyValuePair<EntityWrapper, AlertDrawStyle> kv in currentAlerts.Where(x => x.Key.IsValid))
             {
-                Vector2 playerPos = GameController.Player.GetComponent<Positioned>().GridPos;
-                Vector2 position = StartDrawPointFunc();
-                const int BOTTOM_MARGIN = 2;
-                bool shouldUpdate = false;
-
-                foreach (KeyValuePair<EntityWrapper, AlertDrawStyle> kv in currentAlerts.Where(x => x.Key.IsValid))
+                string text = GetItemName(kv);
+                if (text == null)
                 {
-                    string text = GetItemName(kv);
-                    if (text == null)
-                    {
-                        continue;
-                    }
-
-                    ItemsOnGroundLabelElement entityLabel;
-                    if (!currentLabels.TryGetValue(kv.Key.Address, out entityLabel))
-                    {
-                        shouldUpdate = true;
-                    }
-                    else
-                    {
-                        if (Settings.ShowText)
-                            position = DrawText(playerPos, position, BOTTOM_MARGIN, kv, text);
-                    }
+                    continue;
                 }
-                Size = new Size2F(0, position.Y);
 
-                if (shouldUpdate)
+                ItemsOnGroundLabelElement entityLabel;
+                if (!currentLabels.TryGetValue(kv.Key.Address, out entityLabel))
                 {
-                    currentLabels = GameController.Game.IngameState.IngameUi.ItemsOnGroundLabels
-                        .GroupBy(y => y.ItemOnGround.Address).ToDictionary(y => y.Key, y => y.First());
+                    shouldUpdate = true;
                 }
+                else
+                {
+                    if (Settings.ShowText)
+                        position = DrawText(playerPos, position, BOTTOM_MARGIN, kv, text);
+                }
+            }
+            Size = new Size2F(0, position.Y);
+
+            if (shouldUpdate)
+            {
+                currentLabels = GameController.Game.IngameState.IngameUi.ItemsOnGroundLabels
+                    .GroupBy(y => y.ItemOnGround.Address).ToDictionary(y => y.Key, y => y.First());
             }
         }
 
@@ -128,8 +128,6 @@ namespace qHUD.Hud.Loot
         {
             if (!Settings.Enable || entity == null || currentAlerts.ContainsKey(entity) || !entity.HasComponent<WorldItem>()) return;
             IEntity item = entity.GetComponent<WorldItem>().ItemEntity;
-            BaseItemType bit = GameController.Files.BaseItemTypes.Translate(item.Path);
-            if (bit == null) return;
             if (string.IsNullOrEmpty(Settings.FilePath)) return;
             var result = visitor.Visit(item);
             if (result == null) return;
@@ -141,12 +139,9 @@ namespace qHUD.Hud.Loot
         {
             currentAlerts.Add(entity, drawStyle);
             CurrentIcons[entity] = new MapIcon(entity, new HudTexture("currency.png", drawStyle.TextColor), () => Settings.ShowItemOnMap, Settings.LootIcon);
-
-            if (Settings.PlaySound && !playedSoundsCache.Contains(entity.LongId))
-            {
-                playedSoundsCache.Add(entity.LongId);
-                Sounds.AlertSound.Play(Settings.SoundVolume);
-            }
+            if (!Settings.PlaySound || playedSoundsCache.Contains(entity.LongId)) return;
+            playedSoundsCache.Add(entity.LongId);
+            Sounds.AlertSound.Play(Settings.SoundVolume);
         }
 
         protected override void OnEntityRemoved(EntityWrapper entity)

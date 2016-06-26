@@ -1,17 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
-using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Hud;
-using qHUD.Poe;
-using Tools;
-
 namespace qHUD
 {
+    using Controllers;
+    using Framework;
+    using Hud;
+    using Poe;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Tools;
+
     public class Program
     {
         private static int FindPoeProcess(out Offsets offs)
@@ -28,7 +28,7 @@ namespace qHUD
             return 0;
         }
 
-        private static int chooseSingleProcess(List<Tuple<Process, Offsets>> clients)
+        private static int chooseSingleProcess(IReadOnlyList<Tuple<Process, Offsets>> clients)
         {
             String o1 = $"Yes - process #{clients[0].Item1.Id}, started at {clients[0].Item1.StartTime.ToLongTimeString()}";
             String o2 = $"No - process #{clients[1].Item1.Id}, started at {clients[1].Item1.StartTime.ToLongTimeString()}";

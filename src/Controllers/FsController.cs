@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using qHUD.Framework;
-using qHUD.Poe.FilesInMemory;
-
 namespace qHUD.Controllers
 {
+    using Framework;
+    using Poe.FilesInMemory;
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
+
     public class FsController
     {
         public readonly BaseItemTypes BaseItemTypes;
@@ -19,8 +19,8 @@ namespace qHUD.Controllers
 
         public FsController(Memory mem)
         {
-            files = new Dictionary<string, int>();
             this.mem = mem;
+            files = GetAllFiles();
             ItemClassesDisplay = new ItemClassesDisplay();
             BaseItemTypes = new BaseItemTypes(mem, FindFile("Data/BaseItemTypes.dat"), ItemClassesDisplay);
             Tags = new TagsDat(mem, FindFile("Data/Tags.dat"));
@@ -28,28 +28,31 @@ namespace qHUD.Controllers
             Mods = new ModsDat(mem, FindFile("Data/Mods.dat"), Stats, Tags);
         }
 
+        public Dictionary<string, int> GetAllFiles()
+        {
+            var fileList = new Dictionary<string, int>();
+            int fileRoot = mem.BaseAddress + mem.offsets.FileRoot;
+            int start = mem.ReadInt(fileRoot + 0x4);
+            for (int CurrFile = mem.ReadInt(start); CurrFile != start && CurrFile != 0; CurrFile = mem.ReadInt(CurrFile))
+            {
+                var str = mem.ReadStringU(mem.ReadInt(CurrFile + 8), 512);
+                if (!fileList.ContainsKey(str))
+                {
+                    fileList.Add(str, mem.ReadInt(CurrFile + 0xC));
+                }
+            }
+            return fileList;
+        }
+
         public int FindFile(string name)
         {
             try
             {
-                if (!(files.ContainsKey(name) || isLoaded))
-                {
-                    int num = mem.ReadInt(mem.AddressOfProcess + mem.offsets.FileRoot, 8);
-                    for (int num2 = mem.ReadInt(num); num2 != num; num2 = mem.ReadInt(num2))
-                    {
-                        string text = mem.ReadStringU(mem.ReadInt(num2 + 8), 512);
-                        if (text.Contains("."))
-                        {
-                            files.Add(text, mem.ReadInt(num2 + 12));
-                        }
-                    }
-                    isLoaded = true;
-                }
                 return files[name];
             }
             catch (KeyNotFoundException)
             {
-                const string MESSAGE_FORMAT = "Couldn't find the file in memory: {0}\nTry to restart the game.";
+                const string MESSAGE_FORMAT = "Couldn't find the file in memory: {0}\nWrong offsets.";
                 MessageBox.Show(string.Format(MESSAGE_FORMAT, name), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(1);
             }

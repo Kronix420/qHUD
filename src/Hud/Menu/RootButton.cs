@@ -1,11 +1,10 @@
-﻿using System.Linq;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.UI;
-using SharpDX;
-using SharpDX.Direct3D9;
-
-namespace qHUD.Hud.Menu
+﻿namespace qHUD.Hud.Menu
 {
+    using System.Linq;
+    using Framework.Helpers;
+    using UI;
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public sealed class RootButton : MenuItem
     {
         private MenuItem currentHover;

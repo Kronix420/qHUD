@@ -1,9 +1,11 @@
-﻿using qHUD.Hud.UI;
-using qHUD.Models.Enums;
-using SharpDX;
+﻿using System;
 
 namespace qHUD.Hud
 {
+    using UI;
+    using Models.Enums;
+    using SharpDX;
+
     public class HudTexture
     {
         private string fileName;
@@ -21,14 +23,16 @@ namespace qHUD.Hud
                 case MonsterRarity.Magic:
                     color = HudSkin.MagicColor;
                     break;
-
                 case MonsterRarity.Rare:
                     color = HudSkin.RareColor;
                     break;
-
                 case MonsterRarity.Unique:
                     color = HudSkin.UniqueColor;
                     break;
+                case MonsterRarity.White:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(rarity), rarity, null);
             }
         }
 

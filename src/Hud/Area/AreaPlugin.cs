@@ -1,17 +1,17 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.Preload;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using qHUD.Poe.Components;
-using SharpDX;
-
-namespace qHUD.Hud.Area
+﻿namespace qHUD.Hud.Area
 {
+    using System;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Controllers;
+    using Framework;
+    using Framework.Helpers;
+    using Preload;
+    using Settings;
+    using UI;
+    using Poe.Components;
+    using SharpDX;
+
     public class AreaPlugin : SizedPlugin<AreaSettings>
     {
         private bool holdKey;
@@ -47,23 +47,21 @@ namespace qHUD.Hud.Area
             var xpReceiving = levelXpPenalty * partyXpPenalty;
             var titleArea = $"{areaName}  *{xpReceiving:p0}";
             var areaNameSize = Graphics.MeasureText(titleArea, Settings.TextSize);
-            if (!showInTown)
-            {
-                float boxHeight = areaNameSize.Height;
-                float boxWidth = MathHepler.Max(areaNameSize.Width);
-                var bounds = new RectangleF(position.X - 134 - boxWidth, position.Y - 5, boxWidth + 140, boxHeight + 12);
+            if (showInTown) return;
+            float boxHeight = areaNameSize.Height;
+            float boxWidth = MathHepler.Max(areaNameSize.Width);
+            var bounds = new RectangleF(position.X - 134 - boxWidth, position.Y - 5, boxWidth + 140, boxHeight + 12);
 
-                Graphics.DrawText(titleArea, Settings.TextSize, new Vector2(bounds.X + 134, position.Y),
-                    PreloadAlertPlugin.corruptedArea ? Settings.CorruptedTitle : Settings.AreaTextColor);
-                Graphics.DrawImage("preload-start.png", bounds, Settings.BackgroundColor);
-                Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
-                if (Settings.ShowLatency)
-                {
-                    Graphics.DrawText(latency, Settings.TextSize, new Vector2(bounds.X + 80, position.Y), Settings.LatencyTextColor);
-                }
-                Size = bounds.Size;
-                Margin = new Vector2(0, 5);
+            Graphics.DrawText(titleArea, Settings.TextSize, new Vector2(bounds.X + 134, position.Y),
+                PreloadAlertPlugin.corruptedArea ? Settings.CorruptedTitle : Settings.AreaTextColor);
+            Graphics.DrawImage("preload-start.png", bounds, Settings.BackgroundColor);
+            Graphics.DrawImage("preload-end.png", bounds, Settings.BackgroundColor);
+            if (Settings.ShowLatency)
+            {
+                Graphics.DrawText(latency, Settings.TextSize, new Vector2(bounds.X + 80, position.Y), Settings.LatencyTextColor);
             }
+            Size = bounds.Size;
+            Margin = new Vector2(0, 5);
         }
 
         private double LevelXpPenalty()
@@ -80,8 +78,8 @@ namespace qHUD.Hud.Area
         {
             var levels = GameController.Entities.Where(y => y.HasComponent<Player>()).Select(y => y.GetComponent<Player>().Level).ToList();
             int characterLevel = GameController.Player.GetComponent<Player>().Level;
-            double partyXpPenalty = Math.Pow(characterLevel + 10, 2.71) / levels.Sum(level => Math.Pow(level + 10, 2.71));
-            return partyXpPenalty * levels.Count;
+            double _partyXpPenalty = Math.Pow(characterLevel + 10, 2.71) / levels.Sum(level => Math.Pow(level + 10, 2.71));
+            return _partyXpPenalty * levels.Count;
         }
 
         private void AreaChange()

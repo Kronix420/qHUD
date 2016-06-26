@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using qHUD.Models.Enums;
-using qHUD.Poe.RemoteMemoryObjects;
-
 namespace qHUD.Models
 {
+    using System.Collections.Generic;
+    using Enums;
+    using Poe.RemoteMemoryObjects;
     public class StatTranslator
     {
         private readonly Dictionary<string, AddStat> mods;
@@ -24,8 +23,7 @@ namespace qHUD.Models
                 {"LightningResist", Single(ItemStatEnum.LightningResistance)},
                 {"ChaosResist", Single(ItemStatEnum.ChaosResistance)},
                 {
-                    "AllResistances", MultipleSame
-                    (ItemStatEnum.ColdResistance, ItemStatEnum.FireResistance, ItemStatEnum.LightningResistance)
+                    "AllResistances", MultipleSame(ItemStatEnum.ColdResistance, ItemStatEnum.FireResistance, ItemStatEnum.LightningResistance)
                 },
                 {"CriticalStrikeChance", Single(ItemStatEnum.CritChance)},
                 {"LocalCriticalMultiplier", Single(ItemStatEnum.CritMultiplier)},
@@ -65,16 +63,13 @@ namespace qHUD.Models
                 {"LocalIncreasedEnergyShieldPercent", Single(ItemStatEnum.LocalESPercent)},
                 {"LocalIncreasedPhysicalDamageReductionRatingPercent", Single(ItemStatEnum.LocalArmorPercent)},
                 {
-                    "LocalIncreasedArmourAndEvasion", MultipleSame
-                    (ItemStatEnum.LocalArmorPercent, ItemStatEnum.LocalEVPercent)
+                    "LocalIncreasedArmourAndEvasion", MultipleSame(ItemStatEnum.LocalArmorPercent, ItemStatEnum.LocalEVPercent)
                 },
                 {
-                    "LocalIncreasedArmourAndEnergyShield", MultipleSame
-                    (ItemStatEnum.LocalArmorPercent, ItemStatEnum.LocalESPercent)
+                    "LocalIncreasedArmourAndEnergyShield", MultipleSame(ItemStatEnum.LocalArmorPercent, ItemStatEnum.LocalESPercent)
                 },
                 {
-                    "LocalIncreasedEvasionAndEnergyShield", MultipleSame
-                    (ItemStatEnum.LocalEVPercent, ItemStatEnum.LocalESPercent)
+                    "LocalIncreasedEvasionAndEnergyShield", MultipleSame(ItemStatEnum.LocalEVPercent, ItemStatEnum.LocalESPercent)
                 }
             };
         }
@@ -88,17 +83,17 @@ namespace qHUD.Models
             mods[m.Name](stats, m);
         }
 
-        private AddStat Single(ItemStatEnum stat)
+        private static AddStat Single(ItemStatEnum stat)
         {
             return delegate (ItemStats x, ItemMod m) { x.AddToMod(stat, m.Value1); };
         }
 
-        private AddStat Average(ItemStatEnum stat)
+        private static AddStat Average(ItemStatEnum stat)
         {
             return delegate (ItemStats x, ItemMod m) { x.AddToMod(stat, (m.Value1 + m.Value2) / 2f); };
         }
 
-        private AddStat Dual(ItemStatEnum s1, ItemStatEnum s2)
+        private static AddStat Dual(ItemStatEnum s1, ItemStatEnum s2)
         {
             return delegate (ItemStats x, ItemMod m)
             {
@@ -107,7 +102,7 @@ namespace qHUD.Models
             };
         }
 
-        private AddStat MultipleSame(params ItemStatEnum[] stats)
+        private static AddStat MultipleSame(params ItemStatEnum[] stats)
         {
             return delegate (ItemStats x, ItemMod m)
             {

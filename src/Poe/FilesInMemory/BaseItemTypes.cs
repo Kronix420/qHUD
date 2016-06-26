@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
-using qHUD.Framework;
-using qHUD.Models;
-
 namespace qHUD.Poe.FilesInMemory
 {
+    using System.Collections.Generic;
+    using Framework;
+    using Models;
     public class BaseItemTypes : FileInMemory
     {
         private readonly Dictionary<string, BaseItemType> contents = new Dictionary<string, BaseItemType>();
@@ -13,6 +11,7 @@ namespace qHUD.Poe.FilesInMemory
         public BaseItemTypes(Memory m, int address, ItemClassesDisplay itemClassesDisplay) : base(m, address)
         {
             this.itemClassesDisplay = itemClassesDisplay;
+            LoadItemTypes();
         }
 
         public BaseItemType Translate(string metadata)
@@ -21,12 +20,7 @@ namespace qHUD.Poe.FilesInMemory
             {
                 LoadItemTypes();
             }
-            if (!contents.ContainsKey(metadata))
-            {
-                Console.WriteLine("Key not found in BaseItemTypes: " + metadata);
-                return null;
-            }
-            return contents[metadata];
+            return !contents.ContainsKey(metadata) ? null : contents[metadata];
         }
 
         private void LoadItemTypes()

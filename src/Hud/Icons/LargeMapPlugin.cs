@@ -1,16 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using qHUD.Controllers;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.UI;
-using qHUD.Poe.Components;
-using qHUD.Poe.RemoteMemoryObjects;
-using SharpDX;
-using Map = qHUD.Poe.Elements.Map;
-
 namespace qHUD.Hud.Icons
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Controllers;
+    using Framework.Helpers;
+    using UI;
+    using Poe.Components;
+    using Poe.RemoteMemoryObjects;
+    using SharpDX;
+    using Map = Poe.Elements.Map;
     public class LargeMapPlugin : Plugin<MapIconsSettings>
     {
         private readonly Func<IEnumerable<MapIcon>> getIcons;

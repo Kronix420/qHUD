@@ -1,9 +1,8 @@
-using System;
-using qHUD.Models;
-using qHUD.Poe.RemoteMemoryObjects;
-
 namespace qHUD.Controllers
 {
+    using System;
+    using Models;
+    using Poe.RemoteMemoryObjects;
     public class AreaController
     {
         private readonly GameController Root;

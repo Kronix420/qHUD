@@ -1,29 +1,26 @@
-using System.Collections.Generic;
-using qHUD.Framework;
-
 namespace qHUD.Poe
 {
+    using Framework;
+    using System.Collections.Generic;
+
     public abstract class FileInMemory
     {
         protected FileInMemory(Memory m, int address)
         {
-            M = m;
-            Address = address;
+            M = m; Address = address;
         }
 
         public Memory M { get; }
         public int Address { get; }
-        private int NumberOfRecords => M.ReadInt(Address + 0x44);
+        private int NumberOfRecords => M.ReadInt(Address + 0x28, 0x20);
 
         protected IEnumerable<int> RecordAddresses()
         {
-            int firstRec = M.ReadInt(Address + 0x34);
-            int lastRec = M.ReadInt(Address + 0x38);
+            int firstRec = M.ReadInt(Address + 0x28, 0x4);
+            int lastRec = M.ReadInt(Address + 0x28, 0x8);
             int cnt = NumberOfRecords;
-
             int recLen = (lastRec - firstRec) / cnt;
-            for (int i = 0; i < cnt; i++)
-                yield return firstRec + i * recLen;
+            for (int i = 0; i < cnt; i++) yield return firstRec + i * recLen;
         }
     }
 }

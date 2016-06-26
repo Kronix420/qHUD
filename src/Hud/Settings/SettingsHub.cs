@@ -1,18 +1,17 @@
-﻿using System;
-using System.IO;
-using Newtonsoft.Json;
-using qHUD.Hud.Area;
-using qHUD.Hud.Health;
-using qHUD.Hud.Icons;
-using qHUD.Hud.ItemTooltips;
-using qHUD.Hud.Loot;
-using qHUD.Hud.Menu;
-using qHUD.Hud.Preload;
-using qHUD.Hud.Settings.Converters;
-using qHUD.Hud.Trackers;
-
-namespace qHUD.Hud.Settings
+﻿namespace qHUD.Hud.Settings
 {
+    using System;
+    using System.IO;
+    using Newtonsoft.Json;
+    using Area;
+    using Health;
+    using Icons;
+    using ItemTooltips;
+    using Loot;
+    using Menu;
+    using Preload;
+    using Converters;
+    using Trackers;
     public sealed class SettingsHub
     {
         private const string SETTINGS_FILE_NAME = "config/settings.json";

@@ -1,8 +1,7 @@
-﻿using qHUD.Hud.Settings;
-using SharpDX;
-
-namespace qHUD.Hud.ItemTooltips
+﻿namespace qHUD.Hud.ItemTooltips
 {
+    using Settings;
+    using SharpDX;
     public sealed class ItemLevelSettings : SettingsBase
     {
         public ItemLevelSettings()

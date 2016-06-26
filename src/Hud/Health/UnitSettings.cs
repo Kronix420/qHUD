@@ -1,7 +1,6 @@
-﻿using qHUD.Hud.Settings;
-
-namespace qHUD.Hud.Health
+﻿namespace qHUD.Hud.Health
 {
+    using Settings;
     public class UnitSettings : SettingsBase
     {
         public UnitSettings(uint color, uint outline)
@@ -13,9 +12,6 @@ namespace qHUD.Hud.Health
             Outline = outline;
             TextSize = new RangeNode<int>(15, 10, 50);
         }
-
-        public UnitSettings(uint color, uint outline, uint percentTextColor, bool showText)
-          : this(color, outline){}
 
         public RangeNode<float> Width { get; set; }
         public RangeNode<float> Height { get; set; }

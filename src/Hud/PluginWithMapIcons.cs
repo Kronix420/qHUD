@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using qHUD.Controllers;
-using qHUD.Hud.Interfaces;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using qHUD.Models;
-
-namespace qHUD.Hud
+﻿namespace qHUD.Hud
 {
+    using System.Collections.Generic;
+    using Controllers;
+    using Interfaces;
+    using Settings;
+    using UI;
+    using Models;
+
     public abstract class PluginWithMapIcons<TSettings> : Plugin<TSettings>, IPluginWithMapIcons where TSettings : SettingsBase
     {
         protected readonly Dictionary<EntityWrapper, MapIcon> CurrentIcons;

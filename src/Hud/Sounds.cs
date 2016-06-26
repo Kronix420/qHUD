@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Media;
-
 namespace qHUD.Hud
 {
+    using System.Collections.Generic;
+    using System.Media;
+
     public static class Sounds
     {
         public static SoundPlayer AlertSound;
@@ -14,19 +13,11 @@ namespace qHUD.Hud
 
         public static void AddSound(string name)
         {
-            if (!soundLib.ContainsKey(name))
-            {
-                try
-                {
-                    var soundPlayer = new SoundPlayer($"sounds/{name}");
-                    soundPlayer.Load();
-                    soundLib[name] = soundPlayer;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Error when loading {name}| {ex.Message}:", ex);
-                }
-            }
+            if (soundLib.ContainsKey(name)) return;
+
+            var soundPlayer = new SoundPlayer($"sounds/{name}");
+            soundPlayer.Load();
+            soundLib[name] = soundPlayer;
         }
 
         public static SoundPlayer GetSound(string name)

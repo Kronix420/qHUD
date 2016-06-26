@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace qHUD.Hud.Settings
+﻿namespace qHUD.Hud.Settings
 {
+    using System;
     public sealed class ToggleNode
     {
         public Action OnValueChanged;
@@ -21,11 +20,9 @@ namespace qHUD.Hud.Settings
             get { return value; }
             set
             {
-                if (this.value != value)
-                {
-                    this.value = value;
-                    OnValueChanged?.Invoke();
-                }
+                if (this.value == value) return;
+                this.value = value;
+                OnValueChanged?.Invoke();
             }
         }
 

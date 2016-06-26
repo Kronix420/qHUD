@@ -1,10 +1,9 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
-namespace qHUD.Hud.Settings.Converters
+﻿namespace qHUD.Hud.Settings.Converters
 {
+    using System;
+    using System.Globalization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     public class ColorNodeConverter : CustomCreationConverter<ColorNode>
     {
         public override bool CanWrite => true;

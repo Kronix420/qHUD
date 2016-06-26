@@ -1,8 +1,8 @@
-﻿using qHUD.Hud.Settings;
-using SharpDX;
-
-namespace qHUD.Hud.Preload
+﻿namespace qHUD.Hud.Preload
 {
+    using Settings;
+    using SharpDX;
+
     public sealed class PreloadAlertSettings : SettingsBase
     {
         public PreloadAlertSettings()
@@ -11,36 +11,11 @@ namespace qHUD.Hud.Preload
             Masters = true;
             Exiles = true;
             Tormented = true;
-            Labyrinth = true;
             Strongboxes = true;
-            PerandusLeague = true;
             TextSize = new RangeNode<int>(16, 10, 50);
             BackgroundColor = new ColorBGRA(0, 0, 0, 255);
             DefaultTextColor = new ColorBGRA(210, 210, 210, 255);
             AreaTextColor = new ColorBGRA(150, 200, 250, 255);
-
-            CadiroTrader = new ColorBGRA(255, 128, 0, 255);
-            PerandusGuards = new ColorBGRA(255, 215, 0, 255);
-            PerandusChestStandard = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestRarity = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestQuantity = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestCoins = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestJewellery = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestGems = new ColorBGRA(27, 162, 155, 255);
-            PerandusChestCurrency = new ColorBGRA(255, 0, 255, 255);
-            PerandusChestInventory = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestDivinationCards = new ColorBGRA(255, 0, 0, 255);
-            PerandusChestKeepersOfTheTrove = new ColorBGRA(153, 255, 51, 255);
-            PerandusChestUniqueItem = new ColorBGRA(175, 96, 37, 255);
-            PerandusChestMaps = new ColorBGRA(255, 255, 0, 255);
-            PerandusChestFishing = new ColorBGRA(255, 255, 0, 255);
-            PerandusManorUniqueChest = new ColorBGRA(175, 96, 37, 255);
-            PerandusManorCurrencyChest = new ColorBGRA(255, 0, 255, 255);
-            PerandusManorMapsChest = new ColorBGRA(153, 255, 51, 255);
-            PerandusManorJewelryChest = new ColorBGRA(153, 255, 51, 255);
-            PerandusManorDivinationCardsChest = new ColorBGRA(255, 0, 0, 255);
-            PerandusManorLostTreasureChest = new ColorBGRA(175, 96, 37, 255);
-            LabyrinthChests = new ColorBGRA(100, 255, 255, 255);
 
             MasterZana = new ColorBGRA(255, 2550, 0, 255);
             MasterCatarina = new ColorBGRA(100, 255, 255, 255);
@@ -116,30 +91,6 @@ namespace qHUD.Hud.Preload
             TextPositionX = new RangeNode<int>(50, 0, 100);
             TextPositionY = new RangeNode<int>(85, 0, 100);
         }
-
-        public ToggleNode PerandusLeague { get; set; }
-        public ColorNode CadiroTrader { get; set; }
-        public ColorNode PerandusGuards { get; set; }
-        public ColorNode PerandusChestStandard { get; set; }
-        public ColorNode PerandusChestRarity { get; set; }
-        public ColorNode PerandusChestQuantity { get; set; }
-        public ColorNode PerandusChestCoins { get; set; }
-        public ColorNode PerandusChestJewellery { get; set; }
-        public ColorNode PerandusChestGems { get; set; }
-        public ColorNode PerandusChestCurrency { get; set; }
-        public ColorNode PerandusChestInventory { get; set; }
-        public ColorNode PerandusChestDivinationCards { get; set; }
-        public ColorNode PerandusChestKeepersOfTheTrove { get; set; }
-        public ColorNode PerandusChestUniqueItem { get; set; }
-        public ColorNode PerandusChestMaps { get; set; }
-        public ColorNode PerandusChestFishing { get; set; }
-        public ColorNode PerandusManorUniqueChest { get; set; }
-        public ColorNode PerandusManorCurrencyChest { get; set; }
-        public ColorNode PerandusManorMapsChest { get; set; }
-        public ColorNode PerandusManorJewelryChest { get; set; }
-        public ColorNode PerandusManorDivinationCardsChest { get; set; }
-        public ColorNode PerandusManorLostTreasureChest { get; set; }
-        public ColorNode LabyrinthChests { get; set; }
         public RangeNode<int> TextPositionX { get; set; }
         public RangeNode<int> TextPositionY { get; set; }
         public ToggleNode Masters { get; set; }

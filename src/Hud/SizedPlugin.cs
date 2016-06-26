@@ -1,12 +1,11 @@
-﻿using System;
-using qHUD.Controllers;
-using qHUD.Hud.Interfaces;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using SharpDX;
-
-namespace qHUD.Hud
+﻿namespace qHUD.Hud
 {
+    using System;
+    using Controllers;
+    using Interfaces;
+    using Settings;
+    using UI;
+    using SharpDX;
     public abstract class SizedPlugin<TSettings> : Plugin<TSettings>, IPanelChild where TSettings : SettingsBase
     {
         protected SizedPlugin(GameController gameController, Graphics graphics, TSettings settings)

@@ -1,9 +1,8 @@
-using System;
-using System.Globalization;
-using System.Linq;
-
 namespace qHUD.Models
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
     public struct Pattern
     {
         public byte[] Bytes;

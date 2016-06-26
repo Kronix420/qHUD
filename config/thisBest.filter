@@ -16,7 +16,7 @@ Show
 	PlayAlertSound 9 100
 
 Show
-    BaseType "Chaos Orb" "Vaal Orb" "Gemcutter's Prism" "Orb of Regret" "Regal Orb" "Orb of Alchemy" "Orb of Scouring" "Orb of Fusing" "Albino Rhoa Feather"
+    BaseType "Chaos Orb" "Vaal Orb" "Gemcutter's Prism" "Orb of Regret" "Regal Orb" "Orb of Alchemy" "Orb of Scouring" "Orb of Fusing" "Albino Rhoa Feather" "Silver Coin"
     SetTextColor 180 0 180
     SetBorderColor 153 0 153
 	PlayAlertSound 9 100
@@ -155,23 +155,24 @@ Show
 Show
 	Rarity Normal
 	BaseType "Sorcerer Boots"
+	ItemLevel >= 75
 	SetBorderColor 102 255 255
 	SetTextColor 102 255 255
 	#PlayAlertSound 7 300
 	
 Show 
 	Rarity Normal
-	Class Rings Amulet Belts
-	BaseType "Two-Stone" "Gold" "Citrine" "Coral Ring" "Leather" "Paua Amulet"
-	ItemLevel >= 75
+	Class Rings Amulets Belts
+	BaseType "Diamond Ring" "Two-Stone" "Gold" "Citrine" "Coral Ring" "Leather" "Paua Amulet"
+	ItemLevel >= 78
 	SetTextColor 255 255 255
 	SetBorderColor 0 150 255
 	#PlayAlertSound 7 100
 
 Show
     Rarity = Rare
-    Class Rings Amulet Belts
-	BaseType "Two-Stone" "Gold" "Citrine" "Coral Ring" "Leather" "Paua Amulet"
+    Class Rings Amulets Belts
+	BaseType "Paua Amulet" "Coral Amulet" "Citrine Amulet" "Amber Amulet" "Jade Amulet" "Lapis Amulet" "Gold Amulet" "Onyx Amulet" "Agate Amulet" "Turquoise Amulet" "Ruby Amulet" "Iron Ring" "Coral Ring" "Paua Ring" "Gold Ring" "Ruby Ring" "Sapphire Ring" "Topaz Ring" "Diamond Ring" "Moonstone Ring" "Amethyst Ring" "Two-Stone Ring" "Unset Ring" "Rustic Sash" "Chain Belt" "Leather Belt" "Heavy Belt" "Studded Belt" "Cloth Belt"
 	SetBorderColor 0 150 255
 	#PlayAlertSound 7 100
 

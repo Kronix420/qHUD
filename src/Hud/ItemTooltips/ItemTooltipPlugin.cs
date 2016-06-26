@@ -1,25 +1,25 @@
-﻿using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.Settings;
-using qHUD.Models.Enums;
-using qHUD.Poe;
-using qHUD.Poe.Components;
-using qHUD.Poe.Elements;
-using qHUD.Poe.FilesInMemory;
-using qHUD.Poe.RemoteMemoryObjects;
-using SharpDX;
-using SharpDX.Direct3D9;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using Color = SharpDX.Color;
-using Graphics = qHUD.Hud.UI.Graphics;
-using RectangleF = SharpDX.RectangleF;
-
-namespace qHUD.Hud.ItemTooltips
+﻿namespace qHUD.Hud.ItemTooltips
 {
+    using Controllers;
+    using Framework;
+    using Framework.Helpers;
+    using Models.Enums;
+    using Poe;
+    using Poe.Components;
+    using Poe.Elements;
+    using Poe.FilesInMemory;
+    using Poe.RemoteMemoryObjects;
+    using Settings;
+    using SharpDX;
+    using SharpDX.Direct3D9;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms;
+    using Color = SharpDX.Color;
+    using Graphics = UI.Graphics;
+    using RectangleF = SharpDX.RectangleF;
+
     public class ItemTooltipPlugin : Plugin<ItemTooltipSettings>
     {
         private Color TColor;
@@ -51,12 +51,14 @@ namespace qHUD.Hud.ItemTooltips
             }
             Element uiHover = GameController.Game.IngameState.UIHover;
             var inventoryItemIcon = uiHover.AsObject<InventoryItemIcon>();
+            if (inventoryItemIcon == null) return;
             Element tooltip = inventoryItemIcon.Tooltip;
             Entity poeEntity = inventoryItemIcon.Item;
             if (tooltip == null || poeEntity.Address == 0 || !poeEntity.IsValid) { return; }
             RectangleF tooltipRect = tooltip.GetClientRect();
             var modsComponent = poeEntity.GetComponent<Mods>();
-            if (itemEntity == null || itemEntity.Id != poeEntity.Id)
+            int id = inventoryItemIcon.ToolTipType == ToolTipType.InventoryItem ? poeEntity.InventoryId : poeEntity.Id;
+            if (itemEntity == null || itemEntity.Id != id)
             {
                 List<ItemMod> itemMods = modsComponent.ItemMods;
                 mods = itemMods.Select(item => new ModValue(item, GameController.Files, modsComponent.ItemLevel)).ToList();
@@ -233,17 +235,15 @@ namespace qHUD.Hud.ItemTooltips
             for (int i = 1; i < cntDamages; i++)
             {
                 eDps += doubleDpsPerStat[i] / 2 * aSpd;
-                if (doubleDpsPerStat[i] > 0)
+                if (!(doubleDpsPerStat[i] > 0)) continue;
+                if (firstEmg == 0)
                 {
-                    if (firstEmg == 0)
-                    {
-                        firstEmg = i;
-                        DpsColor = elementalDmgColors[i];
-                    }
-                    else
-                    {
-                        DpsColor = settings.eDamageColor;
-                    }
+                    firstEmg = i;
+                    DpsColor = elementalDmgColors[i];
+                }
+                else
+                {
+                    DpsColor = settings.eDamageColor;
                 }
             }
 

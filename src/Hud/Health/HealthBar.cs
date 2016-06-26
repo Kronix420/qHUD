@@ -1,9 +1,8 @@
-using qHUD.Models;
-using qHUD.Models.Enums;
-using qHUD.Poe.Components;
-
 namespace qHUD.Hud.Health
 {
+    using Models;
+    using Models.Enums;
+    using Poe.Components;
     public class HealthBar
     {
         private readonly bool isHostile;

@@ -1,7 +1,6 @@
-using SharpDX;
-
 namespace qHUD.Models
 {
+    using SharpDX;
     public abstract class ConfigLineBase
     {
         public string Text { get; set; }

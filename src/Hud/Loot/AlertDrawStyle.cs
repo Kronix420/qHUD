@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using qHUD.Models.Enums;
-using SharpDX;
-
 namespace qHUD.Hud.Loot
 {
+    using System.Collections.Generic;
+    using Models.Enums;
+    using SharpDX;
     public sealed class AlertDrawStyle
     {
         public static readonly Color DefaultBackgroundColor = new ColorBGRA(0, 0, 0, 180);

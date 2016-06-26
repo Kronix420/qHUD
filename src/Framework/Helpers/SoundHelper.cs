@@ -1,8 +1,7 @@
-﻿using System;
-using System.Media;
-
-namespace qHUD.Framework.Helpers
+﻿namespace qHUD.Framework.Helpers
 {
+    using System;
+    using System.Media;
     public static class SoundHelper
     {
         public static void Play(this SoundPlayer player, int volume)

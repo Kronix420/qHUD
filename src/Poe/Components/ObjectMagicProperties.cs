@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using qHUD.Models.Enums;
-
 namespace qHUD.Poe.Components
 {
+    using System.Collections.Generic;
+    using Models.Enums;
+
     public class ObjectMagicProperties : Component
     {
         public MonsterRarity Rarity

@@ -1,9 +1,8 @@
-﻿using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
-namespace qHUD.Hud.Settings.Converters
+﻿namespace qHUD.Hud.Settings.Converters
 {
+    using System;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     public class ToggleNodeConverter : CustomCreationConverter<ToggleNode>
     {
         public override bool CanWrite => true;

@@ -1,20 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Framework.Helpers;
-using qHUD.Models;
-using qHUD.Poe.RemoteMemoryObjects;
-using SharpDX;
-using Color = SharpDX.Color;
-using Graphics = qHUD.Hud.UI.Graphics;
-using RectangleF = SharpDX.RectangleF;
-
 namespace qHUD.Hud.Health
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+    using Controllers;
+    using Framework;
+    using Framework.Helpers;
+    using Models;
+    using Poe.RemoteMemoryObjects;
+    using SharpDX;
+    using Color = SharpDX.Color;
+    using Graphics = UI.Graphics;
+    using RectangleF = SharpDX.RectangleF;
     public class HealthBarPlugin : Plugin<HealthBarSettings>
     {
         private readonly Dictionary<CreatureType, List<HealthBar>> healthBars;

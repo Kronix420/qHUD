@@ -13,30 +13,21 @@ namespace qHUD.Poe.RemoteMemoryObjects
 
         public string RawName
         {
-            get
-            {
-                if (rawName == null)
-                    ParseName();
+            get { if (rawName == null) ParseName();
                 return rawName;
             }
         }
 
         public string Name
         {
-            get
-            {
-                if (rawName == null)
-                    ParseName();
+            get { if (rawName == null) ParseName();
                 return name;
             }
         }
 
         public int Level
         {
-            get
-            {
-                if (rawName == null)
-                    ParseName();
+            get { if (rawName == null) ParseName();
                 return level;
             }
         }

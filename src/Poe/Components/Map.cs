@@ -1,6 +1,4 @@
 namespace qHUD.Poe.Components
 {
-    public class Map : Component
-    {
-    }
+    public class Map : Component { }
 }

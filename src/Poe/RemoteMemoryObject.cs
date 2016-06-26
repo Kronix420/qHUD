@@ -1,8 +1,7 @@
-using qHUD.Framework;
-using qHUD.Poe.RemoteMemoryObjects;
-
 namespace qHUD.Poe
 {
+    using Framework;
+    using RemoteMemoryObjects;
     public abstract class RemoteMemoryObject
     {
         public int Address { get; protected set; }

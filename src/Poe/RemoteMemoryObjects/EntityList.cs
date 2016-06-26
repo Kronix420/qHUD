@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-
 namespace qHUD.Poe.RemoteMemoryObjects
 {
+    using System.Collections.Generic;
     public class EntityList : RemoteMemoryObject
     {
-        public IEnumerable<Entity> Entities => EntitiesAsDictionary.Values;
-
         public Dictionary<int, Entity> EntitiesAsDictionary
         {
             get
@@ -33,18 +30,16 @@ namespace qHUD.Poe.RemoteMemoryObjects
                     continue;
 
                 hashSet.Add(nextAddr);
-                if (nextAddr != num && nextAddr != 0)
+                if (nextAddr == num || nextAddr == 0) continue;
+                int key = M.ReadInt(nextAddr + 0x14, 0x14);
+                if (!list.ContainsKey(key))
                 {
-                    int key = M.ReadInt(nextAddr + 0x14, 0x14);
-                    if (!list.ContainsKey(key))
-                    {
-                        int address = M.ReadInt(nextAddr + 0x14);
-                        var entity = GetObject<Entity>(address);
-                        list.Add(key, entity);
-                    }
-                    queue.Enqueue(M.ReadInt(nextAddr));
-                    queue.Enqueue(M.ReadInt(nextAddr + 8));
+                    int address = M.ReadInt(nextAddr + 0x14);
+                    var entity = GetObject<Entity>(address);
+                    list.Add(key, entity);
                 }
+                queue.Enqueue(M.ReadInt(nextAddr));
+                queue.Enqueue(M.ReadInt(nextAddr + 8));
             }
         }
     }

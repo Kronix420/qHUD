@@ -1,8 +1,8 @@
-using System.Drawing;
-using System.Runtime.InteropServices;
-
 namespace qHUD.Framework.InputHooks.Structures
 {
+    using System.Drawing;
+    using System.Runtime.InteropServices;
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct MouseLLHookStruct
     {

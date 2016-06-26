@@ -1,11 +1,10 @@
-using System;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using SharpDX;
-using SharpDX.Direct3D9;
-
 namespace qHUD.Hud.Menu
 {
+    using System;
+    using Settings;
+    using UI;
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public class Picker<T> : MenuItem where T : struct
     {
         private readonly string name;

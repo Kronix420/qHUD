@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace qHUD.Poe.Components
 {
+    using System.Collections.Generic;
+    using System.Text;
     public class Sockets : Component
     {
         public int LargestLinkSize
@@ -92,14 +90,6 @@ namespace qHUD.Poe.Components
 
         public int NumberOfSockets => SocketList.Count;
 
-        public bool IsRGB
-        {
-            get
-            {
-                return Address != 0 && Links.Any(current => current.Length >= 3 && current.Contains(1) && current.Contains(2) && current.Contains(3));
-            }
-        }
-
         public List<string> SocketGroup
         {
             get
@@ -110,16 +100,21 @@ namespace qHUD.Poe.Components
                     var sb = new StringBuilder();
                     foreach (var color in current)
                     {
-                        switch (color)
+                        if (color == 1)
                         {
-                            case 1:
-                                sb.Append("R"); break;
-                            case 2:
-                                sb.Append("G"); break;
-                            case 3:
-                                sb.Append("B"); break;
-                            case 4:
-                                sb.Append("W"); break;
+                            sb.Append("R");
+                        }
+                        else if (color == 2)
+                        {
+                            sb.Append("G");
+                        }
+                        else if (color == 3)
+                        {
+                            sb.Append("B");
+                        }
+                        else if (color == 4)
+                        {
+                            sb.Append("W");
                         }
                     }
                     list.Add(sb.ToString());

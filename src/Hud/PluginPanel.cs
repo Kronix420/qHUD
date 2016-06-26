@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.Interfaces;
-using SharpDX;
-
-namespace qHUD.Hud
+﻿namespace qHUD.Hud
 {
+    using System;
+    using System.Collections.Generic;
+    using Framework.Helpers;
+    using Interfaces;
+    using SharpDX;
+
     public class PluginPanel : IPanelChild
     {
         private readonly List<IPanelChild> children = new List<IPanelChild>();
@@ -29,18 +29,13 @@ namespace qHUD.Hud
         {
             get
             {
-                if (children.Count > 0)
+                if (children.Count <= 0) return new Size2F(0, 0);
+                switch (direction)
                 {
-                    switch (direction)
-                    {
-                        case Direction.Down:
-                            return GetVerticalSize();
-
-                        case Direction.Left:
-                            return GetHorizontalSize();
-                    }
+                    case Direction.Down: return GetVerticalSize();
+                    case Direction.Left: return GetHorizontalSize();
+                    default: throw new ArgumentOutOfRangeException();
                 }
-                return new Size2F(0, 0);
             }
         }
 
@@ -91,13 +86,11 @@ namespace qHUD.Hud
             {
                 if (panelChild is IPlugin)
                     yield return panelChild as IPlugin;
-                if (panelChild is PluginPanel)
+                if (!(panelChild is PluginPanel)) continue;
+                IEnumerable<IPlugin> insideplugins = (panelChild as PluginPanel).GetPlugins();
+                foreach (IPlugin plugin in insideplugins)
                 {
-                    IEnumerable<IPlugin> insideplugins = (panelChild as PluginPanel).GetPlugins();
-                    foreach (IPlugin plugin in insideplugins)
-                    {
-                        yield return plugin;
-                    }
+                    yield return plugin;
                 }
             }
         }
@@ -118,23 +111,20 @@ namespace qHUD.Hud
                     child.StartDrawPointFunc = () => ChoosingStartDrawPoint(index, prevChild => prevChild.StartDrawPointFunc()
                     .Translate(-prevChild.Margin.X - prevChild.Size.Width, prevChild.Margin.Y));
                     break;
+                default: throw new ArgumentOutOfRangeException();
             }
         }
 
         private Vector2 ChoosingStartDrawPoint(int index, Func<IPanelChild, Vector2> calcStarPoint)
         {
-            if (index > 0)
-            {
-                IPanelChild prevChild = children[index - 1];
-                return calcStarPoint(prevChild);
-            }
-            return startDrawPointFunc();
+            if (index <= 0) return startDrawPointFunc();
+            IPanelChild prevChild = children[index - 1];
+            return calcStarPoint(prevChild);
         }
     }
 
     public enum Direction
     {
-        Down,
-        Left
+        Down, Left
     }
 }

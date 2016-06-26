@@ -1,16 +1,15 @@
-using qHUD.Framework;
-
 namespace qHUD.Poe.RemoteMemoryObjects
 {
+    using Framework;
     public class TheGame : RemoteMemoryObject
     {
         public TheGame(Memory m)
         {
             M = m;
-            Address = m.ReadInt(m.AddressOfProcess + Offsets.Base, 4, 0x7C);
+            Address = m.ReadInt(m.BaseAddress + Offsets.Base, 4, 0x7C);
             Game = this;
         }
         public IngameState IngameState => ReadObject<IngameState>(Address + 0x11C);
-        public int AreaChangeCount => M.ReadInt(M.AddressOfProcess + Offsets.AreaChangeCount);
+        public int AreaChangeCount => M.ReadInt(M.BaseAddress + Offsets.AreaChangeCount);
     }
 }

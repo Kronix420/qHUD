@@ -1,8 +1,7 @@
-﻿using qHUD.Hud.Settings;
-using SharpDX;
-
-namespace qHUD.Hud.Area
+﻿namespace qHUD.Hud.Area
 {
+    using Settings;
+    using SharpDX;
     public sealed class AreaSettings : SettingsBase
     {
         public AreaSettings()

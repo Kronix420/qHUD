@@ -1,7 +1,6 @@
-﻿using qHUD.Hud.Settings;
-
-namespace qHUD.Hud.Loot
+﻿namespace qHUD.Hud.Loot
 {
+    using Settings;
     public sealed class ItemAlertSettings : SettingsBase
     {
         public ItemAlertSettings()

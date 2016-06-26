@@ -1,13 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using qHUD.Framework.Enums;
-using qHUD.Framework.InputHooks;
-
-namespace qHUD.Framework
+﻿namespace qHUD.Framework
 {
+    using Enums;
+    using InputHooks;
+    using System;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Runtime.InteropServices;
+    using System.Windows.Forms;
+
     public static class WinApi
     {
         #region Methods
@@ -56,11 +56,8 @@ namespace qHUD.Framework
         #region Constants
 
         private const int GWL_EXSTYLE = -20;
-
         private const int WS_EX_LAYERED = 0x80000;
-
         private const int WS_EX_TRANSPARENT = 0x20;
-
         private const int LWA_ALPHA = 0x2;
 
         #endregion Constants

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using qHUD.Framework.Helpers;
-using SharpDX;
-using SharpDX.Direct3D9;
-
-namespace qHUD.Hud.UI.Renderers
+﻿namespace qHUD.Hud.UI.Renderers
 {
+    using Framework.Helpers;
+    using SharpDX;
+    using SharpDX.Direct3D9;
+    using System;
+    using System.Collections.Generic;
+
     public sealed class FontRenderer : IDisposable
     {
         private readonly Device device;
@@ -26,24 +26,12 @@ namespace qHUD.Hud.UI.Renderers
 
         public Size2 DrawText(string text, string fontName, int height, Vector2 position, Color color, FontDrawFlags align)
         {
-            if (text.Length == 0)
-            {
-                return new Size2();
-            }
-            try
-            {
-                var font = GetFont(fontName, height);
-                var rectangle = new Rectangle((int)position.X, (int)position.Y, 0, 0);
-                Rectangle fontDimension = font.MeasureText(null, text, rectangle, align);
-                if (!sprite.IsDisposed)
-                    font.DrawText(sprite, text, fontDimension, align, color);
-                return new Size2(fontDimension.Width, fontDimension.Height);
-            }
-            catch (Exception)
-            {
-                //ignore
-            }
-            return new Size2();
+            if (text.Length == 0) { return new Size2(); }
+            var font = GetFont(fontName, height);
+            var rectangle = new Rectangle((int)position.X, (int)position.Y, 0, 0);
+            Rectangle fontDimension = font.MeasureText(null, text, rectangle, align);
+            if (!sprite.IsDisposed) font.DrawText(sprite, text, fontDimension, align, color);
+            return new Size2(fontDimension.Width, fontDimension.Height);
         }
 
         public void End()
@@ -74,18 +62,16 @@ namespace qHUD.Hud.UI.Renderers
         {
             Font font;
             Tuple<string, int> key = Tuple.Create(name, height);
-            if (!fonts.TryGetValue(key, out font))
+            if (fonts.TryGetValue(key, out font)) return font;
+            font = new Font(device, new FontDescription
             {
-                font = new Font(device, new FontDescription
-                {
-                    MipLevels = 1,
-                    FaceName = name,
-                    OutputPrecision = FontPrecision.Default,
-                    Quality = FontQuality.ClearType,
-                    Height = height
-                });
-                fonts.Add(key, font);
-            }
+                MipLevels = 1,
+                FaceName = name,
+                OutputPrecision = FontPrecision.Default,
+                Quality = FontQuality.ClearType,
+                Height = height
+            });
+            fonts.Add(key, font);
             return font;
         }
     }

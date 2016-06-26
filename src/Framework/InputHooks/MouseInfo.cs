@@ -1,9 +1,8 @@
-﻿using System.Windows.Forms;
-using PointDX = SharpDX.Point;
-using PointGdi = System.Drawing.Point;
-
-namespace qHUD.Framework.InputHooks
+﻿namespace qHUD.Framework.InputHooks
 {
+    using System.Windows.Forms;
+    using PointDX = SharpDX.Point;
+    using PointGdi = System.Drawing.Point;
     public sealed class MouseInfo
     {
         public MouseInfo(MouseButtons buttons, PointGdi position, int wheelDelta)

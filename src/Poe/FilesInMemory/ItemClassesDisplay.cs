@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-
 namespace qHUD.Poe.FilesInMemory
 {
+    using System.Collections.Generic;
     public class ItemClassesDisplay
     {
         private List<string> contents;
@@ -17,6 +16,7 @@ namespace qHUD.Poe.FilesInMemory
                 "Hybrid Flasks",
                 "Currency",
                 "Amulets",
+                "Talismans",
                 "Rings",
                 "Claws",
                 "Daggers",

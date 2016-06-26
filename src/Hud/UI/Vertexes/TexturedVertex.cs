@@ -1,8 +1,7 @@
-﻿using SharpDX;
-using SharpDX.Direct3D9;
-
-namespace qHUD.Hud.UI.Vertexes
+﻿namespace qHUD.Hud.UI.Vertexes
 {
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public struct TexturedVertex
     {
         public static readonly VertexElement[] VertexElements =

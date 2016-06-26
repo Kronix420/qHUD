@@ -1,14 +1,13 @@
-﻿using System;
-using System.Threading;
-using System.Windows.Forms;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.UI.Renderers;
-using SharpDX;
-using SharpDX.Direct3D9;
-using SharpDX.Windows;
-
-namespace qHUD.Hud.UI
+﻿namespace qHUD.Hud.UI
 {
+    using Framework.Helpers;
+    using Renderers;
+    using SharpDX;
+    using SharpDX.Direct3D9;
+    using SharpDX.Windows;
+    using System;
+    using System.Threading;
+
     public sealed class Graphics : IDisposable
     {
         private const CreateFlags CREATE_FLAGS = CreateFlags.Multithreaded | CreateFlags.HardwareVertexProcessing;
@@ -35,7 +34,7 @@ namespace qHUD.Hud.UI
             presentParameters = new PresentParameters
             {
                 Windowed = true,
-                SwapEffect = SwapEffect.Copy,
+                SwapEffect = SwapEffect.Discard,
                 BackBufferFormat = Format.A8R8G8B8,
                 BackBufferCount = 1,
                 BackBufferWidth = width,
@@ -89,26 +88,22 @@ namespace qHUD.Hud.UI
 
         public void Dispose()
         {
-            if (!device.IsDisposed)
-            {
-                running = false;
-                renderLocker.Wait();
-                renderLocker.Dispose();
-                device.Dispose();
-                direct3D.Dispose();
-                fontRenderer.Dispose();
-                textureRenderer.Dispose();
-            }
+            if (device.IsDisposed) return;
+            running = false;
+            renderLocker.Wait();
+            renderLocker.Dispose();
+            device.Dispose();
+            direct3D.Dispose();
+            fontRenderer.Dispose();
+            textureRenderer.Dispose();
         }
 
         private void Resize(int width, int height)
         {
-            if (width > 0 && height > 0)
-            {
-                presentParameters.BackBufferWidth = width;
-                presentParameters.BackBufferHeight = height;
-                resized = true;
-            }
+            if (width <= 0 || height <= 0) return;
+            presentParameters.BackBufferWidth = width;
+            presentParameters.BackBufferHeight = height;
+            resized = true;
         }
 
         public Size2 DrawText(string text, int height, Vector2 position, Color color, FontDrawFlags align = FontDrawFlags.Left)
@@ -148,28 +143,12 @@ namespace qHUD.Hud.UI
 
         public void DrawImage(string fileName, RectangleF rectangle, RectangleF uvCoords, Color color)
         {
-            try
-            {
-                textureRenderer.DrawImage("textures/" + fileName, rectangle, uvCoords, color);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show($"Failed to load texture {fileName}: {e.Message}");
-                Environment.Exit(0);
-            }
+            textureRenderer.DrawImage("textures/" + fileName, rectangle, uvCoords, color);
         }
 
         public void DrawImage(string fileName, RectangleF rectangle, Color color, float repeatX = 1f)
         {
-            try
-            {
-                textureRenderer.DrawImage("textures/" + fileName, rectangle, color, repeatX);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show($"Failed to load texture {fileName}: {e.Message}");
-                Environment.Exit(0);
-            }
+            textureRenderer.DrawImage("textures/" + fileName, rectangle, color, repeatX);
         }
     }
 }

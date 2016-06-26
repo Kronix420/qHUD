@@ -1,40 +1,24 @@
 #Metadata; Text; Color (ARGB)
 #Example: Metadata/Chests/StrongBoxes/Strongbox; The All-seeing Eye; ff00FF00
 
-# Perandus guards
-Metadata/Monsters/Perandus/PerandusGuardMapBoss1; Platinia, Servant of Prospero; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardMapBoss2; Auriot, Prospero's Furnace Guardian; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardMapBoss3; Rhodion, Servant of Prospero; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardMapBoss4; Osmea, Servant of Prospero; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardMapBoss4Clone; Osmea, Servant of Prospero; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardMapBoss5; Pallias, Servant of Prospero; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardMapBoss6; Argient, Servant of Prospero; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardMapBoss7; Rheniot, Servant of Prospero; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant1; Junith Perandus, Keeper of Vaults; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant2; Tantalo Perandus, Seller of Secrets; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant3; Actaeo Perandus, Master of Beasts; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant4; Vitorica Perandus, Maker of Marvels; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant4Clone; Vitorica Perandus, Maker of Marvels; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant5; Stasius Perandus, Merchant of Corpses; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant6; Darsia Perandus, Collector of Debts; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardLieutenant7; Milo Perandus, Handler of Swords; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardBasic1; Celona, Vault Sentry; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardBasic2; Hortus, Knee Breaker; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardBasic3; Kuto, Hired Muscle; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardBasic4; Luthis, Bounty Hunter; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardBasic5; Belatra, Hired Assassin; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSupport1; Liana, Indebted Peasant; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSupport2; Marius, Indebted Smuggler; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSupport3; Vera, Indebted Aristocrat; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSupport4; Percia, Indebted Poacher; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss1; Sutrus, Vault Binder; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss2; Otairo, Vault Binder; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss3; Eiphirio, Vault Binder; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss4; Artensia, Vault Binder; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss5_; Anaveli, Vault Binder; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss6; Rothus, Vault Binder; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss7; Arinea, Vault Binder; ffE6E600
-Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8; Meritania, Vault Binder; ffE6E600
+
+Metadata/Effects/Microtransactions/Town_Portals/challenger_portal/rig.ao; Labyrinth Trial I; ffFF9966
+Metadata/QuestObjects/Labyrinth/LabyrinthTrialPortal; Labyrinth Trial II; ffFF9966
+
+
+# Test
+Metadata/Monsters/Daemon/ChestDaemonSummonRareUniqueChest2; Unique Strongbox 11; ffE6E600
+Metadata/Monsters/Daemon/ChestDaemonSummonRareUniqueChest3; Unique Strongbox 12; ffE6E600
+Metadata/Monsters/Daemon/ChestDaemonSummonRareUniqueChest4; Unique Strongbox 13; ffE6E600
+Metadata/Monsters/Daemon/BarrelOfSpidersDaemonNormal; Unique Strongbox 1; ffE6E600
+Metadata/Monsters/Daemon/BarrelOfSpidersDaemonMagic; Unique Strongbox 3; ffE6E600
+Metadata/Monsters/Daemon/BarrelOfSpidersDaemonRare; Unique Strongbox 4; ffE6E600
+Metadata/Monsters/Daemon/BarrelOfSpidersDaemonUnique; Unique Strongbox 5; ffE6E600
+Metadata/Monsters/Daemon/EternalUrnDaemonCommon; Unique Strongbox 6; ffE6E600
+Metadata/Monsters/Daemon/EternalUrnDaemonUncommon1; Unique Strongbox 7; ffE6E600
+Metadata/Monsters/Daemon/EternalUrnDaemonUncommon2; Unique Strongbox 8; ffE6E600
+Metadata/Monsters/Daemon/EternalUrnDaemonRare1; Unique Strongbox 9; ffE6E600
+Metadata/Monsters/Daemon/EternalUrnDaemonRare2; Unique Strongbox 10; ffE6E600
 
 Metadata/Monsters/GargoyleBoss/GargoyleBoss; Argus; ffDC143C
 Metadata/Monsters/Squid/SquidBossSideArea; The All-seeing Eye; ffDC143C
@@ -50,7 +34,7 @@ Metadata/Monsters/Snake/SnakeRoboBossSideArea; Wiraqucha, Ancient Guardian; ffDC
 Metadata/Monsters/DemonFemale/WhipDemonBossSideArea; Cava, Artist of Pain; ffDC143C
 Metadata/Monsters/Pyromaniac/PyromaniacBossSideArea; Curator Miem; ffDC143C
 Metadata/Monsters/BloodChieftain/MonkeyChiefBossSideArea; Simi, the Nature Touched; ffDC143C
-Metadata/Monsters/InsectSpawner/CarrionQueenBossSideArea; The Sunburst Queen; ffDC143C
+#Metadata/Monsters/InsectSpawner/CarrionQueenBossSideArea; The Sunburst Queen; ffDC143C
 Metadata/Monsters/Totems/TotemBossSideArea; M'gaska, the Living Pyre; ffDC143C
 Metadata/Monsters/Spiders/SpiderBossSideArea; Cintiq, the Inescapable; ffDC143C
 Metadata/Monsters/Snake/SnakeScorpionBossSideArea; Thornrunner; ffDC143C
@@ -131,7 +115,7 @@ Metadata/Monsters/Skeletons/ConstructBossInvasion; Invasion Boss, The Spiritless
 Metadata/Monsters/GhostPirates/GhostPirateBossInvasion; Invasion Boss, Droolscar; ffDC143C
 Metadata/Monsters/Rhoas/RhoaAlbino; Albino Rhoa
 
-Metadata/Monsters/Revenant/RevenantBoss; The Bone Queen
+#Metadata/Monsters/Revenant/RevenantBoss; The Bone Queen
 Metadata/Monsters/Revenant/RevenantMapBoss; Thraxia
 Metadata/Monsters/DaressoExiles/ExileArenaMarauder; Gladiator Dimachaeri Cassius
 Metadata/Monsters/DaressoExiles/ExileArenaWitch; Gladiator Mevia

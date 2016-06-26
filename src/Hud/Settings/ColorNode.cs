@@ -1,7 +1,6 @@
-﻿using SharpDX;
-
-namespace qHUD.Hud.Settings
+﻿namespace qHUD.Hud.Settings
 {
+    using SharpDX;
     public sealed class ColorNode
     {
         public ColorNode()

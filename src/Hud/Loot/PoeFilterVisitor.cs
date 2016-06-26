@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
-using PoeFilterParser.Model;
-using qHUD.Controllers;
-using qHUD.Models.Enums;
-using qHUD.Models.Interfaces;
-using qHUD.Poe.Components;
-using SharpDX;
+﻿using PoeFilterParser.Model;
 
 namespace qHUD.Hud.Loot
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Antlr4.Runtime;
+    using Antlr4.Runtime.Tree;
+    using Controllers;
+    using Models.Enums;
+    using Models.Interfaces;
+    using Poe.Components;
+    using SharpDX;
     public class PoeFilterVisitor : PoeFilterBaseVisitor<AlertDrawStyle>
     {
         private readonly GameController gameController;
@@ -26,9 +26,9 @@ namespace qHUD.Hud.Loot
             this.settings = settings;
         }
 
-        public AlertDrawStyle Visit(IEntity entity)
+        public AlertDrawStyle Visit(IEntity _entity)
         {
-            this.entity = entity;
+            entity = _entity;
             return base.Visit(tree);
         }
 

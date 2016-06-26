@@ -1,19 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
-using qHUD.Models;
-using qHUD.Models.Enums;
-using qHUD.Poe.RemoteMemoryObjects;
-
 namespace qHUD.Poe.Components
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models.Enums;
+    using RemoteMemoryObjects;
     public class Mods : Component
     {
         public ItemRarity ItemRarity => Address != 0 ? (ItemRarity)M.ReadInt(Address + 0x58) : ItemRarity.Normal;
         public int ItemLevel => Address != 0 ? M.ReadInt(Address + 0xE4) : 1;
-        public int RequiredLevel => Address != 0 ? M.ReadInt(Address + 0xE8) : 1;
-        public string UniqueName => Address != 0 ? M.ReadStringU(M.ReadInt(Address + 0x18, 4, 4)) + M.ReadStringU(M.ReadInt(Address + 0x18, 0xC, 4)) : string.Empty;
-        public bool Identified => Address != 0 && M.ReadByte(Address + 0x54) == 1;
-        public ItemStats ItemStats => new ItemStats(Owner);
 
         public List<ItemMod> ItemMods
         {
@@ -25,21 +19,16 @@ namespace qHUD.Poe.Components
             }
         }
 
-        private List<ItemMod> GetMods(int startOffset, int endOffset)
+        private IEnumerable<ItemMod> GetMods(int startOffset, int endOffset)
         {
             var list = new List<ItemMod>();
-            if (Address == 0)
-                return list;
-
+            if (Address == 0) return list;
             int begin = M.ReadInt(Address + startOffset);
             int end = M.ReadInt(Address + endOffset);
             int count = (end - begin) / 0x14;
-            if (count > 12)
-                return list;
-
+            if (count > 12) return list;
             for (int i = begin; i < end; i += 0x14)
                 list.Add(GetObject<ItemMod>(i));
-
             return list;
         }
     }

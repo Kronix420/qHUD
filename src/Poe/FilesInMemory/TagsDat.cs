@@ -1,27 +1,23 @@
-using System;
-using System.Collections.Generic;
-using qHUD.Framework;
-
 namespace qHUD.Poe.FilesInMemory
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Framework;
     public class TagsDat : FileInMemory
     {
         public Dictionary<string, TagRecord> records =
             new Dictionary<string, TagRecord>(StringComparer.OrdinalIgnoreCase);
 
-        public TagsDat(Memory m, int address)
-            : base(m, address)
+        public TagsDat(Memory m, int address) : base(m, address)
         {
             loadItems();
         }
-
         private void loadItems()
         {
-            foreach (int addr in RecordAddresses())
+            foreach (var r in RecordAddresses().Select(addr => new TagRecord(M, addr)))
             {
-                var r = new TagRecord(M, addr);
-                if (!records.ContainsKey(r.Key))
-                    records.Add(r.Key, r);
+                records.Add(r.Key, r);
             }
         }
 
@@ -29,8 +25,6 @@ namespace qHUD.Poe.FilesInMemory
         {
             public readonly string Key;
             public int Hash;
-            // more fields can be added (see in visualGGPK)
-
             public TagRecord(Memory m, int addr)
             {
                 Key = m.ReadStringU(m.ReadInt(addr + 0), 255);

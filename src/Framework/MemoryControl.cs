@@ -1,9 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows.Forms;
-
-namespace qHUD.Framework
+﻿namespace qHUD.Framework
 {
+    using System;
+    using System.Diagnostics;
+    using System.Windows.Forms;
+
     public class MemoryControl
     {
         private static MemoryControl memoryControl;
@@ -14,49 +14,26 @@ namespace qHUD.Framework
             lastTime = DateTime.Now.Ticks;
             Application.Idle += delegate
             {
-                try
-                {
-                    long ticks = DateTime.Now.Ticks;
-                    if (ticks - lastTime > 10000000L)
-                    {
-                        lastTime = ticks;
-                        MemoryFree();
-                    }
-                }
-                catch
-                {
-                    // ignored
-                }
+                long ticks = DateTime.Now.Ticks;
+                if (ticks - lastTime <= 10000000L) return;
+                lastTime = ticks;
+                MemoryFree();
             };
         }
 
-        private void MemoryFree()
+        private static void MemoryFree()
         {
-            try
+            using (Process currentProcess = Process.GetCurrentProcess())
             {
-                using (Process currentProcess = Process.GetCurrentProcess())
-                {
-                    WinApi.SetProcessWorkingSetSize(currentProcess.Handle, -1, -1);
-                }
-            }
-            catch
-            {
-                // ignored
+                WinApi.SetProcessWorkingSetSize(currentProcess.Handle, -1, -1);
             }
         }
 
         public static void Start()
         {
-            try
+            if (memoryControl == null && Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
-                if (memoryControl == null && Environment.OSVersion.Platform == PlatformID.Win32NT)
-                {
-                    memoryControl = new MemoryControl();
-                }
-            }
-            catch
-            {
-                // ignored
+                memoryControl = new MemoryControl();
             }
         }
     }

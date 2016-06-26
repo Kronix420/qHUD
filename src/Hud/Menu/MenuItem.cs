@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
-using qHUD.Hud.UI;
-using SharpDX;
-
 namespace qHUD.Hud.Menu
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using UI;
+    using SharpDX;
     public abstract class MenuItem
     {
         public readonly List<MenuItem> Children;

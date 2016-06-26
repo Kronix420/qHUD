@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using qHUD.Controllers;
-using qHUD.Hud.UI;
-using qHUD.Models;
-using qHUD.Poe.Components;
-
 namespace qHUD.Hud.Trackers
 {
+    using System.Collections.Generic;
+    using Controllers;
+    using UI;
+    using Models;
+    using Poe.Components;
+
     public class PoiTracker : PluginWithMapIcons<PoiTrackerSettings>
     {
         private static readonly List<string> masters = new List<string>
@@ -19,37 +19,8 @@ namespace qHUD.Hud.Trackers
             "Metadata/NPC/Missions/Wild/StrInt"
         };
 
-        private static readonly List<string> cadiro = new List<string>
-        {
-            "Metadata/NPC/League/Cadiro"
-        };
-
-        private static readonly List<string> perandus = new List<string>
-        {
-            "Metadata/Chests/PerandusChests/PerandusChestStandard",
-            "Metadata/Chests/PerandusChests/PerandusChestRarity",
-            "Metadata/Chests/PerandusChests/PerandusChestQuantity",
-            "Metadata/Chests/PerandusChests/PerandusChestCoins",
-            "Metadata/Chests/PerandusChests/PerandusChestJewellery",
-            "Metadata/Chests/PerandusChests/PerandusChestGems",
-            "Metadata/Chests/PerandusChests/PerandusChestCurrency",
-            "Metadata/Chests/PerandusChests/PerandusChestInventory",
-            "Metadata/Chests/PerandusChests/PerandusChestDivinationCards",
-            "Metadata/Chests/PerandusChests/PerandusChestKeepersOfTheTrove",
-            "Metadata/Chests/PerandusChests/PerandusChestUniqueItem",
-            "Metadata/Chests/PerandusChests/PerandusChestMaps",
-            "Metadata/Chests/PerandusChests/PerandusChestFishing",
-            "Metadata/Chests/PerandusChests/PerandusManorUniqueChest",
-            "Metadata/Chests/PerandusChests/PerandusManorCurrencyChest",
-            "Metadata/Chests/PerandusChests/PerandusManorMapsChest",
-            "Metadata/Chests/PerandusChests/PerandusManorJewelryChest",
-            "Metadata/Chests/PerandusChests/PerandusManorDivinationCardsChest",
-            "Metadata/Chests/PerandusChests/PerandusManorLostTreasureChest"
-        };
-
         public PoiTracker(GameController gameController, Graphics graphics, PoiTrackerSettings settings)
-            : base(gameController, graphics, settings)
-        { }
+            : base(gameController, graphics, settings) { }
 
         public override void Render()
         {
@@ -72,14 +43,6 @@ namespace qHUD.Hud.Trackers
             if (e.HasComponent<NPC>() && masters.Contains(e.Path))
             {
                 return new CreatureMapIcon(e, "ms-cyan.png", () => Settings.Masters, Settings.MastersIcon);
-            }
-            if (e.HasComponent<NPC>() && cadiro.Contains(e.Path))
-            {
-                return new CreatureMapIcon(e, "ms-green.png", () => Settings.Cadiro, Settings.CadiroIcon);
-            }
-            if (e.HasComponent<Chest>() && perandus.Contains(e.Path))
-            {
-                return new ChestMapIcon(e, new HudTexture("strongbox.png", Settings.PerandusChestColor), () => Settings.PerandusChest, Settings.PerandusChestIcon);
             }
             if (e.HasComponent<Chest>() && !e.GetComponent<Chest>().IsOpened)
             {

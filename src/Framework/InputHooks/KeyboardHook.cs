@@ -1,12 +1,11 @@
-using System;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using qHUD.Framework.Helpers;
-using qHUD.Framework.InputHooks.Structures;
-
 namespace qHUD.Framework.InputHooks
 {
+    using System;
+    using System.ComponentModel;
+    using System.Runtime.InteropServices;
+    using System.Windows.Forms;
+    using Helpers;
+    using Structures;
     public static class KeyboardHook
     {
         private const int WH_KEYBOARD_LL = 13;
@@ -43,29 +42,27 @@ namespace qHUD.Framework.InputHooks
 
         private static int KeyboardHookProc(int nCode, Int32 wParam, IntPtr lParam)
         {
-            if (nCode >= 0)
+            if (nCode < 0) return WinApi.CallNextHookEx(handle, nCode, wParam, lParam);
+            var keyboardHookStruct = (KeyboardHookStruct)Marshal.PtrToStructure(lParam, typeof(KeyboardHookStruct));
+
+            KeyInfo keyInfo = null;
+            if (wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN)
             {
-                var keyboardHookStruct = (KeyboardHookStruct)Marshal.PtrToStructure(lParam, typeof(KeyboardHookStruct));
+                var keyData = (Keys)keyboardHookStruct.VirtualKeyCode;
+                keyInfo = GetKeys(keyData, true);
+                keyDown.SafeInvoke(keyInfo);
+            }
 
-                KeyInfo keyInfo = null;
-                if (wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN)
-                {
-                    var keyData = (Keys)keyboardHookStruct.VirtualKeyCode;
-                    keyInfo = GetKeys(keyData, true);
-                    keyDown.SafeInvoke(keyInfo);
-                }
+            if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
+            {
+                var keyData = (Keys)keyboardHookStruct.VirtualKeyCode;
+                keyInfo = GetKeys(keyData, false);
+                keyUp.SafeInvoke(keyInfo);
+            }
 
-                if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
-                {
-                    var keyData = (Keys)keyboardHookStruct.VirtualKeyCode;
-                    keyInfo = GetKeys(keyData, false);
-                    keyUp.SafeInvoke(keyInfo);
-                }
-
-                if (keyInfo != null && keyInfo.Handled)
-                {
-                    return -1;
-                }
+            if (keyInfo != null && keyInfo.Handled)
+            {
+                return -1;
             }
 
             return WinApi.CallNextHookEx(handle, nCode, wParam, lParam);
@@ -73,31 +70,23 @@ namespace qHUD.Framework.InputHooks
 
         private static void Subscribe()
         {
-            if (handle == 0)
-            {
-                hookProc = KeyboardHookProc;
-                handle = WinApi.SetWindowsHookEx(WH_KEYBOARD_LL, hookProc, IntPtr.Zero, 0);
-                if (handle == 0)
-                {
-                    int errorCode = Marshal.GetLastWin32Error();
-                    throw new Win32Exception(errorCode);
-                }
-            }
+            if (handle != 0) return;
+            hookProc = KeyboardHookProc;
+            handle = WinApi.SetWindowsHookEx(WH_KEYBOARD_LL, hookProc, IntPtr.Zero, 0);
+            if (handle != 0) return;
+            int errorCode = Marshal.GetLastWin32Error();
+            throw new Win32Exception(errorCode);
         }
 
         private static void TryUnsubscribe()
         {
-            if (handle != 0 && keyDown == null && keyUp == null)
-            {
-                int result = WinApi.UnhookWindowsHookEx(handle);
-                handle = 0;
-                hookProc = null;
-                if (result == 0)
-                {
-                    int errorCode = Marshal.GetLastWin32Error();
-                    throw new Win32Exception(errorCode);
-                }
-            }
+            if (handle == 0 || keyDown != null || keyUp != null) return;
+            int result = WinApi.UnhookWindowsHookEx(handle);
+            handle = 0;
+            hookProc = null;
+            if (result != 0) return;
+            int errorCode = Marshal.GetLastWin32Error();
+            throw new Win32Exception(errorCode);
         }
 
         #region Keyboard events

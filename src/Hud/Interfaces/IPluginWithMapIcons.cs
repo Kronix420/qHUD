@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-
 namespace qHUD.Hud.Interfaces
 {
+    using System.Collections.Generic;
     public interface IPluginWithMapIcons
     {
         IEnumerable<MapIcon> GetIcons();

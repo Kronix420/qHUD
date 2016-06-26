@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using qHUD.Framework.Helpers;
-using qHUD.Hud.UI.Vertexes;
-using SharpDX;
-using SharpDX.Direct3D9;
-
-namespace qHUD.Hud.UI.Renderers
+﻿namespace qHUD.Hud.UI.Renderers
 {
+    using System;
+    using System.Collections.Generic;
+    using Framework.Helpers;
+    using Vertexes;
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public sealed class TextureRenderer : IDisposable
     {
         private readonly Device device;
@@ -124,11 +123,9 @@ namespace qHUD.Hud.UI.Renderers
         private Texture GetTexture(string fileName)
         {
             Texture texture;
-            if (!textures.TryGetValue(fileName, out texture))
-            {
-                texture = Texture.FromFile(device, fileName);
-                textures.Add(fileName, Texture.FromFile(device, fileName));
-            }
+            if (textures.TryGetValue(fileName, out texture)) return texture;
+            texture = Texture.FromFile(device, fileName);
+            textures.Add(fileName, Texture.FromFile(device, fileName));
             return texture;
         }
     }

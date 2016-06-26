@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-
-namespace qHUD.Hud.Settings
+﻿namespace qHUD.Hud.Settings
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
     public sealed class SortContractResolver : DefaultContractResolver
     {
         private const int MAX_PROPERTIES_PER_CONTRACT = 1000;

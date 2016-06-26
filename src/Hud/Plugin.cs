@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using qHUD.Controllers;
-using qHUD.Hud.Interfaces;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using qHUD.Models;
-using SharpDX;
-
-namespace qHUD.Hud
+﻿namespace qHUD.Hud
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using Controllers;
+    using Interfaces;
+    using Settings;
+    using UI;
+    using Models;
+    using SharpDX;
     public abstract class Plugin<TSettings> : IPlugin where TSettings : SettingsBase
     {
         protected readonly GameController GameController;
@@ -59,35 +58,13 @@ namespace qHUD.Hud
                 .Where(line => !string.IsNullOrWhiteSpace(line) && line.IndexOf(';') >= 0 && !line.StartsWith("#"))
                 .Select(line => line.Split(new[] { ';' }, columnsCount).Select(parts => parts.Trim()).ToArray());
         }
-
-        /// <summary>
-        /// Loads a Comma separated file into a list of Strings
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        protected static Dictionary<string, List<string>> LoadConfigList(string path)
+        protected static IEnumerable<string[]> LoadConfigBase2(string path, int columnsCount = 2)
         {
-            var result = new Dictionary<string, List<string>>();
-
-            string[] lines = File.ReadAllLines(path);
-            foreach (string line in lines.Select(a => a.Trim()))
-            {
-                if (string.IsNullOrWhiteSpace(line) || line.IndexOf(',') < 0 || line.StartsWith("#")) // Ignore empty lines, those without , and comments
-                    continue;
-                List<string> Values = line.Split(',').Select(s => s.Trim()).ToList(); // Split comma separated Values into the List of strings
-                string name = Values[0];  // Key Value for the Dictionary
-                Values.RemoveAt(0); // remove the key-Value from the List
-                result.Add(name, Values);
-            }
-            return result;
+            return File.ReadAllLines(path).Where(line => !string.IsNullOrWhiteSpace(line) && line.IndexOf(';') >= 0 && !line.StartsWith("#"))
+                .Select(line => line.Split(new[] { ';' }, columnsCount).Select(parts => parts.Trim()).ToArray());
         }
 
-        protected virtual void OnEntityAdded(EntityWrapper entityWrapper)
-        {
-        }
-
-        protected virtual void OnEntityRemoved(EntityWrapper entityWrapper)
-        {
-        }
+        protected virtual void OnEntityAdded(EntityWrapper entityWrapper){}
+        protected virtual void OnEntityRemoved(EntityWrapper entityWrapper){}
     }
 }

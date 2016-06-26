@@ -1,7 +1,6 @@
-using qHUD.Poe;
-
 namespace qHUD.Models.Interfaces
 {
+    using Poe;
     public interface IEntity
     {
         string Path { get; }

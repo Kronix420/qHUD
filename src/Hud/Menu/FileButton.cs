@@ -1,13 +1,12 @@
-﻿using System.IO;
-using System.Threading;
-using System.Windows.Forms;
-using qHUD.Hud.Settings;
-using qHUD.Hud.UI;
-using SharpDX;
-using SharpDX.Direct3D9;
-
-namespace qHUD.Hud.Menu
+﻿namespace qHUD.Hud.Menu
 {
+    using System.IO;
+    using System.Threading;
+    using System.Windows.Forms;
+    using Settings;
+    using UI;
+    using SharpDX;
+    using SharpDX.Direct3D9;
     public sealed class FileButton : MenuItem
     {
         private readonly FileNode path;

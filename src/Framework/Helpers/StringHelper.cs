@@ -1,7 +1,6 @@
-using System;
-
 namespace qHUD.Framework.Helpers
 {
+    using System;
     public static class StringExtend
     {
         public static bool Content(this string source, string toCheck, StringComparison comp)

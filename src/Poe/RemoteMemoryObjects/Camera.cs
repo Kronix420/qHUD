@@ -1,13 +1,12 @@
-using System;
-using System.Numerics;
-using qHUD.Models;
-using qHUD.Poe.Components;
-using Vector2 = SharpDX.Vector2;
-using Vector3 = SharpDX.Vector3;
-using Vector4 = System.Numerics.Vector4;
-
 namespace qHUD.Poe.RemoteMemoryObjects
 {
+    using System;
+    using System.Numerics;
+    using Models;
+    using Components;
+    using Vector2 = SharpDX.Vector2;
+    using Vector3 = SharpDX.Vector3;
+    using Vector4 = System.Numerics.Vector4;
     public class Camera : RemoteMemoryObject
     {
         public int Width => M.ReadInt(Address + 0x4);

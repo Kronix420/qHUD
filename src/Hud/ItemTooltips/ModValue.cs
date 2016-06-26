@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using qHUD.Controllers;
-using qHUD.Framework;
-using qHUD.Poe.FilesInMemory;
-using qHUD.Poe.RemoteMemoryObjects;
-using SharpDX;
-
-namespace qHUD.Hud.ItemTooltips
+﻿namespace qHUD.Hud.ItemTooltips
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Controllers;
+    using Framework;
+    using Poe.FilesInMemory;
+    using Poe.RemoteMemoryObjects;
+    using SharpDX;
     public class ModValue
     {
         private readonly int totalTiers = 1;
