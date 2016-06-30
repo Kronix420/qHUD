@@ -13,8 +13,8 @@ namespace qHUD.Poe
         public int IgsOffset { get; private set; }
         public int IgsOffsetDelta => IgsOffset + IgsDelta;
 
-        public static Offsets Regular = new Offsets { IgsOffset = 0, IgsDelta = 0, ExeName = "PathOfExile", AreaChangeCount = 0xA42118 };
-        public static Offsets Steam = new Offsets { IgsOffset = 0x1C, IgsDelta = 0x4, ExeName = "PathOfExileSteam", AreaChangeCount = 0xA4D118 };
+        public static Offsets Regular = new Offsets { IgsOffset = 0, IgsDelta = 0, ExeName = "PathOfExile", AreaChangeCount = 0xA3C118 };
+        public static Offsets Steam = new Offsets { IgsOffset = 0x1C, IgsDelta = 0x4, ExeName = "PathOfExileSteam", AreaChangeCount = 0xA47118 };
 
         private static readonly Pattern basePtrPattern = new Pattern
             (@"\x50\x64\x89\x00\x00\x00\x00\x00\x81\xec\x00\x00\x00\x00\xa1\x00\x00\x00\x00\x85\xc0\x0f\x95\x00\x84\xc9",
