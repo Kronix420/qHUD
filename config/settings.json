@@ -121,20 +121,38 @@
       "Max": 100
     },
     "ShowText": true,
+    "RemainingShowText": true,
     "TextSize": {
-      "Value": 24,
+      "Value": 20,
       "Min": 10,
       "Max": 50
     },
-    "DefaultTextColor": "ff0000ff",
+    "RemainingTextSize": {
+      "Value": 20,
+      "Min": 10,
+      "Max": 50
+    },
+    "DefaultTextColor": "80ff80ff",
+    "RemainingTextColor": "ffffffff",
     "BackgroundColor": "c0c0c0e6",
+    "RemainingBackColor": "c0c0c0e6",
     "TextPositionX": {
       "Value": 50,
       "Min": 0,
       "Max": 100
     },
     "TextPositionY": {
-      "Value": 85,
+      "Value": 82,
+      "Min": 0,
+      "Max": 100
+    },
+    "RemainingTextPosX": {
+      "Value": 50,
+      "Min": 0,
+      "Max": 100
+    },
+    "RemainingTextPosY": {
+      "Value": 90,
       "Min": 0,
       "Max": 100
     },
