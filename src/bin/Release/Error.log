@@ -7,3 +7,11 @@
    at PoeHUD.Hud.Sounds.LoadSounds()
    at PoeHUD.Program.Main(String[] args)
 ------------------------------
+7/22/2016 11:11 AM Program exited with message:
+ System.IO.FileNotFoundException: Please be sure a sound file exists at the specified location.
+File name: 'sounds/alert.wav'
+   at System.Media.SoundPlayer.Load()
+   at qHUD.Hud.Sounds.AddSound(String name) in C:\Users\vmv\Documents\GitHub\qHUD\src\Hud\Sounds.cs:line 19
+   at qHUD.Hud.Sounds.LoadSounds() in C:\Users\vmv\Documents\GitHub\qHUD\src\Hud\Sounds.cs:line 30
+   at qHUD.Program.Main(String[] args) in C:\Users\vmv\Documents\GitHub\qHUD\src\Program.cs:line 69
+------------------------------
