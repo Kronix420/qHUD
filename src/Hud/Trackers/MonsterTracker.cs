@@ -73,7 +73,7 @@ namespace qHUD.Hud.Trackers
             float xPosRem = rect.Width * Settings.RemainingTextPosX * 0.01f + rect.X;
             float yPosRem = rect.Height * Settings.RemainingTextPosY * 0.01f + rect.Y;
             string remaining = $"{GameController.Game.IngameState.RemainingMonsters}";
-            
+
             //if (remaining != "More than 50 monsters remain.")
             //{
             //    Size2 remTextSize = Graphics.DrawText(remaining, Settings.TextSize, new Vector2(xPosRem, yPosRem - 1), remColor, FontDrawFlags.Center);
@@ -81,7 +81,6 @@ namespace qHUD.Hud.Trackers
             //    remBackground.X -= remTextSize.Height + 3;
             //    remBackground.Width += remTextSize.Height;
             //    Graphics.DrawImage("preload-start.png", remBackground, Settings.RemainingBackColor);
-            //    //yPosRem += remTextSize.Height;
             //}
 
             Vector2 playerPos = GameController.Player.GetComponent<Positioned>().GridPos;

@@ -2,6 +2,7 @@ namespace qHUD.Poe.Elements
 {
     using System;
     using Components;
+
     public class InventoryItemIcon : Element
     {
         private readonly Func<Element> inventoryItemTooltip;
@@ -26,12 +27,27 @@ namespace qHUD.Poe.Elements
                 {
                     case ToolTipType.ItemOnGround:
                         return toolTipOnground().Tooltip;
+
                     case ToolTipType.InventoryItem:
                         return inventoryItemTooltip();
                     case ToolTipType.ItemInChat:
                         return itemInChatTooltip();
                 }
                 return null;
+            }
+        }
+
+        public Element ItemFrame
+        {
+            get
+            {
+                switch (ToolTipType)
+                {
+                    case ToolTipType.ItemOnGround:
+                        return toolTipOnground().ItemFrame;
+                    default:
+                        return null;
+                }
             }
         }
 
@@ -42,9 +58,11 @@ namespace qHUD.Poe.Elements
                 switch (ToolTipType)
                 {
                     case ToolTipType.ItemOnGround:
+
                         ItemsOnGroundLabelElement le = Game.IngameState.IngameUi.ReadObjectAt<ItemsOnGroundLabelElement>(0xA54);
-                        Entity e = le?.ReadObjectAt<Entity>(0x1CC);
+                        Entity e = le?.ReadObjectAt<Entity>(OffsetBuffers + 0x1CC);
                         return e?.GetComponent<WorldItem>().ItemEntity;
+
                     case ToolTipType.InventoryItem:
                         return ReadObject<Entity>(Address + 0xA8C);
                 }
@@ -65,6 +83,7 @@ namespace qHUD.Poe.Elements
             return ToolTipType.None;
         }
     }
+
 
     public enum ToolTipType
     {
