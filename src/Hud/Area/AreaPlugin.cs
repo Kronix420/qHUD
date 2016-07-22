@@ -42,6 +42,10 @@
                     !Settings.ShowInTown && GameController.Area.CurrentArea.IsHideout;
             partyXpPenalty = PartyXpPenalty();
             Vector2 position = StartDrawPointFunc();
+
+            string remaining = $"({GameController.Game.IngameState.RemainingMonsters})";
+
+
             string latency = $"({GameController.Game.IngameState.CurLatency})";
             string areaName = $"{GameController.Area.CurrentArea.DisplayName}";
             var xpReceiving = levelXpPenalty * partyXpPenalty;

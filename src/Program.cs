@@ -30,10 +30,10 @@ namespace qHUD
 
         private static int chooseSingleProcess(IReadOnlyList<Tuple<Process, Offsets>> clients)
         {
-            String o1 = $"Yes - process #{clients[0].Item1.Id}, started at {clients[0].Item1.StartTime.ToLongTimeString()}";
-            String o2 = $"No - process #{clients[1].Item1.Id}, started at {clients[1].Item1.StartTime.ToLongTimeString()}";
+            string o1 = $"Yes - process #{clients[0].Item1.Id}, started at {clients[0].Item1.StartTime.ToLongTimeString()}";
+            string o2 = $"No - process #{clients[1].Item1.Id}, started at {clients[1].Item1.StartTime.ToLongTimeString()}";
             const string o3 = "Cancel - quit this application";
-            var answer = MessageBox.Show(null, String.Join(Environment.NewLine, o1, o2, o3),
+            var answer = MessageBox.Show(null, string.Join(Environment.NewLine, o1, o2, o3),
                 "Choose a PoE instance to attach to", MessageBoxButtons.YesNoCancel);
             return answer == DialogResult.Cancel ? -1 : answer == DialogResult.Yes ? 0 : 1;
         }

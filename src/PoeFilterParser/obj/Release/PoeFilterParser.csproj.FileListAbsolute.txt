@@ -19,3 +19,4 @@ C:\Users\vmv\Documents\Visual Studio 2015\Projects\dev-qHUD\src\PoeFilterParser\
 C:\Users\vmv\Documents\Visual Studio 2015\Projects\dev-qHUD\src\PoeFilterParser\bin\Release\Antlr4.Runtime.xml
 C:\Users\vmv\Documents\Visual Studio 2015\Projects\dev-qHUD\src\PoeFilterParser\obj\Release\PoeFilterParser.dll
 C:\Users\vmv\Documents\Visual Studio 2015\Projects\dev-qHUD\src\PoeFilterParser\obj\Release\PoeFilterParser.pdb
+C:\Users\vmv\Documents\Visual Studio 2015\Projects\dev-qHUD\src\PoeFilterParser\obj\Release\PoeFilterParser.csprojResolveAssemblyReference.cache

@@ -7,7 +7,8 @@ namespace qHUD.Poe
     {
         protected FileInMemory(Memory m, int address)
         {
-            M = m; Address = address;
+            M = m;
+            Address = address;
         }
 
         public Memory M { get; }

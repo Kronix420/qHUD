@@ -14,5 +14,6 @@ namespace qHUD.Poe.RemoteMemoryObjects
         public DiagnosticElement LatencyRectangle => GetObjectAt<DiagnosticElement>(0xE98 + Offsets.IgsOffset);
         public DiagnosticElement FPSRectangle => GetObjectAt<DiagnosticElement>(0x1510 + Offsets.IgsOffset);
         public float CurLatency => M.ReadFloat(Address + 0xC90 + 0x13C + Offsets.IgsOffset);
+        public string RemainingMonsters => M.ReadStringU(0x673E12F0);
     }
 }

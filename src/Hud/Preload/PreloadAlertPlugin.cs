@@ -18,6 +18,7 @@ namespace qHUD.Hud.Preload
         private readonly SettingsHub settingsHub;
         private readonly HashSet<PreloadConfigLine> alerts;
         private readonly Dictionary<string, PreloadConfigLine> alertStrings;
+        private int lastCount, lastAddress;
         public static bool corruptedArea, unknownChest, holdKey;
 
         public PreloadAlertPlugin(GameController gameController, Graphics graphics, PreloadAlertSettings settings,
@@ -107,10 +108,11 @@ namespace qHUD.Hud.Preload
         private void Parse()
         {
             Memory memory = GameController.Memory;
+            List<string> LoadedFileNames = new List<string>();
             int pFileRoot = memory.BaseAddress + memory.offsets.FileRoot;
             int count = memory.ReadInt(pFileRoot + 0x8);
             int areaChangeCount = GameController.Game.AreaChangeCount;
-            int listIterator = memory.ReadInt(pFileRoot + 0x4, 0x0);
+            int listIterator = memory.ReadInt(pFileRoot + 0x4);
             for (int i = 0; i < count; i++)
             {
                 listIterator = memory.ReadInt(listIterator);
@@ -118,8 +120,11 @@ namespace qHUD.Hud.Preload
                 if (memory.ReadInt(listIterator + 0x8) == 0 || memory.ReadInt(listIterator + 0xC, 0x34) != areaChangeCount) continue;
                 string text = memory.ReadStringU(memory.ReadInt(listIterator + 8));
                 if (text.Contains('@')) { text = text.Split('@')[0]; }
+                if (!LoadedFileNames.Contains(text)) LoadedFileNames.Add(text);
                 CheckForPreload(text);
             }
+            if (System.IO.File.Exists("LoadedFileNames.txt")) System.IO.File.Delete("LoadedFileNames.txt");
+            System.IO.File.WriteAllLines("LoadedFileNames.txt", LoadedFileNames);
         }
         public void CheckForPreload(string text)
         {

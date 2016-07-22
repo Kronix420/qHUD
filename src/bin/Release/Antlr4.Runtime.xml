@@ -31,7 +31,6 @@
         </member>
         <member name="T:Antlr4.Runtime.ICharStream">
             <summary>A source of characters for an ANTLR lexer.</summary>
-            <remarks>A source of characters for an ANTLR lexer.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.IIntStream">
             <summary>A simple stream of symbols whose values are represented as integers.</summary>
@@ -314,10 +313,6 @@
             Returns the total number of symbols in the stream, including a single EOF
             symbol.
             </summary>
-            <remarks>
-            Returns the total number of symbols in the stream, including a single EOF
-            symbol.
-            </remarks>
             <exception cref="T:System.NotSupportedException">
             if the size of the stream is
             unknown.
@@ -416,11 +411,6 @@
             when the object was created *except* the data array is not
             touched.
             </summary>
-            <remarks>
-            Reset the stream so that it's in the same state it was
-            when the object was created *except* the data array is not
-            touched.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.AntlrInputStream.Mark">
             <summary>mark/release do nothing; we have entire buffer</summary>
@@ -474,7 +464,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.Transition.target">
             <summary>The target of this transition.</summary>
-            <remarks>The target of this transition.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.Atn.Transition.IsEpsilon">
             <summary>Determines if the transition is an "epsilon" transition.</summary>
@@ -550,7 +539,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionEventInfo.decision">
             <summary>The invoked decision number which this event is related to.</summary>
-            <remarks>The invoked decision number which this event is related to.</remarks>
             <seealso cref="F:Antlr4.Runtime.Atn.ATN.decisionToState"/>
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionEventInfo.state">
@@ -564,21 +552,15 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionEventInfo.input">
             <summary>The input token stream which is being parsed.</summary>
-            <remarks>The input token stream which is being parsed.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionEventInfo.startIndex">
             <summary>
             The token index in the input stream at which the current prediction was
             originally invoked.
             </summary>
-            <remarks>
-            The token index in the input stream at which the current prediction was
-            originally invoked.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionEventInfo.stopIndex">
             <summary>The token index in the input stream at which the current event occurred.</summary>
-            <remarks>The token index in the input stream at which the current event occurred.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionEventInfo.fullCtx">
             <summary>
@@ -591,7 +573,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.AmbiguityInfo.ambigAlts">
             <summary>The set of alternative numbers for this decision event that lead to a valid parse.</summary>
-            <remarks>The set of alternative numbers for this decision event that lead to a valid parse.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.AmbiguityInfo.#ctor(System.Int32,Antlr4.Runtime.Atn.SimulatorState,Antlr4.Runtime.Sharpen.BitSet,Antlr4.Runtime.ITokenStream,System.Int32,System.Int32)">
             <summary>
@@ -605,7 +586,10 @@
             The final simulator state identifying the ambiguous
             alternatives for the current input
             </param>
-            <param name="ambigAlts">The set of alternatives in the decision that lead to a valid parse.</param>
+            <param name="ambigAlts">
+            The set of alternatives in the decision that lead to a valid parse.
+            The predicted alt is the min(ambigAlts)
+            </param>
             <param name="input">The input token stream</param>
             <param name="startIndex">The start index for the current prediction</param>
             <param name="stopIndex">
@@ -615,7 +599,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Atn.AmbiguityInfo.AmbiguousAlternatives">
             <summary>Gets the set of alternatives in the decision that lead to a valid parse.</summary>
-            <remarks>Gets the set of alternatives in the decision that lead to a valid parse.</remarks>
             <since>4.5</since>
         </member>
         <member name="F:Antlr4.Runtime.Atn.PredictionContext.cachedHashCode">
@@ -672,19 +655,15 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATN.ruleToStartState">
             <summary>Maps from rule index to starting state number.</summary>
-            <remarks>Maps from rule index to starting state number.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATN.ruleToStopState">
             <summary>Maps from rule index to stop state number.</summary>
-            <remarks>Maps from rule index to stop state number.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATN.grammarType">
             <summary>The type of the ATN.</summary>
-            <remarks>The type of the ATN.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATN.maxTokenType">
             <summary>The maximum value for any symbol recognized by a transition in the ATN.</summary>
-            <remarks>The maximum value for any symbol recognized by a transition in the ATN.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATN.ruleToTokenType">
             <summary>For lexer ATNs, this maps the rule index to the resulting token type.</summary>
@@ -825,19 +804,12 @@
             the same state, they predict the same alternative, and
             syntactic/semantic contexts are the same.
             </summary>
-            <remarks>
-            An ATN configuration is equal to another if both have
-            the same state, they predict the same alternative, and
-            syntactic/semantic contexts are the same.
-            </remarks>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ATNConfig.State">
             <summary>Gets the ATN state associated with this configuration.</summary>
-            <remarks>Gets the ATN state associated with this configuration.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ATNConfig.Alt">
             <summary>What alt (or lexer rule) is predicted by this configuration.</summary>
-            <remarks>What alt (or lexer rule) is predicted by this configuration.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ATNConfig.OuterContextDepth">
             <summary>
@@ -897,7 +869,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNConfigSet.configs">
             <summary>This is a list of all configs in this set.</summary>
-            <remarks>This is a list of all configs in this set.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNConfigSet.outermostConfigSet">
             <summary>
@@ -922,10 +893,6 @@
             Get the set of all alternatives represented by configurations in this
             set.
             </summary>
-            <remarks>
-            Get the set of all alternatives represented by configurations in this
-            set.
-            </remarks>
         </member>
         <member name="T:Antlr4.Runtime.Atn.ATNDeserializationOptions">
             <author>Sam Harwell</author>
@@ -935,7 +902,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNDeserializer.BaseSerializedUuid">
             <summary>This is the earliest supported serialized UUID.</summary>
-            <remarks>This is the earliest supported serialized UUID.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNDeserializer.AddedLexerActions">
             <summary>
@@ -951,14 +917,9 @@
             This list contains all of the currently supported UUIDs, ordered by when
             the feature first appeared in this branch.
             </summary>
-            <remarks>
-            This list contains all of the currently supported UUIDs, ordered by when
-            the feature first appeared in this branch.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNDeserializer.SerializedUuid">
             <summary>This is the current serialized UUID.</summary>
-            <remarks>This is the current serialized UUID.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.ATNDeserializer.IsFeatureSupported(System.Guid,System.Guid)">
             <summary>
@@ -1008,7 +969,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNSimulator.SerializedUuid">
             <summary>This is the current serialized UUID.</summary>
-            <remarks>This is the current serialized UUID.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNSimulator.Error">
             <summary>Must distinguish between missing edge and edge we know leads nowhere</summary>
@@ -1089,14 +1049,12 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNState.transitions">
             <summary>Track the transitions emanating from this ATN state.</summary>
-            <remarks>Track the transitions emanating from this ATN state.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.ATNState.nextTokenWithinRule">
             <summary>Used to cache lookahead during parsing, not used during construction</summary>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ATNState.StateNumber">
             <summary>Gets the state number.</summary>
-            <remarks>Gets the state number.</remarks>
             <returns>the state number</returns>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ATNState.NonStopStateNumber">
@@ -1114,7 +1072,6 @@
         </member>
         <member name="T:Antlr4.Runtime.Atn.ATNType">
             <summary>Represents the type of recognizer an ATN applies to.</summary>
-            <remarks>Represents the type of recognizer an ATN applies to.</remarks>
             <author>Sam Harwell</author>
         </member>
         <member name="T:Antlr4.Runtime.Atn.AtomTransition">
@@ -1122,7 +1079,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.AtomTransition.label">
             <summary>The token type or character value; or, signifies special label.</summary>
-            <remarks>The token type or character value; or, signifies special label.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.Atn.BasicBlockStartState">
             <author>Sam Harwell</author>
@@ -1146,12 +1102,10 @@
         </member>
         <member name="T:Antlr4.Runtime.Atn.ConflictInfo">
             <summary>This class stores information about a configuration conflict.</summary>
-            <remarks>This class stores information about a configuration conflict.</remarks>
             <author>Sam Harwell</author>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ConflictInfo.ConflictedAlts">
             <summary>Gets the set of conflicting alternatives for the configuration set.</summary>
-            <remarks>Gets the set of conflicting alternatives for the configuration set.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ConflictInfo.IsExact">
             <summary>Gets whether or not the configuration conflict is an exact conflict.</summary>
@@ -1273,11 +1227,6 @@
             complete for this decision, by reaching a unique prediction, reaching an
             SLL conflict state, or encountering a syntax error.
             </summary>
-            <remarks>
-            Gets the minimum lookahead required for any single SLL prediction to
-            complete for this decision, by reaching a unique prediction, reaching an
-            SLL conflict state, or encountering a syntax error.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionInfo.SLL_MaxLook">
             <summary>
@@ -1285,11 +1234,6 @@
             complete for this decision, by reaching a unique prediction, reaching an
             SLL conflict state, or encountering a syntax error.
             </summary>
-            <remarks>
-            Gets the maximum lookahead required for any single SLL prediction to
-            complete for this decision, by reaching a unique prediction, reaching an
-            SLL conflict state, or encountering a syntax error.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.DecisionInfo.SLL_MaxLookEvent">
             <summary>
@@ -1552,7 +1496,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Atn.ILexerAction.ActionType">
             <summary>Gets the serialization type of the lexer action.</summary>
-            <remarks>Gets the serialization type of the lexer action.</remarks>
             <returns>The serialization type of the lexer action.</returns>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ILexerAction.IsPositionDependent">
@@ -1739,7 +1682,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Atn.LexerActionExecutor.LexerActions">
             <summary>Gets the lexer actions to be executed by this executor.</summary>
-            <remarks>Gets the lexer actions to be executed by this executor.</remarks>
             <returns>The lexer actions to be executed by this executor.</returns>
         </member>
         <member name="T:Antlr4.Runtime.Atn.LexerActionType">
@@ -1792,10 +1734,6 @@
             Compute a target state for an edge in the DFA, and attempt to add the
             computed state and corresponding edge to the DFA.
             </summary>
-            <remarks>
-            Compute a target state for an edge in the DFA, and attempt to add the
-            computed state and corresponding edge to the DFA.
-            </remarks>
             <param name="input">The input stream</param>
             <param name="s">The current DFA state</param>
             <param name="t">The next input symbol</param>
@@ -1906,7 +1844,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Atn.LexerATNSimulator.GetText(Antlr4.Runtime.ICharStream)">
             <summary>Get the text matched so far for the current token.</summary>
-            <remarks>Get the text matched so far for the current token.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.Atn.LexerATNSimulator.SimState">
             <summary>
@@ -2011,10 +1948,6 @@
             Constructs a custom lexer action with the specified rule and action
             indexes.
             </summary>
-            <remarks>
-            Constructs a custom lexer action with the specified rule and action
-            indexes.
-            </remarks>
             <param name="ruleIndex">
             The rule index to use for calls to
             <see cref="M:Antlr4.Runtime.Recognizer`2.Action(Antlr4.Runtime.RuleContext,System.Int32,System.Int32)"/>
@@ -2152,7 +2085,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Atn.LexerIndexedCustomAction.Action">
             <summary>Gets the lexer action to execute.</summary>
-            <remarks>Gets the lexer action to execute.</remarks>
             <returns>
             A
             <see cref="T:Antlr4.Runtime.Atn.ILexerAction"/>
@@ -2216,7 +2148,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Atn.LexerModeAction.Mode">
             <summary>Get the lexer mode this action should transition the lexer to.</summary>
-            <remarks>Get the lexer mode this action should transition the lexer to.</remarks>
             <returns>
             The lexer mode for this
             <c>mode</c>
@@ -2258,7 +2189,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.LexerMoreAction.Instance">
             <summary>Provides a singleton instance of this parameterless lexer action.</summary>
-            <remarks>Provides a singleton instance of this parameterless lexer action.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.LexerMoreAction.#ctor">
             <summary>
@@ -2310,7 +2240,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.LexerPopModeAction.Instance">
             <summary>Provides a singleton instance of this parameterless lexer action.</summary>
-            <remarks>Provides a singleton instance of this parameterless lexer action.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.LexerPopModeAction.#ctor">
             <summary>
@@ -2379,7 +2308,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Atn.LexerPushModeAction.Mode">
             <summary>Get the lexer mode this action should transition the lexer to.</summary>
-            <remarks>Get the lexer mode this action should transition the lexer to.</remarks>
             <returns>
             The lexer mode for this
             <c>pushMode</c>
@@ -2421,7 +2349,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Atn.LexerSkipAction.Instance">
             <summary>Provides a singleton instance of this parameterless lexer action.</summary>
-            <remarks>Provides a singleton instance of this parameterless lexer action.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.LexerSkipAction.#ctor">
             <summary>
@@ -2490,7 +2417,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Atn.LexerTypeAction.Type">
             <summary>Gets the type to assign to a token created by the lexer.</summary>
-            <remarks>Gets the type to assign to a token created by the lexer.</remarks>
             <returns>The type to assign to a token created by the lexer.</returns>
         </member>
         <member name="P:Antlr4.Runtime.Atn.LexerTypeAction.ActionType">
@@ -2714,13 +2640,9 @@
             This class represents profiling event information for tracking the lookahead
             depth required in order to make a prediction.
             </summary>
-            <remarks>
-            This class represents profiling event information for tracking the lookahead
-            depth required in order to make a prediction.
-            </remarks>
             <since>4.3</since>
         </member>
-        <member name="M:Antlr4.Runtime.Atn.LookaheadEventInfo.#ctor(System.Int32,Antlr4.Runtime.Atn.SimulatorState,Antlr4.Runtime.ITokenStream,System.Int32,System.Int32,System.Boolean)">
+        <member name="M:Antlr4.Runtime.Atn.LookaheadEventInfo.#ctor(System.Int32,Antlr4.Runtime.Atn.SimulatorState,System.Int32,Antlr4.Runtime.ITokenStream,System.Int32,System.Int32,System.Boolean)">
             <summary>
             Constructs a new instance of the
             <see cref="T:Antlr4.Runtime.Atn.LookaheadEventInfo"/>
@@ -2735,6 +2657,8 @@
             if
             the final state is not available
             </param>
+            <param name="predictedAlt">The alternative chosen by
+            <see cref="M:Antlr4.Runtime.Atn.ParserATNSimulator.AdaptivePredict(Antlr4.Runtime.ITokenStream,System.Int32,Antlr4.Runtime.ParserRuleContext)"/>.</param>
             <param name="input">The input token stream</param>
             <param name="startIndex">The start index for the current prediction</param>
             <param name="stopIndex">The index at which the prediction was finally made</param>
@@ -2748,13 +2672,19 @@
             an SLL prediction
             </param>
         </member>
+        <member name="P:Antlr4.Runtime.Atn.LookaheadEventInfo.PredictedAlternative">
+            <summary>
+            The alternative chosen by adaptivePredict(), not necessarily
+            the outermost alt shown for a rule; left-recursive rules have
+            user-level alts that differ from the rewritten rule with a (...) block
+            and a (..)* loop.
+            </summary>
+        </member>
         <member name="T:Antlr4.Runtime.Atn.LoopEndState">
             <summary>Mark the end of a * or + loop.</summary>
-            <remarks>Mark the end of a * or + loop.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.Atn.SetTransition">
             <summary>A transition containing a set of values.</summary>
-            <remarks>A transition containing a set of values.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.Atn.OrderedATNConfigSet">
             <author>Sam Harwell</author>
@@ -2764,10 +2694,6 @@
             This class provides access to specific and aggregate statistics gathered
             during profiling of a parser.
             </summary>
-            <remarks>
-            This class provides access to specific and aggregate statistics gathered
-            during profiling of a parser.
-            </remarks>
             <since>4.3</since>
         </member>
         <member name="M:Antlr4.Runtime.Atn.ParseInfo.GetLLDecisions">
@@ -2827,20 +2753,12 @@
             Gets the total number of ATN lookahead operations for SLL prediction
             across all decisions made during parsing.
             </summary>
-            <remarks>
-            Gets the total number of ATN lookahead operations for SLL prediction
-            across all decisions made during parsing.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.ParseInfo.GetTotalLLATNLookaheadOps">
             <summary>
             Gets the total number of ATN lookahead operations for LL prediction
             across all decisions made during parsing.
             </summary>
-            <remarks>
-            Gets the total number of ATN lookahead operations for LL prediction
-            across all decisions made during parsing.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.ParseInfo.GetTotalATNLookaheadOps">
             <summary>
@@ -2863,20 +2781,12 @@
             Gets the total number of DFA states stored in the DFA cache for all
             decisions in the ATN.
             </summary>
-            <remarks>
-            Gets the total number of DFA states stored in the DFA cache for all
-            decisions in the ATN.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.ParseInfo.GetDFASize(System.Int32)">
             <summary>
             Gets the total number of DFA states stored in the DFA cache for a
             particular decision.
             </summary>
-            <remarks>
-            Gets the total number of DFA states stored in the DFA cache for a
-            particular decision.
-            </remarks>
         </member>
         <member name="P:Antlr4.Runtime.Atn.ParseInfo.DecisionInfo">
             <summary>
@@ -3429,10 +3339,6 @@
             Compute a target state for an edge in the DFA, and attempt to add the
             computed state and corresponding edge to the DFA.
             </summary>
-            <remarks>
-            Compute a target state for an edge in the DFA, and attempt to add the
-            computed state and corresponding edge to the DFA.
-            </remarks>
             <param name="dfa"/>
             <param name="s">The current DFA state</param>
             <param name="remainingGlobalContext"/>
@@ -3616,11 +3522,9 @@
         </member>
         <member name="M:Antlr4.Runtime.Atn.ParserATNSimulator.AddDFAContextState(Antlr4.Runtime.Dfa.DFA,Antlr4.Runtime.Atn.ATNConfigSet,System.Int32,Antlr4.Runtime.Atn.PredictionContextCache)">
             <summary>See comment on LexerInterpreter.addDFAState.</summary>
-            <remarks>See comment on LexerInterpreter.addDFAState.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.ParserATNSimulator.AddDFAState(Antlr4.Runtime.Dfa.DFA,Antlr4.Runtime.Atn.ATNConfigSet,Antlr4.Runtime.Atn.PredictionContextCache)">
             <summary>See comment on LexerInterpreter.addDFAState.</summary>
-            <remarks>See comment on LexerInterpreter.addDFAState.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.ParserATNSimulator.ReportAmbiguity(Antlr4.Runtime.Dfa.DFA,Antlr4.Runtime.Dfa.DFAState,System.Int32,System.Int32,System.Boolean,Antlr4.Runtime.Sharpen.BitSet,Antlr4.Runtime.Atn.ATNConfigSet)">
             <summary>If context sensitive parsing, we know it's ambiguity not conflict</summary>
@@ -3660,16 +3564,11 @@
             This class represents profiling event information for semantic predicate
             evaluations which occur during prediction.
             </summary>
-            <remarks>
-            This class represents profiling event information for semantic predicate
-            evaluations which occur during prediction.
-            </remarks>
             <seealso cref="M:Antlr4.Runtime.Atn.ParserATNSimulator.EvalSemanticContext(Antlr4.Runtime.Dfa.DFAState.PredPrediction[],Antlr4.Runtime.ParserRuleContext,System.Boolean)"/>
             <since>4.3</since>
         </member>
         <member name="F:Antlr4.Runtime.Atn.PredicateEvalInfo.semctx">
             <summary>The semantic context which was evaluated.</summary>
-            <remarks>The semantic context which was evaluated.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.PredicateEvalInfo.predictedAlt">
             <summary>
@@ -3748,11 +3647,6 @@
             utility methods for analyzing configuration sets for conflicts and/or
             ambiguities.
             </summary>
-            <remarks>
-            This enumeration defines the prediction modes available in ANTLR 4 along with
-            utility methods for analyzing configuration sets for conflicts and/or
-            ambiguities.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.PredictionMode.Sll">
             <summary>The SLL(*) prediction mode.</summary>
@@ -4373,7 +4267,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Atn.PredictionMode.GetAlts(Antlr4.Runtime.Atn.ATNConfigSet)">
             <summary>Get union of all alts from configs.</summary>
-            <remarks>Get union of all alts from configs.</remarks>
             <since>4.5</since>
         </member>
         <member name="M:Antlr4.Runtime.Atn.PredictionMode.GetConflictingAltSubsets(System.Collections.Generic.IEnumerable{Antlr4.Runtime.Atn.ATNConfig})">
@@ -4412,7 +4305,6 @@
         </member>
         <member name="T:Antlr4.Runtime.Atn.PredictionMode.AltAndContextMap">
             <summary>A Map that uses just the state and the stack context as the key.</summary>
-            <remarks>A Map that uses just the state and the stack context as the key.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.PredictionMode.AltAndContextConfigEqualityComparator.GetHashCode(Antlr4.Runtime.Atn.ATNConfig)">
             <summary>
@@ -4514,7 +4406,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Atn.SemanticContext.EvalPrecedence``2(Antlr4.Runtime.Recognizer{``0,``1},Antlr4.Runtime.RuleContext)">
             <summary>Evaluate the precedence predicates for the context and reduce the result.</summary>
-            <remarks>Evaluate the precedence predicates for the context and reduce the result.</remarks>
             <param name="parser">The parser instance.</param>
             <param name="parserCallStack"/>
             <returns>
@@ -4554,15 +4445,10 @@
             This is the base class for semantic context "operators", which operate on
             a collection of semantic context "operands".
             </summary>
-            <remarks>
-            This is the base class for semantic context "operators", which operate on
-            a collection of semantic context "operands".
-            </remarks>
             <since>4.3</since>
         </member>
         <member name="P:Antlr4.Runtime.Atn.SemanticContext.Operator.Operands">
             <summary>Gets the operands for the semantic context operator.</summary>
-            <remarks>Gets the operands for the semantic context operator.</remarks>
             <returns>
             a collection of
             <see cref="T:Antlr4.Runtime.Atn.SemanticContext"/>
@@ -4576,10 +4462,6 @@
             A semantic context which is true whenever none of the contained contexts
             is false.
             </summary>
-            <remarks>
-            A semantic context which is true whenever none of the contained contexts
-            is false.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.SemanticContext.AND.Eval``2(Antlr4.Runtime.Recognizer{``0,``1},Antlr4.Runtime.RuleContext)">
             <summary>
@@ -4594,10 +4476,6 @@
             A semantic context which is true whenever at least one of the contained
             contexts is true.
             </summary>
-            <remarks>
-            A semantic context which is true whenever at least one of the contained
-            contexts is true.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Atn.SemanticContext.OR.Eval``2(Antlr4.Runtime.Recognizer{``0,``1},Antlr4.Runtime.RuleContext)">
             <summary>
@@ -4612,7 +4490,6 @@
         </member>
         <member name="T:Antlr4.Runtime.Atn.StarBlockStartState">
             <summary>The block that begins a closure loop.</summary>
-            <remarks>The block that begins a closure loop.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Atn.StarLoopEntryState.precedenceRuleDecision">
             <summary>
@@ -4808,10 +4685,6 @@
             This method is called by when the parser successfully matches an input
             symbol.
             </summary>
-            <remarks>
-            This method is called by when the parser successfully matches an input
-            symbol.
-            </remarks>
             <param name="recognizer">the parser instance</param>
         </member>
         <member name="M:Antlr4.Runtime.IAntlrErrorStrategy.ReportError(Antlr4.Runtime.Parser,Antlr4.Runtime.RecognitionException)">
@@ -4860,10 +4733,6 @@
             This method is called to enter error recovery mode when a recognition
             exception is reported.
             </summary>
-            <remarks>
-            This method is called to enter error recovery mode when a recognition
-            exception is reported.
-            </remarks>
             <param name="recognizer">the parser instance</param>
         </member>
         <member name="M:Antlr4.Runtime.DefaultErrorStrategy.InErrorRecoveryMode(Antlr4.Runtime.Parser)">
@@ -4874,10 +4743,6 @@
             This method is called to leave error recovery mode after recovering from
             a recognition exception.
             </summary>
-            <remarks>
-            This method is called to leave error recovery mode after recovering from
-            a recognition exception.
-            </remarks>
             <param name="recognizer"/>
         </member>
         <member name="M:Antlr4.Runtime.DefaultErrorStrategy.ReportMatch(Antlr4.Runtime.Parser)">
@@ -5258,7 +5123,6 @@
         </member>
         <member name="M:Antlr4.Runtime.DefaultErrorStrategy.ConsumeUntil(Antlr4.Runtime.Parser,Antlr4.Runtime.Misc.IntervalSet)">
             <summary>Consume tokens until one matches the given token set.</summary>
-            <remarks>Consume tokens until one matches the given token set.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.BailErrorStrategy.Recover(Antlr4.Runtime.Parser,Antlr4.Runtime.RecognitionException)">
             <summary>
@@ -5281,15 +5145,10 @@
             Make sure we don't attempt to recover inline; if the parser
             successfully recovers, it won't throw an exception.
             </summary>
-            <remarks>
-            Make sure we don't attempt to recover inline; if the parser
-            successfully recovers, it won't throw an exception.
-            </remarks>
             <exception cref="T:Antlr4.Runtime.RecognitionException"/>
         </member>
         <member name="M:Antlr4.Runtime.BailErrorStrategy.Sync(Antlr4.Runtime.Parser)">
             <summary>Make sure we don't attempt to recover from problems in subrules.</summary>
-            <remarks>Make sure we don't attempt to recover from problems in subrules.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.BaseErrorListener">
             <summary>
@@ -5303,11 +5162,9 @@
         </member>
         <member name="T:Antlr4.Runtime.IParserErrorListener">
             <summary>How to emit recognition errors for parsers.</summary>
-            <remarks>How to emit recognition errors for parsers.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.IAntlrErrorListener`1">
             <summary>How to emit recognition errors.</summary>
-            <remarks>How to emit recognition errors.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.IAntlrErrorListener`1.SyntaxError(Antlr4.Runtime.IRecognizer,`0,System.Int32,System.Int32,System.String,Antlr4.Runtime.RecognitionException)">
             <summary>Upon syntax error, notify any interested parties.</summary>
@@ -5828,7 +5685,6 @@
         </member>
         <member name="M:Antlr4.Runtime.BufferedTokenStream.Get(System.Int32,System.Int32)">
             <summary>Get all tokens from start..stop inclusively.</summary>
-            <remarks>Get all tokens from start..stop inclusively.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.BufferedTokenStream.AdjustSeekIndex(System.Int32)">
             <summary>
@@ -5854,7 +5710,6 @@
         </member>
         <member name="M:Antlr4.Runtime.BufferedTokenStream.SetTokenSource(Antlr4.Runtime.ITokenSource)">
             <summary>Reset this token stream by setting its token source.</summary>
-            <remarks>Reset this token stream by setting its token source.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.BufferedTokenStream.GetTokens(System.Int32,System.Int32,Antlr4.Runtime.Sharpen.BitSet)">
             <summary>
@@ -5951,11 +5806,9 @@
         </member>
         <member name="M:Antlr4.Runtime.BufferedTokenStream.GetText">
             <summary>Get the text of all tokens in this buffer.</summary>
-            <remarks>Get the text of all tokens in this buffer.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.BufferedTokenStream.Fill">
             <summary>Get all tokens from lexer until EOF.</summary>
-            <remarks>Get all tokens from lexer until EOF.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.IToken">
             <summary>
@@ -5963,19 +5816,12 @@
             (so we can ignore tabs), token channel, index, and source from which
             we obtained this token.
             </summary>
-            <remarks>
-            A token has properties: text, type, line, character position in the line
-            (so we can ignore tabs), token channel, index, and source from which
-            we obtained this token.
-            </remarks>
         </member>
         <member name="P:Antlr4.Runtime.IToken.Text">
             <summary>Get the text of the token.</summary>
-            <remarks>Get the text of the token.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.IToken.Type">
             <summary>Get the token type of the token.</summary>
-            <remarks>Get the token type of the token.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.IToken.Line">
             <summary>
@@ -6012,10 +5858,6 @@
             The starting character index of the token
             This method is optional; return -1 if not implemented.
             </summary>
-            <remarks>
-            The starting character index of the token
-            This method is optional; return -1 if not implemented.
-            </remarks>
         </member>
         <member name="P:Antlr4.Runtime.IToken.StopIndex">
             <summary>The last character index of the token.</summary>
@@ -6367,7 +6209,6 @@
         </member>
         <member name="M:Antlr4.Runtime.CommonTokenStream.GetNumberOfOnChannelTokens">
             <summary>Count EOF just once.</summary>
-            <remarks>Count EOF just once.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.ConsoleErrorListener`1">
             <author>Sam Harwell</author>
@@ -6469,7 +6310,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Dfa.DFA.GetPrecedenceStartState(System.Int32,System.Boolean)">
             <summary>Get the start state for a specific precedence value.</summary>
-            <remarks>Get the start state for a specific precedence value.</remarks>
             <param name="precedence">The current precedence.</param>
             <returns>
             The start state corresponding to the specified precedence, or
@@ -6481,7 +6321,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Dfa.DFA.SetPrecedenceStartState(System.Int32,System.Boolean,Antlr4.Runtime.Dfa.DFAState)">
             <summary>Set the start state for a specific precedence value.</summary>
-            <remarks>Set the start state for a specific precedence value.</remarks>
             <param name="precedence">The current precedence.</param>
             <param name="startState">
             The start state corresponding to the specified
@@ -6513,7 +6352,6 @@
             </returns>
             <seealso cref="P:Antlr4.Runtime.Parser.Precedence"/>
             <summary>Sets whether this is a precedence DFA.</summary>
-            <remarks>Sets whether this is a precedence DFA.</remarks>
             <value>
             
             <see langword="true"/>
@@ -6531,7 +6369,6 @@
         </member>
         <member name="T:Antlr4.Runtime.Dfa.DFASerializer">
             <summary>A DFA walker that knows how to dump them to serialized strings.</summary>
-            <remarks>A DFA walker that knows how to dump them to serialized strings.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.Dfa.DFAState">
             <summary>A DFA state represents a set of possible ATN configurations.</summary>
@@ -6567,11 +6404,9 @@
         </member>
         <member name="F:Antlr4.Runtime.Dfa.DFAState.contextEdges">
             <summary>These keys for these edges are the top level element of the global context.</summary>
-            <remarks>These keys for these edges are the top level element of the global context.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Dfa.DFAState.contextSymbols">
             <summary>Symbols in this set require a global context transition before matching an input symbol.</summary>
-            <remarks>Symbols in this set require a global context transition before matching an input symbol.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Dfa.DFAState.predicates">
             <summary>
@@ -6599,7 +6434,6 @@
         </member>
         <member name="T:Antlr4.Runtime.Dfa.DFAState.PredPrediction">
             <summary>Map a predicate to a predicted alternative.</summary>
-            <remarks>Map a predicate to a predicted alternative.</remarks>
         </member>
         <member name="T:Antlr4.Runtime.Dfa.EmptyEdgeMap`1">
             <summary>
@@ -6676,11 +6510,6 @@
             configuration set, if that information was not already provided by the
             parser.
             </summary>
-            <remarks>
-            Computes the set of conflicting or ambiguous alternatives from a
-            configuration set, if that information was not already provided by the
-            parser.
-            </remarks>
             <param name="reportedAlts">
             The set of conflicting or ambiguous alternatives, as
             reported by the parser.
@@ -6846,10 +6675,6 @@
             This signifies any kind of mismatched input exceptions such as
             when the current input does not match the expected token.
             </summary>
-            <remarks>
-            This signifies any kind of mismatched input exceptions such as
-            when the current input does not match the expected token.
-            </remarks>
         </member>
         <member name="T:Antlr4.Runtime.InterpreterRuleContext">
             <summary>
@@ -7008,10 +6833,6 @@
             How many children are there? If there is none, then this
             node represents a leaf node.
             </summary>
-            <remarks>
-            How many children are there? If there is none, then this
-            node represents a leaf node.
-            </remarks>
         </member>
         <member name="P:Antlr4.Runtime.Tree.ISyntaxTree.SourceInterval">
             <summary>
@@ -7021,10 +6842,16 @@
             <see cref="T:Antlr4.Runtime.ITokenStream"/>
             of the first and last token associated with this
             subtree. If this node is a leaf, then the interval represents a single
-            token.
+            token and has interval i..i for token index i.
+            <p>An interval of i..i-1 indicates an empty interval at position
+            i in the input stream, where 0 &lt;= i &lt;= the size of the input
+            token stream.  Currently, the code base can only have i=0..n-1 but
+            in concept one could have an empty interval after EOF. </p>
             <p>If source interval is unknown, this returns
             <see cref="F:Antlr4.Runtime.Misc.Interval.Invalid"/>
             .</p>
+            <p>As a weird special case, the source interval for rules matched after
+            EOF is unspecified.</p>
             </summary>
         </member>
         <member name="M:Antlr4.Runtime.Tree.IParseTree.Accept``1(Antlr4.Runtime.Tree.IParseTreeVisitor{``0})">
@@ -7047,10 +6874,6 @@
             Specialize toStringTree so that it can print out more information
             based upon the parser.
             </summary>
-            <remarks>
-            Specialize toStringTree so that it can print out more information
-            based upon the parser.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.RuleContext.parent">
             <summary>What context invoked this rule?</summary>
@@ -7062,12 +6885,6 @@
             If parent is null, this should be -1 this context object represents
             the start rule.
             </summary>
-            <remarks>
-            What state invoked the rule associated with this context?
-            The "return address" is the followState of invokingState
-            If parent is null, this should be -1 this context object represents
-            the start rule.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.RuleContext.GetText">
             <summary>Return the combined text of all child nodes.</summary>
@@ -7106,10 +6923,30 @@
             A context is empty if there is no invoking state; meaning nobody called
             current context.
             </summary>
+        </member>
+        <member name="P:Antlr4.Runtime.RuleContext.OuterAlternative">
+            <summary>
+            For rule associated with this parse tree internal node, return
+            the outer alternative number used to match the input.
+            </summary>
             <remarks>
-            A context is empty if there is no invoking state; meaning nobody called
-            current context.
+            For rule associated with this parse tree internal node, return
+            the outer alternative number used to match the input. Default
+            implementation does not compute nor store this alt num. Create
+            a subclass of ParserRuleContext with backing field and set
+            option contextSuperClass.
+            to set it.
             </remarks>
+            <since>4.5.3</since>
+            <summary>Set the outer alternative number for this context node.</summary>
+            <remarks>
+            Set the outer alternative number for this context node. Default
+            implementation does nothing to avoid backing field overhead for
+            trees that don't need it.  Create
+            a subclass of ParserRuleContext with backing field and set
+            option contextSuperClass.
+            </remarks>
+            <since>4.5.3</since>
         </member>
         <member name="F:Antlr4.Runtime.ParserRuleContext.children">
             <summary>
@@ -7239,32 +7076,11 @@
             <param name="invokingStateNumber">The invoking state number.</param>
             <param name="ruleIndex">The rule index for the current context.</param>
         </member>
-        <member name="M:Antlr4.Runtime.InterpreterRuleContext.FromParserRuleContext(Antlr4.Runtime.ParserRuleContext)">
-            <summary>
-            Copy a
-            <see cref="T:Antlr4.Runtime.ParserRuleContext"/>
-            or
-            <see cref="T:Antlr4.Runtime.InterpreterRuleContext"/>
-            stack
-            to a
-            <see cref="T:Antlr4.Runtime.InterpreterRuleContext"/>
-            tree. Return
-            <see langword="null"/>
-            if
-            <paramref name="ctx"/>
-            is null.
-            </summary>
-            <since>4.5</since>
-        </member>
         <member name="F:Antlr4.Runtime.TokenConstants.Epsilon">
             <summary>
             During lookahead operations, this "token" signifies we hit rule end ATN state
             and did not follow it despite needing to.
             </summary>
-            <remarks>
-            During lookahead operations, this "token" signifies we hit rule end ATN state
-            and did not follow it despite needing to.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.TokenConstants.DefaultChannel">
             <summary>
@@ -7282,10 +7098,6 @@
             Anything on different channel than DEFAULT_CHANNEL is not parsed
             by parser.
             </summary>
-            <remarks>
-            Anything on different channel than DEFAULT_CHANNEL is not parsed
-            by parser.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.TokenConstants.MinUserChannelValue">
             <summary>
@@ -7425,10 +7237,6 @@
             This interface provides information about the vocabulary used by a
             recognizer.
             </summary>
-            <remarks>
-            This interface provides information about the vocabulary used by a
-            recognizer.
-            </remarks>
             <seealso cref="P:Antlr4.Runtime.Recognizer`2.Vocabulary"/>
             <author>Sam Harwell</author>
         </member>
@@ -7500,10 +7308,7 @@
             methods:</p>
             <ul>
             <li>Tokens created by lexer rules.</li>
-            <li>Tokens defined in a
-            <c/>
-            tokens
-            block in a lexer or parser
+            <li>Tokens defined in a <code>tokens{}</code> block in a lexer or parser
             grammar.</li>
             <li>The implicitly defined
             <c>EOF</c>
@@ -7579,6 +7384,14 @@
             other user-visible messages which reference specific token types.
             </returns>
         </member>
+        <member name="P:Antlr4.Runtime.IVocabulary.MaxTokenType">
+            <summary>Returns the highest token type value.</summary>
+            <remarks>
+            Returns the highest token type value. It can be used to iterate from
+            zero to that number, inclusively, thus querying all stored entries.
+            </remarks>
+            <returns>the highest token type value</returns>
+        </member>
         <member name="T:Antlr4.Runtime.Lexer">
             <summary>A lexer is recognizer that draws input symbols from a character stream.</summary>
             <remarks>
@@ -7630,7 +7443,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Recognizer`2.Vocabulary">
             <summary>Get the vocabulary used by the recognizer.</summary>
-            <remarks>Get the vocabulary used by the recognizer.</remarks>
             <returns>
             A
             <see cref="T:Antlr4.Runtime.IVocabulary"/>
@@ -7685,10 +7497,8 @@
         </member>
         <member name="P:Antlr4.Runtime.Recognizer`2.Interpreter">
             <summary>Get the ATN interpreter used by the recognizer for prediction.</summary>
-            <remarks>Get the ATN interpreter used by the recognizer for prediction.</remarks>
             <returns>The ATN interpreter used by the recognizer for prediction.</returns>
             <summary>Set the ATN interpreter used by the recognizer for prediction.</summary>
-            <remarks>Set the ATN interpreter used by the recognizer for prediction.</remarks>
             <value>
             The ATN interpreter used by the recognizer for
             prediction.
@@ -7699,10 +7509,6 @@
             If profiling during the parse/lex, this will return DecisionInfo records
             for each decision in recognizer in a ParseInfo object.
             </summary>
-            <remarks>
-            If profiling during the parse/lex, this will return DecisionInfo records
-            for each decision in recognizer in a ParseInfo object.
-            </remarks>
             <since>4.3</since>
         </member>
         <member name="P:Antlr4.Runtime.Recognizer`2.State">
@@ -7779,10 +7585,6 @@
             Return a token from this source; i.e., match a token on the char
             stream.
             </summary>
-            <remarks>
-            Return a token from this source; i.e., match a token on the char
-            stream.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Lexer.Skip">
             <summary>
@@ -7853,22 +7655,13 @@
             Return the text matched so far for the current token or any text
             override.
             </summary>
-            <remarks>
-            Return the text matched so far for the current token or any text
-            override.
-            </remarks>
             <summary>
             Set the complete text of this token; it wipes any previous changes to the
             text.
             </summary>
-            <remarks>
-            Set the complete text of this token; it wipes any previous changes to the
-            text.
-            </remarks>
         </member>
         <member name="P:Antlr4.Runtime.Lexer.Token">
             <summary>Override if emitting multiple tokens.</summary>
-            <remarks>Override if emitting multiple tokens.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.Lexer.TokenNames">
             <summary>
@@ -7939,7 +7732,6 @@
         </member>
         <member name="F:Antlr4.Runtime.ListTokenSource.eofToken">
             <summary>This field caches the EOF token for the token source.</summary>
-            <remarks>This field caches the EOF token for the token source.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.ListTokenSource._factory">
             <summary>
@@ -8040,12 +7832,10 @@
         </member>
         <member name="T:Antlr4.Runtime.Misc.IIntSet">
             <summary>A generic set of integers.</summary>
-            <remarks>A generic set of integers.</remarks>
             <seealso cref="T:Antlr4.Runtime.Misc.IntervalSet"/>
         </member>
         <member name="M:Antlr4.Runtime.Misc.IIntSet.Add(System.Int32)">
             <summary>Adds the specified value to the current set.</summary>
-            <remarks>Adds the specified value to the current set.</remarks>
             <param name="el">the value to add</param>
             <exception>
             IllegalStateException
@@ -8262,7 +8052,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Misc.IIntSet.Count">
             <summary>Return the total number of elements represented by the current set.</summary>
-            <remarks>Return the total number of elements represented by the current set.</remarks>
             <returns>
             the total number of elements represented by the current set,
             regardless of the manner in which the elements are stored.
@@ -8302,15 +8091,12 @@
         </member>
         <member name="T:Antlr4.Runtime.Misc.Interval">
             <summary>An immutable inclusive interval a..b.</summary>
-            <remarks>An immutable inclusive interval a..b.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Misc.Interval.a">
             <summary>The start of the interval.</summary>
-            <remarks>The start of the interval.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Misc.Interval.b">
             <summary>The end of the interval (inclusive).</summary>
-            <remarks>The end of the interval (inclusive).</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Misc.Interval.Of(System.Int32,System.Int32)">
             <summary>
@@ -8394,11 +8180,9 @@
         </member>
         <member name="F:Antlr4.Runtime.Misc.IntervalSet.intervals">
             <summary>The list of sorted, disjoint intervals.</summary>
-            <remarks>The list of sorted, disjoint intervals.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Misc.IntervalSet.Of(System.Int32)">
             <summary>Create a set with a single element, el.</summary>
-            <remarks>Create a set with a single element, el.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Misc.IntervalSet.Of(System.Int32,System.Int32)">
             <summary>Create a set with all ints within range [a..b] (inclusive)</summary>
@@ -8455,7 +8239,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Misc.IntervalSet.GetIntervals">
             <summary>Return a list of Interval objects.</summary>
-            <remarks>Return a list of Interval objects.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Misc.IntervalSet.Equals(System.Object)">
             <summary>
@@ -8484,7 +8267,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Misc.IntervalSet.MaxElement">
             <summary>Returns the maximum value contained in the set.</summary>
-            <remarks>Returns the maximum value contained in the set.</remarks>
             <returns>
             the maximum value contained in the set. If the set is empty, this
             method returns
@@ -8494,7 +8276,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Misc.IntervalSet.MinElement">
             <summary>Returns the minimum value contained in the set.</summary>
-            <remarks>Returns the minimum value contained in the set.</remarks>
             <returns>
             the minimum value contained in the set. If the set is empty, this
             method returns
@@ -8507,7 +8288,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Misc.MurmurHash.Initialize">
             <summary>Initialize the hash using the default seed value.</summary>
-            <remarks>Initialize the hash using the default seed value.</remarks>
             <returns>the intermediate hash value</returns>
         </member>
         <member name="M:Antlr4.Runtime.Misc.MurmurHash.Initialize(System.Int32)">
@@ -8554,10 +8334,6 @@
             Utility function to compute the hash code of an array using the
             MurmurHash algorithm.
             </summary>
-            <remarks>
-            Utility function to compute the hash code of an array using the
-            MurmurHash algorithm.
-            </remarks>
             <param name="data">the array data</param>
             <param name="seed">the seed for the MurmurHash algorithm</param>
             <returns>the hash code of the data</returns>
@@ -8618,7 +8394,6 @@
         </member>
         <member name="T:Antlr4.Runtime.Parser">
             <summary>This is all the parsing support code essentially; most of it is error recovery stuff.</summary>
-            <remarks>This is all the parsing support code essentially; most of it is error recovery stuff.</remarks>
         </member>
         <member name="F:Antlr4.Runtime.Parser.bypassAltsAtnCache">
             <summary>
@@ -8641,7 +8416,6 @@
         </member>
         <member name="F:Antlr4.Runtime.Parser._input">
             <summary>The input stream.</summary>
-            <remarks>The input stream.</remarks>
             <seealso cref="P:Antlr4.Runtime.Parser.InputStream"/>
             <seealso cref="M:Antlr4.Runtime.Parser.SetInputStream(Antlr4.Runtime.ITokenStream)"/>
         </member>
@@ -8698,6 +8472,14 @@
             incremented each time
             <see cref="M:Antlr4.Runtime.Parser.NotifyErrorListeners(System.String)"/>
             is called.
+            </remarks>
+        </member>
+        <member name="F:Antlr4.Runtime.Parser.matchedEOF">
+            <summary>Indicates parser has match()ed EOF token.</summary>
+            <remarks>
+            Indicates parser has match()ed EOF token. See
+            <see cref="M:Antlr4.Runtime.Parser.ExitRule"/>
+            .
             </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Parser.Reset">
@@ -8820,17 +8602,14 @@
         </member>
         <member name="M:Antlr4.Runtime.Parser.RemoveParseListeners">
             <summary>Remove all parse listeners.</summary>
-            <remarks>Remove all parse listeners.</remarks>
             <seealso cref="M:Antlr4.Runtime.Parser.AddParseListener(Antlr4.Runtime.Tree.IParseTreeListener)"/>
         </member>
         <member name="M:Antlr4.Runtime.Parser.TriggerEnterRuleEvent">
             <summary>Notify any parse listeners of an enter rule event.</summary>
-            <remarks>Notify any parse listeners of an enter rule event.</remarks>
             <seealso cref="M:Antlr4.Runtime.Parser.AddParseListener(Antlr4.Runtime.Tree.IParseTreeListener)"/>
         </member>
         <member name="M:Antlr4.Runtime.Parser.TriggerExitRuleEvent">
             <summary>Notify any parse listeners of an exit rule event.</summary>
-            <remarks>Notify any parse listeners of an exit rule event.</remarks>
             <seealso cref="M:Antlr4.Runtime.Parser.AddParseListener(Antlr4.Runtime.Tree.IParseTreeListener)"/>
         </member>
         <member name="M:Antlr4.Runtime.Parser.GetATNWithBypassAlts">
@@ -8838,10 +8617,6 @@
             The ATN with bypass alternatives is expensive to create so we create it
             lazily.
             </summary>
-            <remarks>
-            The ATN with bypass alternatives is expensive to create so we create it
-            lazily.
-            </remarks>
             <exception cref="T:System.NotSupportedException">
             if the current parser does not
             implement the
@@ -8873,7 +8648,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Parser.SetInputStream(Antlr4.Runtime.ITokenStream)">
             <summary>Set the token stream and reset the parser.</summary>
-            <remarks>Set the token stream and reset the parser.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Parser.Consume">
             <summary>
@@ -8925,57 +8699,6 @@
             but for recursive rules.
             Make the current context the child of the incoming localctx.
             </summary>
-        </member>
-        <member name="M:Antlr4.Runtime.Parser.GetAmbiguousParseTrees(Antlr4.Runtime.Parser,Antlr4.Runtime.Atn.AmbiguityInfo,System.Int32)">
-            <summary>
-            Given an AmbiguityInfo object that contains information about an
-            ambiguous decision event, return the list of ambiguous parse trees.
-            </summary>
-            <remarks>
-            Given an AmbiguityInfo object that contains information about an
-            ambiguous decision event, return the list of ambiguous parse trees.
-            An ambiguity occurs when a specific token sequence can be recognized
-            in more than one way by the grammar. These ambiguities are detected only
-            at decision points.
-            The list of trees includes the actual interpretation (that for
-            the minimum alternative number) and all ambiguous alternatives.
-            This method reuses the same physical input token stream used to
-            detect the ambiguity by the original parser in the first place.
-            This method resets/seeks within but does not alter originalParser.
-            The input position is restored upon exit from this method.
-            Parsers using a
-            <see cref="T:Antlr4.Runtime.UnbufferedTokenStream"/>
-            may not be able to
-            perform the necessary save index() / seek(saved_index) operation.
-            The trees are rooted at the node whose start..stop token indices
-            include the start and stop indices of this ambiguity event. That is,
-            the trees returns will always include the complete ambiguous subphrase
-            identified by the ambiguity event.
-            Be aware that this method does NOT notify error or parse listeners as
-            it would trigger duplicate or otherwise unwanted events.
-            This uses a temporary ParserATNSimulator and a ParserInterpreter
-            so we don't mess up any statistics, event lists, etc...
-            The parse tree constructed while identifying/making ambiguityInfo is
-            not affected by this method as it creates a new parser interp to
-            get the ambiguous interpretations.
-            Nodes in the returned ambig trees are independent of the original parse
-            tree (constructed while identifying/creating ambiguityInfo).
-            </remarks>
-            <param name="originalParser">
-            The parser used to create ambiguityInfo; it
-            is not modified by this routine and can be either
-            a generated or interpreted parser. It's token
-            stream *is* reset/seek()'d.
-            </param>
-            <param name="ambiguityInfo">
-            The information about an ambiguous decision event
-            for which you want ambiguous parse trees.
-            </param>
-            <exception cref="T:Antlr4.Runtime.RecognitionException">
-            Throws upon syntax error while matching
-            ambig input.
-            </exception>
-            <since>4.5</since>
         </member>
         <member name="M:Antlr4.Runtime.Parser.IsExpectedToken(System.Int32)">
             <summary>
@@ -9035,11 +8758,9 @@
         </member>
         <member name="M:Antlr4.Runtime.Parser.GetDFAStrings">
             <summary>For debugging and other purposes.</summary>
-            <remarks>For debugging and other purposes.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Parser.DumpDFA">
             <summary>For debugging and other purposes.</summary>
-            <remarks>For debugging and other purposes.</remarks>
         </member>
         <member name="P:Antlr4.Runtime.Parser.BuildParseTree">
             <summary>
@@ -9121,14 +8842,9 @@
             Match needs to return the current input symbol, which gets put
             into the label for the associated token ref; e.g., x=ID.
             </summary>
-            <remarks>
-            Match needs to return the current input symbol, which gets put
-            into the label for the associated token ref; e.g., x=ID.
-            </remarks>
         </member>
         <member name="P:Antlr4.Runtime.Parser.Precedence">
             <summary>Get the precedence level for the top-most precedence rule.</summary>
-            <remarks>Get the precedence level for the top-most precedence rule.</remarks>
             <returns>
             The precedence level for the top-most precedence rule, or -1 if
             the parser context is not nested within a precedence rule.
@@ -9146,6 +8862,19 @@
             During a parse is sometimes useful to listen in on the rule entry and exit
             events as well as token matches. This is for quick and dirty debugging.
             </remarks>
+        </member>
+        <member name="T:Antlr4.Runtime.Tree.IParseTreeListener">
+            <summary>
+            This interface describes the minimal core of methods triggered
+            by
+            <see cref="T:Antlr4.Runtime.Tree.ParseTreeWalker"/>
+            . E.g.,
+            ParseTreeWalker walker = new ParseTreeWalker();
+            walker.walk(myParseTreeListener, myParseTree); &lt;-- triggers events in your listener
+            If you want to trigger events in multiple listeners during a single
+            tree walk, you can use the ParseTreeDispatcher object available at
+            https://github.com/antlr/antlr4/issues/841
+            </summary>
         </member>
         <member name="T:Antlr4.Runtime.ParserInterpreter">
             <summary>
@@ -9169,13 +8898,29 @@
             This identifies StarLoopEntryState's that begin the (...)
             precedence loops of left recursive rules.
             </summary>
-            <remarks>
-            This identifies StarLoopEntryState's that begin the (...)
-            precedence loops of left recursive rules.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.ParserInterpreter._parentContextStack">
-            <summary>Tracks LR rules for adjusting the contexts</summary>
+            <summary>
+            This stack corresponds to the _parentctx, _parentState pair of locals
+            that would exist on call stack frames with a recursive descent parser;
+            in the generated function for a left-recursive rule you'd see:
+            private EContext e(int _p) throws RecognitionException {
+            ParserRuleContext _parentctx = _ctx;    // Pair.a
+            int _parentState = getState();          // Pair.b
+            ...
+            </summary>
+            <remarks>
+            This stack corresponds to the _parentctx, _parentState pair of locals
+            that would exist on call stack frames with a recursive descent parser;
+            in the generated function for a left-recursive rule you'd see:
+            private EContext e(int _p) throws RecognitionException {
+            ParserRuleContext _parentctx = _ctx;    // Pair.a
+            int _parentState = getState();          // Pair.b
+            ...
+            }
+            Those values are used to create new recursive rule invocation contexts
+            associated with left operand of an alt like "expr '*' expr".
+            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.ParserInterpreter.overrideDecision">
             <summary>
@@ -9187,20 +8932,38 @@
             parse trees. For now, we allow exactly one override.
             </remarks>
         </member>
+        <member name="F:Antlr4.Runtime.ParserInterpreter.overrideDecisionRoot">
+            <summary>
+            What is the current context when we override a decisions?  This tells
+            us what the root of the parse tree is when using override
+            for an ambiguity/lookahead check.
+            </summary>
+        </member>
         <member name="M:Antlr4.Runtime.ParserInterpreter.#ctor(Antlr4.Runtime.ParserInterpreter)">
             <summary>
             A copy constructor that creates a new parser interpreter by reusing
             the fields of a previous interpreter.
             </summary>
-            <remarks>
-            A copy constructor that creates a new parser interpreter by reusing
-            the fields of a previous interpreter.
-            </remarks>
             <param name="old">The interpreter to copy</param>
             <since>4.5</since>
         </member>
         <member name="M:Antlr4.Runtime.ParserInterpreter.Parse(System.Int32)">
             <summary>Begin parsing at startRuleIndex</summary>
+        </member>
+        <member name="M:Antlr4.Runtime.ParserInterpreter.VisitDecisionState(Antlr4.Runtime.Atn.DecisionState)">
+            <summary>
+            Method visitDecisionState() is called when the interpreter reaches
+            a decision state (instance of DecisionState).
+            </summary>
+            <remarks>
+            Method visitDecisionState() is called when the interpreter reaches
+            a decision state (instance of DecisionState). It gives an opportunity
+            for subclasses to track interesting things.
+            </remarks>
+        </member>
+        <member name="M:Antlr4.Runtime.ParserInterpreter.CreateInterpreterRuleContext(Antlr4.Runtime.ParserRuleContext,System.Int32,System.Int32)">
+            <summary>Provide simple "factory" for InterpreterRuleContext's.</summary>
+            <since>4.5.1</since>
         </member>
         <member name="M:Antlr4.Runtime.ParserInterpreter.AddDecisionOverride(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -9243,6 +9006,31 @@
             </remarks>
             <since>4.5</since>
         </member>
+        <member name="M:Antlr4.Runtime.ParserInterpreter.Recover(Antlr4.Runtime.RecognitionException)">
+            <summary>
+            Rely on the error handler for this parser but, if no tokens are consumed
+            to recover, add an error node.
+            </summary>
+            <remarks>
+            Rely on the error handler for this parser but, if no tokens are consumed
+            to recover, add an error node. Otherwise, nothing is seen in the parse
+            tree.
+            </remarks>
+        </member>
+        <member name="P:Antlr4.Runtime.ParserInterpreter.RootContext">
+            <summary>
+            Return the root of the parse, which can be useful if the parser
+            bails out.
+            </summary>
+            <remarks>
+            Return the root of the parse, which can be useful if the parser
+            bails out. You still can access the top node. Note that,
+            because of the way left recursive rules add children, it's possible
+            that the root will not have any children if the start rule immediately
+            called and left recursive rule that fails.
+            </remarks>
+            <since>4.5.1</since>
+        </member>
         <member name="T:Antlr4.Runtime.ProxyErrorListener`1">
             <summary>
             This implementation of
@@ -9255,6 +9043,14 @@
         </member>
         <member name="T:Antlr4.Runtime.ProxyParserErrorListener">
             <author>Sam Harwell</author>
+        </member>
+        <member name="T:Antlr4.Runtime.RuleContextWithAltNum">
+            <summary>
+            A handy class for use with
+            options {contextSuperClass=org.antlr.v4.runtime.RuleContextWithAltNum;}
+            that provides a property for the outer alternative number
+            matched for an internal parse tree node.
+            </summary>
         </member>
         <member name="T:Antlr4.Runtime.TokenStreamRewriter">
             <summary>
@@ -9378,20 +9174,12 @@
             Return the text from the original tokens altered per the
             instructions given to this rewriter.
             </summary>
-            <remarks>
-            Return the text from the original tokens altered per the
-            instructions given to this rewriter.
-            </remarks>
         </member>
         <member name="M:Antlr4.Runtime.TokenStreamRewriter.GetText(System.String)">
             <summary>
             Return the text from the original tokens altered per the
             instructions given to this rewriter in programName.
             </summary>
-            <remarks>
-            Return the text from the original tokens altered per the
-            instructions given to this rewriter in programName.
-            </remarks>
             <since>4.5</since>
         </member>
         <member name="M:Antlr4.Runtime.TokenStreamRewriter.GetText(Antlr4.Runtime.Misc.Interval)">
@@ -9462,7 +9250,6 @@
         </member>
         <member name="F:Antlr4.Runtime.TokenStreamRewriter.RewriteOperation.index">
             <summary>Token buffer index.</summary>
-            <remarks>Token buffer index.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.TokenStreamRewriter.RewriteOperation.Execute(System.Text.StringBuilder)">
             <summary>Execute the rewrite operation by possibly adding to the buffer.</summary>
@@ -9476,10 +9263,6 @@
             I'm going to try replacing range from x..y with (y-x)+1 ReplaceOp
             instructions.
             </summary>
-            <remarks>
-            I'm going to try replacing range from x..y with (y-x)+1 ReplaceOp
-            instructions.
-            </remarks>
         </member>
         <member name="T:Antlr4.Runtime.Tree.IParseTreeVisitor`1">
             <summary>This interface defines the basic notion of a parse tree visitor.</summary>
@@ -9496,7 +9279,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Tree.IParseTreeVisitor`1.Visit(Antlr4.Runtime.Tree.IParseTree)">
             <summary>Visit a parse tree, and return a user-defined result of the operation.</summary>
-            <remarks>Visit a parse tree, and return a user-defined result of the operation.</remarks>
             <param name="tree">
             The
             <see cref="T:Antlr4.Runtime.Tree.IParseTree"/>
@@ -9509,10 +9291,6 @@
             Visit the children of a node, and return a user-defined result
             of the operation.
             </summary>
-            <remarks>
-            Visit the children of a node, and return a user-defined result
-            of the operation.
-            </remarks>
             <param name="node">
             The
             <see cref="T:Antlr4.Runtime.Tree.IRuleNode"/>
@@ -9522,7 +9300,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Tree.IParseTreeVisitor`1.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
             <summary>Visit a terminal node, and return a user-defined result of the operation.</summary>
-            <remarks>Visit a terminal node, and return a user-defined result of the operation.</remarks>
             <param name="node">
             The
             <see cref="T:Antlr4.Runtime.Tree.ITerminalNode"/>
@@ -9532,7 +9309,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Tree.IParseTreeVisitor`1.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
             <summary>Visit an error node, and return a user-defined result of the operation.</summary>
-            <remarks>Visit an error node, and return a user-defined result of the operation.</remarks>
             <param name="node">
             The
             <see cref="T:Antlr4.Runtime.Tree.IErrorNode"/>
@@ -9921,7 +9697,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.ParseTreeMatch.MismatchedNode">
             <summary>Get the node at which we first detected a mismatch.</summary>
-            <remarks>Get the node at which we first detected a mismatch.</remarks>
             <returns>
             the node at which we first detected a mismatch, or
             <see langword="null"/>
@@ -9930,7 +9705,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.ParseTreeMatch.Succeeded">
             <summary>Gets a value indicating whether the match operation succeeded.</summary>
-            <remarks>Gets a value indicating whether the match operation succeeded.</remarks>
             <returns>
             
             <see langword="true"/>
@@ -9941,12 +9715,10 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.ParseTreeMatch.Pattern">
             <summary>Get the tree pattern we are matching against.</summary>
-            <remarks>Get the tree pattern we are matching against.</remarks>
             <returns>The tree pattern we are matching against.</returns>
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.ParseTreeMatch.Tree">
             <summary>Get the parse tree we are trying to match to a pattern.</summary>
-            <remarks>Get the parse tree we are trying to match to a pattern.</remarks>
             <returns>
             The
             <see cref="T:Antlr4.Runtime.Tree.IParseTree"/>
@@ -10017,7 +9789,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Tree.Pattern.ParseTreePattern.Match(Antlr4.Runtime.Tree.IParseTree)">
             <summary>Match a specific parse tree against this tree pattern.</summary>
-            <remarks>Match a specific parse tree against this tree pattern.</remarks>
             <param name="tree">The parse tree to match against this tree pattern.</param>
             <returns>
             A
@@ -10031,7 +9802,6 @@
         </member>
         <member name="M:Antlr4.Runtime.Tree.Pattern.ParseTreePattern.Matches(Antlr4.Runtime.Tree.IParseTree)">
             <summary>Determine whether or not a parse tree matches this tree pattern.</summary>
-            <remarks>Determine whether or not a parse tree matches this tree pattern.</remarks>
             <param name="tree">The parse tree to match against this tree pattern.</param>
             <returns>
             
@@ -10049,10 +9819,6 @@
             Find all nodes using XPath and then try to match those subtrees against
             this tree pattern.
             </summary>
-            <remarks>
-            Find all nodes using XPath and then try to match those subtrees against
-            this tree pattern.
-            </remarks>
             <param name="tree">
             The
             <see cref="T:Antlr4.Runtime.Tree.IParseTree"/>
@@ -10082,7 +9848,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.ParseTreePattern.Pattern">
             <summary>Get the tree pattern in concrete syntax form.</summary>
-            <remarks>Get the tree pattern in concrete syntax form.</remarks>
             <returns>The tree pattern in concrete syntax form.</returns>
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.ParseTreePattern.PatternRuleIndex">
@@ -10090,10 +9855,6 @@
             Get the parser rule which serves as the outermost rule for the tree
             pattern.
             </summary>
-            <remarks>
-            Get the parser rule which serves as the outermost rule for the tree
-            pattern.
-            </remarks>
             <returns>
             The parser rule which serves as the outermost rule for the tree
             pattern.
@@ -10266,10 +10027,6 @@
             Set the delimiters used for marking rule and token tags within concrete
             syntax used by the tree pattern parser.
             </summary>
-            <remarks>
-            Set the delimiters used for marking rule and token tags within concrete
-            syntax used by the tree pattern parser.
-            </remarks>
             <param name="start">The start delimiter.</param>
             <param name="stop">The stop delimiter.</param>
             <param name="escapeLeft">The escape sequence to use for escaping a start or stop delimiter.</param>
@@ -10397,10 +10154,6 @@
             Used to collect to the grammar file name, token names, rule names for
             used to parse the pattern into a parse tree.
             </summary>
-            <remarks>
-            Used to collect to the grammar file name, token names, rule names for
-            used to parse the pattern into a parse tree.
-            </remarks>
         </member>
         <member name="T:Antlr4.Runtime.Tree.Pattern.RuleTagToken">
             <summary>
@@ -10489,12 +10242,10 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.RuleTagToken.RuleName">
             <summary>Gets the name of the rule associated with this rule tag.</summary>
-            <remarks>Gets the name of the rule associated with this rule tag.</remarks>
             <returns>The name of the parser rule associated with this rule tag.</returns>
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.RuleTagToken.Label">
             <summary>Gets the label associated with the rule tag.</summary>
-            <remarks>Gets the label associated with the rule tag.</remarks>
             <returns>
             The name of the label associated with the rule tag, or
             <see langword="null"/>
@@ -10692,12 +10443,10 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.TagChunk.Tag">
             <summary>Get the tag for this chunk.</summary>
-            <remarks>Get the tag for this chunk.</remarks>
             <returns>The tag for the chunk.</returns>
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.TagChunk.Label">
             <summary>Get the label, if any, assigned to this chunk.</summary>
-            <remarks>Get the label, if any, assigned to this chunk.</remarks>
             <returns>
             The label assigned to this chunk, or
             <see langword="null"/>
@@ -10710,10 +10459,6 @@
             Represents a span of raw text (concrete syntax) between tags in a tree
             pattern string.
             </summary>
-            <remarks>
-            Represents a span of raw text (concrete syntax) between tags in a tree
-            pattern string.
-            </remarks>
         </member>
         <member name="F:Antlr4.Runtime.Tree.Pattern.TextChunk.text">
             <summary>
@@ -10750,7 +10495,6 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.TextChunk.Text">
             <summary>Gets the raw text of this chunk.</summary>
-            <remarks>Gets the raw text of this chunk.</remarks>
             <returns>The text of the chunk.</returns>
         </member>
         <member name="T:Antlr4.Runtime.Tree.Pattern.TokenTagToken">
@@ -10817,12 +10561,10 @@
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.TokenTagToken.TokenName">
             <summary>Gets the token name.</summary>
-            <remarks>Gets the token name.</remarks>
             <returns>The token name.</returns>
         </member>
         <member name="P:Antlr4.Runtime.Tree.Pattern.TokenTagToken.Label">
             <summary>Gets the label associated with the rule tag.</summary>
-            <remarks>Gets the label associated with the rule tag.</remarks>
             <returns>
             The name of the label associated with the rule tag, or
             <see langword="null"/>
@@ -10844,7 +10586,6 @@
         </member>
         <member name="T:Antlr4.Runtime.Tree.Trees">
             <summary>A set of utility routines useful for all kinds of ANTLR trees.</summary>
-            <remarks>A set of utility routines useful for all kinds of ANTLR trees.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.Tree.Trees.ToStringTree(Antlr4.Runtime.Tree.ITree)">
             <summary>Print out a whole tree in LISP form.</summary>
@@ -10872,8 +10613,7 @@
             Print out a whole tree in LISP form.
             <see cref="M:Antlr4.Runtime.Tree.Trees.GetNodeText(Antlr4.Runtime.Tree.ITree,Antlr4.Runtime.Parser)"/>
             is used on the
-            node payloads to get the text for the nodes.  Detect
-            parse trees and extract data appropriately.
+            node payloads to get the text for the nodes.
             </remarks>
         </member>
         <member name="M:Antlr4.Runtime.Tree.Trees.GetChildren(Antlr4.Runtime.Tree.ITree)">
@@ -10885,6 +10625,19 @@
             Return a list of all ancestors of this node.  The first node of
             list is the root and the last is the parent of this node.
             </remarks>
+            <since>4.5.1</since>
+        </member>
+        <member name="M:Antlr4.Runtime.Tree.Trees.IsAncestorOf(Antlr4.Runtime.Tree.ITree,Antlr4.Runtime.Tree.ITree)">
+            <summary>Return true if t is u's parent or a node on path to root from u.</summary>
+            <remarks>
+            Return true if t is u's parent or a node on path to root from u.
+            Use == not equals().
+            </remarks>
+            <since>4.5.1</since>
+        </member>
+        <member name="M:Antlr4.Runtime.Tree.Trees.GetDescendants(Antlr4.Runtime.Tree.IParseTree)">
+            <summary>Get all descendents; includes t itself.</summary>
+            <since>4.5.1</since>
         </member>
         <member name="M:Antlr4.Runtime.Tree.Trees.GetRootOfSubtreeEnclosingRegion(Antlr4.Runtime.Tree.IParseTree,System.Int32,System.Int32)">
             <summary>
@@ -10896,6 +10649,24 @@
             inclusively using postorder traversal.  Recursive depth-first-search.
             </remarks>
             <since>4.5</since>
+        </member>
+        <member name="M:Antlr4.Runtime.Tree.Trees.StripChildrenOutOfRange(Antlr4.Runtime.ParserRuleContext,Antlr4.Runtime.ParserRuleContext,System.Int32,System.Int32)">
+            <summary>
+            Replace any subtree siblings of root that are completely to left
+            or right of lookahead range with a CommonToken(Token.INVALID_TYPE,"...")
+            node.
+            </summary>
+            <remarks>
+            Replace any subtree siblings of root that are completely to left
+            or right of lookahead range with a CommonToken(Token.INVALID_TYPE,"...")
+            node. The source interval for t is not altered to suit smaller range!
+            WARNING: destructive to t.
+            </remarks>
+            <since>4.5.1</since>
+        </member>
+        <member name="M:Antlr4.Runtime.Tree.Trees.FindNodeSuchThat(Antlr4.Runtime.Tree.ITree,System.Predicate{Antlr4.Runtime.Tree.ITree})">
+            <summary>Return first node satisfying the pred</summary>
+            <since>4.5.1</since>
         </member>
         <member name="T:Antlr4.Runtime.Tree.Xpath.XPath">
             <summary>
@@ -11104,15 +10875,12 @@
         </member>
         <member name="F:Antlr4.Runtime.UnbufferedCharStream.name">
             <summary>The name or source of this char stream.</summary>
-            <remarks>The name or source of this char stream.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.UnbufferedCharStream.#ctor">
             <summary>Useful for subclasses that pull char from other than this.input.</summary>
-            <remarks>Useful for subclasses that pull char from other than this.input.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.UnbufferedCharStream.#ctor(System.Int32)">
             <summary>Useful for subclasses that pull char from other than this.input.</summary>
-            <remarks>Useful for subclasses that pull char from other than this.input.</remarks>
         </member>
         <member name="M:Antlr4.Runtime.UnbufferedCharStream.Sync(System.Int32)">
             <summary>
@@ -11168,7 +10936,6 @@
         </member>
         <member name="M:Antlr4.Runtime.UnbufferedCharStream.Release(System.Int32)">
             <summary>Decrement number of markers, resetting buffer if we hit 0.</summary>
-            <remarks>Decrement number of markers, resetting buffer if we hit 0.</remarks>
             <param name="marker"/>
         </member>
         <member name="M:Antlr4.Runtime.UnbufferedCharStream.Seek(System.Int32)">

@@ -37,24 +37,20 @@
             if (id == MouseEventID.MouseMove)
             {
                 MenuItem button = Children.FirstOrDefault(b => b.TestHit(pos));
-                if (button != null)
-                {
-                    currentHover?.SetHovered(false);
-                    currentHover = button;
-                    button.SetHovered(true);
-                }
+                if (button == null) return false;
+                currentHover?.SetHovered(false);
+                currentHover = button;
+                button.SetHovered(true);
                 return false;
             }
 
-            if (Bounds.Contains(pos) && id == MouseEventID.LeftButtonDown)
+            if (!Bounds.Contains(pos) || id != MouseEventID.LeftButtonDown) return false;
             {
                 visible = !visible;
                 currentHover = null;
                 Children.ForEach(button => button.SetVisible(visible));
                 return true;
             }
-
-            return false;
         }
 
         public override void Render(Graphics graphics, MenuSettings settings)

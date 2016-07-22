@@ -610,7 +610,7 @@ namespace LibZ.Bootstrap
 				Helpers.Debug(string.Format("Resolving: '{0}'", name));
 				var result =
 					TryLoadAssembly3(name) ??
-						MatchByShortName(name).Select(TryLoadAssembly3).FirstOrDefault(a => a != null);
+						MatchByPartialName(name).Select(TryLoadAssembly3).FirstOrDefault(a => a != null);
 
 				if (result != null)
 					Helpers.Debug(string.Format("Found: '{0}'", name));
@@ -630,11 +630,13 @@ namespace LibZ.Bootstrap
 		/// <summary>Finds all assemblies which match given short name.</summary>
 		/// <param name="shortAssemblyName">The short name.</param>
 		/// <returns>Collection of full assembly names.</returns>
-		private static IEnumerable<string> MatchByShortName(string shortAssemblyName)
+		private static IEnumerable<string> MatchByPartialName(string shortAssemblyName)
 		{
 			Lock.EnterReadLock();
 			try
 			{
+				var expectedAssemblyName = new AssemblyName(shortAssemblyName);
+
 				// from all containers return assemblyNames matching given string by short name
 				// please note, the container is not returned, so when looking for this name
 				// it will check all the containers again, waste of time but for hard to explain reason
@@ -643,7 +645,7 @@ namespace LibZ.Bootstrap
 					.SelectMany(c => c
 						.Entries
 						.Select(e => e.AssemblyName)
-						.Where(an => string.Compare(an.Name, shortAssemblyName, IgnoreCase) == 0))
+						.Where(n => IsMatchByPartialName(n, expectedAssemblyName)))
 					.Distinct()
 					.OrderByDescending(an => an.Version)
 					.Select(an => an.FullName)
@@ -655,27 +657,74 @@ namespace LibZ.Bootstrap
 			}
 		}
 
+		/// <summary>
+		/// Determines whether assembly name matches expected (usually partial) name.
+		/// </summary>
+		/// <param name="actualAssemblyName">Actual name of the assembly.</param>
+		/// <param name="expectedAssemblyName">Expected name of the assembly.</param>
+		/// <returns></returns>
+		private static bool IsMatchByPartialName(
+			AssemblyName actualAssemblyName, AssemblyName expectedAssemblyName)
+		{
+			if (string.IsNullOrEmpty(expectedAssemblyName.Name))
+				return false;
+
+			if (string.Compare(expectedAssemblyName.Name, actualAssemblyName.Name, IgnoreCase) != 0)
+				return false;
+
+			if (expectedAssemblyName.CultureInfo != null)
+				if (expectedAssemblyName.CultureInfo.LCID != actualAssemblyName.CultureInfo.LCID)
+					return false;
+
+			if (expectedAssemblyName.Version != null)
+				if (expectedAssemblyName.Version != actualAssemblyName.Version)
+					return false;
+
+			var expectedToken = expectedAssemblyName.GetPublicKeyToken();
+			if (expectedToken != null)
+				if (!EqualTokens(expectedToken, actualAssemblyName.GetPublicKeyToken()))
+					return false;
+
+			return true;
+		}
+
+		/// <summary>Checks if two tokens are the same.</summary>
+		/// <param name="expectedToken">The expected token.</param>
+		/// <param name="actualToken">The actual token.</param>
+		/// <returns><c>true</c> if tokens are the same, <c>false</c> otherwise.</returns>
+		private static bool EqualTokens(byte[] expectedToken, byte[] actualToken)
+		{
+			if (expectedToken == actualToken)
+				return true;
+			if (expectedToken == null || actualToken == null)
+				return false;
+
+			var expectedLength = expectedToken.Length;
+			if (expectedLength != actualToken.Length)
+				return false;
+			for (var i = 0; i < expectedLength; i++)
+				if (expectedToken[i] != actualToken[i])
+					return false;
+			return true;
+		}
+
 		/// <summary>Tries the load assembly for 3 platforms, native, any cpu, then "opossite".</summary>
 		/// <param name="assemblyName">Name of the assembly.</param>
-		/// <returns>
-		///     Loaded assembly or <c>null</c>.
-		/// </returns>
+		/// <returns>Loaded assembly or <c>null</c>.</returns>
 		private static Assembly TryLoadAssembly3(string assemblyName)
 		{
 			return
 				// try native one first
 				TryLoadAssembly((IntPtr.Size == 4 ? "x86:" : "x64:") + assemblyName) ??
-					// ...then AnyCPU
+				// ...then AnyCPU
 					TryLoadAssembly(assemblyName) ??
-						// ...then try the opposite platform (as far as I understand x64 may use x86)
+				// ...then try the opposite platform (as far as I understand x64 may use x86)
 						(IntPtr.Size == 8 ? TryLoadAssembly("x86:" + assemblyName) : null);
 		}
 
 		/// <summary>Tries to load assembly by its resource name.</summary>
 		/// <param name="resourceName">Name of the resource.</param>
-		/// <returns>
-		///     Loaded assembly or <c>null</c>.
-		/// </returns>
+		/// <returns>Loaded assembly or <c>null</c>.</returns>
 		private static Assembly TryLoadAssembly(string resourceName)
 		{
 			var guid = Hash.Get(resourceName ?? string.Empty);
@@ -717,7 +766,7 @@ namespace LibZ.Bootstrap
 					var data = container.GetBytes(entry, Decoders);
 
 					// managed assemblies can be loaded straight from memory
-					return entry.Unmanaged || entry.Portable
+					return entry.Unmanaged || entry.Portable || entry.SafeLoad
 						? LoadUnmanagedAssembly(container.ContainerId, guid, data)
 						: Assembly.Load(data);
 				});
@@ -834,6 +883,9 @@ namespace LibZ.Bootstrap
 
 				/// <summary>Indicates PCL assembly.</summary>
 				Portable = 0x08,
+
+				/// <summary>The flag indicating the 'safe load' should be used.</summary>
+				SafeLoad = 0x10,
 			}
 
 			#endregion
@@ -877,22 +929,16 @@ namespace LibZ.Bootstrap
 			#region derived properties
 
 			/// <summary>Gets a value indicating whether assembly is unmanaged.</summary>
-			/// <value>
-			///     <c>true</c> if unmanaged; otherwise, <c>false</c>.
-			/// </value>
-			public bool Unmanaged
-			{
-				get { return (Flags & EntryFlags.Unmanaged) != 0; }
-			}
+			/// <value><c>true</c> if unmanaged; otherwise, <c>false</c>.</value>
+			public bool Unmanaged { get { return (Flags & EntryFlags.Unmanaged) != 0; } }
 
 			/// <summary>Gets a value indicating whether assembly is portable.</summary>
-			/// <value>
-			///     <c>true</c> if portable; otherwise, <c>false</c>.
-			/// </value>
-			public bool Portable
-			{
-				get { return (Flags & EntryFlags.Portable) != 0; }
-			}
+			/// <value><c>true</c> if portable; otherwise, <c>false</c>.</value>
+			public bool Portable { get { return (Flags & EntryFlags.Portable) != 0; } }
+
+			/// <summary>Gets a value indicating whether 'safe load' have to be forced.</summary>
+			/// <value><c>true</c> if 'safe load' is required; otherwise, <c>false</c>.</value>
+			public bool SafeLoad { get { return (Flags & EntryFlags.SafeLoad) != 0; } }
 
 			#endregion
 
@@ -1537,11 +1583,11 @@ namespace LibZ.Bootstrap
 			private static uint? GetRegistryDWORD(RegistryKey root, string path, string name)
 			{
 				var key = root.OpenSubKey(path, false);
-				if (key == null) 
+				if (key == null)
 					return null;
 
 				var value = key.GetValue(name);
-				if (value == null) 
+				if (value == null)
 					return null;
 
 				try

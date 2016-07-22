@@ -7,14 +7,13 @@ namespace qHUD.Poe.RemoteMemoryObjects
         {
             get
             {
-                System.Console.WriteLine("EntityList: " + Address.ToString("x8"));
                 var dictionary = new Dictionary<int, Entity>();
                 CollectEntities(M.ReadInt(Address), dictionary);
                 return dictionary;
             }
         }
 
-        private void CollectEntities(int addr, Dictionary<int, Entity> list)
+        private void CollectEntities(int addr, IDictionary<int, Entity> list)
         {
             int num = addr;
             addr = M.ReadInt(addr + 4);
