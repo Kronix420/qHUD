@@ -19,7 +19,6 @@ namespace qHUD.Hud.Loot
     using Poe;
     using Poe.Components;
     using Poe.Elements;
-    using Poe.RemoteMemoryObjects;
     using SharpDX;
     using SharpDX.Direct3D9;
     public class ItemAlertPlugin : SizedPluginWithMapIcons<ItemAlertSettings>
@@ -65,8 +64,6 @@ namespace qHUD.Hud.Loot
 
         public override void Render()
         {
-            //IngameUIElements ui = GameController.Game.IngameState.IngameUi;
-            //int startAddy = GameController.Game.IngameState.IngameUi.Address;
             if (!holdKey && WinApi.IsKeyDown(Keys.F10))
             {
                 holdKey = true;
@@ -83,7 +80,7 @@ namespace qHUD.Hud.Loot
             const int BOTTOM_MARGIN = 2;
             bool shouldUpdate = false;
 
-            foreach (KeyValuePair<EntityWrapper, AlertDrawStyle> kv in currentAlerts.Where(x => x.Key.IsValid))
+            foreach (KeyValuePair<EntityWrapper, AlertDrawStyle> kv in currentAlerts.Where(x => x.Key != null && x.Key.Address != 0 && x.Key.IsValid))
             {
                 string text = GetItemName(kv);
                 if (text == null)
@@ -98,8 +95,7 @@ namespace qHUD.Hud.Loot
                 }
                 else
                 {
-                    if (Settings.ShowText)
-                        position = DrawText(playerPos, position, BOTTOM_MARGIN, kv, text);
+                    if (Settings.ShowText) position = DrawText(playerPos, position, BOTTOM_MARGIN, kv, text);
                 }
             }
             Size = new Size2F(0, position.Y);

@@ -11,7 +11,8 @@ namespace qHUD.Poe
         public int InventoryId => M.ReadInt(Address + 0x18);
         public long LongId => (long)Id << 32 ^ Path.GetHashCode();
         public bool IsValid => M.ReadInt(Address, 0x14, 0) == 0x65004D;
-        public bool IsHostile => (M.ReadByte(Address + 0x19) & 1) == 0;
+
+        public bool IsHostile => (M.ReadByte(M.ReadInt(Address + 0x20) + 0xF8) & 1) == 0;
 
         public bool HasComponent<T>() where T : Component, new()
         {
@@ -29,19 +30,16 @@ namespace qHUD.Poe
             {
                 addr = M.ReadInt(addr);
                 ++i;
-                if (addr == componentLookup || addr == 0 || (addr == -1 || i >= 200))
+                if (addr == componentLookup || addr == 0 || addr == -1 || i >= 200)
                     return false;
             }
             return true;
         }
 
-
         public T GetComponent<T>() where T : Component, new()
         {
             int addr;
-            if (HasComponent<T>(out addr))
-                return ReadObject<T>(ComponentList + M.ReadInt(addr + 12) * 4);
-            return GetObject<T>(0);
+            return HasComponent<T>(out addr) ? ReadObject<T>(ComponentList + M.ReadInt(addr + 0xC) * 4) : GetObject<T>(0);
         }
 
         public Dictionary<string, int> GetComponents()
@@ -52,7 +50,7 @@ namespace qHUD.Poe
             do
             {
                 string name = M.ReadString(M.ReadInt(addr + 8));
-                int componentAddress = M.ReadInt(ComponentList + M.ReadInt(addr + 12) * 4);
+                int componentAddress = M.ReadInt(ComponentList + M.ReadInt(addr + 0xC) * 4);
                 if (!dictionary.ContainsKey(name) && !string.IsNullOrWhiteSpace(name))
                     dictionary.Add(name, componentAddress);
                 addr = M.ReadInt(addr);
@@ -64,48 +62,5 @@ namespace qHUD.Poe
         {
             return Path;
         }
-
-        //private bool HasComponent<T>(out int addr) where T : Component, new()
-        //{
-        //    string name = typeof(T).Name;
-        //    int componentLookup = ComponentLookup;
-        //    addr = componentLookup;
-        //    int i = 0;
-        //    while (!M.ReadString(M.ReadInt(addr + 8)).Equals(name))
-        //    {
-        //        addr = M.ReadInt(addr);
-        //        ++i;
-        //        if (addr == componentLookup || addr == 0 || addr == -1 || i >= 200)
-        //            return false;
-        //    }
-        //    return true;
-        //}
-
-        //public T GetComponent<T>() where T : Component, new()
-        //{
-        //    int addr;
-        //    return HasComponent<T>(out addr) ? ReadObject<T>(ComponentList + M.ReadInt(addr + 0xC) * 4) : GetObject<T>(0);
-        //}
-
-        //public Dictionary<string, int> GetComponents()
-        //{
-        //    var dictionary = new Dictionary<string, int>();
-        //    int componentLookup = ComponentLookup;
-        //    int addr = componentLookup;
-        //    do
-        //    {
-        //        string name = M.ReadString(M.ReadInt(addr + 8));
-        //        int componentAddress = M.ReadInt(ComponentList + M.ReadInt(addr + 0xC) * 4);
-        //        if (!dictionary.ContainsKey(name) && !string.IsNullOrWhiteSpace(name))
-        //            dictionary.Add(name, componentAddress);
-        //        addr = M.ReadInt(addr);
-        //    } while (addr != componentLookup && addr != 0 && addr != -1);
-        //    return dictionary;
-        //}
-
-        //public override string ToString()
-        //{
-        //    return Path;
-        //}
     }
 }

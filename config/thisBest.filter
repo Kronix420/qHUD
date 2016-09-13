@@ -25,6 +25,12 @@ Show
     BaseType "Blessed Orb" "Jeweller's Orb" "Cartographer's Chisel" "Orb of Chance" "Chromatic Orb" "Orb of Alteration" "Orb of Augmentation" "Orb of Transmutation"
     SetBorderColor 153 0 153
 	#PlayAlertSound 7 100
+	
+Show
+	Class Currency
+	BaseType "Shrieking Essence of" "Essence of Hysteria" "Essence of Insanity" "Essence of Horror" "Essence of Delirium" "Stacked Deck" "Master Cartographer" "Unshaping Orb"
+	SetBorderColor 153 0 153
+	PlayAlertSound 6 100
 
 Show
 	Class Currency
@@ -172,7 +178,7 @@ Show
 Show
     Rarity = Rare
     Class Rings Amulets Belts
-	BaseType "Paua Amulet" "Coral Amulet" "Citrine Amulet" "Amber Amulet" "Jade Amulet" "Lapis Amulet" "Gold Amulet" "Onyx Amulet" "Agate Amulet" "Turquoise Amulet" "Ruby Amulet" "Iron Ring" "Coral Ring" "Paua Ring" "Gold Ring" "Ruby Ring" "Sapphire Ring" "Topaz Ring" "Diamond Ring" "Moonstone Ring" "Amethyst Ring" "Two-Stone Ring" "Unset Ring" "Rustic Sash" "Chain Belt" "Leather Belt" "Heavy Belt" "Studded Belt" "Cloth Belt"
+	BaseType "Crystal Belt" "Vanguard Belt" "Marble Amulet" "Blue Pearl Amulet" "Opal Ring" "Steel Ring" "Paua Amulet" "Coral Amulet" "Citrine Amulet" "Amber Amulet" "Jade Amulet" "Lapis Amulet" "Gold Amulet" "Onyx Amulet" "Agate Amulet" "Turquoise Amulet" "Ruby Amulet" "Iron Ring" "Coral Ring" "Paua Ring" "Gold Ring" "Ruby Ring" "Sapphire Ring" "Topaz Ring" "Diamond Ring" "Moonstone Ring" "Amethyst Ring" "Two-Stone Ring" "Unset Ring" "Rustic Sash" "Chain Belt" "Leather Belt" "Heavy Belt" "Studded Belt" "Cloth Belt"
 	SetBorderColor 0 150 255
 	#PlayAlertSound 7 100
 

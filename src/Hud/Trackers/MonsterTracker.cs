@@ -66,13 +66,13 @@ namespace qHUD.Hud.Trackers
                 || GameController.Area.CurrentArea.IsHideout)
             { return; }
 
-            var remColor = Settings.RemainingTextColor;
+            //var remColor = Settings.RemainingTextColor;
             RectangleF rect = GameController.Window.GetWindowRectangle();
             float xPos = rect.Width * Settings.TextPositionX * 0.01f + rect.X;
             float yPos = rect.Height * Settings.TextPositionY * 0.01f + rect.Y;
-            float xPosRem = rect.Width * Settings.RemainingTextPosX * 0.01f + rect.X;
-            float yPosRem = rect.Height * Settings.RemainingTextPosY * 0.01f + rect.Y;
-            string remaining = $"{GameController.Game.IngameState.RemainingMonsters}";
+            //float xPosRem = rect.Width * Settings.RemainingTextPosX * 0.01f + rect.X;
+            //float yPosRem = rect.Height * Settings.RemainingTextPosY * 0.01f + rect.Y;
+            //string remaining = $"{GameController.Game.IngameState.RemainingMonsters}";
 
             //if (remaining != "More than 50 monsters remain.")
             //{

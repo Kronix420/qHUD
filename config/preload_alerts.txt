@@ -1,8 +1,50 @@
 #Metadata; Text; Color (ARGB)
 #Example: Metadata/Chests/StrongBoxes/Strongbox; The All-seeing Eye; ff00FF00
 
-Metadata/QuestObjects/Labyrinth/LabyrinthTrialPortal; Labyrinth Trial; ffFF9966
 
+Metadata/Monsters/Daemon/EssenceDaemonFirePulse; Essence of Anger; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonColdPulse; Essence of Hatred; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonLightningPulse; Essence of Wrath; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonChaosDegenPulse; Essence of Misery; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonOrbOfStormsDaemon; Essence of Torment; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonGhost; Essence of Fear; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonFrostBomb; Essence of Suffering; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonGrab; Essence of Envy; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonBuffToParentCasterDodge; Essence of Zeal; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonBuffToParentCasterDamageTaken; Essence of Loathing; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonBuffToParentCasterCrit; Essence of Scorn; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonTotemGroundEffectVortex; Essence of Sorrow; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonKaruiSpirit; Essence of Contempt; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonFireRuneTrap; Essence of Rage; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonChaosGolem; Essence of Dread; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonBloodProjectileDaemon; Essence of Greed; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonLivingCrystals; Essence of Woe; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonSpiders; Essence of Doubt; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonTotemGroundEffectShocked; Essence of Spite; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonMadness1; Essence of Hysteria; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonInsanity1; Essence of Insanity; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonHorror1;Essence of Horror; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonTerror1_; Essence of Delirium; ffFFFF00
+Metadata/Monsters/MossMonster/EssenceElementalSummonedOnDeath1stStage; Essence of Anguish; ffFFFF00
+Metadata/Monsters/MossMonster/EssenceElementalSummonedOnDeath2ndStage; Essence of Anguish; ffFFFF00
+Metadata/Monsters/MossMonster/EssenceElementalSummonedOnDeath3rdStage; Essence of Anguish; ffFFFF00
+Metadata/Monsters/MossMonster/EssenceElementalSummonedOnDeath4thStage; Essence of Anguish; ffFFFF00
+
+Metadata/Monsters/Daemon/EssenceSummonDaemonFrostboltNova;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonShockwaveTotem;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonGroundFire;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonGroundLightning;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonGroundCold;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonIceNovaRepeat;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonFireNovaRepeat;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonShockNovaRepeat;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonMovingKaruiSpirit;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonBloodStormCallDaemon;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonIceElemental;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonSummonSpectralSkull;; ffFFFF00
+Metadata/Monsters/Daemon/EssenceDaemonMeteorFirestorm;; ffFFFF00
+
+Metadata/QuestObjects/Labyrinth/LabyrinthTrialPortal; Labyrinth Trial; ffFF9966
 
 # Unique Strongboxes Test
 Metadata/Monsters/Daemon/ChestDaemonSummonRareUniqueChest2; Unique Strongbox 1; ffD2742D
@@ -17,6 +59,41 @@ Metadata/Monsters/Daemon/EternalUrnDaemonUncommon1; Unique Strongbox 9; ffD2742D
 Metadata/Monsters/Daemon/EternalUrnDaemonUncommon2; Unique Strongbox 10; ffD2742D
 Metadata/Monsters/Daemon/EternalUrnDaemonRare1; Unique Strongbox 11; ffD2742D
 Metadata/Monsters/Daemon/EternalUrnDaemonRare2; Unique Strongbox 12; ffD2742D
+Metadata/Monsters/Daemon/ChestDaemonSummonExileUniqueChest1; Unique Strongbox 13; ffD2742D
+
+Metadata/Monsters/Perandus/PerandusGuardMapBoss1; Platinia, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss2; Auriot, Prospero's Furnace Guardian; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss3; Rhodion, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss4; Osmea, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss4Clone; Osmea, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss5; Pallias, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss6; Argient, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardMapBoss7; Rheniot, Servant of Prospero; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant1; Junith Perandus, Keeper of Vaults; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant2; Tantalo Perandus, Seller of Secrets; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant3; Actaeo Perandus, Master of Beasts; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant4; Vitorica Perandus, Maker of Marvels; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant4Clone; Vitorica Perandus, Maker of Marvels; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant5; Stasius Perandus, Merchant of Corpses; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant6; Darsia Perandus, Collector of Debts; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardLieutenant7; Milo Perandus, Handler of Swords; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic1; Celona, Vault Sentry; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic2; Hortus, Knee Breaker; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic3; Kuto, Hired Muscle; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic4; Luthis, Bounty Hunter; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardBasic5; Belatra, Hired Assassin; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport1; Liana, Indebted Peasant; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport2; Marius, Indebted Smuggler; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport3; Vera, Indebted Aristocrat; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSupport4; Percia, Indebted Poacher; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss1; Sutrus, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss2; Otairo, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss3; Eiphirio, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss4; Artensia, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss5_; Anaveli, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss6; Rothus, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss7; Arinea, Vault Binder; ffFFD700
+Metadata/Monsters/Perandus/PerandusGuardSecondaryBoss8; Meritania, Vault Binder; ffFFD700
 
 Metadata/Monsters/GargoyleBoss/GargoyleBoss; Argus; ffDC143C
 Metadata/Monsters/Squid/SquidBossSideArea; The All-seeing Eye; ffDC143C

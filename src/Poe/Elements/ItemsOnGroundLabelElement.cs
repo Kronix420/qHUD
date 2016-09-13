@@ -8,7 +8,7 @@
         {
             get
             {
-                int address = M.ReadInt(Address + OffsetBuffers + 0x1D4);
+                int address = M.ReadInt(Address + OffsetBuffers + 0x1DC);
                 for (int nextAddress = M.ReadInt(address); nextAddress != address; nextAddress = M.ReadInt(nextAddress))
                 {
                     yield return GetObject<ItemsOnGroundLabelElement>(nextAddress);

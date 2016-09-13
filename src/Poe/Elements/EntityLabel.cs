@@ -6,12 +6,12 @@ namespace qHUD.Poe.Elements
         {
             get
             {
-                int Length = M.ReadInt(Address + 0xB10);
+                int Length = M.ReadInt(Address + 0xB14);
                 if (Length <= 0 || Length > 256)
                 {
                     return string.Empty;
                 }
-                return Length >= 8 ? M.ReadStringU(M.ReadInt(Address + 0xB00), Length * 2) : M.ReadStringU(Address + 0xB00, Length * 2);
+                return Length >= 8 ? M.ReadStringU(M.ReadInt(Address + 0xB04), Length * 2) : M.ReadStringU(Address + 0xB04, Length * 2);
             }
         }
     }

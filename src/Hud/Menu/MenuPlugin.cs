@@ -243,12 +243,12 @@ namespace qHUD.Hud.Menu
 
             // Monster alert
             MenuItem MonsterTrackerMenu = AddChild(root, "Monster alert", settingsHub.MonsterTrackerSettings.Enable);
-            MenuItem remainingtMenu = AddChild(MonsterTrackerMenu, "Remaining monsters", settingsHub.MonsterTrackerSettings.RemainingShowText);
-            AddChild(remainingtMenu, "Text size", settingsHub.MonsterTrackerSettings.RemainingTextSize);
-            AddChild(remainingtMenu, "Text color:", settingsHub.MonsterTrackerSettings.RemainingTextColor);
-            AddChild(remainingtMenu, "Background color:", settingsHub.MonsterTrackerSettings.RemainingBackColor);
-            AddChild(remainingtMenu, "Position X", settingsHub.MonsterTrackerSettings.RemainingTextPosX);
-            AddChild(remainingtMenu, "Position Y", settingsHub.MonsterTrackerSettings.RemainingTextPosY);
+            //MenuItem remainingtMenu = AddChild(MonsterTrackerMenu, "Remaining monsters", settingsHub.MonsterTrackerSettings.RemainingShowText);
+            //AddChild(remainingtMenu, "Text size", settingsHub.MonsterTrackerSettings.RemainingTextSize);
+            //AddChild(remainingtMenu, "Text color:", settingsHub.MonsterTrackerSettings.RemainingTextColor);
+            //AddChild(remainingtMenu, "Background color:", settingsHub.MonsterTrackerSettings.RemainingBackColor);
+            //AddChild(remainingtMenu, "Position X", settingsHub.MonsterTrackerSettings.RemainingTextPosX);
+            //AddChild(remainingtMenu, "Position Y", settingsHub.MonsterTrackerSettings.RemainingTextPosY);
             MenuItem alertSound = AddChild(MonsterTrackerMenu, "Sound warning", settingsHub.MonsterTrackerSettings.PlaySound);
             AddChild(alertSound, "Sound volume", settingsHub.MonsterTrackerSettings.SoundVolume);
             MenuItem warningTextMenu = AddChild(MonsterTrackerMenu, "Text warning", settingsHub.MonsterTrackerSettings.ShowText);
