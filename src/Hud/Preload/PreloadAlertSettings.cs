@@ -17,7 +17,7 @@
             DefaultTextColor = new ColorBGRA(210, 210, 210, 255);
             AreaTextColor = new ColorBGRA(150, 200, 250, 255);
 
-            MasterZana = new ColorBGRA(255, 2550, 0, 255);
+            MasterZana = new ColorBGRA(255, 255, 0, 255);
             MasterCatarina = new ColorBGRA(100, 255, 255, 255);
             MasterTora = new ColorBGRA(100, 255, 255, 255);
             MasterVorici = new ColorBGRA(100, 255, 255, 255);
